@@ -1,19 +1,19 @@
 format: jb-book
-root: index
+root: index.md
 parts:
 - caption: Getting Started
   chapters:
   - file: getting-started/setup-python
-  - file: getting-started/intro-packages
+  - file: getting-started/package-overview
 - caption: TESPy Heat Pump Model
   chapters:
-  - file: tespy/intro
+  - file: tespy/index
 - caption: oemof-solph Heat Pump Model
   chapters:
-  - file: solph/intro
+  - file: solph/index
 - caption: Combining the Tools
   chapters:
-  - file: combine/intro
+  - file: combine/index
 - caption: Reference
   chapters:
   - file: zliterature

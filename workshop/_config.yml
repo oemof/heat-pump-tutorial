@@ -1,6 +1,5 @@
 title : oemof workshop at the International Workshop on Open Source Modelling and Simulation of Energy Systems
 author: Francesco Witte and Patrik Schönfeld
-logo: logo.png
 
 # Short description about the book
 description: >-
@@ -27,7 +26,7 @@ binder:
 
 # LaTeX settings
 bibtex_bibfiles:
-   - _bibliography/references.bib
+   - references.bib
 latex:
   latex_engine                : "xelatex"
   latex_documents:

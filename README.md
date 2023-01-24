@@ -29,4 +29,4 @@ from the root of the repository.
 
 For all output options check the jupyter-book documentation.
 
-## [LICENSE](LICENSE.md)
+## [LICENSE](LICENSE)

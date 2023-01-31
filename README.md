@@ -14,7 +14,7 @@ If you want to build the documentation locally, you can install the additional
 dependencies:
 
 ```
-pip install ...
+pip install git+https://github.com/fwitte/oemof-workshop-osmses-2023
 ```
 
 ## Build Documentation

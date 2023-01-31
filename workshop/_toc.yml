@@ -4,16 +4,17 @@ parts:
 - caption: Getting Started
   chapters:
   - file: getting-started/setup-python
-  - file: getting-started/package-overview
-- caption: TESPy Heat Pump Model
+  - file: getting-started/5-minutes-into-solph
+  - file: getting-started/5-minutes-into-tespy
+- caption: A Simple Heat Pump Model
   chapters:
-  - file: tespy/index
-- caption: oemof-solph Heat Pump Model
+  - file: simple-model/index
+  - file: simple-model/solph
+  - file: simple-model/tespy
+  - file: simple-model/thermodynamic-excursion
+- caption: Modeling Part Load Performance
   chapters:
-  - file: solph/index
-- caption: Combining the Tools
-  chapters:
-  - file: combine/index
+  - file: complex-model/index
 - caption: Reference
   chapters:
   - file: zliterature

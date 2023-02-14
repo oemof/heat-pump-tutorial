@@ -38,25 +38,20 @@ if simple:
         outputs={heat_pump_out: solph.Flow(nominal_value=5)},
         conversion_factors={
             heat_pump_in: 1 / cop,
-            heat_pump_out: (cop - 1) / cop
+            heat_pump_out: 1,
         },
     ))
 else:
-    for load, performance in [(0.5, 0.9), (0.7, 1.0), (0.9, 1.1)]:
-        cop_mod = performance * cop
-        es.add(solph.components.Transformer(
-            label=f"heat pump {load}",
-            inputs={heat_pump_in: solph.Flow()},
-            outputs={heat_pump_out: solph.Flow(
-                nominal_value=5,
-                nonconvex=solph.NonConvex(),
-                min=load,
-            )},
-            conversion_factors={
-                heat_pump_in: 1 / cop_mod,
-                heat_pump_out: (cop_mod - 1) / cop_mod
-            },
-        ))
+    es.add(solph.components.OffsetTransformer(
+        label=f"heat pump",
+        inputs={heat_pump_in: solph.Flow(
+            nominal_value=5,
+            min=0.0,
+            nonconvex=solph.NonConvex()
+        )},
+        outputs={heat_pump_out: solph.Flow()},
+        coefficients=[0, cop]
+    ))
 
 heat_storage = solph.components.GenericStorage(
     label="heat_storage",

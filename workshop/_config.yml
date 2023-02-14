@@ -1,4 +1,4 @@
-title : oemof workshop at the International Workshop on Open Source Modelling and Simulation of Energy Systems
+title : oemof heat pump workshop
 author: Francesco Witte and Patrik Schönfeld
 logo: figures/logo_oemof_mid.svg
 
@@ -8,6 +8,7 @@ description: >-
 
 execute:
   execute_notebooks           : cache
+  timeout                     : 100
 
 # HTML-specific settings
 html:

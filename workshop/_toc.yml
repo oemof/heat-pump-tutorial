@@ -9,12 +9,18 @@ parts:
 - caption: A Simple Heat Pump Model
   chapters:
   - file: simple-model/index
-  - file: simple-model/solph
-  - file: simple-model/tespy
-  - file: simple-model/thermodynamic-excursion
+  - file: simple-model/solph-simple
+  - file: simple-model/tespy-simple
+  - file: simple-model/solph-with-tespy
 - caption: Modeling Part Load Performance
   chapters:
   - file: complex-model/index
+  - file: complex-model/solph-minimal-load
+  - file: complex-model/tespy-partload-performance
+  - file: complex-model/solph-offset
+- caption: Thermodynamic Excursion
+  chapters:
+  - file: excursion/entropy-analysis
 - caption: Reference
   chapters:
   - file: zliterature

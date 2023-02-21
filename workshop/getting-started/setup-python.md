@@ -1,3 +1,5 @@
+(installation-label)=
+
 # Setup your Python environment
 
 The tutorials have been created based on the latest versions of

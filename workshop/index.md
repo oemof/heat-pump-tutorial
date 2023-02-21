@@ -1,6 +1,20 @@
 # oemof Workshop at the OSMSES 2023
 
-Few introductory words/table of contents
+Welcome to the documentation of the oemof session at the 2nd International
+workshop on "Open Source Modelling and Simulation of Energy Systems".
+The workshop has been developed by [Francesco Witte](https://github.com/fwitte) and
+[Patrik Schönfeld](https://github.com/p-snft).
+
+You will learn how to use and apply the two most know oemof libraries, i.e.
+`oemof.solph` {cite}`Krien2020` and `TESPy` {cite}`Witte2020`, in the context of
+modeling heat pumps in energy system analysis. If you would like to add more
+contents you are welcome to open a pull request on the repository.
+
+## Table of Contents
+
+- {ref}`Installation and mini introduction to used tools <installation-label>`
+- {ref}`Building the linear model with a simple thermodynamic model <simple-linear-model-label>`
+- {ref}`Mixed-Integer model with minimum partload and partload efficiency <mixed-integer-model-label>`
 
 ## Abstract
 
@@ -61,3 +75,9 @@ understanding of a heat pump’s components and its physical properties are
 useful. While not required, it is possible to self-prepare specifically for the
 frameworks used in this tutorial with numerous examples available on the
 respective documentation websites.
+
+## LICENSE
+
+```{eval-rst}
+.. include:: /../LICENSE
+```

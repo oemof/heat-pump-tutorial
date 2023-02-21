@@ -21,6 +21,7 @@ parts:
 - caption: Thermodynamic Excursion
   chapters:
   - file: excursion/entropy-analysis
+  - file: excursion/partload-analysis
 - caption: Reference
   chapters:
   - file: zliterature

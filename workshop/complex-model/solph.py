@@ -2,6 +2,8 @@ import numpy as np
 import oemof.solph as solph
 import matplotlib.pyplot as plt
 
+hp_thermal_power = 9.1  # kW
+
 time_intervals = solph.create_time_index(2023, 1, 3)
 
 cop = np.array([4, 5, 4.5])
@@ -35,7 +37,11 @@ if simple:
     es.add(solph.components.Transformer(
         label="heat pump",
         inputs={heat_pump_in: solph.Flow()},
-        outputs={heat_pump_out: solph.Flow(nominal_value=5)},
+        outputs={heat_pump_out: solph.Flow(
+            nominal_value=hp_thermal_power,
+            nonconvex=solph.NonConvex(),
+            min=0.5,
+        )},
         conversion_factors={
             heat_pump_in: 1 / cop,
             heat_pump_out: 1,
@@ -47,9 +53,13 @@ else:
         inputs={heat_pump_in: solph.Flow(
             nominal_value=5,
             min=0.0,
-            nonconvex=solph.NonConvex()
+            nonconvex=solph.NonConvex(),
         )},
-        outputs={heat_pump_out: solph.Flow()},
+        outputs={heat_pump_out: solph.Flow(
+            nominal_value=hp_thermal_power,
+            nonconvex=solph.NonConvex(),
+            min=0.5,
+        )},
         coefficients=[0, cop]
     ))
 

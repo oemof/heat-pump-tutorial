@@ -6,9 +6,9 @@ In this section you learn how to prepare your python installation.
 
 ## Installation
 
-Make sure you have installed your favorite python on your machine. A lightweight python installation is, for example,
-[miniforge](https://github.com/conda-forge/miniforge). Then you can follow these steps to create an environment and
-install the required dependencies:
+Make sure you have installed your favorite python distribution as well as a code editor on your machine. A lightweight
+python installation is, for example, [miniforge](https://github.com/conda-forge/miniforge). Then you can follow these
+steps to create an environment and install the required dependencies:
 
 1. Create a new folder on your machine.
 2. Download the `environment.yml` file from the
@@ -25,16 +25,25 @@ For the usage of `oemof-solph` you will also need a solver. To download and inst
 instructions at the installation section of the
 [oemof-solph](https://oemof-solph.readthedocs.io/en/latest/readme.html#installation) online documentation.
 
-## Using jupyter-notebooks
+## Working with jupyter-notebooks
 
-We have prepared all relevant functions used in this workshope in a separate python script. You can download it here:
-{download}`utilities.py </model/utilities.py>`. To make use of it, save it into the working directory you created in the
-installation step.
+In the in person-workshop we will be working with Jupyter Notebooks. It is possible to edit the notebooks in code
+editors (e.g. in VS Code) or in the browser.To learn more about how to use them, you can check out the respective
+section in the [online documentation](https://jupyter.org/).
 
-We are going to use jupyter-notebooks to create and run our models. In your active miniforge3 console type:
+```{note}
+If you installed all dependencies into your python environment as described in the steps above, you do NOT need to
+install jupyter notebook separately.
+```
 
-`jupyter notebook`
+We will create three different notebooks in the course, i.e.
 
-This will start a local server, which you can access with your browser. There you can create a new notebook file, e.g.
-`dispatch`, which we will use to create the oemof-solph model and a second file, e.g. `thermodynamics`, which we will
-use to create the TESPy model.
+- a single notebook for all dispatch optimization models with oemof-solph,
+- a notebook for a simplified/rudimentary heat pump model with TESPy and
+- a notebook for an advanced TESPy model.
+
+```{tip}
+To save you some time in the workshop, we have prepared all relevant functions required for the models in a separate
+python script. You can download it here: {download}`utilities.py </model/utilities.py>`. To make use of it, save it into
+the working directory you created in the installation step. It will be possible to import these in the notebooks.
+```

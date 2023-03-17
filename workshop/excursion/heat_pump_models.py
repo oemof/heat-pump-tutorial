@@ -22,11 +22,11 @@ def simple_heat_pump(working_fluid):
     nwk.add_conns(c0, c1, c2, c3, c4)
 
     # connections
-    c2.set_attr(T=10)
-    c4.set_attr(T=50)
+    c2.set_attr(T=7)
+    c4.set_attr(T=35)
 
     # components
-    cp.set_attr(eta_s=0.8)
+    cp.set_attr(eta_s=0.4625)
     cd.set_attr(Q=-10e3)
 
     # connections

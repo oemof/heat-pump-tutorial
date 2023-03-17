@@ -6,18 +6,18 @@ parts:
   - file: getting-started/setup-python
   - file: getting-started/5-minutes-into-solph
   - file: getting-started/5-minutes-into-tespy
-- caption: A Simple Heat Pump Model
+- caption: Linear Heat Pump Model
   chapters:
-  - file: simple-model/index
-  - file: simple-model/solph-simple
-  - file: simple-model/tespy-simple
-  - file: simple-model/solph-with-tespy
-- caption: Modeling Part Load Performance
+  - file: model/linear
+  - file: model/solph-simple
+  - file: model/tespy-simple
+  - file: model/solph-with-tespy
+- caption: Mixed-Integer Model
   chapters:
-  - file: complex-model/index
-  - file: complex-model/solph-minimal-load
-  - file: complex-model/tespy-partload-performance
-  - file: complex-model/solph-offset
+  - file: model/mip
+  - file: model/solph-minimal-load
+  - file: model/tespy-partload-performance
+  - file: model/solph-offset
 - caption: Thermodynamic Excursion
   chapters:
   - file: excursion/entropy-analysis

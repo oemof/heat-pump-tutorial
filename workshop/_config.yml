@@ -1,10 +1,11 @@
-title : oemof heat pump workshop
+title : oemof Workshop on Modeling of Heat Pumps
 author: Francesco Witte and Patrik Schönfeld
 logo: figures/logo_oemof_mid.svg
+email: francesco.witte@dlr.de
 
 # Short description about the book
 description: >-
-  A workshop combining thermodynamic simulation of heat pumps and their application in energy system optimization
+  Workshop combining thermodynamic simulation of heat pumps and their application in energy system optimization
 
 execute:
   execute_notebooks           : cache
@@ -13,13 +14,16 @@ execute:
 # HTML-specific settings
 html:
   home_page_in_navbar         : false
+  use_issues_button: true
+  use_repository_button: true
+  favicon: "logo_oemof_small.svg"
 
 # Interact link settings
 notebook_interface            : "notebook"
 
 # Launch button settings
 repository:
-  url                         : https://github.com/executablebooks/quantecon-mini-example
+  url                         : https://github.com/fwitte/oemof-workshop-osmses-2023
   path_to_book                : "workshop"
 
 binder:

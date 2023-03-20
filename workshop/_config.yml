@@ -1,3 +1,6 @@
+# Book settings
+# Learn more at https://jupyterbook.org/customize/config.html
+
 title : oemof Workshop on Modeling of Heat Pumps
 author: Francesco Witte and Patrik Schönfeld
 logo: figures/logo_oemof_mid.svg
@@ -11,36 +14,24 @@ execute:
   execute_notebooks           : cache
   timeout                     : 300
 
-# HTML-specific settings
+# Add GitHub buttons to your book
+# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
-  home_page_in_navbar         : false
   use_issues_button: true
   use_repository_button: true
   favicon: "logo_oemof_small.svg"
+  home_page_in_navbar: false
 
-# Interact link settings
-notebook_interface            : "notebook"
-
-# Launch button settings
+# Information about where the book exists on the web
 repository:
-  url                         : https://github.com/fwitte/oemof-workshop-osmses-2023
-  path_to_book                : "workshop"
-
-binder:
-  binderhub_url               : "https://mybinder.org"
-  text                        : "Launch binder"
+  url: https://github.com/fwitte/oemof-workshop-osmses-2023  # Online location of your book
+  path_to_book: workshop  # Optional path to your book, relative to the repository root
+  branch: main  # Which branch of the repository should be used when creating links (optional)
 
 # LaTeX settings
 bibtex_bibfiles:
    - references.bib
 latex:
-  latex_engine                : "xelatex"
+  latex_engine: "xelatex"
   latex_documents:
     targetname: book.tex
-
-# math settings
-parse:
-  myst_enable_extensions:
-    # don't forget to list any other extensions you want enabled,
-    # including those that are enabled by default!
-    - amsmath

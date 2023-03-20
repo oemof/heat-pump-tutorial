@@ -409,22 +409,7 @@ document.write(`
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="k">def</span> <span class="nf">load_temperature_data</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns temperature (in °C) over timestamp</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># weather data from https://wetterstation.physik.rwth-aachen.de/datenbank.php</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../2023_Stundenstatistik.txt&quot;</span><span class="p">,</span> <span class="n">delim_whitespace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span>
-        <span class="p">[</span>
-            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">month</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">day</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">hour</span><span class="si">}</span><span class="s2">:00:00&quot;</span>
-            <span class="k">for</span> <span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="n">hour</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;#Jahr&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Monat&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Tag&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Stunde&#39;</span><span class="p">])</span>
-        <span class="p">]</span>
-    <span class="p">))</span>
-    <span class="c1"># hack to allow float == float (only valid for integers)</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;T_Mid&quot;</span><span class="p">]]</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;T_Mid&quot;</span><span class="p">:</span> <span class="s2">&quot;Ambient temperature (d°C)&quot;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">df</span>
+<span class="kn">from</span> <span class="nn">utilities</span> <span class="kn">import</span> <span class="n">load_temperature_data</span>
 
 <span class="n">input_data</span> <span class="o">=</span> <span class="n">load_temperature_data</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">24</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
 
@@ -559,7 +544,7 @@ document.write(`
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">heat_supply</span><span class="p">,</span> <span class="s2">&quot;r-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;heat supply&quot;</span><span class="p">,</span> <span class="n">drawstyle</span><span class="o">=</span><span class="s2">&quot;steps-post&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">demand</span><span class="p">,</span> <span class="s2">&quot;b--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;heat demand&quot;</span><span class="p">,</span> <span class="n">drawstyle</span><span class="o">=</span><span class="s2">&quot;steps-post&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">storage_content</span><span class="p">,</span> <span class="s2">&quot;k-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;storage content&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Power (kW)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Power (kW) or Energy (kWh)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
@@ -573,7 +558,7 @@ document.write(`
 </pre></div>
 </div>
 <img alt="../_images/aa4122bef3d34aa21090daa424de716810e266d624a557434e004ea0790292f1.png" src="../_images/aa4122bef3d34aa21090daa424de716810e266d624a557434e004ea0790292f1.png" />
-<img alt="../_images/2ef6be29d778089772ef8228aa0dd3a575cf393fbed1c7e6ee5aefa7fc9bd7f4.png" src="../_images/2ef6be29d778089772ef8228aa0dd3a575cf393fbed1c7e6ee5aefa7fc9bd7f4.png" />
+<img alt="../_images/5443562986ed2609ff367687d419baf5e6d556467e35852528724a51a4b77d2f.png" src="../_images/5443562986ed2609ff367687d419baf5e6d556467e35852528724a51a4b77d2f.png" />
 </div>
 </div>
 </section>

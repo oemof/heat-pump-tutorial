@@ -415,25 +415,10 @@ temperature profile and the target heating temperature:</p>
 <span class="eqno">(4)<a class="headerlink" href="#equation-cop-heat-pump-carnot-and-efficiency" title="Permalink to this equation">#</a></span>\[    \text{COP} = \frac{T_\text{max}}{T_\text{max} - T_\text{min}} \cdot \eta_\text{hp}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="k">def</span> <span class="nf">load_temperature_data</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns temperature (in °C) over timestamp</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># weather data from https://wetterstation.physik.rwth-aachen.de/datenbank.php</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../2023_Stundenstatistik.txt&quot;</span><span class="p">,</span> <span class="n">delim_whitespace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span>
-        <span class="p">[</span>
-            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">month</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">day</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">hour</span><span class="si">}</span><span class="s2">:00:00&quot;</span>
-            <span class="k">for</span> <span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="n">hour</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;#Jahr&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Monat&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Tag&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Stunde&#39;</span><span class="p">])</span>
-        <span class="p">]</span>
-    <span class="p">))</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;T_Mid&quot;</span><span class="p">]]</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;T_Mid&quot;</span><span class="p">:</span> <span class="s2">&quot;Ambient temperature (°C)&quot;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">df</span>
+<span class="kn">from</span> <span class="nn">utilities</span> <span class="kn">import</span> <span class="n">load_temperature_data</span>
 
 
 <span class="n">input_data</span> <span class="o">=</span> <span class="n">load_temperature_data</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">24</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
@@ -619,7 +604,7 @@ darunter aber Abweichungen gibt.</p></li>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">heat_supply</span><span class="p">,</span> <span class="s2">&quot;r-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;heat supply&quot;</span><span class="p">,</span> <span class="n">drawstyle</span><span class="o">=</span><span class="s2">&quot;steps-post&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">demand</span><span class="p">,</span> <span class="s2">&quot;b--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;heat demand&quot;</span><span class="p">,</span> <span class="n">drawstyle</span><span class="o">=</span><span class="s2">&quot;steps-post&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">storage_content</span><span class="p">,</span> <span class="s2">&quot;k-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;storage content&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Power (kW)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Power (kW) or Energy (kWh)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
@@ -633,7 +618,7 @@ darunter aber Abweichungen gibt.</p></li>
 </pre></div>
 </div>
 <img alt="../_images/2e65e724bfbf63a2aefffde57f7cab48d09b0e733e8f8860785d8233c53050de.png" src="../_images/2e65e724bfbf63a2aefffde57f7cab48d09b0e733e8f8860785d8233c53050de.png" />
-<img alt="../_images/2d5b5e5e3a194a11482a0541f7bb656f66bb6b64a1c44cd5707ec7df78a4e9b8.png" src="../_images/2d5b5e5e3a194a11482a0541f7bb656f66bb6b64a1c44cd5707ec7df78a4e9b8.png" />
+<img alt="../_images/0ab1e3984a68c288b99a88d6ef92fc363c992c9583fe5f7930763435efce06e0.png" src="../_images/0ab1e3984a68c288b99a88d6ef92fc363c992c9583fe5f7930763435efce06e0.png" />
 </div>
 </div>
 </section>

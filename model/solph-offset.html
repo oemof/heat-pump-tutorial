@@ -387,24 +387,9 @@ document.write(`
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="k">def</span> <span class="nf">load_temperature_data</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns temperature (in °C) over timestamp</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># weather data from https://wetterstation.physik.rwth-aachen.de/datenbank.php</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../2023_Stundenstatistik.txt&quot;</span><span class="p">,</span> <span class="n">delim_whitespace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span>
-        <span class="p">[</span>
-            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">month</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">day</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">hour</span><span class="si">}</span><span class="s2">:00:00&quot;</span>
-            <span class="k">for</span> <span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="n">hour</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;#Jahr&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Monat&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Tag&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Stunde&#39;</span><span class="p">])</span>
-        <span class="p">]</span>
-    <span class="p">))</span>
-    <span class="c1"># hack to allow float == float (only valid for integers)</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;T_Mid&quot;</span><span class="p">]]</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;T_Mid&quot;</span><span class="p">:</span> <span class="s2">&quot;Ambient temperature (d°C)&quot;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">utilities</span> <span class="kn">import</span> <span class="n">load_temperature_data</span>
 
-    <span class="k">return</span> <span class="n">df</span>
-
-<span class="n">input_data</span> <span class="o">=</span> <span class="n">load_temperature_data</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">24</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">input_data</span> <span class="o">=</span> <span class="n">load_temperature_data</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">24</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span>
 
 
 <span class="c1"># A crude demand model should be enough for us. Let the demand be 500 W per K below 15 °C.</span>
@@ -415,38 +400,14 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">load_tespy_coefficients</span><span class="p">():</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;coefficients-offset-transformer.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-
-    <span class="c1"># hack to work with floats as index</span>
-    <span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">210</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span>
-
-    <span class="n">df2</span><span class="p">[</span><span class="s2">&quot;slope&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">df2</span><span class="p">[</span><span class="s2">&quot;slope&quot;</span><span class="p">])</span>
-    <span class="n">df2</span><span class="p">[</span><span class="s2">&quot;offset&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">df2</span><span class="p">[</span><span class="s2">&quot;offset&quot;</span><span class="p">])</span>
-
-    <span class="n">df2</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">df2</span><span class="o">.</span><span class="n">index</span>
-
-    <span class="k">return</span> <span class="n">df2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utilities</span> <span class="kn">import</span> <span class="n">load_tespy_coefficients</span>
 
 <span class="n">tespy_coefficients</span> <span class="o">=</span> <span class="n">load_tespy_coefficients</span><span class="p">()</span>
 
 <span class="n">input_data</span><span class="p">[</span><span class="s2">&quot;slope&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">input_data</span><span class="p">[</span><span class="s2">&quot;Ambient temperature (d°C)&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">tespy_coefficients</span><span class="p">[</span><span class="s2">&quot;slope&quot;</span><span class="p">])</span>
 <span class="n">input_data</span><span class="p">[</span><span class="s2">&quot;offset&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">input_data</span><span class="p">[</span><span class="s2">&quot;Ambient temperature (d°C)&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">tespy_coefficients</span><span class="p">[</span><span class="s2">&quot;offset&quot;</span><span class="p">])</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">input_data</span><span class="p">[</span><span class="s2">&quot;Ambient temperature (d°C)&quot;</span><span class="p">]</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;b-&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Ambient temperature (°C)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
-
-<span class="c1"># plt.plot(input_data[&quot;offset&quot;], &quot;r-&quot;)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">input_data</span><span class="p">[</span><span class="s2">&quot;slope&quot;</span><span class="p">],</span> <span class="s2">&quot;m-&quot;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/02c2f378b56edf4f442749df1b0618da98c5d7d267581744411d873995e14ee4.png" src="../_images/02c2f378b56edf4f442749df1b0618da98c5d7d267581744411d873995e14ee4.png" />
 </div>
 </div>
 <p>With respect to the previous version (solph-minimal-load), a the Transformer is replaced by an OffsetTransformer.</p>
@@ -521,102 +482,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">64</span>
-<span class="g g-Whitespace">     </span><span class="mi">60</span> <span class="n">es</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">thermal_storage</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">62</span> <span class="n">model</span> <span class="o">=</span> <span class="n">solph</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">energysystem</span><span class="o">=</span><span class="n">es</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">64</span> <span class="n">model</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">66</span> <span class="n">results</span> <span class="o">=</span> <span class="n">solph</span><span class="o">.</span><span class="n">processing</span><span class="o">.</span><span class="n">results</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/oemof/solph/_models.py:243,</span> in <span class="ni">BaseModel.solve</span><span class="nt">(self, solver, solver_io, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">240</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">solver_cmdline_options</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">241</span>     <span class="n">options</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">solver_cmdline_options</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
-<span class="ne">--&gt; </span><span class="mi">243</span> <span class="n">solver_results</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">solve_kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">245</span> <span class="n">status</span> <span class="o">=</span> <span class="n">solver_results</span><span class="p">[</span><span class="s2">&quot;Solver&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;Status&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">246</span> <span class="n">termination_condition</span> <span class="o">=</span> <span class="n">solver_results</span><span class="p">[</span><span class="s2">&quot;Solver&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span>
-<span class="g g-Whitespace">    </span><span class="mi">247</span>     <span class="s2">&quot;Termination condition&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">248</span> <span class="p">]</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/pyomo/opt/base/solvers.py:579,</span> in <span class="ni">OptSolver.solve</span><span class="nt">(self, *args, **kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">576</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">_model</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">577</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_initialize_callbacks</span><span class="p">(</span><span class="n">_model</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">579</span> <span class="n">_status</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apply_solver</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">580</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_transformation_data&#39;</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">581</span>     <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transformation_data</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/pyomo/opt/solver/shellcmd.py:265,</span> in <span class="ni">SystemCallSolver._apply_solver</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">262</span>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Solver problem files: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_problem_files</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">264</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
-<span class="ne">--&gt; </span><span class="mi">265</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rc</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_log</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_execute_command</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_command</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">266</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">267</span> <span class="k">return</span> <span class="n">Bunch</span><span class="p">(</span><span class="n">rc</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_rc</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_log</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/pyomo/opt/solver/shellcmd.py:334,</span> in <span class="ni">SystemCallSolver._execute_command</span><span class="nt">(self, command)</span>
-<span class="g g-Whitespace">    </span><span class="mi">332</span> <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">333</span>     <span class="k">with</span> <span class="n">TeeStream</span><span class="p">(</span><span class="o">*</span><span class="n">ostreams</span><span class="p">)</span> <span class="k">as</span> <span class="n">t</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">334</span>         <span class="n">results</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">335</span>             <span class="n">command</span><span class="o">.</span><span class="n">cmd</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">336</span>             <span class="nb">input</span><span class="o">=</span><span class="n">_input</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">337</span>             <span class="n">env</span><span class="o">=</span><span class="n">command</span><span class="o">.</span><span class="n">env</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">338</span>             <span class="n">stdout</span><span class="o">=</span><span class="n">t</span><span class="o">.</span><span class="n">STDOUT</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">339</span>             <span class="n">stderr</span><span class="o">=</span><span class="n">t</span><span class="o">.</span><span class="n">STDERR</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">340</span>             <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">341</span>             <span class="n">universal_newlines</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">342</span>             <span class="n">cwd</span><span class="o">=</span><span class="n">command</span><span class="o">.</span><span class="n">cwd</span> <span class="k">if</span> <span class="s2">&quot;cwd&quot;</span> <span class="ow">in</span> <span class="n">command</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">343</span>         <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">344</span>         <span class="n">t</span><span class="o">.</span><span class="n">STDOUT</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">345</span>         <span class="n">t</span><span class="o">.</span><span class="n">STDERR</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/subprocess.py:505,</span> in <span class="ni">run</span><span class="nt">(input, capture_output, timeout, check, *popenargs, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">503</span> <span class="k">with</span> <span class="n">Popen</span><span class="p">(</span><span class="o">*</span><span class="n">popenargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="k">as</span> <span class="n">process</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">504</span>     <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">505</span>         <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span> <span class="o">=</span> <span class="n">process</span><span class="o">.</span><span class="n">communicate</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">506</span>     <span class="k">except</span> <span class="n">TimeoutExpired</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">507</span>         <span class="n">process</span><span class="o">.</span><span class="n">kill</span><span class="p">()</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/subprocess.py:1146,</span> in <span class="ni">Popen.communicate</span><span class="nt">(self, input, timeout)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1144</span>         <span class="n">stderr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1145</span>         <span class="bp">self</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-<span class="ne">-&gt; </span><span class="mi">1146</span>     <span class="bp">self</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1147</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1148</span>     <span class="k">if</span> <span class="n">timeout</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/subprocess.py:1209,</span> in <span class="ni">Popen.wait</span><span class="nt">(self, timeout)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1207</span>     <span class="n">endtime</span> <span class="o">=</span> <span class="n">_time</span><span class="p">()</span> <span class="o">+</span> <span class="n">timeout</span>
-<span class="g g-Whitespace">   </span><span class="mi">1208</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1209</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wait</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1210</span> <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1211</span>     <span class="c1"># https://bugs.python.org/issue25942</span>
-<span class="g g-Whitespace">   </span><span class="mi">1212</span>     <span class="c1"># The first keyboard interrupt waits briefly for the child to</span>
-<span class="g g-Whitespace">   </span><span class="mi">1213</span>     <span class="c1"># exit under the common assumption that it also received the ^C</span>
-<span class="g g-Whitespace">   </span><span class="mi">1214</span>     <span class="c1"># generated SIGINT and will exit rapidly.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1215</span>     <span class="k">if</span> <span class="n">timeout</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/subprocess.py:1943,</span> in <span class="ni">Popen._wait</span><span class="nt">(self, timeout)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1941</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">returncode</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1942</span>     <span class="k">break</span>  <span class="c1"># Another thread waited.</span>
-<span class="ne">-&gt; </span><span class="mi">1943</span> <span class="p">(</span><span class="n">pid</span><span class="p">,</span> <span class="n">sts</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_try_wait</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1944</span> <span class="c1"># Check the pid and loop as waitpid has been known to</span>
-<span class="g g-Whitespace">   </span><span class="mi">1945</span> <span class="c1"># return 0 even without WNOHANG in odd situations.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1946</span> <span class="c1"># http://bugs.python.org/issue14396.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1947</span> <span class="k">if</span> <span class="n">pid</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">pid</span><span class="p">:</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/subprocess.py:1901,</span> in <span class="ni">Popen._try_wait</span><span class="nt">(self, wait_flags)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1899</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;All callers to this function MUST hold self._waitpid_lock.&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1900</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1901</span>     <span class="p">(</span><span class="n">pid</span><span class="p">,</span> <span class="n">sts</span><span class="p">)</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">waitpid</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pid</span><span class="p">,</span> <span class="n">wait_flags</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1902</span> <span class="k">except</span> <span class="ne">ChildProcessError</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1903</span>     <span class="c1"># This happens if SIGCLD is set to be ignored or waiting</span>
-<span class="g g-Whitespace">   </span><span class="mi">1904</span>     <span class="c1"># for child processes has otherwise been disabled for our</span>
-<span class="g g-Whitespace">   </span><span class="mi">1905</span>     <span class="c1"># process.  This child is dead, we can&#39;t get the status.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1906</span>     <span class="n">pid</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pid</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -633,7 +498,7 @@ document.write(`
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">heat_supply</span><span class="p">,</span> <span class="s2">&quot;r-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;heat supply&quot;</span><span class="p">,</span> <span class="n">drawstyle</span><span class="o">=</span><span class="s2">&quot;steps-post&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">demand</span><span class="p">,</span> <span class="s2">&quot;b--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;heat demand&quot;</span><span class="p">,</span> <span class="n">drawstyle</span><span class="o">=</span><span class="s2">&quot;steps-post&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">storage_content</span><span class="p">,</span> <span class="s2">&quot;k-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;storage content&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Power (kW)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Power (kW) or Energy (kWh)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
@@ -641,6 +506,13 @@ document.write(`
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Electricity demand: </span><span class="si">{</span><span class="n">electricity_consumption</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> kWh&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Electricity demand: 10.1 kWh
+</pre></div>
+</div>
+<img alt="../_images/c8627e72efc092db313a619b8099e6f089a76075790bc50b8f0d3e15dfd1a13f.png" src="../_images/c8627e72efc092db313a619b8099e6f089a76075790bc50b8f0d3e15dfd1a13f.png" />
+<img alt="../_images/30d986a2c6aa606cf87a2ab9fdafd2618145ce6716e912ccda55138aa3ca3d98.png" src="../_images/30d986a2c6aa606cf87a2ab9fdafd2618145ce6716e912ccda55138aa3ca3d98.png" />
 </div>
 </div>
 </section>

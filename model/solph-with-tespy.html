@@ -508,49 +508,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: Could not locate the &#39;cbc&#39; executable, which is required for solver
-    cbc
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ApplicationError</span><span class="g g-Whitespace">                          </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">54</span>
-<span class="g g-Whitespace">     </span><span class="mi">50</span> <span class="n">es</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">thermal_storage</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">52</span> <span class="n">model</span> <span class="o">=</span> <span class="n">solph</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">energysystem</span><span class="o">=</span><span class="n">es</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">54</span> <span class="n">model</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">56</span> <span class="n">results</span> <span class="o">=</span> <span class="n">solph</span><span class="o">.</span><span class="n">processing</span><span class="o">.</span><span class="n">results</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/oemof/solph/_models.py:243,</span> in <span class="ni">BaseModel.solve</span><span class="nt">(self, solver, solver_io, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">240</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">solver_cmdline_options</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">241</span>     <span class="n">options</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">solver_cmdline_options</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
-<span class="ne">--&gt; </span><span class="mi">243</span> <span class="n">solver_results</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">solve_kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">245</span> <span class="n">status</span> <span class="o">=</span> <span class="n">solver_results</span><span class="p">[</span><span class="s2">&quot;Solver&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;Status&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">246</span> <span class="n">termination_condition</span> <span class="o">=</span> <span class="n">solver_results</span><span class="p">[</span><span class="s2">&quot;Solver&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span>
-<span class="g g-Whitespace">    </span><span class="mi">247</span>     <span class="s2">&quot;Termination condition&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">248</span> <span class="p">]</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/pyomo/opt/base/solvers.py:513,</span> in <span class="ni">OptSolver.solve</span><span class="nt">(self, *args, **kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">510</span> <span class="k">def</span> <span class="nf">solve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">511</span><span class="w">     </span><span class="sd">&quot;&quot;&quot; Solve the problem &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">513</span>     <span class="bp">self</span><span class="o">.</span><span class="n">available</span><span class="p">(</span><span class="n">exception_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">514</span>     <span class="c1">#</span>
-<span class="g g-Whitespace">    </span><span class="mi">515</span>     <span class="c1"># If the inputs are models, then validate that they have been</span>
-<span class="g g-Whitespace">    </span><span class="mi">516</span>     <span class="c1"># constructed! Collect suffix names to try and import from solution.</span>
-<span class="g g-Whitespace">    </span><span class="mi">517</span>     <span class="c1">#</span>
-<span class="g g-Whitespace">    </span><span class="mi">518</span>     <span class="kn">from</span> <span class="nn">pyomo.core.base.block</span> <span class="kn">import</span> <span class="n">_BlockData</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/pyomo/opt/solver/shellcmd.py:139,</span> in <span class="ni">SystemCallSolver.available</span><span class="nt">(self, exception_flag)</span>
-<span class="g g-Whitespace">    </span><span class="mi">137</span>     <span class="k">if</span> <span class="n">exception_flag</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">138</span>         <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;No executable found for solver &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">139</span>         <span class="k">raise</span> <span class="n">ApplicationError</span><span class="p">(</span><span class="n">msg</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">140</span>     <span class="k">return</span> <span class="kc">False</span>
-<span class="g g-Whitespace">    </span><span class="mi">141</span> <span class="k">return</span> <span class="kc">True</span>
-
-<span class="ne">ApplicationError</span>: No executable found for solver &#39;cbc&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -575,6 +532,13 @@ document.write(`
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Electricity demand: </span><span class="si">{</span><span class="n">electricity_consumption</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> kWh&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Electricity demand: 32.9 kWh
+</pre></div>
+</div>
+<img alt="../_images/f75bd589704e50f5985d4e9dd06d4c84e485e5c24b56cac2820590cdc549b5b7.png" src="../_images/f75bd589704e50f5985d4e9dd06d4c84e485e5c24b56cac2820590cdc549b5b7.png" />
+<img alt="../_images/3e45f4f264fcc522d15c86978404407b24c679d5bd1d5d781b15201e61fa5d48.png" src="../_images/3e45f4f264fcc522d15c86978404407b24c679d5bd1d5d781b15201e61fa5d48.png" />
 </div>
 </div>
 </section>

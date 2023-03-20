@@ -1,4 +1,15 @@
 Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/nbclient/client.py", line 730, in _async_poll_for_reply
+    msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
+  File "/opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/nbclient/util.py", line 96, in ensure_async
+    result = await obj
+  File "/opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/jupyter_client/channels.py", line 315, in get_msg
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
   File "/opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
     executenb(
   File "/opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/nbclient/client.py", line 1204, in execute
@@ -11,116 +22,18 @@ Traceback (most recent call last):
     return future.result()
   File "/opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/nbclient/client.py", line 663, in async_execute
     await self.async_execute_cell(
-  File "/opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/nbclient/client.py", line 965, in async_execute_cell
-    await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "/opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
-    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
-nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
-------------------
-import oemof.solph as solph
-
-hp_thermal_power = 9.1  # kW
-
-slope = input_data["slope"][:-1]
-offset = input_data["offset"][:-1]/1e3
-demand = input_data["Heat load (kW)"][:-1]
-
-es = solph.EnergySystem(timeindex=input_data.index, infer_last_interval=False)
-
-b_electricity = solph.Bus(label="electricity")
-b_heat_35C = solph.Bus(label="heat 35C")
-es.add(b_electricity, b_heat_35C)
-
-electricity_grid = solph.components.Source(
-    label="electricity grid",
-    outputs={b_electricity: solph.Flow(variable_costs=0.4)},  # €/kWh
-)
-
-heat_demand = solph.components.Sink(
-    label="heat demand",
-    inputs={b_heat_35C: solph.Flow(nominal_value=1, fix=demand)},  # kW
-)
-es.add(electricity_grid, heat_demand)
-
-
-heat_pump = solph.components.OffsetTransformer(
-        label=f"heat pump",
-        inputs={b_electricity: solph.Flow(
-            nominal_value=5,
-            min=0.0,
-            nonconvex=solph.NonConvex(),
-        )},
-        outputs={b_heat_35C: solph.Flow(
-            nominal_value=hp_thermal_power,
-            nonconvex=solph.NonConvex(),
-            min=0.5,
-        )},
-        coefficients=[offset, slope]
-)
-
-es.add(heat_pump)
-
-heating_rod = solph.components.Transformer(
-    label="heating rod",
-    inputs={b_electricity: solph.Flow()},
-    outputs={b_heat_35C: solph.Flow()},
-)
-
-es.add(heating_rod)
-
-thermal_storage = solph.components.GenericStorage(
-    label='thermal_storage',
-    inputs={b_heat_35C: solph.Flow()},
-    outputs={b_heat_35C: solph.Flow()},
-    loss_rate=0.02,
-    nominal_storage_capacity=8.7,  # Assume 5 k of spread and 1.5 m³ volume 
-)
-
-es.add(thermal_storage)
-
-model = solph.Model(energysystem=es)
-
-model.solve()
-
-results = solph.processing.results(model)
-
-
-------------------
-
-[0;31m---------------------------------------------------------------------------[0m
-[0;31mApplicationError[0m                          Traceback (most recent call last)
-Cell [0;32mIn[3], line 64[0m
-[1;32m     60[0m es[38;5;241m.[39madd(thermal_storage)
-[1;32m     62[0m model [38;5;241m=[39m solph[38;5;241m.[39mModel(energysystem[38;5;241m=[39mes)
-[0;32m---> 64[0m [43mmodel[49m[38;5;241;43m.[39;49m[43msolve[49m[43m([49m[43m)[49m
-[1;32m     66[0m results [38;5;241m=[39m solph[38;5;241m.[39mprocessing[38;5;241m.[39mresults(model)
-
-File [0;32m/opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/oemof/solph/_models.py:243[0m, in [0;36mBaseModel.solve[0;34m(self, solver, solver_io, **kwargs)[0m
-[1;32m    240[0m [38;5;28;01mfor[39;00m k [38;5;129;01min[39;00m solver_cmdline_options:
-[1;32m    241[0m     options[k] [38;5;241m=[39m solver_cmdline_options[k]
-[0;32m--> 243[0m solver_results [38;5;241m=[39m [43mopt[49m[38;5;241;43m.[39;49m[43msolve[49m[43m([49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43msolve_kwargs[49m[43m)[49m
-[1;32m    245[0m status [38;5;241m=[39m solver_results[[38;5;124m"[39m[38;5;124mSolver[39m[38;5;124m"[39m][[38;5;241m0[39m][[38;5;124m"[39m[38;5;124mStatus[39m[38;5;124m"[39m]
-[1;32m    246[0m termination_condition [38;5;241m=[39m solver_results[[38;5;124m"[39m[38;5;124mSolver[39m[38;5;124m"[39m][[38;5;241m0[39m][
-[1;32m    247[0m     [38;5;124m"[39m[38;5;124mTermination condition[39m[38;5;124m"[39m
-[1;32m    248[0m ]
-
-File [0;32m/opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/pyomo/opt/base/solvers.py:513[0m, in [0;36mOptSolver.solve[0;34m(self, *args, **kwds)[0m
-[1;32m    510[0m [38;5;28;01mdef[39;00m [38;5;21msolve[39m([38;5;28mself[39m, [38;5;241m*[39margs, [38;5;241m*[39m[38;5;241m*[39mkwds):
-[1;32m    511[0m [38;5;250m    [39m[38;5;124;03m""" Solve the problem """[39;00m
-[0;32m--> 513[0m     [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mavailable[49m[43m([49m[43mexception_flag[49m[38;5;241;43m=[39;49m[38;5;28;43;01mTrue[39;49;00m[43m)[49m
-[1;32m    514[0m     [38;5;66;03m#[39;00m
-[1;32m    515[0m     [38;5;66;03m# If the inputs are models, then validate that they have been[39;00m
-[1;32m    516[0m     [38;5;66;03m# constructed! Collect suffix names to try and import from solution.[39;00m
-[1;32m    517[0m     [38;5;66;03m#[39;00m
-[1;32m    518[0m     [38;5;28;01mfrom[39;00m [38;5;21;01mpyomo[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mbase[39;00m[38;5;21;01m.[39;00m[38;5;21;01mblock[39;00m [38;5;28;01mimport[39;00m _BlockData
-
-File [0;32m/opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/pyomo/opt/solver/shellcmd.py:139[0m, in [0;36mSystemCallSolver.available[0;34m(self, exception_flag)[0m
-[1;32m    137[0m     [38;5;28;01mif[39;00m exception_flag:
-[1;32m    138[0m         msg [38;5;241m=[39m [38;5;124m"[39m[38;5;124mNo executable found for solver [39m[38;5;124m'[39m[38;5;132;01m%s[39;00m[38;5;124m'[39m[38;5;124m"[39m
-[0;32m--> 139[0m         [38;5;28;01mraise[39;00m ApplicationError(msg [38;5;241m%[39m [38;5;28mself[39m[38;5;241m.[39mname)
-[1;32m    140[0m     [38;5;28;01mreturn[39;00m [38;5;28;01mFalse[39;00m
-[1;32m    141[0m [38;5;28;01mreturn[39;00m [38;5;28;01mTrue[39;00m
-
-[0;31mApplicationError[0m: No executable found for solver 'cbc'
-ApplicationError: No executable found for solver 'cbc'
+  File "/opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/nbclient/client.py", line 949, in async_execute_cell
+    exec_reply = await self.task_poll_for_reply
+  File "/opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/nbclient/client.py", line 754, in _async_poll_for_reply
+    await self._async_handle_timeout(timeout, cell)
+  File "/opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/nbclient/client.py", line 801, in _async_handle_timeout
+    raise CellTimeoutError.error_from_timeout_and_cell(
+nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 300 seconds.
+The message was: Cell execution timed out.
+Here is a preview of the cell contents:
+-------------------
+['import oemof.solph as solph', '', 'hp_thermal_power = 9.1  # kW', '', 'slope = input_data["slope"][:-1]']
+...
+['model = solph.Model(energysystem=es)', '', 'model.solve()', '', 'results = solph.processing.results(model)']
+-------------------
 

@@ -522,12 +522,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: Could not locate the &#39;cbc&#39; executable, which is required for solver
-    cbc
-</pre></div>
-</div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ApplicationError</span><span class="g g-Whitespace">                          </span>Traceback (most recent call last)
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">64</span>
 <span class="g g-Whitespace">     </span><span class="mi">60</span> <span class="n">es</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">thermal_storage</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">62</span> <span class="n">model</span> <span class="o">=</span> <span class="n">solph</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">energysystem</span><span class="o">=</span><span class="n">es</span><span class="p">)</span>
@@ -543,24 +539,81 @@ document.write(`
 <span class="g g-Whitespace">    </span><span class="mi">247</span>     <span class="s2">&quot;Termination condition&quot;</span>
 <span class="g g-Whitespace">    </span><span class="mi">248</span> <span class="p">]</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/pyomo/opt/base/solvers.py:513,</span> in <span class="ni">OptSolver.solve</span><span class="nt">(self, *args, **kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">510</span> <span class="k">def</span> <span class="nf">solve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">511</span><span class="w">     </span><span class="sd">&quot;&quot;&quot; Solve the problem &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">513</span>     <span class="bp">self</span><span class="o">.</span><span class="n">available</span><span class="p">(</span><span class="n">exception_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">514</span>     <span class="c1">#</span>
-<span class="g g-Whitespace">    </span><span class="mi">515</span>     <span class="c1"># If the inputs are models, then validate that they have been</span>
-<span class="g g-Whitespace">    </span><span class="mi">516</span>     <span class="c1"># constructed! Collect suffix names to try and import from solution.</span>
-<span class="g g-Whitespace">    </span><span class="mi">517</span>     <span class="c1">#</span>
-<span class="g g-Whitespace">    </span><span class="mi">518</span>     <span class="kn">from</span> <span class="nn">pyomo.core.base.block</span> <span class="kn">import</span> <span class="n">_BlockData</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/pyomo/opt/base/solvers.py:579,</span> in <span class="ni">OptSolver.solve</span><span class="nt">(self, *args, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">576</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">_model</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">577</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_initialize_callbacks</span><span class="p">(</span><span class="n">_model</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">579</span> <span class="n">_status</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apply_solver</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">580</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_transformation_data&#39;</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">581</span>     <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transformation_data</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/pyomo/opt/solver/shellcmd.py:139,</span> in <span class="ni">SystemCallSolver.available</span><span class="nt">(self, exception_flag)</span>
-<span class="g g-Whitespace">    </span><span class="mi">137</span>     <span class="k">if</span> <span class="n">exception_flag</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">138</span>         <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;No executable found for solver &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">139</span>         <span class="k">raise</span> <span class="n">ApplicationError</span><span class="p">(</span><span class="n">msg</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">140</span>     <span class="k">return</span> <span class="kc">False</span>
-<span class="g g-Whitespace">    </span><span class="mi">141</span> <span class="k">return</span> <span class="kc">True</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/pyomo/opt/solver/shellcmd.py:265,</span> in <span class="ni">SystemCallSolver._apply_solver</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">262</span>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Solver problem files: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_problem_files</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">264</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">265</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rc</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_log</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_execute_command</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_command</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">266</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">267</span> <span class="k">return</span> <span class="n">Bunch</span><span class="p">(</span><span class="n">rc</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_rc</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_log</span><span class="p">)</span>
 
-<span class="ne">ApplicationError</span>: No executable found for solver &#39;cbc&#39;
+<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/pyomo/opt/solver/shellcmd.py:334,</span> in <span class="ni">SystemCallSolver._execute_command</span><span class="nt">(self, command)</span>
+<span class="g g-Whitespace">    </span><span class="mi">332</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">333</span>     <span class="k">with</span> <span class="n">TeeStream</span><span class="p">(</span><span class="o">*</span><span class="n">ostreams</span><span class="p">)</span> <span class="k">as</span> <span class="n">t</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">334</span>         <span class="n">results</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">335</span>             <span class="n">command</span><span class="o">.</span><span class="n">cmd</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">336</span>             <span class="nb">input</span><span class="o">=</span><span class="n">_input</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">337</span>             <span class="n">env</span><span class="o">=</span><span class="n">command</span><span class="o">.</span><span class="n">env</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">338</span>             <span class="n">stdout</span><span class="o">=</span><span class="n">t</span><span class="o">.</span><span class="n">STDOUT</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">339</span>             <span class="n">stderr</span><span class="o">=</span><span class="n">t</span><span class="o">.</span><span class="n">STDERR</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">340</span>             <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">341</span>             <span class="n">universal_newlines</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">342</span>             <span class="n">cwd</span><span class="o">=</span><span class="n">command</span><span class="o">.</span><span class="n">cwd</span> <span class="k">if</span> <span class="s2">&quot;cwd&quot;</span> <span class="ow">in</span> <span class="n">command</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">343</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">344</span>         <span class="n">t</span><span class="o">.</span><span class="n">STDOUT</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">345</span>         <span class="n">t</span><span class="o">.</span><span class="n">STDERR</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/subprocess.py:505,</span> in <span class="ni">run</span><span class="nt">(input, capture_output, timeout, check, *popenargs, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">503</span> <span class="k">with</span> <span class="n">Popen</span><span class="p">(</span><span class="o">*</span><span class="n">popenargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="k">as</span> <span class="n">process</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">504</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">505</span>         <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span> <span class="o">=</span> <span class="n">process</span><span class="o">.</span><span class="n">communicate</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">506</span>     <span class="k">except</span> <span class="n">TimeoutExpired</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">507</span>         <span class="n">process</span><span class="o">.</span><span class="n">kill</span><span class="p">()</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/subprocess.py:1146,</span> in <span class="ni">Popen.communicate</span><span class="nt">(self, input, timeout)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1144</span>         <span class="n">stderr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1145</span>         <span class="bp">self</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="ne">-&gt; </span><span class="mi">1146</span>     <span class="bp">self</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1147</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1148</span>     <span class="k">if</span> <span class="n">timeout</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/subprocess.py:1209,</span> in <span class="ni">Popen.wait</span><span class="nt">(self, timeout)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1207</span>     <span class="n">endtime</span> <span class="o">=</span> <span class="n">_time</span><span class="p">()</span> <span class="o">+</span> <span class="n">timeout</span>
+<span class="g g-Whitespace">   </span><span class="mi">1208</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1209</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wait</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1210</span> <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1211</span>     <span class="c1"># https://bugs.python.org/issue25942</span>
+<span class="g g-Whitespace">   </span><span class="mi">1212</span>     <span class="c1"># The first keyboard interrupt waits briefly for the child to</span>
+<span class="g g-Whitespace">   </span><span class="mi">1213</span>     <span class="c1"># exit under the common assumption that it also received the ^C</span>
+<span class="g g-Whitespace">   </span><span class="mi">1214</span>     <span class="c1"># generated SIGINT and will exit rapidly.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1215</span>     <span class="k">if</span> <span class="n">timeout</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/subprocess.py:1943,</span> in <span class="ni">Popen._wait</span><span class="nt">(self, timeout)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1941</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">returncode</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1942</span>     <span class="k">break</span>  <span class="c1"># Another thread waited.</span>
+<span class="ne">-&gt; </span><span class="mi">1943</span> <span class="p">(</span><span class="n">pid</span><span class="p">,</span> <span class="n">sts</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_try_wait</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1944</span> <span class="c1"># Check the pid and loop as waitpid has been known to</span>
+<span class="g g-Whitespace">   </span><span class="mi">1945</span> <span class="c1"># return 0 even without WNOHANG in odd situations.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1946</span> <span class="c1"># http://bugs.python.org/issue14396.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1947</span> <span class="k">if</span> <span class="n">pid</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">pid</span><span class="p">:</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/subprocess.py:1901,</span> in <span class="ni">Popen._try_wait</span><span class="nt">(self, wait_flags)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1899</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;All callers to this function MUST hold self._waitpid_lock.&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1900</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1901</span>     <span class="p">(</span><span class="n">pid</span><span class="p">,</span> <span class="n">sts</span><span class="p">)</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">waitpid</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pid</span><span class="p">,</span> <span class="n">wait_flags</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1902</span> <span class="k">except</span> <span class="ne">ChildProcessError</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1903</span>     <span class="c1"># This happens if SIGCLD is set to be ignored or waiting</span>
+<span class="g g-Whitespace">   </span><span class="mi">1904</span>     <span class="c1"># for child processes has otherwise been disabled for our</span>
+<span class="g g-Whitespace">   </span><span class="mi">1905</span>     <span class="c1"># process.  This child is dead, we can&#39;t get the status.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1906</span>     <span class="n">pid</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pid</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>

@@ -601,20 +601,7 @@ future as well.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (HeatExchangerSimple) #####
-+------------+-----------+----------+----------+-----+-----+------+------+--------+
-|            |         Q |       pr |     zeta |   D |   L |   ks |   kA |   Tamb |
-|------------+-----------+----------+----------+-----+-----+------+------+--------|
-| condenser  | -1.00e+04 | 1.00e+00 | 1.65e-05 | nan | nan |  nan |  nan |    nan |
-| evaporator |  8.22e+03 | 1.00e+00 | 0.00e+00 | nan | nan |  nan |  nan |    nan |
-+------------+-----------+----------+----------+-----+-----+------+------+--------+
-##### RESULTS (Valve) #####
-+-----------------+----------+----------+
-|                 |       pr |     zeta |
-|-----------------+----------+----------|
-| expansion valve | 3.68e-01 | 8.07e+10 |
-+-----------------+----------+----------+
-##### RESULTS (Compressor) #####
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (Compressor) #####
 +------------+----------+----------+----------+--------+
 |            |        P |    eta_s |       pr |   igva |
 |------------+----------+----------+----------+--------|
@@ -626,6 +613,19 @@ future as well.</p>
 |--------------+------------------+-------------------|
 | cycle closer |         0.00e+00 |          0.00e+00 |
 +--------------+------------------+-------------------+
+##### RESULTS (Valve) #####
++-----------------+----------+----------+
+|                 |       pr |     zeta |
+|-----------------+----------+----------|
+| expansion valve | 3.68e-01 | 8.07e+10 |
++-----------------+----------+----------+
+##### RESULTS (HeatExchangerSimple) #####
++------------+-----------+----------+----------+-----+-----+------+------+--------+
+|            |         Q |       pr |     zeta |   D |   L |   ks |   kA |   Tamb |
+|------------+-----------+----------+----------+-----+-----+------+------+--------|
+| evaporator |  8.22e+03 | 1.00e+00 | 0.00e+00 | nan | nan |  nan |  nan |    nan |
+| condenser  | -1.00e+04 | 1.00e+00 | 0.00e+00 | nan | nan |  nan |  nan |    nan |
++------------+-----------+----------+----------+-----+-----+------+------+--------+
 ##### RESULTS (Connection) #####
 +----+-----------+-----------+-----------+-----------+
 |    |         m |         p |         h |         T |
@@ -650,7 +650,7 @@ objects or from the network’s result dataframes. Note, that the compressor’s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1778.5252441124194
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1778.525244112425
 </pre></div>
 </div>
 </div>
@@ -662,7 +662,7 @@ objects or from the network’s result dataframes. Note, that the compressor’s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1778.5252441124194
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1778.525244112425
 </pre></div>
 </div>
 </div>
@@ -675,7 +675,7 @@ objects or from the network’s result dataframes. Note, that the compressor’s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.6226359637591425
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.622635963759127
 </pre></div>
 </div>
 </div>
@@ -736,7 +736,7 @@ code below performs a simple binary search.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.900349094422374
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.900349094422549
 </pre></div>
 </div>
 </div>

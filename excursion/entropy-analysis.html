@@ -488,21 +488,21 @@ reach out to the developers via the TESPy github repository. Your contribution i
 </div>
 </div>
 </div>
-<p>We can observe, that there is a difference between the two approaches in <a class="reference internal" href="#fig-heat-pump-cop"><span class="std std-numref">Fig. 7</span></a>, however it does
+<p>We can observe, that there is a difference between the two approaches in <a class="reference internal" href="#fig-heat-pump-cop"><span class="std std-numref">Fig. 14</span></a>, however it does
 not explain, the sharp increase in the efficiency factor as seen in <a class="reference internal" href="../model/tespy-simple.html#fig-heat-pump-efficiency-factor"><span class="std std-numref">Fig. 5</span></a>. To
 explain that phenomenom, we have to disect the calculat of the COP of the heat pump a little bit further.</p>
 <figure class="align-default" id="fig-heat-pump-cop">
 <img alt="../_images/eef669b85a0fd7865d7acc2b2044368a8778ad1418ef781a031ec05226a1b921.png" src="../_images/eef669b85a0fd7865d7acc2b2044368a8778ad1418ef781a031ec05226a1b921.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Comparison of the carnot COP calcualted with the simplified method and the exact method.</span><a class="headerlink" href="#fig-heat-pump-cop" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Comparison of the carnot COP calcualted with the simplified method and the exact method.</span><a class="headerlink" href="#fig-heat-pump-cop" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="irreversibility-production">
 <h2>Irreversibility Production<a class="headerlink" href="#irreversibility-production" title="Permalink to this heading">#</a></h2>
 <p>To do that, we can first reorder the definition of the COP in the following equation:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2b4cff90-335c-4096-83e0-1551938338b4">
-<span class="eqno">(9)<a class="headerlink" href="#equation-2b4cff90-335c-4096-83e0-1551938338b4" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-87515ee7-f45c-4d03-8a90-67ad5f2e2eca">
+<span class="eqno">(9)<a class="headerlink" href="#equation-87515ee7-f45c-4d03-8a90-67ad5f2e2eca" title="Permalink to this equation">#</a></span>\[\begin{align}
     \text{COP} = &amp; \frac{|\dot Q_\text{prod}|}{\dot W}\\
      = &amp; \frac{|\dot Q_\text{prod}|}{|\dot Q_\text{prod}| - \dot Q_\text{cons}}\\
      = &amp; \frac{1}{\frac{|\dot Q_\text{prod}| - \dot Q_\text{cons}}{|\dot Q_\text{prod}|}}\\
@@ -518,8 +518,8 @@ explain that phenomenom, we have to disect the calculat of the COP of the heat p
 <div class="math notranslate nohighlight" id="equation-excursion-entropy-analysis-0">
 <span class="eqno">(11)<a class="headerlink" href="#equation-excursion-entropy-analysis-0" title="Permalink to this equation">#</a></span>\[    \dot S_\text{q,cons} = |\dot S_\text{q,prod}| - \sum \dot S_{\text{irr,}i}\]</div>
 <p>We make further simplifications of the expression below the line in eq. <a class="reference internal" href="#equation-cop-heat-pump-temperature-entropy">(10)</a>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7cef2ba1-ebc7-4b93-96e9-f9c901d77625">
-<span class="eqno">(12)<a class="headerlink" href="#equation-7cef2ba1-ebc7-4b93-96e9-f9c901d77625" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-471e7d92-7582-4276-81e3-593e3d36307c">
+<span class="eqno">(12)<a class="headerlink" href="#equation-471e7d92-7582-4276-81e3-593e3d36307c" title="Permalink to this equation">#</a></span>\[\begin{align}
     \frac{T_\text{m,cons} \cdot \dot S_\text{q,cons}}{T_\text{m,prod} \cdot |\dot S_\text{q,prod}|} = &amp; \frac{T_\text{m,cons}}{T_\text{m,prod}} \cdot \frac{|\dot S_\text{q,prod}| - \sum \dot S_{\text{irr,}i}}{|\dot S_\text{q,prod}|} \\
     = &amp; \frac{T_\text{m,cons}}{T_\text{m,prod}} \cdot \left(1 - \frac{\sum \dot S_{\text{irr,}i}}{|\dot S_\text{q,prod}|}\right) \\
     = &amp; \frac{T_\text{m,cons}}{T_\text{m,prod}} - \frac{T_\text{m,cons} \cdot \sum \dot S_{\text{irr,}i}}{T_\text{m,prod} \cdot |\dot S_\text{q,prod}|} \\
@@ -631,20 +631,20 @@ the COP or - at a given carnot COP -  the lower the efficiency factor is.</p>
 </div>
 </div>
 <p>First, we can show, that the COP calculated with the entropy method retrieves the same result as the COP retrieved from
-the standard calculation in <a class="reference internal" href="#fig-cop-entropy-method-validation"><span class="std std-numref">Fig. 8</span></a>. Then we can inspect the dependency of the
-irreverisbility elements in <a class="reference internal" href="#fig-irreverisbility-elements"><span class="std std-numref">Fig. 9</span></a>. Here we can see, that the decline of irreversibility
+the standard calculation in <a class="reference internal" href="#fig-cop-entropy-method-validation"><span class="std std-numref">Fig. 15</span></a>. Then we can inspect the dependency of the
+irreverisbility elements in <a class="reference internal" href="#fig-irreverisbility-elements"><span class="std std-numref">Fig. 16</span></a>. Here we can see, that the decline of irreversibility
 production with increasing evaporation temperature is steeper that the increase of the evaporation temperature. That is
 the reason, we have an increasing efficiency factor when the evaporation temperature level rises.</p>
 <figure class="align-default" id="fig-cop-entropy-method-validation">
 <img alt="../_images/9dac0dc6978c501606a42fe24d3264fb4129a21a1d07c9b58b1105c276baf25a.png" src="../_images/9dac0dc6978c501606a42fe24d3264fb4129a21a1d07c9b58b1105c276baf25a.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Validation of the entropy method for the calculation of the heat pump’s COP.</span><a class="headerlink" href="#fig-cop-entropy-method-validation" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Validation of the entropy method for the calculation of the heat pump’s COP.</span><a class="headerlink" href="#fig-cop-entropy-method-validation" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="fig-irreverisbility-elements">
 <img alt="../_images/75596ae56169779e5da19de5238bcabc90c23b62cc3b1f314a4f8b7462ff6237.png" src="../_images/75596ae56169779e5da19de5238bcabc90c23b62cc3b1f314a4f8b7462ff6237.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Comparison of the effects of the different irreversibility elements.</span><a class="headerlink" href="#fig-irreverisbility-elements" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Comparison of the effects of the different irreversibility elements.</span><a class="headerlink" href="#fig-irreverisbility-elements" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -652,7 +652,7 @@ the reason, we have an increasing efficiency factor when the evaporation tempera
 <h2>Investigating Working Fluids<a class="headerlink" href="#investigating-working-fluids" title="Permalink to this heading">#</a></h2>
 <p>Finally, we can make an investigation for different types of working fluids, as the efficiency factor not only depends
 on the temperature level of evaporation, but also on the fluid itself. As examples, we assess working fluids from the
-different classifications (for more information see e.g. <span id="id1">[<a class="reference internal" href="../zliterature.html#id11" title="H. Tabor and L Bronicki. Establishing criteria for fluids for small vapor turbines. In SAE Technical Paper Series. SAE International, January 1964. doi:10.4271/640823.">7</a>, <a class="reference internal" href="../zliterature.html#id7" title="Sylvain Quoilin and Vincent Lemort. Technological and economical survey of organic rankine cycle systems. In European Conference on Economics and Management of Energy in Industry. April 2009. URL: https://hdl.handle.net/2268/14609.">8</a>, <a class="reference internal" href="../zliterature.html#id8" title="Huijuan Chen, D. Yogi Goswami, and Elias K. Stefanakos. A review of thermodynamic cycles and working fluids for the conversion of low-grade heat. Renewable and Sustainable Energy Reviews, 14(9):3059–3067, December 2010. doi:10.1016/j.rser.2010.07.006.">9</a>, <a class="reference internal" href="../zliterature.html#id9" title="Bo-Tau Liu, Kuo-Hsiang Chien, and Chi-Chuan Wang. Effect of working fluids on organic rankine cycle for waste heat recovery. Energy, 29(8):1207–1217, June 2004. doi:10.1016/j.energy.2004.01.004.">10</a>]</span>), which are
+different classifications (for more information see e.g. <span id="id1">[<a class="reference internal" href="../zliterature.html#id11" title="H. Tabor and L Bronicki. Establishing criteria for fluids for small vapor turbines. In SAE Technical Paper Series. SAE International, January 1964. doi:10.4271/640823.">9</a>, <a class="reference internal" href="../zliterature.html#id7" title="Sylvain Quoilin and Vincent Lemort. Technological and economical survey of organic rankine cycle systems. In European Conference on Economics and Management of Energy in Industry. April 2009. URL: https://hdl.handle.net/2268/14609.">10</a>, <a class="reference internal" href="../zliterature.html#id8" title="Huijuan Chen, D. Yogi Goswami, and Elias K. Stefanakos. A review of thermodynamic cycles and working fluids for the conversion of low-grade heat. Renewable and Sustainable Energy Reviews, 14(9):3059–3067, December 2010. doi:10.1016/j.rser.2010.07.006.">11</a>, <a class="reference internal" href="../zliterature.html#id9" title="Bo-Tau Liu, Kuo-Hsiang Chien, and Chi-Chuan Wang. Effect of working fluids on organic rankine cycle for waste heat recovery. Energy, 29(8):1207–1217, June 2004. doi:10.1016/j.energy.2004.01.004.">12</a>]</span>), which are
 roughly defined by the slope of the dew line in the Ts-diagram, i.e.</p>
 <ul class="simple">
 <li><p>wet: It has a forwards-facing slope</p></li>
@@ -729,12 +729,12 @@ roughly defined by the slope of the dew line in the Ts-diagram, i.e.</p>
 </div>
 </div>
 </div>
-<p>The figure <a class="reference internal" href="#fig-working-fluid-classification"><span class="std std-numref">Fig. 10</span></a> illustrates the different classifications of working fluids at the
+<p>The figure <a class="reference internal" href="#fig-working-fluid-classification"><span class="std std-numref">Fig. 17</span></a> illustrates the different classifications of working fluids at the
 example of Ammonia (wet), R290 (isentropic) and Neopentane (dry).</p>
 <figure class="align-default" id="fig-working-fluid-classification">
 <img alt="../_images/c4eb903ede59f5a046ec9bc41b8f596c606a0e4b484025311b4fc77cd1b22200.png" src="../_images/c4eb903ede59f5a046ec9bc41b8f596c606a0e4b484025311b4fc77cd1b22200.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Illustration of the classification of different heat pump working fluids.</span><a class="headerlink" href="#fig-working-fluid-classification" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Illustration of the classification of different heat pump working fluids.</span><a class="headerlink" href="#fig-working-fluid-classification" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>We can make the entropy analysis for each of the three fluids:</p>
@@ -768,12 +768,12 @@ example of Ammonia (wet), R290 (isentropic) and Neopentane (dry).</p>
 </div>
 </div>
 <p>The efficiency factors for the individual working fluids are displayed in
-<a class="reference internal" href="#fig-working-fluids-efficiency-factors"><span class="std std-numref">Fig. 11</span></a>. The dry and the isentropic working fluids have increasing efficiency
+<a class="reference internal" href="#fig-working-fluids-efficiency-factors"><span class="std std-numref">Fig. 18</span></a>. The dry and the isentropic working fluids have increasing efficiency
 factors, the wet working fluid has a slightly decreasing efficiency factor.</p>
 <figure class="align-default" id="fig-working-fluids-efficiency-factors">
 <img alt="../_images/531c340c22d8478f7cdbe76f0fe62e34dc4c5f1f00b926149b7cec399083afd3.png" src="../_images/531c340c22d8478f7cdbe76f0fe62e34dc4c5f1f00b926149b7cec399083afd3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Efficiency factors of heat pumps using different working fluids.</span><a class="headerlink" href="#fig-working-fluids-efficiency-factors" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Efficiency factors of heat pumps using different working fluids.</span><a class="headerlink" href="#fig-working-fluids-efficiency-factors" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

@@ -62,6 +62,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'model/tespy-partload-performance';</script>
     <link rel="shortcut icon" href="../_static/logo_oemof_small.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -385,8 +386,6 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-temperature-and-heat-production">Variable temperature and heat production</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-the-data-for-oemof-solph">Preparing the data for oemof-solph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-output-for-solph">Prepare output for solph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slope-definition-in-solph">Slope definition in solph</a></li>
 </ul>
             </nav>
         </div>
@@ -441,6 +440,16 @@ unchanged.</p>
 (instead of the <code class="docutils literal notranslate"><span class="pre">HeatExchangerSimple</span></code>) we used in the first model, and finally the <code class="docutils literal notranslate"><span class="pre">Source</span></code> and <code class="docutils literal notranslate"><span class="pre">Sink</span></code> classes to
 represent the ambient air in- and outlet as well as the heating system’s feed and return flow. We creat instances of
 the components and connect them according to the flowsheet.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tespy.tools</span> <span class="kn">import</span> <span class="n">logger</span>
+
+
+<span class="n">_</span> <span class="o">=</span> <span class="n">logger</span><span class="o">.</span><span class="n">define_logging</span><span class="p">(</span><span class="n">screen_level</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tespy.components</span> <span class="kn">import</span> <span class="n">Condenser</span><span class="p">,</span> <span class="n">HeatExchanger</span><span class="p">,</span> <span class="n">CycleCloser</span><span class="p">,</span> <span class="n">Compressor</span><span class="p">,</span> <span class="n">Valve</span><span class="p">,</span> <span class="n">Source</span><span class="p">,</span> <span class="n">Sink</span>
@@ -503,8 +512,9 @@ Therefore we provide a tutorial on how to build models with stable starting valu
 <span class="n">cd</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">Q</span><span class="o">=</span><span class="n">Q_design</span><span class="p">)</span>
 
 <span class="c1"># connections</span>
+<span class="n">T_ambient_design</span> <span class="o">=</span> <span class="mi">7</span>
 <span class="n">c2</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">fluid</span><span class="o">=</span><span class="p">{</span><span class="n">wf</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Water&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;air&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span> <span class="n">x</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
-<span class="n">c11</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">fluid</span><span class="o">=</span><span class="p">{</span><span class="n">wf</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Water&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;air&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">c11</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">fluid</span><span class="o">=</span><span class="p">{</span><span class="n">wf</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Water&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;air&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="n">T_ambient_design</span><span class="p">)</span>
 <span class="n">c12</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">Ref</span><span class="p">(</span><span class="n">c11</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">))</span>
 <span class="n">c21</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">fluid</span><span class="o">=</span><span class="p">{</span><span class="n">wf</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Water&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;air&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span> <span class="n">p</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 <span class="n">c22</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">35</span><span class="p">)</span>
@@ -521,7 +531,7 @@ Therefore we provide a tutorial on how to build models with stable starting valu
 <p>In the second step we finalize the specification values and rerun the simulation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ev</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">ttd_l</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ev</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">ttd_u</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">c2</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 
 <span class="n">cd</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">ttd_u</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
@@ -532,63 +542,246 @@ Therefore we provide a tutorial on how to build models with stable starting valu
 <span class="n">nwk</span><span class="o">.</span><span class="n">print_results</span><span class="p">(</span><span class="n">colored</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">nwk</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;design-state&quot;</span><span class="p">)</span>
 <span class="n">nwk</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;tmp&quot;</span><span class="p">)</span>
+
+<span class="n">nwk</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;Connection&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (Valve) #####
-+-----------------+----------+----------+
-|                 |       pr |     zeta |
-|-----------------+----------+----------|
-| expansion valve | 3.26e-01 | 7.92e+10 |
-+-----------------+----------+----------+
-##### RESULTS (Condenser) #####
-+-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
-|           |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
-|-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
-| condenser | -1.00e+04 | 1.39e+03 | 7.21e+00 | 5.00e+00 | 1.00e+01 | 1.00e+00 | 1.00e+00 | 3.46e-05 | 0.00e+00 |
-+-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
-##### RESULTS (Compressor) #####
-+------------+----------+----------+----------+--------+
-|            |        P |    eta_s |       pr |   igva |
-|------------+----------+----------+----------+--------|
-| compressor | 2.27e+03 | 6.75e-01 | 3.07e+00 |    nan |
-+------------+----------+----------+----------+--------+
-##### RESULTS (HeatExchanger) #####
-+------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
-|            |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
-|------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
-| evaporator | -7.73e+03 | 1.30e+03 | 5.94e+00 | 7.00e+00 | 5.00e+00 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
-+------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
-##### RESULTS (CycleCloser) #####
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (CycleCloser) #####
 +--------------+------------------+-------------------+
 |              |   mass_deviation |   fluid_deviation |
 |--------------+------------------+-------------------|
 | cycle closer |         0.00e+00 |          0.00e+00 |
 +--------------+------------------+-------------------+
+##### RESULTS (Valve) #####
++-----------------+----------+----------+
+|                 |       pr |     zeta |
+|-----------------+----------+----------|
+| expansion valve | 3.68e-01 | 8.61e+10 |
++-----------------+----------+----------+
+##### RESULTS (Condenser) #####
++-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+|           |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
+|-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
+| condenser | -1.00e+04 | 1.39e+03 | 7.21e+00 | 5.00e+00 | 1.00e+01 | 1.00e+00 | 1.00e+00 | 3.41e-05 | 0.00e+00 |
++-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+##### RESULTS (Compressor) #####
++------------+----------+----------+----------+--------+
+|            |        P |    eta_s |       pr |   igva |
+|------------+----------+----------+----------+--------|
+| compressor | 2.04e+03 | 6.75e-01 | 2.72e+00 |    nan |
++------------+----------+----------+----------+--------+
+##### RESULTS (HeatExchanger) #####
++------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+|            |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
+|------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
+| evaporator | -7.96e+03 | 2.03e+03 | 3.92e+00 | 5.00e+00 | 3.00e+00 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
++------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
 ##### RESULTS (Connection) #####
-+----+-----------+-----------+-----------+------------+
-|    |         m |         p |         h |          T |
-|----+-----------+-----------+-----------+------------|
-|  0 | 2.913e-02 | 4.461e+00 | 3.071e+05 | -2.000e+00 |
-|  1 | 2.913e-02 | 4.461e+00 | 3.071e+05 | -2.000e+00 |
-|  2 | 2.913e-02 | 4.461e+00 | 5.727e+05 | -2.000e+00 |
-|  3 | 2.913e-02 | 1.369e+01 | 6.504e+05 |  5.646e+01 |
-|  4 | 2.913e-02 | 1.369e+01 | 3.071e+05 |  4.000e+01 |
-| 11 | 3.845e+00 | 1.000e+00 | 4.043e+05 |  5.000e+00 |
-| 12 | 3.845e+00 | 1.000e+00 | 4.023e+05 |  3.000e+00 |
-| 21 | 4.786e-01 | 3.000e+00 | 1.260e+05 |  3.000e+01 |
-| 22 | 4.786e-01 | 3.000e+00 | 1.469e+05 |  3.500e+01 |
-+----+-----------+-----------+-----------+------------+
++----+-----------+-----------+-----------+-----------+
+|    |         m |         p |         h |         T |
+|----+-----------+-----------+-----------+-----------|
+|  0 | 2.949e-02 | 5.041e+00 | 3.071e+05 | 2.000e+00 |
+|  1 | 2.949e-02 | 5.041e+00 | 3.071e+05 | 2.000e+00 |
+|  2 | 2.949e-02 | 5.041e+00 | 5.771e+05 | 2.000e+00 |
+|  3 | 2.949e-02 | 1.369e+01 | 6.463e+05 | 5.453e+01 |
+|  4 | 2.949e-02 | 1.369e+01 | 3.071e+05 | 4.000e+01 |
+| 11 | 3.957e+00 | 1.000e+00 | 4.063e+05 | 7.000e+00 |
+| 12 | 3.957e+00 | 1.000e+00 | 4.043e+05 | 5.000e+00 |
+| 21 | 4.786e-01 | 3.000e+00 | 1.260e+05 | 3.000e+01 |
+| 22 | 4.786e-01 | 3.000e+00 | 1.469e+05 | 3.500e+01 |
++----+-----------+-----------+-----------+-----------+
 </pre></div>
 </div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>m</th>
+      <th>p</th>
+      <th>h</th>
+      <th>T</th>
+      <th>v</th>
+      <th>vol</th>
+      <th>s</th>
+      <th>x</th>
+      <th>Td_bp</th>
+      <th>R290</th>
+      <th>Water</th>
+      <th>air</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.029488</td>
+      <td>5.040999</td>
+      <td>307147.999599</td>
+      <td>2.000000</td>
+      <td>0.000778</td>
+      <td>0.026391</td>
+      <td>1389.278120</td>
+      <td>2.745114e-01</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.029488</td>
+      <td>5.040999</td>
+      <td>307147.999599</td>
+      <td>2.000000</td>
+      <td>0.000778</td>
+      <td>0.026391</td>
+      <td>1389.278120</td>
+      <td>2.745114e-01</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.029488</td>
+      <td>5.040999</td>
+      <td>577063.427393</td>
+      <td>2.000000</td>
+      <td>0.002687</td>
+      <td>0.091112</td>
+      <td>2370.253689</td>
+      <td>1.000000e+00</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.029488</td>
+      <td>13.694204</td>
+      <td>646266.316995</td>
+      <td>54.530607</td>
+      <td>0.001078</td>
+      <td>0.036554</td>
+      <td>2439.993233</td>
+      <td>-1.000000e+00</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.029488</td>
+      <td>13.694204</td>
+      <td>307147.999599</td>
+      <td>40.000000</td>
+      <td>0.000063</td>
+      <td>0.002139</td>
+      <td>1359.354602</td>
+      <td>8.060345e-16</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>3.956854</td>
+      <td>1.000000</td>
+      <td>406330.818533</td>
+      <td>7.000000</td>
+      <td>3.180358</td>
+      <td>0.803759</td>
+      <td>3821.630622</td>
+      <td>-1.000000e+00</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>3.956854</td>
+      <td>1.000000</td>
+      <td>404319.289111</td>
+      <td>5.000000</td>
+      <td>3.157579</td>
+      <td>0.798002</td>
+      <td>3814.424683</td>
+      <td>-1.000000e+00</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>0.478590</td>
+      <td>3.000000</td>
+      <td>126003.690095</td>
+      <td>30.000000</td>
+      <td>0.000481</td>
+      <td>0.001004</td>
+      <td>436.664733</td>
+      <td>-1.000000e+00</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>0.478590</td>
+      <td>3.000000</td>
+      <td>146898.420888</td>
+      <td>35.000000</td>
+      <td>0.000481</td>
+      <td>0.001006</td>
+      <td>505.027895</td>
+      <td>-1.000000e+00</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="design-mode">
 <h2>Design Mode<a class="headerlink" href="#design-mode" title="Permalink to this heading">#</a></h2>
+<p>Now we are going to investigate, how the COP of the heat pump changes, when changing the ambient temperature and the
+heat demand. For this two steps will be taken:</p>
+<ol class="arabic simple">
+<li><p>Modification of temperature and heat without changing any of the component specifications. That means, e.g. that the
+compressor’s efficiency or the heat exchangers’ temperature differences will stay constant.</p></li>
+<li><p>Modification of temperature and heat while applying part load assumptions for the compressor and the heat exchangers.
+These are implemented with lookup tables, where the change of mass flow through the component leads to a change in
+efficiency or temperature difference.</p></li>
+</ol>
 <section id="influence-of-the-ambient-temperature">
 <h3>Influence of the ambient temperature<a class="headerlink" href="#influence-of-the-ambient-temperature" title="Permalink to this heading">#</a></h3>
+<p>First, we investigate the influence of the ambient temperature. We have done this in the first TESPy section already,
+see <a class="reference internal" href="tespy-simple.html#tespy-simple"><span class="std std-ref">Simple TESPy heat pump model</span></a>, but since we change the topology we repeat this step.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -596,7 +789,7 @@ Therefore we provide a tutorial on how to build models with stable starting valu
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 
 
-<span class="n">temperature_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">41</span><span class="p">)</span>
+<span class="n">temperature_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
 <span class="n">results_temperature</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
     <span class="n">index</span><span class="o">=</span><span class="n">temperature_range</span><span class="p">,</span>
     <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;compressor-power&quot;</span><span class="p">,</span> <span class="s2">&quot;pressure-ratio&quot;</span><span class="p">,</span> <span class="s2">&quot;COP&quot;</span><span class="p">]</span>
@@ -614,6 +807,17 @@ Therefore we provide a tutorial on how to build models with stable starting valu
 </div>
 </div>
 </div>
+<p>We create three subplots for the results: Compressor power <span class="math notranslate nohighlight">\(\dot W_\text{cp}\)</span>, the compressor pressure ratio and
+COP over the ambient temperature level. We can see the same trend in
+<a class="reference internal" href="#fig-heat-pump-ambient-temperature-design-mode"><span class="std std-numref">Fig. 7</span></a> as we saw in the previous section in
+<a class="reference internal" href="tespy-simple.html#fig-heat-pump-efficiency-factor"><span class="std std-numref">Fig. 5</span></a>.</p>
+<figure class="align-default" id="fig-heat-pump-ambient-temperature-design-mode">
+<img alt="../_images/9b1f955c9001d3d929c6e8274d4733c0e3c70198c32a9273052711053280121b.png" src="../_images/9b1f955c9001d3d929c6e8274d4733c0e3c70198c32a9273052711053280121b.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Influence of the ambient temperature on the compressor power, its pressure ratio and the COP without modeling part load
+behavior.</span><a class="headerlink" href="#fig-heat-pump-ambient-temperature-design-mode" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -622,20 +826,36 @@ Therefore we provide a tutorial on how to build models with stable starting valu
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">temperature_range</span><span class="p">,</span> <span class="n">results_temperature</span><span class="p">[</span><span class="s2">&quot;pressure-ratio&quot;</span><span class="p">])</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">temperature_range</span><span class="p">,</span> <span class="n">results_temperature</span><span class="p">[</span><span class="s2">&quot;COP&quot;</span><span class="p">])</span>
 
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Compressor power in W&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;$\dot W_</span><span class="se">\\</span><span class="s2">mathrm</span><span class="si">{cp}</span><span class="s2">$ in W&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Pressure ratio&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;COP&quot;</span><span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Ambient temperature&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/540a79fa2eda32803efab874074cc5c04e25f6f3ccd103756d70620b5be566e8.png" src="../_images/540a79fa2eda32803efab874074cc5c04e25f6f3ccd103756d70620b5be566e8.png" />
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
+<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;fig-heat-pump-ambient-temperature-design-mode&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 </div>
 </section>
 <section id="influence-of-the-heat-production">
 <h3>Influence of the heat production<a class="headerlink" href="#influence-of-the-heat-production" title="Permalink to this heading">#</a></h3>
+<p>Second, we investigate the influence of the heat production. We can define a heat range relative to the design heat
+production spanning from 50 % to 100 % load. The ambient temperature is reset back to the previous state and we can loop
+over the part load values.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The compressor of a heat pump will be the component restricting lower and upper operational limits. Using 50 % heat
+production as minumum value scales to about 50 % compressor load. The value is an assumption we make for this tutorial.
+In the best case, you can retrieve exact data from a manufacturer.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">heat_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span> <span class="o">*</span> <span class="n">Q_design</span>
@@ -643,8 +863,7 @@ Therefore we provide a tutorial on how to build models with stable starting valu
     <span class="n">index</span><span class="o">=</span><span class="n">heat_range</span><span class="p">,</span>
     <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;compressor-power&quot;</span><span class="p">,</span> <span class="s2">&quot;pressure-ratio&quot;</span><span class="p">,</span> <span class="s2">&quot;COP&quot;</span><span class="p">]</span>
 <span class="p">)</span>
-<span class="n">T_heat_partload</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">c11</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">T_heat_partload</span><span class="p">)</span>
+<span class="n">c11</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">T_ambient_design</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">heat</span> <span class="ow">in</span> <span class="n">heat_range</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
     <span class="n">cd</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">Q</span><span class="o">=</span><span class="n">heat</span><span class="p">)</span>
@@ -657,6 +876,17 @@ Therefore we provide a tutorial on how to build models with stable starting valu
 </div>
 </div>
 </div>
+<p>Again we create a plot with the influence of the heat production on the compressor’s parameters and on the COP in
+<a class="reference internal" href="#fig-heat-pump-heat-load-design-mode"><span class="std std-numref">Fig. 8</span></a>. It becomes obvious that neither the compressor’s pressure ratio nor the
+COP are affected by the changing heat load. Only the compressor power requirement scales with the load. The reason for
+this is, that the compressor’s efficiency and the temperature differences (and therefore the evaporation and
+condensation temperatures) do not change with changing load due to our model specifications.</p>
+<figure class="align-default" id="fig-heat-pump-heat-load-design-mode">
+<img alt="../_images/b0920c438221fc150cfed07145cdbf7877dae6ece7eee1581454db2632b270b3.png" src="../_images/b0920c438221fc150cfed07145cdbf7877dae6ece7eee1581454db2632b270b3.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Influence of the heat load on the compressor power, its pressure ratio and the COP without modeling part load behavior.</span><a class="headerlink" href="#fig-heat-pump-heat-load-design-mode" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -665,38 +895,67 @@ Therefore we provide a tutorial on how to build models with stable starting valu
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">),</span> <span class="n">results_heat</span><span class="p">[</span><span class="s2">&quot;pressure-ratio&quot;</span><span class="p">])</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">),</span> <span class="n">results_heat</span><span class="p">[</span><span class="s2">&quot;COP&quot;</span><span class="p">])</span>
 
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Compressor power in W&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">results_heat</span><span class="p">[</span><span class="s2">&quot;compressor-power&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;$\dot W_</span><span class="se">\\</span><span class="s2">mathrm</span><span class="si">{cp}</span><span class="s2">$ in W&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Pressure ratio&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;COP&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()])</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Consumer heat demand in W&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">results_heat</span><span class="p">[</span><span class="s2">&quot;compressor-power&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.05</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.05</span><span class="p">])</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Consumer heat demand in W&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/80678387e662815423a4df83baea01d334c8d31208971102a4f07b0ccfd30635.png" src="../_images/80678387e662815423a4df83baea01d334c8d31208971102a4f07b0ccfd30635.png" />
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glue</span><span class="p">(</span><span class="s2">&quot;fig-heat-pump-heat-load-design-mode&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 </div>
 </section>
 </section>
 <section id="part-load-simulation">
 <h2>Part load simulation<a class="headerlink" href="#part-load-simulation" title="Permalink to this heading">#</a></h2>
+<p>The assumptions jmade in the previous section are not really reasonable: A heat exchanger cannot always hold the
+temperature difference independet of the (changing) flow regimes, when it has been constructed for a specific
+operational point. The same applies for the compressor: We can expect that the efficiency changes when it is not
+operated in optimal conditions. Therefore, this sections shows how we can make assumptions on the part load behavior of
+these components.</p>
 <section id="id1">
 <h3>Influence of the ambient temperature<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>First, we are going to investigate the ambient temperature influence. To do this, instead of using the <code class="docutils literal notranslate"><span class="pre">&quot;design&quot;</span></code> mode
+for our simulation we are using the <code class="docutils literal notranslate"><span class="pre">&quot;offdesign&quot;</span></code> mode. The offdesign mode can access a design specification and bsaed
+on that and the current operational point predict part load efficiencies.</p>
+<p>For the components that means, that the compressor’s efficiency will not be an input parameter anymore, but a
+characteristic curve will be applied instead. The characteristic holds a lookup table connecting the change of mass flow
+relative to the design point mass flow with the change in efficiency. For the evaporator and the condenser we make
+similar assumptions: Instead of having constant temperature difference values, the heat transfer coefficient <code class="docutils literal notranslate"><span class="pre">kA</span></code> is
+applied together with a characteristic curve, modifying its value depending ont he change of mass flows relative to the
+design point mass flows.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The default characteristic lines in TESPy are very generic, do NOT consider them as written in stone!</p>
+<p>They may not represent components from specific manufacturers in the appropriate way. It is also possible to derive
+characteristics from measurement data. To implement your custom characteristic lines see the respective sections in the
+<a class="reference external" href="https://tespy.readthedocs.io">TESPy online documentation</a>.</p>
+</div>
+<p>In our setup we allow extrapolation on the compressor characteristic line and we run the same loop over the temperature
+as we had in the first analysis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">Q</span><span class="o">=</span><span class="n">Q_design</span><span class="p">)</span>
 <span class="n">cp</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">design</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;eta_s&quot;</span><span class="p">],</span> <span class="n">offdesign</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;eta_s_char&quot;</span><span class="p">])</span>
 <span class="n">cp</span><span class="o">.</span><span class="n">eta_s_char</span><span class="o">.</span><span class="n">char_func</span><span class="o">.</span><span class="n">extrapolate</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">ev</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">design</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ttd_l&quot;</span><span class="p">],</span> <span class="n">offdesign</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;kA_char&quot;</span><span class="p">])</span>
+<span class="n">ev</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">design</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ttd_u&quot;</span><span class="p">],</span> <span class="n">offdesign</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;kA_char&quot;</span><span class="p">])</span>
 <span class="n">cd</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">design</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ttd_u&quot;</span><span class="p">],</span> <span class="n">offdesign</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;kA_char&quot;</span><span class="p">])</span>
 <span class="n">c11</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">offdesign</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;m&quot;</span><span class="p">])</span>
 <span class="n">c12</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">design</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;T&quot;</span><span class="p">])</span>
-
-<span class="c1"># temperature_range = np.linspace(5, -10, 16)</span>
 
 <span class="n">results_temperature_partload</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
     <span class="n">index</span><span class="o">=</span><span class="n">temperature_range</span><span class="p">,</span>
@@ -716,59 +975,86 @@ Therefore we provide a tutorial on how to build models with stable starting valu
 </div>
 </div>
 </div>
+<p>We make the same plots as before, comparing the results of the design point calculations with those that take partload
+into account. The <a class="reference internal" href="#fig-heat-pump-ambient-temperature-offdesign-mode"><span class="std std-numref">Fig. 9</span></a> shows the comparison of both approaches.
+The last subplot is the deviation in COP, which is at an overall low level. Only for very high ambient temperature
+levels, which are nearly at the heat supply temperature level the deviation increases to about 5 % with respect to the
+model accounting for part load behavior.</p>
+<figure class="align-default" id="fig-heat-pump-ambient-temperature-offdesign-mode">
+<img alt="../_images/3319874c82cdb7aa803edafc2b6d1f6421eab4ec92cdf7249a286d18d53b1153.png" src="../_images/3319874c82cdb7aa803edafc2b6d1f6421eab4ec92cdf7249a286d18d53b1153.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Influence of the ambient temperature on the compressor power, its pressure ratio and the COP when considering part load
+behavior.</span><a class="headerlink" href="#fig-heat-pump-ambient-temperature-offdesign-mode" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">temperature_range</span><span class="p">,</span> <span class="n">results_temperature_partload</span><span class="p">[</span><span class="s2">&quot;compressor-power&quot;</span><span class="p">])</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">temperature_range</span><span class="p">,</span> <span class="n">results_temperature_partload</span><span class="p">[</span><span class="s2">&quot;pressure-ratio&quot;</span><span class="p">])</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">temperature_range</span><span class="p">,</span> <span class="n">results_temperature_partload</span><span class="p">[</span><span class="s2">&quot;COP&quot;</span><span class="p">])</span>
-
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">temperature_range</span><span class="p">,</span> <span class="n">results_temperature</span><span class="p">[</span><span class="s2">&quot;compressor-power&quot;</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">temperature_range</span><span class="p">,</span> <span class="n">results_temperature</span><span class="p">[</span><span class="s2">&quot;compressor-power&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;design&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">temperature_range</span><span class="p">,</span> <span class="n">results_temperature</span><span class="p">[</span><span class="s2">&quot;pressure-ratio&quot;</span><span class="p">])</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">temperature_range</span><span class="p">,</span> <span class="n">results_temperature</span><span class="p">[</span><span class="s2">&quot;COP&quot;</span><span class="p">])</span>
 
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Compressor power in W&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">temperature_range</span><span class="p">,</span> <span class="n">results_temperature_partload</span><span class="p">[</span><span class="s2">&quot;compressor-power&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;part load&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">temperature_range</span><span class="p">,</span> <span class="n">results_temperature_partload</span><span class="p">[</span><span class="s2">&quot;pressure-ratio&quot;</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">temperature_range</span><span class="p">,</span> <span class="n">results_temperature_partload</span><span class="p">[</span><span class="s2">&quot;COP&quot;</span><span class="p">])</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">temperature_range</span><span class="p">,</span> <span class="p">(</span><span class="n">results_temperature</span><span class="p">[</span><span class="s2">&quot;COP&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">results_temperature_partload</span><span class="p">[</span><span class="s2">&quot;COP&quot;</span><span class="p">])</span> <span class="o">/</span> <span class="n">results_temperature_partload</span><span class="p">[</span><span class="s2">&quot;COP&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;$\dot W_</span><span class="se">\\</span><span class="s2">mathrm</span><span class="si">{cp}</span><span class="s2">$ in W&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Pressure ratio&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;COP&quot;</span><span class="p">)</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Ambient temperature&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;COP deviation in %&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Ambient temperature&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/f03b271522b02b803a263298ec08a99bf223674f11e3b1e4dc00277418100455.png" src="../_images/f03b271522b02b803a263298ec08a99bf223674f11e3b1e4dc00277418100455.png" />
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glue</span><span class="p">(</span><span class="s2">&quot;fig-heat-pump-ambient-temperature-offdesign-mode&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>A way of controlling whether your setup for the part load modeling is correct is to check if offdesign parameter settings of the model lead to the same result as in the design parameter specifications. If these numbers do not align, there might be something wrong the model setup. In this case, we always have the design heat load and we have to compare the results at the design ambient temperature, i.e. 5°C.</p>
+<p>A way of controlling whether your setup for the part load modeling is correct is to check if offdesign parameter
+settings of the model lead to the same result as in the design parameter specifications. If these numbers do not align,
+there might be something wrong the model setup. In this case, we always have the design heat load and we have to compare
+the results at the design ambient temperature, i.e. 2 °C.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results_temperature</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results_temperature</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">T_ambient_design</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>compressor-power    2265.886404
-pressure-ratio         3.069533
-COP                    4.413284
-Name: 5.0, dtype: object
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>compressor-power    2040.670941
+pressure-ratio         2.716565
+COP                    4.900349
+Name: 7, dtype: object
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results_temperature_partload</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results_temperature_partload</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">T_ambient_design</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>compressor-power    2265.886404
-pressure-ratio         3.069533
-COP                    4.413284
-Name: 5.0, dtype: object
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>compressor-power    2040.670941
+pressure-ratio         2.716565
+COP                    4.900349
+Name: 7, dtype: object
 </pre></div>
 </div>
 </div>
@@ -776,9 +1062,11 @@ Name: 5.0, dtype: object
 </section>
 <section id="id2">
 <h3>Influence of the heat production<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<p>Next we are checking the influence of the heat production of the heat pump on our COP. We reset the temperature back to
+the ambient design temperature value and rerun the offdesign simulations with the heat range specified earlier.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c11</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">T_heat_partload</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c11</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">T_ambient_design</span><span class="p">)</span>
 <span class="n">results_heat_partload</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
     <span class="n">index</span><span class="o">=</span><span class="n">heat_range</span><span class="p">,</span>
     <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;compressor-power&quot;</span><span class="p">,</span> <span class="s2">&quot;pressure-ratio&quot;</span><span class="p">,</span> <span class="s2">&quot;COP&quot;</span><span class="p">]</span>
@@ -794,35 +1082,62 @@ Name: 5.0, dtype: object
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Operating point below characteristic line range: X=0.472 with minimum of 0.49 at component compressor.
+</div>
+<p>Again we plot our results against the results of the simulation in design mode
+(<a class="reference internal" href="#fig-heat-pump-heat-load-offdesign-mode"><span class="std std-numref">Fig. 10</span></a>). The COP of both simluaitons matches quite well for all heat loads
+above 75 % of design heat production. For lower heat production values the part load considering simulations show lower
+COP than the design simulation. When looking at the compressor’s pressure ratio its value decreases with decreasing heat
+load. This seems odd at first, because a lower pressure ratio would indicate lower compresser power. The reason for the
+increasing compressor power demand is to be sought in its part load efficiency, which decreases faster than the pressure
+ratio.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>A detailed analysis of the influence factors on the heat pump’s performance in part load simulation is provided in
+<a class="reference internal" href="../excursion/partload-analysis.html#tespy-partload-disection"><span class="std std-ref">this excursion</span></a>.</p>
+</div>
+<figure class="align-default" id="fig-heat-pump-heat-load-offdesign-mode">
+<img alt="../_images/2293b8efae2f3156fbed0140d864522e0afb3bf0e3dfdb3a33318aa751c5dcd5.png" src="../_images/2293b8efae2f3156fbed0140d864522e0afb3bf0e3dfdb3a33318aa751c5dcd5.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Influence of the heat load on the compressor power, its pressure ratio and the COP when considering part load behavior.</span><a class="headerlink" href="#fig-heat-pump-heat-load-offdesign-mode" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">),</span> <span class="n">results_heat</span><span class="p">[</span><span class="s2">&quot;compressor-power&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;design&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">),</span> <span class="n">results_heat</span><span class="p">[</span><span class="s2">&quot;pressure-ratio&quot;</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">),</span> <span class="n">results_heat</span><span class="p">[</span><span class="s2">&quot;COP&quot;</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">),</span> <span class="n">results_heat_partload</span><span class="p">[</span><span class="s2">&quot;compressor-power&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;part load&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">),</span> <span class="n">results_heat_partload</span><span class="p">[</span><span class="s2">&quot;pressure-ratio&quot;</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">),</span> <span class="n">results_heat_partload</span><span class="p">[</span><span class="s2">&quot;COP&quot;</span><span class="p">])</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">),</span> <span class="p">(</span><span class="n">results_heat</span><span class="p">[</span><span class="s2">&quot;COP&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">results_heat_partload</span><span class="p">[</span><span class="s2">&quot;COP&quot;</span><span class="p">])</span> <span class="o">/</span> <span class="n">results_heat_partload</span><span class="p">[</span><span class="s2">&quot;COP&quot;</span><span class="p">])</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;$\dot W_</span><span class="se">\\</span><span class="s2">mathrm</span><span class="si">{cp}</span><span class="s2">$ in W&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Pressure ratio&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;COP&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;COP deviation in %&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">results_heat</span><span class="p">[</span><span class="s2">&quot;compressor-power&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.05</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.05</span><span class="p">])</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Consumer heat demand in W&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">),</span> <span class="n">results_heat</span><span class="p">[</span><span class="s2">&quot;compressor-power&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;no partload&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">),</span> <span class="n">results_heat</span><span class="p">[</span><span class="s2">&quot;pressure-ratio&quot;</span><span class="p">])</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">),</span> <span class="n">results_heat</span><span class="p">[</span><span class="s2">&quot;COP&quot;</span><span class="p">])</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">),</span> <span class="n">results_heat_partload</span><span class="p">[</span><span class="s2">&quot;compressor-power&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;partload&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">),</span> <span class="n">results_heat_partload</span><span class="p">[</span><span class="s2">&quot;pressure-ratio&quot;</span><span class="p">])</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">),</span> <span class="n">results_heat_partload</span><span class="p">[</span><span class="s2">&quot;COP&quot;</span><span class="p">])</span>
-
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Compressor power in W&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">results_heat</span><span class="p">[</span><span class="s2">&quot;compressor-power&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.05</span><span class="p">])</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Pressure ratio&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;COP&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">results_heat_partload</span><span class="p">[</span><span class="s2">&quot;COP&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.05</span><span class="p">])</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Consumer heat demand in W&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glue</span><span class="p">(</span><span class="s2">&quot;fig-heat-pump-heat-load-offdesign-mode&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/815c938852acd4078e9df6f722a4b04fa9a752728519240960c397713f04e66e.png" src="../_images/815c938852acd4078e9df6f722a4b04fa9a752728519240960c397713f04e66e.png" />
 </div>
 </div>
 <p>We can have the same look at the results from the dataframes. Since we inspected the part load behaviour for the heat output at the design temperature level of the ambient, we should see equal values in the results for the design heat production, i.e. <code class="docutils literal notranslate"><span class="pre">-10,000.0</span></code> W.</p>
@@ -833,9 +1148,9 @@ Name: 5.0, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>compressor-power    2265.886404
-pressure-ratio         3.069533
-COP                    4.413284
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>compressor-power    2040.670942
+pressure-ratio         2.716565
+COP                    4.900349
 Name: -10000.0, dtype: object
 </pre></div>
 </div>
@@ -848,9 +1163,9 @@ Name: -10000.0, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>compressor-power    2265.886404
-pressure-ratio         3.069533
-COP                    4.413284
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>compressor-power    2040.670941
+pressure-ratio         2.716565
+COP                    4.900349
 Name: -10000.0, dtype: object
 </pre></div>
 </div>
@@ -860,9 +1175,12 @@ Name: -10000.0, dtype: object
 </section>
 <section id="variable-temperature-and-heat-production">
 <h2>Variable temperature and heat production<a class="headerlink" href="#variable-temperature-and-heat-production" title="Permalink to this heading">#</a></h2>
+<p>Now we want to combine both influence factors. We can do that by looping over the ambient temperature and the heat load
+simultaneously. Since our input data for the energy system optimization are based on the ambient temperature, we
+investigate the influence of the heat load per temperature value.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temperature_range</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temperature_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
 
 <span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
 
@@ -885,27 +1203,16 @@ Name: -10000.0, dtype: object
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Operating point below characteristic line range: X=0.486 with minimum of 0.49 at component compressor.
-</pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Operating point below characteristic line range: X=0.436 with minimum of 0.49 at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Operating point below characteristic line range: X=0.448 with minimum of 0.49 at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Operating point below characteristic line range: X=0.46 with minimum of 0.49 at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Operating point below characteristic line range: X=0.472 with minimum of 0.49 at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Operating point below characteristic line range: X=0.484 with minimum of 0.49 at component compressor.
-</pre></div>
-</div>
-</div>
-</div>
+<p>We can plot some of the results, e.g. for every 10th temperature value in <a class="reference internal" href="#fig-heat-pump-result-offdesign-mode"><span class="std std-numref">Fig. 11</span></a>.
+These results can then be transferred to the <code class="docutils literal notranslate"><span class="pre">oemof-solph</span></code> simulation.</p>
+<figure class="align-default" id="fig-heat-pump-result-offdesign-mode">
+<img alt="../_images/7f0966ece2e28fa7728b19fbd16db765f0bab9de2a1e38c1116e347ffa6bddb9.png" src="../_images/7f0966ece2e28fa7728b19fbd16db765f0bab9de2a1e38c1116e347ffa6bddb9.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Influence of the ambienht temperature and heat load on the compressor power and the COP when considering part load
+behavior.</span><a class="headerlink" href="#fig-heat-pump-result-offdesign-mode" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">power_max</span> <span class="o">=</span> <span class="mi">0</span>
@@ -913,7 +1220,7 @@ Name: -10000.0, dtype: object
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="k">for</span> <span class="n">temp</span> <span class="ow">in</span> <span class="n">temperature_range</span><span class="p">:</span>
+<span class="k">for</span> <span class="n">temp</span> <span class="ow">in</span> <span class="n">temperature_range</span><span class="p">[::</span><span class="mi">10</span><span class="p">]:</span>
 
     <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="n">temp</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">),</span> <span class="n">results</span><span class="p">[</span><span class="n">temp</span><span class="p">][</span><span class="s2">&quot;compressor-power&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$T_</span><span class="se">\\</span><span class="s2">mathrm</span><span class="si">{amb}</span><span class="s2">$=&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;°C&quot;</span><span class="p">)</span>
     <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="n">temp</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">),</span> <span class="n">results</span><span class="p">[</span><span class="n">temp</span><span class="p">][</span><span class="s2">&quot;COP&quot;</span><span class="p">])</span>
@@ -921,22 +1228,32 @@ Name: -10000.0, dtype: object
     <span class="n">power_max</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="n">temp</span><span class="p">][</span><span class="s2">&quot;compressor-power&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">power_max</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Compressor power in W&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;$\dot W_</span><span class="se">\\</span><span class="s2">mathrm</span><span class="si">{cp}</span><span class="s2">$ in W&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">power_max</span> <span class="o">*</span> <span class="mf">1.05</span><span class="p">])</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;COP&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">COP_max</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.05</span><span class="p">])</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Consumer heat demand in W&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/e6ee925bff58cfcb979151b3b13a9b78105da01c8a38eb46dfb41e0ea8621e9b.png" src="../_images/e6ee925bff58cfcb979151b3b13a9b78105da01c8a38eb46dfb41e0ea8621e9b.png" />
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glue</span><span class="p">(</span><span class="s2">&quot;fig-heat-pump-result-offdesign-mode&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 </div>
 </section>
 <section id="preparing-the-data-for-oemof-solph">
 <h2>Preparing the data for oemof-solph<a class="headerlink" href="#preparing-the-data-for-oemof-solph" title="Permalink to this heading">#</a></h2>
+<p>To prepare the data for the usage in the mixed integer linear model, we have to linearize the outcomes of our
+simulation. To do that, we can use a simple least squares method from the numpy package <span id="id3">[<a class="reference internal" href="../zliterature.html#id14" title="Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, Sebastian Berg, Nathaniel J. Smith, Robert Kern, Matti Picus, Stephan Hoyer, Marten H. van Kerkwijk, Matthew Brett, Allan Haldane, Jaime Fernández del Río, Mark Wiebe, Pearu Peterson, Pierre Gérard-Marchant, Kevin Sheppard, Tyler Reddy, Warren Weckesser, Hameer Abbasi, Christoph Gohlke, and Travis E. Oliphant. Array programming with NumPy. Nature, 585(7825):357–362, September 2020. doi:10.1038/s41586-020-2649-2.">7</a>]</span>,
+<span id="id4">[<a class="reference internal" href="../zliterature.html#id13" title="Numpy.linalg.lstsq. Accessed: 2023-03-20. URL: https://numpy.org/doc/stable/reference/generated/numpy.linalg.lstsq.html.">8</a>]</span>. The least squares will give us the slope and the y-axis offset, both of which are required in the
+mixed integer model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">least_squares</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
@@ -947,20 +1264,39 @@ Name: -10000.0, dtype: object
 </div>
 </div>
 </div>
+<p>In <a class="reference internal" href="#fig-heat-pump-result-comparison"><span class="std std-numref">Fig. 12</span></a> we can make a plot to look at the deviation between the assumption of a
+constant efficiency value (as in the first attempt in <a class="reference internal" href="solph-simple.html#solph-linear"><span class="std std-ref">this section</span></a>), the linearized variant and
+the actual simulation. For example, we can have a look at the design conditions for the ambient temperature. We can see
+that the deviation between the linearized model and the actual simulation is below 1.5 % for all heat load values. The
+assumption of a constant efficiency factor leads to a high deviation especially with lower heat production up to 18 %.</p>
+<figure class="align-default" id="fig-heat-pump-result-comparison">
+<img alt="../_images/f3d9876f951d19e80a07de21387a87926bd5e96f039728224b1fda620d73c235.png" src="../_images/f3d9876f951d19e80a07de21387a87926bd5e96f039728224b1fda620d73c235.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Comparison of the compressor power depending on the heat pump’s heat load for the simplified approach and in the part
+load simulation.</span><a class="headerlink" href="#fig-heat-pump-result-comparison" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Furthermore, we can plot the linearization of a selected amount of simulation points in
+<a class="reference internal" href="#fig-heat-pump-result-linearization"><span class="std std-numref">Fig. 13</span></a>. We can see, that both, offset and slope, change for every ambient
+temperature value.</p>
+<figure class="align-default" id="fig-heat-pump-result-linearization">
+<img alt="../_images/63594fe0b446ce1438830f711a8229ad26f26fcc2905b14e134b17933764731b.png" src="../_images/63594fe0b446ce1438830f711a8229ad26f26fcc2905b14e134b17933764731b.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Linearized compressor power to heat load.</span><a class="headerlink" href="#fig-heat-pump-result-linearization" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp</span> <span class="o">=</span> <span class="mi">10</span>
-
-<span class="n">COP_c_simple</span> <span class="o">=</span> <span class="p">(</span><span class="mf">273.15</span> <span class="o">+</span> <span class="mi">58</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">58</span> <span class="o">-</span> <span class="o">-</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">eta_c_simple</span> <span class="o">=</span> <span class="mf">0.65</span>
-
-<span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">results</span><span class="p">[</span><span class="n">temp</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="n">temp</span><span class="p">][</span><span class="s2">&quot;compressor-power&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">results</span><span class="p">[</span><span class="n">T_ambient_design</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="n">T_ambient_design</span><span class="p">][</span><span class="s2">&quot;compressor-power&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
 <span class="n">yy_tespy</span> <span class="o">=</span> <span class="n">y</span>
 
 
-<span class="n">COP_c_simple</span> <span class="o">=</span> <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="n">temp</span><span class="p">][</span><span class="s2">&quot;T-condensation&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mf">273.15</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="n">temp</span><span class="p">][</span><span class="s2">&quot;T-condensation&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">results</span><span class="p">[</span><span class="n">temp</span><span class="p">][</span><span class="s2">&quot;T-evaporation&quot;</span><span class="p">])</span>
-<span class="n">eta_c_simple</span> <span class="o">=</span> <span class="mf">0.649</span>
+<span class="n">COP_c_simple</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="n">T_ambient_design</span><span class="p">][</span><span class="s2">&quot;T-condensation&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mf">273.15</span><span class="p">)</span> <span class="o">/</span>
+    <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="n">T_ambient_design</span><span class="p">][</span><span class="s2">&quot;T-condensation&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">results</span><span class="p">[</span><span class="n">T_ambient_design</span><span class="p">][</span><span class="s2">&quot;T-evaporation&quot;</span><span class="p">])</span>
+<span class="p">)</span>
+<span class="n">eta_c_simple</span> <span class="o">=</span> <span class="mf">0.5945</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
@@ -976,27 +1312,29 @@ Name: -10000.0, dtype: object
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="p">(</span><span class="n">COP_c_simple</span> <span class="o">*</span> <span class="n">eta_c_simple</span><span class="p">)</span> <span class="o">-</span> <span class="n">yy_tespy</span><span class="p">)</span> <span class="o">/</span> <span class="n">yy_tespy</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Compressor power in W&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.05</span><span class="p">])</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Relative deviation of power in %&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.05</span><span class="p">])</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Consumer heat demand in W&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:matplotlib.legend:No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glue</span><span class="p">(</span><span class="s2">&quot;fig-heat-pump-result-comparison&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="../_images/2b4b2bef0291257ec9d34c396c5520d07e56080287d857d47594c7566d1d7707.png" src="../_images/2b4b2bef0291257ec9d34c396c5520d07e56080287d857d47594c7566d1d7707.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="k">for</span> <span class="n">temp</span> <span class="ow">in</span> <span class="n">temperature_range</span><span class="p">:</span>
+<span class="k">for</span> <span class="n">temp</span> <span class="ow">in</span> <span class="n">temperature_range</span><span class="p">[::</span><span class="mi">10</span><span class="p">]:</span>
         
     <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">results</span><span class="p">[</span><span class="n">temp</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="n">temp</span><span class="p">][</span><span class="s2">&quot;compressor-power&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
@@ -1005,28 +1343,32 @@ Name: -10000.0, dtype: object
     <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">()],</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">()])</span> <span class="o">+</span> <span class="n">offset</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_color</span><span class="p">())</span>
     <span class="n">power_max</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="n">temp</span><span class="p">][</span><span class="s2">&quot;compressor-power&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">power_max</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">power_max</span> <span class="o">*</span> <span class="mf">1.05</span><span class="p">])</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Compressor power in W&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.05</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Consumer heat demand in W&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/13e6b3b3ae1a11314e179403204cc0ec0c424549f4229d6399e8ed7dbc58332f.png" src="../_images/13e6b3b3ae1a11314e179403204cc0ec0c424549f4229d6399e8ed7dbc58332f.png" />
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glue</span><span class="p">(</span><span class="s2">&quot;fig-heat-pump-result-linearization&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
 </div>
 </div>
-</section>
-<section id="prepare-output-for-solph">
-<h2>Prepare output for solph<a class="headerlink" href="#prepare-output-for-solph" title="Permalink to this heading">#</a></h2>
-<p>For the <code class="docutils literal notranslate"><span class="pre">OffsetTransformer</span></code> we need a slightly different output structure, than provided by the results dictionary with the pandas dataframes for every temperature: The coefficients (offset and slope) for every ambient temperature level are required. We can build a new dataframe, that holds these information and export them into csv format and export those information.</p>
-</section>
-<section id="slope-definition-in-solph">
-<h2>Slope definition in solph<a class="headerlink" href="#slope-definition-in-solph" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>heat production as function of compressor power</p></li>
-</ul>
+</div>
+<p>The final step to provide the data for the <code class="docutils literal notranslate"><span class="pre">OffsetTransformer</span></code> of <code class="docutils literal notranslate"><span class="pre">oemof-solph</span></code> is to change the output structure.
+<code class="docutils literal notranslate"><span class="pre">oemof-solph</span></code> expects the coefficients (offset and slope) per ambient temperature level and inverted, i.e. the heat
+output as function of the electricity input. We can build a new dataframe, that holds these information and export them
+into csv format and export those information.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The x and y axes are swapped. Before, the heat load was on the x-axis, the compressor power input on the y-axis.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">export_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">temperature_range</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;slope&quot;</span><span class="p">,</span> <span class="s2">&quot;offset&quot;</span><span class="p">])</span>
@@ -1119,8 +1461,6 @@ Name: -10000.0, dtype: object
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-temperature-and-heat-production">Variable temperature and heat production</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-the-data-for-oemof-solph">Preparing the data for oemof-solph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-output-for-solph">Prepare output for solph</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slope-definition-in-solph">Slope definition in solph</a></li>
 </ul>
   </nav></div>
 

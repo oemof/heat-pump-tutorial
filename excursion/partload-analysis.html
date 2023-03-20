@@ -371,11 +371,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-of-compressor-efficiecy">Effect of compressor efficiecy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-of-compressor-efficiency">Effect of compressor efficiency</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-of-evaporator-heat-transfer-coefficent">Effect of evaporator heat transfer coefficent</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-of-condenser-heat-transfer-coefficent">Effect of condenser heat transfer coefficent</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-of-fixing-mass-flow">Effect of fixing mass flow</a></li>
 </ul>
             </nav>
         </div>
@@ -389,17 +387,26 @@ document.write(`
                   
   <section id="disection-of-the-partload-efficiency">
 <span id="tespy-partload-disection"></span><h1>Disection of the partload efficiency<a class="headerlink" href="#disection-of-the-partload-efficiency" title="Permalink to this heading">#</a></h1>
-<section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>In this section we will provide some more insights on the part load modeling of the individual components of the heat
+pump. For this we are looking in the characteristics for</p>
 <ul class="simple">
-<li><p>look at each part load model dimension</p></li>
-<li></li>
+<li><p>compressor efficiency,</p></li>
+<li><p>evaporator heat transfer coefficient and</p></li>
+<li><p>condenser heat transfer coefficient.</p></li>
 </ul>
+<p>We investigate the heat load influence at the design point ambient temperature for all cases as this has a stronger
+effect than the temperature dependency as show in the section on the
+<a class="reference internal" href="../model/tespy-partload-performance.html#tespy-part-load"><span class="std std-ref">part load efficiency modeling</span></a>.</p>
+<p>First, we can import the <code class="docutils literal notranslate"><span class="pre">partload_heat_pump</span></code> function from the provided python script and create a network.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">partload_heat_pump</span></code> function imported in this section lies in a separate python document. You can download it:
 <a class="reference download internal" download="" href="../_downloads/aaaa82cf15c98c6876f59daacbc704e9/heat_pump_models.py"><code class="xref download docutils literal notranslate"><span class="pre">heat_pump_models.py</span></code></a>.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">heat_pump_models</span> <span class="kn">import</span> <span class="n">partload_heat_pump</span>
+<span class="kn">from</span> <span class="nn">heat_pump_models</span> <span class="kn">import</span> <span class="n">AMBIENT_TEMP_NOMINAL</span><span class="p">,</span> <span class="n">HEAT_NOMINAL</span>
 
 
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -412,57 +419,20 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 0.012911470394438187 below minimum value (1) at component compressor.
-</pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for Q: Q = 77895.530171139 above maximum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -107.86577450269908 below minimum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 77.45051256367869 above maximum value (1) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for zeta: zeta = -862274047383.2314 below minimum value (0) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 0.012911470394437938 below minimum value (1) at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for Q: Q = 77895.53017082746 above maximum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -107.86577450267947 below minimum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 77.45051256368018 above maximum value (1) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for zeta: zeta = -862274047390.1687 below minimum value (0) at component expansion valve.
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="effect-of-compressor-efficiecy">
-<h2>Effect of compressor efficiecy<a class="headerlink" href="#effect-of-compressor-efficiecy" title="Permalink to this heading">#</a></h2>
+<p>Next we create a design simulaiton as reference for all part load simulations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Q_design</span> <span class="o">=</span> <span class="o">-</span><span class="mf">10e3</span>
-<span class="n">heat_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span> <span class="o">*</span> <span class="n">Q_design</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">heat_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span> <span class="o">*</span> <span class="n">HEAT_NOMINAL</span>
 <span class="n">results_heat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
     <span class="n">index</span><span class="o">=</span><span class="n">heat_range</span><span class="p">,</span>
     <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;compressor-power&quot;</span><span class="p">,</span> <span class="s2">&quot;pressure-ratio&quot;</span><span class="p">,</span> <span class="s2">&quot;COP&quot;</span><span class="p">]</span>
 <span class="p">)</span>
-<span class="n">T_heat_partload</span> <span class="o">=</span> <span class="mi">5</span>
 
 <span class="n">cd</span><span class="p">,</span> <span class="n">cp</span><span class="p">,</span> <span class="n">ev</span> <span class="o">=</span> <span class="n">nwk</span><span class="o">.</span><span class="n">get_comp</span><span class="p">([</span><span class="s2">&quot;condenser&quot;</span><span class="p">,</span> <span class="s2">&quot;compressor&quot;</span><span class="p">,</span> <span class="s2">&quot;evaporator&quot;</span><span class="p">])</span>
 <span class="n">c11</span><span class="p">,</span> <span class="n">c12</span> <span class="o">=</span> <span class="n">nwk</span><span class="o">.</span><span class="n">get_conn</span><span class="p">([</span><span class="s2">&quot;11&quot;</span><span class="p">,</span> <span class="s2">&quot;12&quot;</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">c11</span><span class="o">.</span><span class="n">m</span><span class="o">.</span><span class="n">val_SI</span><span class="p">)</span>
 
-<span class="n">c11</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">T_heat_partload</span><span class="p">)</span>
+<span class="n">c11</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">AMBIENT_TEMP_NOMINAL</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">heat</span> <span class="ow">in</span> <span class="n">heat_range</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
     <span class="n">cd</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">Q</span><span class="o">=</span><span class="n">heat</span><span class="p">)</span>
@@ -474,243 +444,24 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 0.012464123621099107 below minimum value (1) at component compressor.
-</pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for Q: Q = 69559.79513007386 above maximum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -108.26933615335622 below minimum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 80.2302697244765 above maximum value (1) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for zeta: zeta = -1123138177815.6948 below minimum value (0) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 0.012464123621098725 below minimum value (1) at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for Q: Q = 66397.98626052764 above maximum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -108.26933615335503 below minimum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 80.23026972447896 above maximum value (1) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for zeta: zeta = -1232650517149.1274 below minimum value (0) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-38.72452937430647
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 0.012464123621098633 below minimum value (1) at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for Q: Q = 63236.17739097731 above maximum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -108.26933615335696 below minimum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 80.23026972447956 above maximum value (1) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for zeta: zeta = -1358997195157.0503 below minimum value (0) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 0.01246412362109845 below minimum value (1) at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for Q: Q = 60074.36852141469 above maximum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -108.26933615335594 below minimum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 80.23026972448073 above maximum value (1) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for zeta: zeta = -1505814066656.653 below minimum value (0) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 0.012464123621098446 below minimum value (1) at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for Q: Q = 56912.55965185852 above maximum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -108.26933615335588 below minimum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 80.23026972448075 above maximum value (1) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for zeta: zeta = -1677774315009.9446 below minimum value (0) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 0.012464123621098224 below minimum value (1) at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for Q: Q = 53750.75078229478 above maximum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -108.26933615335497 below minimum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 80.2302697244822 above maximum value (1) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for zeta: zeta = -1880964975998.414 below minimum value (0) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 0.01246412362109833 below minimum value (1) at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for Q: Q = 50588.941912746566 above maximum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -108.26933615335571 below minimum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 80.23026972448152 above maximum value (1) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for zeta: zeta = -2123433117435.8733 below minimum value (0) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 0.012464123621098217 below minimum value (1) at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for Q: Q = 47427.13304319689 above maximum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -108.26933615335275 below minimum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 80.23026972448223 above maximum value (1) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for zeta: zeta = -2415995013616.307 below minimum value (0) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 0.012464123621097903 below minimum value (1) at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for Q: Q = 44265.3241736434 above maximum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -108.26933615335179 below minimum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 80.23026972448426 above maximum value (1) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for zeta: zeta = -2773463663591.007 below minimum value (0) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 0.01246412362109775 below minimum value (1) at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for Q: Q = 41103.515304095505 above maximum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -108.26933615335145 below minimum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 80.23026972448524 above maximum value (1) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for zeta: zeta = -3216561408662.229 below minimum value (0) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 0.01246412362109775 below minimum value (1) at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for Q: Q = 37941.70643455276 above maximum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -108.26933615335082 below minimum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 80.23026972448524 above maximum value (1) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for zeta: zeta = -3774992208776.5176 below minimum value (0) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 0.012464123621097573 below minimum value (1) at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for Q: Q = 34779.89756500221 above maximum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -108.26933615335247 below minimum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 80.23026972448638 above maximum value (1) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for zeta: zeta = -4492552711272.393 below minimum value (0) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 0.012464123621097528 below minimum value (1) at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for Q: Q = 31618.088695456532 above maximum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -108.26933615335247 below minimum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 80.23026972448667 above maximum value (1) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for zeta: zeta = -5435988780639.419 below minimum value (0) at component expansion valve.
-</pre></div>
-</div>
-</div>
-</div>
+<section id="effect-of-compressor-efficiency">
+<h2>Effect of compressor efficiency<a class="headerlink" href="#effect-of-compressor-efficiency" title="Permalink to this heading">#</a></h2>
+<p>Now we can investigate the compressor efficiency effect on the part load operation. For that, we set up the part load
+modeling assumptions and test the implementation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">Q</span><span class="o">=</span><span class="n">Q_design</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">Q</span><span class="o">=</span><span class="n">HEAT_NOMINAL</span><span class="p">)</span>
 <span class="n">cp</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">design</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;eta_s&quot;</span><span class="p">],</span> <span class="n">offdesign</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;eta_s_char&quot;</span><span class="p">])</span>
 <span class="n">cp</span><span class="o">.</span><span class="n">eta_s_char</span><span class="o">.</span><span class="n">char_func</span><span class="o">.</span><span class="n">extrapolate</span> <span class="o">=</span> <span class="kc">True</span>
 
 <span class="c1"># check if the model runs</span>
 <span class="n">nwk</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="s2">&quot;offdesign&quot;</span><span class="p">,</span> <span class="n">design_path</span><span class="o">=</span><span class="s2">&quot;R290-design-state&quot;</span><span class="p">)</span>
-<span class="n">c11</span><span class="o">.</span><span class="n">m</span><span class="o">.</span><span class="n">val_SI</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Operating point below characteristic line range: X=0.119 with minimum of 0.49 at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 0.01246412362109754 below minimum value (1) at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for Q: Q = 9289.027419924785 above maximum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -108.26933615335241 below minimum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 80.23026972448659 above maximum value (1) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for zeta: zeta = -62980961834862.31 below minimum value (0) at component expansion valve.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-4.61806998719768
 </pre></div>
 </div>
 </div>
 </div>
+<p>Then we can loop over the heat load range and calculate respective results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results_heat_partload</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
@@ -729,242 +480,19 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Operating point below characteristic line range: X=0.136 with minimum of 0.49 at component compressor.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Operating point below characteristic line range: X=0.471 with minimum of 0.49 at component compressor.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 0.012464123621097308 below minimum value (1) at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for Q: Q = 10572.999807471302 above maximum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -108.26933615334946 below minimum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 80.23026972448808 above maximum value (1) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for zeta: zeta = -48613101515539.87 below minimum value (0) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Operating point below characteristic line range: X=0.127 with minimum of 0.49 at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 0.012464123621097287 below minimum value (1) at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for Q: Q = 9918.140295868418 above maximum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -108.269336153349 below minimum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 80.23026972448822 above maximum value (1) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for zeta: zeta = -55244530116062.56 below minimum value (0) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Operating point below characteristic line range: X=0.119 with minimum of 0.49 at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 0.01246412362109713 below minimum value (1) at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for Q: Q = 9289.027419924205 above maximum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -108.26933615335099 below minimum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 80.23026972448923 above maximum value (1) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for zeta: zeta = -62980961834872.43 below minimum value (0) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Operating point below characteristic line range: X=0.111 with minimum of 0.49 at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 0.012464123621097046 below minimum value (1) at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for Q: Q = 8683.413879752643 above maximum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -108.2693361533506 below minimum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 80.23026972448977 above maximum value (1) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for zeta: zeta = -72072365397576.98 below minimum value (0) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Operating point below characteristic line range: X=0.104 with minimum of 0.49 at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 0.012464123621097101 below minimum value (1) at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for Q: Q = 8099.356995368989 above maximum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -108.26933615335093 below minimum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 80.23026972448942 above maximum value (1) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for zeta: zeta = -82841641338519.78 below minimum value (0) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Operating point below characteristic line range: X=0.097 with minimum of 0.49 at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 0.012464123621096935 below minimum value (1) at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for Q: Q = 7535.163981575667 above maximum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -108.26933615335025 below minimum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 80.2302697244905 above maximum value (1) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for zeta: zeta = -95711552904896.88 below minimum value (0) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Operating point below characteristic line range: X=0.09 with minimum of 0.49 at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 0.012464123621096935 below minimum value (1) at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for Q: Q = 6989.349240914515 above maximum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -108.26933615334912 below minimum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 80.23026972449048 above maximum value (1) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for zeta: zeta = -111243922852271.36 below minimum value (0) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Operating point below characteristic line range: X=0.083 with minimum of 0.49 at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 0.012464123621096713 below minimum value (1) at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for Q: Q = 6460.600599151381 above maximum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -108.26933615334707 below minimum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 80.23026972449192 above maximum value (1) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for zeta: zeta = -130197903723662.66 below minimum value (0) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Operating point below characteristic line range: X=0.076 with minimum of 0.49 at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 0.012464123621096687 below minimum value (1) at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for Q: Q = 5947.752296669184 above maximum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -108.2693361533473 below minimum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 80.23026972449208 above maximum value (1) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for zeta: zeta = -153618680986850.16 below minimum value (0) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Operating point below characteristic line range: X=0.07 with minimum of 0.49 at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 0.012464123621096636 below minimum value (1) at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for Q: Q = 5449.763154129809 above maximum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -108.26933615334696 below minimum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 80.2302697244924 above maximum value (1) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for zeta: zeta = -182976165396071.28 below minimum value (0) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Operating point below characteristic line range: X=0.064 with minimum of 0.49 at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 0.01246412362109653 below minimum value (1) at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for Q: Q = 4965.698750530264 above maximum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -108.26933615334627 below minimum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 80.23026972449308 above maximum value (1) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for zeta: zeta = -220388556510545.28 below minimum value (0) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Operating point below characteristic line range: X=0.058 with minimum of 0.49 at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 0.01246412362109644 below minimum value (1) at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for Q: Q = 4494.716748009688 above maximum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -108.26933615334622 below minimum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 80.23026972449367 above maximum value (1) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for zeta: zeta = -268995566512037.7 below minimum value (0) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Operating point below characteristic line range: X=0.052 with minimum of 0.49 at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 0.012464123621096291 below minimum value (1) at component compressor.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for Q: Q = 4036.054710127792 above maximum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for ttd_u: ttd_u = -108.26933615334792 below minimum value (0) at component evaporator.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for pr: pr = 80.23026972449462 above maximum value (1) at component expansion valve.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Invalid value for zeta: zeta = -333607410612590.9 below minimum value (0) at component expansion valve.
-</pre></div>
-</div>
 </div>
 </div>
+<p>Finally, we plot the results. We can see, that the pressure ratio does not depend on the compressor’s efficiency. Still,
+the COP drops with decreased heat load. The reason for that is the lower part load efficiency of the compressor.</p>
+<figure class="align-default" id="heat-pump-influence-efficiency">
+<img alt="../_images/55e05a8d6fc72b582fdbf809072178aa9810ba46fcaaf36f2aaa717f8e4c0d3d.png" src="../_images/55e05a8d6fc72b582fdbf809072178aa9810ba46fcaaf36f2aaa717f8e4c0d3d.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Influence of the compressor efficiency part load model with varying heat load.</span><a class="headerlink" href="#heat-pump-influence-efficiency" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -976,113 +504,49 @@ document.write(`
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">),</span> <span class="n">results_heat_partload</span><span class="p">[</span><span class="s2">&quot;pressure-ratio&quot;</span><span class="p">])</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">),</span> <span class="n">results_heat_partload</span><span class="p">[</span><span class="s2">&quot;COP&quot;</span><span class="p">])</span>
 
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Compressor power in W&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">results_heat</span><span class="p">[</span><span class="s2">&quot;compressor-power&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;$\dot W_</span><span class="se">\\</span><span class="s2">mathrm</span><span class="si">{cp}</span><span class="s2">$ in W&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Pressure ratio&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;COP&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">results_heat_partload</span><span class="p">[</span><span class="s2">&quot;COP&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()])</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">results_heat</span><span class="p">[</span><span class="s2">&quot;compressor-power&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.05</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.05</span><span class="p">])</span>
+
 <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Consumer heat demand in W&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/5802ff91a6919440f44d1e817337f2d241087a21ad0c8435457584410f09d3af.png" src="../_images/5802ff91a6919440f44d1e817337f2d241087a21ad0c8435457584410f09d3af.png" />
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
+<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;heat-pump-influence-efficiency&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 </div>
 </section>
 <section id="effect-of-evaporator-heat-transfer-coefficent">
 <h2>Effect of evaporator heat transfer coefficent<a class="headerlink" href="#effect-of-evaporator-heat-transfer-coefficent" title="Permalink to this heading">#</a></h2>
+<p>Next, we have a look at the evaporator. We reset the heat demand to the nominal demand, unset the compressor efficiency
+characteristic to make it use the constant design efficiency and apply the charactersitic for the heat transfer
+coefficient of the evaporator. Then we loop over the heat range again and plot the results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">Q</span><span class="o">=</span><span class="n">Q_design</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">Q</span><span class="o">=</span><span class="n">HEAT_NOMINAL</span><span class="p">)</span>
 <span class="n">cp</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">design</span><span class="o">=</span><span class="p">[],</span> <span class="n">offdesign</span><span class="o">=</span><span class="p">[],</span> <span class="n">eta_s</span><span class="o">=</span><span class="n">cp</span><span class="o">.</span><span class="n">eta_s</span><span class="o">.</span><span class="n">design</span><span class="p">,</span> <span class="n">eta_s_char</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-<span class="n">ev</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">design</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ttd_l&quot;</span><span class="p">],</span> <span class="n">offdesign</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;kA_char&quot;</span><span class="p">])</span>
+<span class="n">ev</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">design</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ttd_u&quot;</span><span class="p">],</span> <span class="n">offdesign</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;kA_char&quot;</span><span class="p">])</span>
 
 <span class="c1"># check if the model runs</span>
 <span class="n">nwk</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="s2">&quot;offdesign&quot;</span><span class="p">,</span> <span class="n">design_path</span><span class="o">=</span><span class="s2">&quot;R290-design-state&quot;</span><span class="p">)</span>
-<span class="n">c11</span><span class="o">.</span><span class="n">m</span><span class="o">.</span><span class="n">val_SI</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ERROR:root:Data container of type ComponentCharacteristics has no attribute is_var.
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/tespy/networks/network.py:2011,</span> in <span class="ni">Network.solve_check_props</span><span class="nt">(self, c)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2010</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">2011</span>     <span class="n">hmin</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">h_pT</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">2012</span>         <span class="n">c</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">val_SI</span><span class="p">,</span> <span class="n">fp</span><span class="o">.</span><span class="n">Memorise</span><span class="o">.</span><span class="n">value_range</span><span class="p">[</span><span class="n">fl</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="mf">1.001</span><span class="p">,</span> <span class="n">fl</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2013</span> <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/tespy/tools/fluid_properties.py:598,</span> in <span class="ni">h_pT</span><span class="nt">(p, T, fluid, force_gas)</span>
-<span class="g g-Whitespace">    </span><span class="mi">596</span>         <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">h_sat</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">598</span> <span class="n">Memorise</span><span class="o">.</span><span class="n">state</span><span class="p">[</span><span class="n">fluid</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">CP</span><span class="o">.</span><span class="n">PT_INPUTS</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">599</span> <span class="k">return</span> <span class="n">Memorise</span><span class="o">.</span><span class="n">state</span><span class="p">[</span><span class="n">fluid</span><span class="p">]</span><span class="o">.</span><span class="n">hmass</span><span class="p">()</span>
-
-<span class="nn">File CoolProp/AbstractState.pyx:102,</span> in <span class="ni">CoolProp.CoolProp.AbstractState.update</span><span class="nt">()</span>
-
-<span class="nn">File CoolProp/AbstractState.pyx:104,</span> in <span class="ni">CoolProp.CoolProp.AbstractState.update</span><span class="nt">()</span>
-
-<span class="ne">ValueError</span>: The pressure [nan Pa] cannot be used in p_phase_determination
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">ev</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">design</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ttd_l&quot;</span><span class="p">],</span> <span class="n">offdesign</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;kA_char&quot;</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># check if the model runs</span>
-<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">nwk</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="s2">&quot;offdesign&quot;</span><span class="p">,</span> <span class="n">design_path</span><span class="o">=</span><span class="s2">&quot;R290-design-state&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">c11</span><span class="o">.</span><span class="n">m</span><span class="o">.</span><span class="n">val_SI</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/tespy/networks/network.py:1662,</span> in <span class="ni">Network.solve</span><span class="nt">(self, mode, init_path, design_path, max_iter, min_iter, init_only, init_previous, use_cuda, always_all_equations)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1659</span> <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1661</span> <span class="bp">self</span><span class="o">.</span><span class="n">solve_determination</span><span class="p">()</span>
-<span class="ne">-&gt; </span><span class="mi">1662</span> <span class="bp">self</span><span class="o">.</span><span class="n">solve_loop</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1664</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">lin_dep</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1665</span>     <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1666</span>         <span class="s1">&#39;Singularity in jacobian matrix, calculation aborted! Make &#39;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1667</span>         <span class="s1">&#39;sure your network does not have any linear dependencies in &#39;</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1674</span>         <span class="s1">&#39;of combustion chamber, provide small (near to zero, but not &#39;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1675</span>         <span class="s1">&#39;zero) starting value.&#39;</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/tespy/networks/network.py:1712,</span> in <span class="ni">Network.solve_loop</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1709</span> <span class="k">for</span> <span class="bp">self</span><span class="o">.</span><span class="n">iter</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">max_iter</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1711</span>     <span class="bp">self</span><span class="o">.</span><span class="n">increment_filter</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">absolute</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">increment</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">err</span> <span class="o">**</span> <span class="mi">2</span>
-<span class="ne">-&gt; </span><span class="mi">1712</span>     <span class="bp">self</span><span class="o">.</span><span class="n">solve_control</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1713</span>     <span class="bp">self</span><span class="o">.</span><span class="n">res</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">res</span><span class="p">,</span> <span class="n">norm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">residual</span><span class="p">))</span>
-<span class="g g-Whitespace">   </span><span class="mi">1715</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">iterinfo</span><span class="p">:</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/tespy/networks/network.py:1934,</span> in <span class="ni">Network.solve_control</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1931</span>             <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="g g-Whitespace">   </span><span class="mi">1933</span>     <span class="c1"># check the fluid properties for physical ranges</span>
-<span class="ne">-&gt; </span><span class="mi">1934</span>     <span class="bp">self</span><span class="o">.</span><span class="n">solve_check_props</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1935</span>     <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="g g-Whitespace">   </span><span class="mi">1937</span> <span class="c1"># increment for the custom variables</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/tespy/networks/network.py:2015,</span> in <span class="ni">Network.solve_check_props</span><span class="nt">(self, c)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2013</span> <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">2014</span>     <span class="n">f</span> <span class="o">=</span> <span class="mf">1.05</span>
-<span class="ne">-&gt; </span><span class="mi">2015</span>     <span class="n">hmin</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">h_pT</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">2016</span>         <span class="n">c</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">val_SI</span><span class="p">,</span> <span class="n">fp</span><span class="o">.</span><span class="n">Memorise</span><span class="o">.</span><span class="n">value_range</span><span class="p">[</span><span class="n">fl</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">f</span><span class="p">,</span> <span class="n">fl</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2018</span> <span class="n">T</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">Memorise</span><span class="o">.</span><span class="n">value_range</span><span class="p">[</span><span class="n">fl</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">2019</span> <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/tespy/tools/fluid_properties.py:598,</span> in <span class="ni">h_pT</span><span class="nt">(p, T, fluid, force_gas)</span>
-<span class="g g-Whitespace">    </span><span class="mi">595</span>         <span class="n">h_sat</span> <span class="o">=</span> <span class="n">Memorise</span><span class="o">.</span><span class="n">state</span><span class="p">[</span><span class="n">fluid</span><span class="p">]</span><span class="o">.</span><span class="n">hmass</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">596</span>         <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">h_sat</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">598</span> <span class="n">Memorise</span><span class="o">.</span><span class="n">state</span><span class="p">[</span><span class="n">fluid</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">CP</span><span class="o">.</span><span class="n">PT_INPUTS</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">599</span> <span class="k">return</span> <span class="n">Memorise</span><span class="o">.</span><span class="n">state</span><span class="p">[</span><span class="n">fluid</span><span class="p">]</span><span class="o">.</span><span class="n">hmass</span><span class="p">()</span>
-
-<span class="nn">File CoolProp/AbstractState.pyx:102,</span> in <span class="ni">CoolProp.CoolProp.AbstractState.update</span><span class="nt">()</span>
-
-<span class="nn">File CoolProp/AbstractState.pyx:104,</span> in <span class="ni">CoolProp.CoolProp.AbstractState.update</span><span class="nt">()</span>
-
-<span class="ne">ValueError</span>: The pressure [nan Pa] cannot be used in p_phase_determination
 </pre></div>
 </div>
 </div>
@@ -1105,6 +569,18 @@ document.write(`
 </div>
 </div>
 </div>
+<p>In the plot we can see, that the increases at decreasing heat load. The reason for that lies in the reduced pressure
+ratio, which means that the compressor has to provide less power for compressing the same mass flow. The reduced
+pressure ratio is finally a result of the heat transfer at the evaporator: If less heat is transferred on the evaporator
+while the heat transfer coefficient remains more or less unchanged, the available surface for heat transfer allows for
+lower temperature difference. Since the ambient temperature level is fixed, the evaporation temperature rises a little
+bit compared to the design case reducing the pressure ratio inside the main cycle of the heat pump.</p>
+<figure class="align-default" id="heat-pump-influence-evaporator">
+<img alt="../_images/cb4703584a8639a7cbac071a2c8c7953868d349cf1f8707415d39eee6593c5ce.png" src="../_images/cb4703584a8639a7cbac071a2c8c7953868d349cf1f8707415d39eee6593c5ce.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Influence of the evaporator heat transfer coefficient part load model with varying heat load.</span><a class="headerlink" href="#heat-pump-influence-evaporator" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1112,47 +588,52 @@ document.write(`
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">),</span> <span class="n">results_heat</span><span class="p">[</span><span class="s2">&quot;compressor-power&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;no partload&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">),</span> <span class="n">results_heat</span><span class="p">[</span><span class="s2">&quot;pressure-ratio&quot;</span><span class="p">])</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">),</span> <span class="n">results_heat</span><span class="p">[</span><span class="s2">&quot;COP&quot;</span><span class="p">])</span>
+
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">),</span> <span class="n">results_heat_partload</span><span class="p">[</span><span class="s2">&quot;compressor-power&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;partload&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">),</span> <span class="n">results_heat_partload</span><span class="p">[</span><span class="s2">&quot;pressure-ratio&quot;</span><span class="p">])</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">),</span> <span class="n">results_heat_partload</span><span class="p">[</span><span class="s2">&quot;COP&quot;</span><span class="p">])</span>
 
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Compressor power in W&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">results_heat</span><span class="p">[</span><span class="s2">&quot;compressor-power&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;$\dot W_</span><span class="se">\\</span><span class="s2">mathrm</span><span class="si">{cp}</span><span class="s2">$ in W&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Pressure ratio&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;COP&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">results_heat_partload</span><span class="p">[</span><span class="s2">&quot;COP&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()])</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">results_heat</span><span class="p">[</span><span class="s2">&quot;compressor-power&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.05</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.05</span><span class="p">])</span>
+
 <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Consumer heat demand in W&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/c6947df932daa88926ebce21d3d7bf0273b0d8ac4bf60f34788cea300c56b56e.png" src="../_images/c6947df932daa88926ebce21d3d7bf0273b0d8ac4bf60f34788cea300c56b56e.png" />
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glue</span><span class="p">(</span><span class="s2">&quot;heat-pump-influence-evaporator&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 </div>
 </section>
 <section id="effect-of-condenser-heat-transfer-coefficent">
 <h2>Effect of condenser heat transfer coefficent<a class="headerlink" href="#effect-of-condenser-heat-transfer-coefficent" title="Permalink to this heading">#</a></h2>
+<p>Last we investigate the effect of the heat transfer coefficient of the condenser with the analogous setup as for the
+evaporator.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">Q</span><span class="o">=</span><span class="n">Q_design</span><span class="p">)</span>
-<span class="n">cp</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">design</span><span class="o">=</span><span class="p">[],</span> <span class="n">offdesign</span><span class="o">=</span><span class="p">[],</span> <span class="n">eta_s</span><span class="o">=</span><span class="n">cp</span><span class="o">.</span><span class="n">eta_s</span><span class="o">.</span><span class="n">design</span><span class="p">,</span> <span class="n">eta_s_char</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">Q</span><span class="o">=</span><span class="n">HEAT_NOMINAL</span><span class="p">)</span>
 <span class="n">ev</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">design</span><span class="o">=</span><span class="p">[],</span> <span class="n">offdesign</span><span class="o">=</span><span class="p">[],</span> <span class="n">ttd_l</span><span class="o">=</span><span class="n">ev</span><span class="o">.</span><span class="n">ttd_l</span><span class="o">.</span><span class="n">design</span><span class="p">,</span> <span class="n">kA_char</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 <span class="n">cd</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">design</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ttd_u&quot;</span><span class="p">],</span> <span class="n">offdesign</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;kA_char&quot;</span><span class="p">])</span>
 
 <span class="c1"># check if the model runs</span>
 <span class="n">nwk</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="s2">&quot;offdesign&quot;</span><span class="p">,</span> <span class="n">design_path</span><span class="o">=</span><span class="s2">&quot;R290-design-state&quot;</span><span class="p">)</span>
-<span class="n">c11</span><span class="o">.</span><span class="n">m</span><span class="o">.</span><span class="n">val_SI</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ERROR:root:Data container of type ComponentCharacteristics has no attribute is_var.
-ERROR:root:Data container of type GroupedComponentCharacteristics has no attribute is_var.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.5885189587199426
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ERROR:root:Data container of type GroupedComponentCharacteristics has no attribute is_var.
 </pre></div>
 </div>
 </div>
@@ -1175,6 +656,14 @@ ERROR:root:Data container of type GroupedComponentCharacteristics has no attribu
 </div>
 </div>
 </div>
+<p>In the plot we can see an even stronger relationship between the decrease of heat load and the decrease of pressure
+ratio, therefore the increase in COP. The effect is the same as we have observed in the evaporator.</p>
+<figure class="align-default" id="heat-pump-influence-condenser">
+<img alt="../_images/95288fe50ecfc6c0bc085a622efc3d8d466a7169a05c4dc127d439492b1df791.png" src="../_images/95288fe50ecfc6c0bc085a622efc3d8d466a7169a05c4dc127d439492b1df791.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Influence of the condenser heat transfer coefficient part load model with varying heat load.</span><a class="headerlink" href="#heat-pump-influence-condenser" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1186,92 +675,27 @@ ERROR:root:Data container of type GroupedComponentCharacteristics has no attribu
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">),</span> <span class="n">results_heat_partload</span><span class="p">[</span><span class="s2">&quot;pressure-ratio&quot;</span><span class="p">])</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">),</span> <span class="n">results_heat_partload</span><span class="p">[</span><span class="s2">&quot;COP&quot;</span><span class="p">])</span>
 
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Compressor power in W&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">results_heat</span><span class="p">[</span><span class="s2">&quot;compressor-power&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;$\dot W_</span><span class="se">\\</span><span class="s2">mathrm</span><span class="si">{cp}</span><span class="s2">$ in W&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Pressure ratio&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;COP&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">results_heat_partload</span><span class="p">[</span><span class="s2">&quot;COP&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()])</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">results_heat</span><span class="p">[</span><span class="s2">&quot;compressor-power&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.05</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.05</span><span class="p">])</span>
+
 <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Consumer heat demand in W&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/572821ed45ad5ce76a2b68a30e77cb089157efa4636008b2bc008786f8411e56.png" src="../_images/572821ed45ad5ce76a2b68a30e77cb089157efa4636008b2bc008786f8411e56.png" />
-</div>
-</div>
-</section>
-<section id="effect-of-fixing-mass-flow">
-<h2>Effect of fixing mass flow<a class="headerlink" href="#effect-of-fixing-mass-flow" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">Q</span><span class="o">=</span><span class="n">Q_design</span><span class="p">)</span>
-<span class="n">cp</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">design</span><span class="o">=</span><span class="p">[],</span> <span class="n">offdesign</span><span class="o">=</span><span class="p">[],</span> <span class="n">eta_s</span><span class="o">=</span><span class="n">cp</span><span class="o">.</span><span class="n">eta_s</span><span class="o">.</span><span class="n">design</span><span class="p">,</span> <span class="n">eta_s_char</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-<span class="n">ev</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">design</span><span class="o">=</span><span class="p">[],</span> <span class="n">offdesign</span><span class="o">=</span><span class="p">[],</span> <span class="n">ttd_l</span><span class="o">=</span><span class="n">ev</span><span class="o">.</span><span class="n">ttd_l</span><span class="o">.</span><span class="n">design</span><span class="p">,</span> <span class="n">kA_char</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-<span class="n">cd</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">design</span><span class="o">=</span><span class="p">[],</span> <span class="n">offdesign</span><span class="o">=</span><span class="p">[],</span> <span class="n">ttd_u</span><span class="o">=</span><span class="n">cd</span><span class="o">.</span><span class="n">ttd_u</span><span class="o">.</span><span class="n">design</span><span class="p">,</span> <span class="n">kA_char</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-<span class="n">c11</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">offdesign</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;m&quot;</span><span class="p">])</span>
-<span class="n">c12</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">design</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;T&quot;</span><span class="p">])</span>
 
-<span class="c1"># check if the model runs</span>
-<span class="n">nwk</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="s2">&quot;offdesign&quot;</span><span class="p">,</span> <span class="n">design_path</span><span class="o">=</span><span class="s2">&quot;R290-design-state&quot;</span><span class="p">)</span>
-<span class="n">c11</span><span class="o">.</span><span class="n">m</span><span class="o">.</span><span class="n">val_SI</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ERROR:root:Data container of type ComponentCharacteristics has no attribute is_var.
-ERROR:root:Data container of type GroupedComponentCharacteristics has no attribute is_var.
-ERROR:root:Data container of type GroupedComponentCharacteristics has no attribute is_var.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.588518958567504
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results_heat_partload</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-    <span class="n">index</span><span class="o">=</span><span class="n">heat_range</span><span class="p">,</span>
-    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;compressor-power&quot;</span><span class="p">,</span> <span class="s2">&quot;pressure-ratio&quot;</span><span class="p">,</span> <span class="s2">&quot;COP&quot;</span><span class="p">]</span>
-<span class="p">)</span>
-
-<span class="k">for</span> <span class="n">heat</span> <span class="ow">in</span> <span class="n">heat_range</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
-    <span class="n">cd</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">Q</span><span class="o">=</span><span class="n">heat</span><span class="p">)</span>
-    <span class="n">nwk</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="s2">&quot;offdesign&quot;</span><span class="p">,</span> <span class="n">design_path</span><span class="o">=</span><span class="s2">&quot;R290-design-state&quot;</span><span class="p">)</span>
-
-    <span class="n">results_heat_partload</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">heat</span><span class="p">,</span> <span class="s2">&quot;compressor-power&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">P</span><span class="o">.</span><span class="n">val</span>
-    <span class="n">results_heat_partload</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">heat</span><span class="p">,</span> <span class="s2">&quot;pressure-ratio&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">pr</span><span class="o">.</span><span class="n">val</span>
-    <span class="n">results_heat_partload</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">heat</span><span class="p">,</span> <span class="s2">&quot;COP&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">cd</span><span class="o">.</span><span class="n">Q</span><span class="o">.</span><span class="n">val</span><span class="p">)</span> <span class="o">/</span> <span class="n">cp</span><span class="o">.</span><span class="n">P</span><span class="o">.</span><span class="n">val</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glue</span><span class="p">(</span><span class="s2">&quot;heat-pump-influence-condenser&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">),</span> <span class="n">results_heat</span><span class="p">[</span><span class="s2">&quot;compressor-power&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;no partload&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">),</span> <span class="n">results_heat</span><span class="p">[</span><span class="s2">&quot;pressure-ratio&quot;</span><span class="p">])</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">),</span> <span class="n">results_heat</span><span class="p">[</span><span class="s2">&quot;COP&quot;</span><span class="p">])</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">),</span> <span class="n">results_heat_partload</span><span class="p">[</span><span class="s2">&quot;compressor-power&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;partload&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">),</span> <span class="n">results_heat_partload</span><span class="p">[</span><span class="s2">&quot;pressure-ratio&quot;</span><span class="p">])</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">),</span> <span class="n">results_heat_partload</span><span class="p">[</span><span class="s2">&quot;COP&quot;</span><span class="p">])</span>
-
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Compressor power in W&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">results_heat</span><span class="p">[</span><span class="s2">&quot;compressor-power&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()])</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Pressure ratio&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;COP&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">results_heat_partload</span><span class="p">[</span><span class="s2">&quot;COP&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">heat_range</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()])</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Consumer heat demand in W&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/e8a08a5306ee4ebe4099ee2530fa83fb33559a2ac2be178f148d5cbb0d796242.png" src="../_images/e8a08a5306ee4ebe4099ee2530fa83fb33559a2ac2be178f148d5cbb0d796242.png" />
 </div>
 </div>
 </section>
@@ -1338,11 +762,9 @@ ERROR:root:Data container of type GroupedComponentCharacteristics has no attribu
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-of-compressor-efficiecy">Effect of compressor efficiecy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-of-compressor-efficiency">Effect of compressor efficiency</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-of-evaporator-heat-transfer-coefficent">Effect of evaporator heat transfer coefficent</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-of-condenser-heat-transfer-coefficent">Effect of condenser heat transfer coefficent</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-of-fixing-mass-flow">Effect of fixing mass flow</a></li>
 </ul>
   </nav></div>
 

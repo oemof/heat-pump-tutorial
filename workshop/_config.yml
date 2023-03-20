@@ -9,7 +9,7 @@ description: >-
 
 execute:
   execute_notebooks           : cache
-  timeout                     : 100
+  timeout                     : 300
 
 # HTML-specific settings
 html:

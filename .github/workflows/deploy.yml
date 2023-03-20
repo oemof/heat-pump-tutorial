@@ -25,7 +25,10 @@ jobs:
       with:
         python-version: "3.10"
 
-    - name: Install dependencies
+    - name: Install cbc
+      run: sudo apt install coinor-cbc
+
+    - name: Install python dependencies
       run: |
         pip install jupyter-book
         pip install -r requirements.txt

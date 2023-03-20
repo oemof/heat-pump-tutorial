@@ -23,7 +23,7 @@ steps to create an environment and install the required dependencies:
 
 For the usage of `oemof-solph` you will also need a solver. To download and install a solver, please follow the
 instructions at the installation section of the
-[oemof-solph](https://oemof-solph.readthedocs.io/en/latest/readme.html#installation) online documentation.
+[oemof-solph](https://github.com/oemof/oemof-solph/#installing-a-solver) github repository.
 
 ## Working with jupyter-notebooks
 

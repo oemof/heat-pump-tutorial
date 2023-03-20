@@ -62,7 +62,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'model/tespy-simple';</script>
     <link rel="shortcut icon" href="../_static/logo_oemof_small.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -400,7 +401,7 @@ document.write(`
 </div>
 </div>
 </div>
-<section id="simple-tespy-heat-pump-model">
+<section class="tex2jax_ignore mathjax_ignore" id="simple-tespy-heat-pump-model">
 <span id="tespy-simple"></span><h1>Simple TESPy heat pump model<a class="headerlink" href="#simple-tespy-heat-pump-model" title="Permalink to this heading">#</a></h1>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
@@ -444,7 +445,7 @@ of the ambient air temperature. For that, we build a TESPy model following the i
 <tr class="row-odd"><td class="text-left"><p>heat delivered</p></td>
 <td class="text-left"><p>condenser</p></td>
 <td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">Q</span></code></p></td>
-<td class="text-right"><p><span class="pasted-text">10.0</span></p></td>
+<td class="text-right"><p><span class="pasted-text">9.1</span></p></td>
 <td class="text-left"><p>kW</p></td>
 </tr>
 </tbody>
@@ -521,7 +522,7 @@ instance:</p>
 
 <span class="c1"># components</span>
 <span class="n">cp</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">eta_s</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
-<span class="n">cd</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">Q</span><span class="o">=-</span><span class="mf">10e3</span><span class="p">)</span>
+<span class="n">cd</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">Q</span><span class="o">=-</span><span class="mf">9.1e3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -601,11 +602,17 @@ future as well.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (Valve) #####
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (Compressor) #####
++------------+----------+----------+----------+--------+
+|            |        P |    eta_s |       pr |   igva |
+|------------+----------+----------+----------+--------|
+| compressor | 1.62e+03 | 8.00e-01 | 2.72e+00 |    nan |
++------------+----------+----------+----------+--------+
+##### RESULTS (Valve) #####
 +-----------------+----------+----------+
 |                 |       pr |     zeta |
 |-----------------+----------+----------|
-| expansion valve | 3.68e-01 | 8.07e+10 |
+| expansion valve | 3.68e-01 | 9.74e+10 |
 +-----------------+----------+----------+
 ##### RESULTS (CycleCloser) #####
 +--------------+------------------+-------------------+
@@ -617,24 +624,18 @@ future as well.</p>
 +------------+-----------+----------+----------+-----+-----+------+------+--------+
 |            |         Q |       pr |     zeta |   D |   L |   ks |   kA |   Tamb |
 |------------+-----------+----------+----------+-----+-----+------+------+--------|
-| evaporator |  8.22e+03 | 1.00e+00 | 1.32e-06 | nan | nan |  nan |  nan |    nan |
-| condenser  | -1.00e+04 | 1.00e+00 | 0.00e+00 | nan | nan |  nan |  nan |    nan |
+| evaporator |  7.48e+03 | 1.00e+00 | 0.00e+00 | nan | nan |  nan |  nan |    nan |
+| condenser  | -9.10e+03 | 1.00e+00 | 0.00e+00 | nan | nan |  nan |  nan |    nan |
 +------------+-----------+----------+----------+-----+-----+------+------+--------+
-##### RESULTS (Compressor) #####
-+------------+----------+----------+----------+--------+
-|            |        P |    eta_s |       pr |   igva |
-|------------+----------+----------+----------+--------|
-| compressor | 1.78e+03 | 8.00e-01 | 2.72e+00 |    nan |
-+------------+----------+----------+----------+--------+
 ##### RESULTS (Connection) #####
 +----+-----------+-----------+-----------+-----------+
 |    |         m |         p |         h |         T |
 |----+-----------+-----------+-----------+-----------|
-|  0 | 3.046e-02 | 5.041e+00 | 3.071e+05 | 2.000e+00 |
-|  1 | 3.046e-02 | 5.041e+00 | 3.071e+05 | 2.000e+00 |
-|  2 | 3.046e-02 | 5.041e+00 | 5.771e+05 | 2.000e+00 |
-|  3 | 3.046e-02 | 1.369e+01 | 6.355e+05 | 4.956e+01 |
-|  4 | 3.046e-02 | 1.369e+01 | 3.071e+05 | 4.000e+01 |
+|  0 | 2.772e-02 | 5.041e+00 | 3.071e+05 | 2.000e+00 |
+|  1 | 2.772e-02 | 5.041e+00 | 3.071e+05 | 2.000e+00 |
+|  2 | 2.772e-02 | 5.041e+00 | 5.771e+05 | 2.000e+00 |
+|  3 | 2.772e-02 | 1.369e+01 | 6.355e+05 | 4.956e+01 |
+|  4 | 2.772e-02 | 1.369e+01 | 3.071e+05 | 4.000e+01 |
 +----+-----------+-----------+-----------+-----------+
 </pre></div>
 </div>
@@ -650,7 +651,7 @@ objects or from the network’s result dataframes. Note, that the compressor’s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1778.525244112425
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1618.4579721423067
 </pre></div>
 </div>
 </div>
@@ -662,7 +663,7 @@ objects or from the network’s result dataframes. Note, that the compressor’s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1778.525244112425
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1618.4579721423067
 </pre></div>
 </div>
 </div>

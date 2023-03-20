@@ -279,7 +279,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/getting-started/5-minutes-into-solph.md" target="_blank"
+      <li><a href="../_sources/getting-started/5-minutes-into-solph.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -289,7 +289,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -348,7 +348,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -364,6 +366,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-information">General information</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -375,17 +385,86 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="minutes-into-oemof-solph">
 <h1>5 minutes into oemof-solph<a class="headerlink" href="#minutes-into-oemof-solph" title="Permalink to this heading">#</a></h1>
+<section id="general-information">
+<h2>General information<a class="headerlink" href="#general-information" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://oemof-solph.readthedocs.io/en/stable/readme.html">oemof.solph</a> is a tool to facilitate
+the formulation of (mixed integer) linear problems for dispatch, unit commitment, and investmentment
+problems in sector-intregrated energy systems.
+It does so by compiling a comprehensive, graph-based description of the energy system
+into a linear program using <a class="reference external" href="http://www.pyomo.org/">Pyomo</a>, that can than be solved using a linear
+optimiser of choice.</p>
+<p>The graph consists of three types of entities:</p>
 <ul class="simple">
-<li><p>Mini Intro: What can you do with solph, what can solph do for you?</p></li>
-<li><p>Abstract Figure with Energy System and its components</p>
-<ul>
-<li><p>Buses</p></li>
-<li><p>Components</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Bus</span></code>es (Type of nodes that maintain energy balance)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">components</span></code> (Type of nodes that model technologies)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Flow</span></code>s (directed edges with time-dependent power transport)</p></li>
 </ul>
-</li>
+<ul class="simple">
 <li><p>Mini Code example: Buses, Components (Transformer, Source, Sink, but there are more), EnergySystem, Model</p></li>
-<li><p>Link zur oemof-solph Doku/gh/Literaturquellen</p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">oemof.solph</span> <span class="k">as</span> <span class="nn">solph</span>
+
+<span class="n">heat_demand</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+
+<span class="n">es</span> <span class="o">=</span> <span class="n">solph</span><span class="o">.</span><span class="n">EnergySystem</span><span class="p">(</span><span class="n">timeindex</span><span class="o">=</span><span class="n">solph</span><span class="o">.</span><span class="n">create_time_index</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span> <span class="n">infer_last_interval</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">b_electricity</span> <span class="o">=</span> <span class="n">solph</span><span class="o">.</span><span class="n">Bus</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;electricity&quot;</span><span class="p">)</span>
+<span class="n">b_heat_35C</span> <span class="o">=</span> <span class="n">solph</span><span class="o">.</span><span class="n">Bus</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;heat 35C&quot;</span><span class="p">)</span>
+<span class="n">es</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">b_electricity</span><span class="p">,</span> <span class="n">b_heat_35C</span><span class="p">)</span>
+
+<span class="n">electricity_grid</span> <span class="o">=</span> <span class="n">solph</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">Source</span><span class="p">(</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;electricity grid&quot;</span><span class="p">,</span>
+    <span class="n">outputs</span><span class="o">=</span><span class="p">{</span><span class="n">b_electricity</span><span class="p">:</span> <span class="n">solph</span><span class="o">.</span><span class="n">Flow</span><span class="p">(</span><span class="n">variable_costs</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)},</span>  <span class="c1"># €/kWh</span>
+<span class="p">)</span>
+
+<span class="n">heat_demand</span> <span class="o">=</span> <span class="n">solph</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">Sink</span><span class="p">(</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;heat demand&quot;</span><span class="p">,</span>
+    <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="n">b_heat_35C</span><span class="p">:</span> <span class="n">solph</span><span class="o">.</span><span class="n">Flow</span><span class="p">(</span><span class="n">nominal_value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fix</span><span class="o">=</span><span class="n">heat_demand</span><span class="p">)},</span>  <span class="c1"># kW</span>
+<span class="p">)</span>
+<span class="n">es</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">electricity_grid</span><span class="p">,</span> <span class="n">heat_demand</span><span class="p">)</span>
+
+<span class="n">heating_rod</span> <span class="o">=</span> <span class="n">solph</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">Transformer</span><span class="p">(</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;heating rod&quot;</span><span class="p">,</span>
+    <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="n">b_electricity</span><span class="p">:</span> <span class="n">solph</span><span class="o">.</span><span class="n">Flow</span><span class="p">()},</span>
+    <span class="n">outputs</span><span class="o">=</span><span class="p">{</span><span class="n">b_heat_35C</span><span class="p">:</span> <span class="n">solph</span><span class="o">.</span><span class="n">Flow</span><span class="p">()},</span>
+<span class="p">)</span>
+
+<span class="n">es</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">heating_rod</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">solph</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">energysystem</span><span class="o">=</span><span class="n">es</span><span class="p">)</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Problem&#39;: [{&#39;Name&#39;: &#39;unknown&#39;, &#39;Lower bound&#39;: 8.8, &#39;Upper bound&#39;: 8.8, &#39;Number of objectives&#39;: 1, &#39;Number of constraints&#39;: 13, &#39;Number of variables&#39;: 13, &#39;Number of nonzeros&#39;: 0, &#39;Sense&#39;: &#39;minimize&#39;}], &#39;Solver&#39;: [{&#39;Status&#39;: &#39;ok&#39;, &#39;User time&#39;: -1.0, &#39;System time&#39;: 0.0, &#39;Wallclock time&#39;: 0.0, &#39;Termination condition&#39;: &#39;optimal&#39;, &#39;Termination message&#39;: &#39;Model was solved to optimality (subject to tolerances), and an optimal solution is available.&#39;, &#39;Statistics&#39;: {&#39;Branch and bound&#39;: {&#39;Number of bounded subproblems&#39;: None, &#39;Number of created subproblems&#39;: None}, &#39;Black box&#39;: {&#39;Number of iterations&#39;: 0}}, &#39;Error rc&#39;: 0, &#39;Time&#39;: 0.015176534652709961}], &#39;Solution&#39;: [OrderedDict([(&#39;number of solutions&#39;, 0), (&#39;number of solutions displayed&#39;, 0)])]}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">solph</span><span class="o">.</span><span class="n">processing</span><span class="o">.</span><span class="n">results</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+
+<span class="n">heat_supply</span> <span class="o">=</span> <span class="n">results</span><span class="p">[(</span><span class="n">b_heat_35C</span><span class="p">,</span> <span class="n">heat_demand</span><span class="p">)][</span><span class="s2">&quot;sequences&quot;</span><span class="p">][</span><span class="s2">&quot;flow&quot;</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">heat_supply</span><span class="p">,</span> <span class="s2">&quot;r-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;heat supply&quot;</span><span class="p">,</span> <span class="n">drawstyle</span><span class="o">=</span><span class="s2">&quot;steps-post&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/dc504e82a9f6871df48425a003333475861bc15ab770289ac48bc6fe90396a9c.png" src="../_images/dc504e82a9f6871df48425a003333475861bc15ab770289ac48bc6fe90396a9c.png" />
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -440,6 +519,20 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-information">General information</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

@@ -1,3 +1,5 @@
+import numpy as np
+import pandas as pd
 from tespy.components import HeatExchangerSimple, CycleCloser, Compressor, Valve, HeatExchanger, Source, Sink, Condenser
 from tespy.connections import Connection, Ref
 from tespy.networks import Network
@@ -9,6 +11,51 @@ HEATING_SYSTEM_RETURN_TEMP = 30
 AMBIENT_TEMP_NOMINAL = 7
 HEAT_NOMINAL = -9.1e3
 ETA_COMPRESSOR_INIT = 0.8
+
+
+def load_temperature_data():
+    """Returns temperature (in °C) over timestamp
+    """
+    # weather data from https://wetterstation.physik.rwth-aachen.de/datenbank.php
+    df = pd.read_csv("../2023_Stundenstatistik.txt", delim_whitespace=True)
+    df.index = (pd.to_datetime(
+        [
+            f"{year}-{month}-{day} {hour}:00:00"
+            for year, month, day, hour in zip(df['#Jahr'], df['Monat'], df['Tag'], df['Stunde'])
+        ]
+    ))
+    df = df[["T_Mid"]]
+    df.rename(columns={"T_Mid": "Ambient temperature (°C)"}, inplace=True)
+    df["Ambient temperature (d°C)"] = 10 * df["Ambient temperature (°C)"]
+
+    return df
+
+
+def load_tespy_cop():
+    df = pd.read_csv("COP-T-tespy.csv", index_col=[0])
+
+    # hack to work with floats as index
+    df2 = df.reindex(np.arange(-100, 311, 1)/10)
+
+    df2["COP"] = pd.Series.interpolate(df2["COP"])
+
+    df2.index = 10 * df2.index
+
+    return df2
+
+
+def load_tespy_coefficients():
+    df = pd.read_csv("coefficients-offset-transformer.csv", index_col=[0])
+
+    # hack to work with floats as index
+    df2 = df.reindex(np.arange(-100, 210, 1)/10)
+
+    df2["slope"] = pd.Series.interpolate(df2["slope"])
+    df2["offset"] = pd.Series.interpolate(df2["offset"])
+
+    df2.index = 10 * df2.index
+
+    return df2
 
 
 def simple_heat_pump(working_fluid):

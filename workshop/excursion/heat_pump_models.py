@@ -84,6 +84,7 @@ def partload_heat_pump(working_fluid):
     nwk.add_conns(c11, c12, c21, c22)
 
     # connections
+    c2.set_attr(T=AMBIENT_TEMP_NOMINAL - TTD_HEAT_EXCHANGERS)
     c4.set_attr(T=HEATING_SYSTEM_FEED_TEMP + TTD_HEAT_EXCHANGERS)
 
     # components
@@ -100,9 +101,12 @@ def partload_heat_pump(working_fluid):
 
     # components
     cd.set_attr(pr1=1, pr2=1)
-    ev.set_attr(pr1=1, pr2=1, ttd_l=TTD_HEAT_EXCHANGERS)
+    ev.set_attr(pr1=1, pr2=1)
 
     nwk.solve("design")
+
+    ev.set_attr(ttd_u=TTD_HEAT_EXCHANGERS)
+    c2.set_attr(T=None)
 
     cd.set_attr(ttd_u=TTD_HEAT_EXCHANGERS)
     c4.set_attr(T=None)

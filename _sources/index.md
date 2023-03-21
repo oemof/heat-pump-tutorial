@@ -2,8 +2,9 @@
 
 Welcome to the documentation of the oemof session at the 2nd International
 workshop on "Open Source Modelling and Simulation of Energy Systems".
-The workshop has been developed by [Francesco Witte](https://github.com/fwitte) and
-[Patrik Schönfeld](https://github.com/p-snft).
+The workshop has been developed by [Francesco Witte](https://github.com/fwitte)
+and [Patrik Schönfeld](https://github.com/p-snft) at the German Areospace
+Center (DLR), Institute of Networked Energy Systems.
 
 You will learn how to use and apply the two most know oemof libraries, i.e.
 `oemof.solph` {cite}`Krien2020` and `TESPy` {cite}`Witte2020`, in the context of

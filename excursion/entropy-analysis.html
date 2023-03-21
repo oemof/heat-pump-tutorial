@@ -397,7 +397,9 @@ for a process, that consists of two isentropic subprocesses (compression and exp
 (evaporation and condensation). For this to be possible, the heat pump would need to use a turbine instead of an
 expansion valve and the fluid must be in the two-phase region again after the compression. While compression of
 dry working fluids (the isentropics reach back into the saturation dome at higher pressures) is technically possible,
-expanding saturated liquid is technically not feasible.</p>
+expanding saturated liquid is technically not feasible. Still, we can apply the Carnot method to investigate our heat
+pump cycle from thermodynamically, but we have to make some changes. However, this even allows us to show the
+contribution of the individual components in the cycle to its thermodynamic “non-optimality”.<a class="footnote-reference brackets" href="#exergy" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 </section>
 <section id="carnot-cop">
 <h2>Carnot COP<a class="headerlink" href="#carnot-cop" title="Permalink to this heading">#</a></h2>
@@ -651,7 +653,7 @@ the reason, we have an increasing efficiency factor when the evaporation tempera
 <h2>Investigating Working Fluids<a class="headerlink" href="#investigating-working-fluids" title="Permalink to this heading">#</a></h2>
 <p>Finally, we can make an investigation for different types of working fluids, as the efficiency factor not only depends
 on the temperature level of evaporation, but also on the fluid itself. As examples, we assess working fluids from the
-different classifications (for more information see e.g. <span id="id1">[<a class="reference internal" href="../zliterature.html#id11" title="H. Tabor and L Bronicki. Establishing criteria for fluids for small vapor turbines. In SAE Technical Paper Series. SAE International, January 1964. doi:10.4271/640823.">9</a>, <a class="reference internal" href="../zliterature.html#id7" title="Sylvain Quoilin and Vincent Lemort. Technological and economical survey of organic rankine cycle systems. In European Conference on Economics and Management of Energy in Industry. April 2009. URL: https://hdl.handle.net/2268/14609.">10</a>, <a class="reference internal" href="../zliterature.html#id8" title="Huijuan Chen, D. Yogi Goswami, and Elias K. Stefanakos. A review of thermodynamic cycles and working fluids for the conversion of low-grade heat. Renewable and Sustainable Energy Reviews, 14(9):3059–3067, December 2010. doi:10.1016/j.rser.2010.07.006.">11</a>, <a class="reference internal" href="../zliterature.html#id9" title="Bo-Tau Liu, Kuo-Hsiang Chien, and Chi-Chuan Wang. Effect of working fluids on organic rankine cycle for waste heat recovery. Energy, 29(8):1207–1217, June 2004. doi:10.1016/j.energy.2004.01.004.">12</a>]</span>), which are
+different classifications (for more information see e.g. <span id="id2">[<a class="reference internal" href="../zliterature.html#id11" title="H. Tabor and L Bronicki. Establishing criteria for fluids for small vapor turbines. In SAE Technical Paper Series. SAE International, January 1964. doi:10.4271/640823.">9</a>, <a class="reference internal" href="../zliterature.html#id7" title="Sylvain Quoilin and Vincent Lemort. Technological and economical survey of organic rankine cycle systems. In European Conference on Economics and Management of Energy in Industry. April 2009. URL: https://hdl.handle.net/2268/14609.">10</a>, <a class="reference internal" href="../zliterature.html#id8" title="Huijuan Chen, D. Yogi Goswami, and Elias K. Stefanakos. A review of thermodynamic cycles and working fluids for the conversion of low-grade heat. Renewable and Sustainable Energy Reviews, 14(9):3059–3067, December 2010. doi:10.1016/j.rser.2010.07.006.">11</a>, <a class="reference internal" href="../zliterature.html#id9" title="Bo-Tau Liu, Kuo-Hsiang Chien, and Chi-Chuan Wang. Effect of working fluids on organic rankine cycle for waste heat recovery. Energy, 29(8):1207–1217, June 2004. doi:10.1016/j.energy.2004.01.004.">12</a>]</span>), which are
 roughly defined by the slope of the dew line in the Ts-diagram, i.e.</p>
 <ul class="simple">
 <li><p>wet: It has a forwards-facing slope</p></li>
@@ -751,6 +753,13 @@ factors, the wet working fluid has a slightly decreasing efficiency factor.</p>
 <p><span class="caption-number">Fig. 18 </span><span class="caption-text">Efficiency factors of heat pumps using different working fluids.</span><a class="headerlink" href="#fig-working-fluids-efficiency-factors" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+<hr class="footnotes docutils" />
+<aside class="footnote brackets" id="exergy" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>There is another, more well known, method for the thermodynamic analysis, i.e. the exergy analysis. The
+method has been implemented in TESPy <span id="id3">[<a class="reference internal" href="../zliterature.html#id5" title="Francesco Witte, Mathias Hofmann, Julius Meier, Ilja Tuschy, and George Tsatsaronis. Generic and Open-Source Exergy Analysis—Extending the Simulation Framework TESPy. Energies, 15:4087, 2022. doi:10.3390/en15114087.">4</a>]</span>, but since we want to show the connection to the Carnot COP in
+this excursion, the entropy method is applied.</p>
+</aside>
 </section>
 </section>
 

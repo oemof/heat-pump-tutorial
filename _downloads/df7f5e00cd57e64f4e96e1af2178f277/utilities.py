@@ -1,3 +1,4 @@
+import os
 import numpy as np
 import pandas as pd
 from tespy.components import HeatExchangerSimple, CycleCloser, Compressor, Valve, HeatExchanger, Source, Sink, Condenser
@@ -12,12 +13,16 @@ AMBIENT_TEMP_NOMINAL = 7
 HEAT_NOMINAL = -9.1e3
 ETA_COMPRESSOR_INIT = 0.8
 
+_file_path = os.path.dirname(os.path.realpath(__file__))
 
 def load_temperature_data():
     """Returns temperature (in °C) over timestamp
     """
+
+    csv_path = _file_path + "/../2023_Stundenstatistik.txt"
+
     # weather data from https://wetterstation.physik.rwth-aachen.de/datenbank.php
-    df = pd.read_csv("../2023_Stundenstatistik.txt", delim_whitespace=True)
+    df = pd.read_csv(csv_path, delim_whitespace=True)
     df.index = (pd.to_datetime(
         [
             f"{year}-{month}-{day} {hour}:00:00"
@@ -29,6 +34,14 @@ def load_temperature_data():
     df["Ambient temperature (d°C)"] = 10 * df["Ambient temperature (°C)"]
 
     return df
+
+def load_input_data():
+    input_data = load_temperature_data()
+    
+    # A crude demand model should be enough for us. Let the demand be 500 W per K below 15 °C.
+    input_data["Heat load (kW)"] = (0.5 * (15 - input_data["Ambient temperature (°C)"])).clip(lower=0)
+
+    return input_data
 
 
 def load_tespy_cop():

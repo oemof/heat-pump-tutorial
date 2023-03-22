@@ -549,24 +549,24 @@ Therefore we provide a tutorial on how to build models with stable starting valu
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (Compressor) #####
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (HeatExchanger) #####
++------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+|            |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
+|------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
+| evaporator | -7.24e+03 | 1.85e+03 | 3.92e+00 | 5.00e+00 | 3.00e+00 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 3.39e-06 |
++------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+##### RESULTS (Condenser) #####
++-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+|           |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
+|-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
+| condenser | -9.10e+03 | 1.26e+03 | 7.21e+00 | 5.00e+00 | 1.00e+01 | 1.00e+00 | 1.00e+00 | 4.12e-05 | 0.00e+00 |
++-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+##### RESULTS (Compressor) #####
 +------------+----------+----------+----------+--------+
 |            |        P |    eta_s |       pr |   igva |
 |------------+----------+----------+----------+--------|
 | compressor | 1.86e+03 | 6.75e-01 | 2.72e+00 |    nan |
 +------------+----------+----------+----------+--------+
-##### RESULTS (Condenser) #####
-+-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
-|           |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
-|-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
-| condenser | -9.10e+03 | 1.26e+03 | 7.21e+00 | 5.00e+00 | 1.00e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
-+-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
-##### RESULTS (HeatExchanger) #####
-+------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
-|            |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
-|------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
-| evaporator | -7.24e+03 | 1.85e+03 | 3.92e+00 | 5.00e+00 | 3.00e+00 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
-+------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
 ##### RESULTS (Valve) #####
 +-----------------+----------+----------+
 |                 |       pr |     zeta |
@@ -697,7 +697,7 @@ Therefore we provide a tutorial on how to build models with stable starting valu
       <td>0.000057</td>
       <td>0.002139</td>
       <td>1359.354602</td>
-      <td>1.209052e-15</td>
+      <td>8.060345e-16</td>
       <td>NaN</td>
       <td>1.0</td>
       <td>0.0</td>
@@ -837,14 +837,6 @@ behavior.</span><a class="headerlink" href="#fig-heat-pump-ambient-temperature-d
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
-<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;fig-heat-pump-ambient-temperature-design-mode&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 </section>
 <section id="influence-of-the-heat-production">
 <h3>Influence of the heat production<a class="headerlink" href="#influence-of-the-heat-production" title="Permalink to this heading">#</a></h3>
@@ -883,7 +875,7 @@ COP are affected by the changing heat load. Only the compressor power requiremen
 this is, that the compressor’s efficiency and the temperature differences (and therefore the evaporation and
 condensation temperatures) do not change with changing load due to our model specifications.</p>
 <figure class="align-default" id="fig-heat-pump-heat-load-design-mode">
-<img alt="../_images/3ba2c5b993cfb69ce8731caeb4f5fc9681f9d612e1a0ce9a396d119c312d31de.png" src="../_images/3ba2c5b993cfb69ce8731caeb4f5fc9681f9d612e1a0ce9a396d119c312d31de.png" />
+<img alt="../_images/af6e9d8014ecfba0001d74a45e91eb73c543e3ab8f43d33f0227887b248470f6.png" src="../_images/af6e9d8014ecfba0001d74a45e91eb73c543e3ab8f43d33f0227887b248470f6.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 8 </span><span class="caption-text">Influence of the heat load on the compressor power, its pressure ratio and the COP without modeling part load behavior.</span><a class="headerlink" href="#fig-heat-pump-heat-load-design-mode" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -908,13 +900,6 @@ condensation temperatures) do not change with changing load due to our model spe
 <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Consumer heat demand in W&quot;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glue</span><span class="p">(</span><span class="s2">&quot;fig-heat-pump-heat-load-design-mode&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -955,8 +940,6 @@ as we had in the first analysis.</p>
 <span class="n">cp</span><span class="o">.</span><span class="n">eta_s_char</span><span class="o">.</span><span class="n">char_func</span><span class="o">.</span><span class="n">extrapolate</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="n">ev</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">design</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ttd_u&quot;</span><span class="p">],</span> <span class="n">offdesign</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;kA_char&quot;</span><span class="p">])</span>
 <span class="n">cd</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">design</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ttd_u&quot;</span><span class="p">],</span> <span class="n">offdesign</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;kA_char&quot;</span><span class="p">])</span>
-<span class="n">c11</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">offdesign</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;m&quot;</span><span class="p">])</span>
-<span class="n">c12</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">design</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;T&quot;</span><span class="p">])</span>
 
 <span class="n">results_temperature_partload</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
     <span class="n">index</span><span class="o">=</span><span class="n">temperature_range</span><span class="p">,</span>
@@ -982,7 +965,7 @@ The last subplot is the deviation in COP, which is at an overall low level. Only
 levels, which are nearly at the heat supply temperature level the deviation increases to about 5 % with respect to the
 model accounting for part load behavior.</p>
 <figure class="align-default" id="fig-heat-pump-ambient-temperature-offdesign-mode">
-<img alt="../_images/04b4d59de1ac4f184ffb041b3c6ba12ca89a31aeb519d7b7c4192c86a193e7a4.png" src="../_images/04b4d59de1ac4f184ffb041b3c6ba12ca89a31aeb519d7b7c4192c86a193e7a4.png" />
+<img alt="../_images/186e7b7debb3d046d241ab3b13c2c658452b9a453cd1c2f51b2576f806e5e953.png" src="../_images/186e7b7debb3d046d241ab3b13c2c658452b9a453cd1c2f51b2576f806e5e953.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 9 </span><span class="caption-text">Influence of the ambient temperature on the compressor power, its pressure ratio and the COP when considering part load
 behavior.</span><a class="headerlink" href="#fig-heat-pump-ambient-temperature-offdesign-mode" title="Permalink to this image">#</a></p>
@@ -1012,13 +995,6 @@ behavior.</span><a class="headerlink" href="#fig-heat-pump-ambient-temperature-o
 <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Ambient temperature&quot;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glue</span><span class="p">(</span><span class="s2">&quot;fig-heat-pump-ambient-temperature-offdesign-mode&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1097,7 +1073,7 @@ ratio.</p>
 <a class="reference internal" href="../excursion/partload-analysis.html#tespy-partload-disection"><span class="std std-ref">this excursion</span></a>.</p>
 </div>
 <figure class="align-default" id="fig-heat-pump-heat-load-offdesign-mode">
-<img alt="../_images/39e8d5686d5ff6a6b69e174371931ad2967c1d3a23fa7c43f64343da1f362dfb.png" src="../_images/39e8d5686d5ff6a6b69e174371931ad2967c1d3a23fa7c43f64343da1f362dfb.png" />
+<img alt="../_images/daeddd741d1203c1759d99e5baf9fdca5c13ff8d45b47dfbc447c374a9fffcf9.png" src="../_images/daeddd741d1203c1759d99e5baf9fdca5c13ff8d45b47dfbc447c374a9fffcf9.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 10 </span><span class="caption-text">Influence of the heat load on the compressor power, its pressure ratio and the COP when considering part load behavior.</span><a class="headerlink" href="#fig-heat-pump-heat-load-offdesign-mode" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -1130,13 +1106,6 @@ ratio.</p>
 <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Consumer heat demand in W&quot;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glue</span><span class="p">(</span><span class="s2">&quot;fig-heat-pump-heat-load-offdesign-mode&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1208,7 +1177,7 @@ investigate the influence of the heat load per temperature value.</p>
 <p>We can plot some of the results, e.g. for every 10th temperature value in <a class="reference internal" href="#fig-heat-pump-result-offdesign-mode"><span class="std std-numref">Fig. 11</span></a>.
 These results can then be transferred to the <code class="docutils literal notranslate"><span class="pre">oemof-solph</span></code> simulation.</p>
 <figure class="align-default" id="fig-heat-pump-result-offdesign-mode">
-<img alt="../_images/1206c82ad58cd6077ad265279c67fcf0074bd313a144900f5a17bde95b131cbe.png" src="../_images/1206c82ad58cd6077ad265279c67fcf0074bd313a144900f5a17bde95b131cbe.png" />
+<img alt="../_images/6bea6a60ea26857644a035a53301827a294e451389a47ab300d21d8056972a01.png" src="../_images/6bea6a60ea26857644a035a53301827a294e451389a47ab300d21d8056972a01.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 11 </span><span class="caption-text">Influence of the ambienht temperature and heat load on the compressor power and the COP when considering part load
 behavior.</span><a class="headerlink" href="#fig-heat-pump-result-offdesign-mode" title="Permalink to this image">#</a></p>
@@ -1241,19 +1210,12 @@ behavior.</span><a class="headerlink" href="#fig-heat-pump-result-offdesign-mode
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glue</span><span class="p">(</span><span class="s2">&quot;fig-heat-pump-result-offdesign-mode&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 </section>
 <section id="preparing-the-data-for-oemof-solph">
 <h2>Preparing the data for oemof-solph<a class="headerlink" href="#preparing-the-data-for-oemof-solph" title="Permalink to this heading">#</a></h2>
 <p>To prepare the data for the usage in the mixed integer linear model, we have to linearize the outcomes of our
-simulation. To do that, we can use a simple least squares method from the numpy package <span id="id3">[<a class="reference internal" href="../zliterature.html#id14" title="Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, Sebastian Berg, Nathaniel J. Smith, Robert Kern, Matti Picus, Stephan Hoyer, Marten H. van Kerkwijk, Matthew Brett, Allan Haldane, Jaime Fernández del Río, Mark Wiebe, Pearu Peterson, Pierre Gérard-Marchant, Kevin Sheppard, Tyler Reddy, Warren Weckesser, Hameer Abbasi, Christoph Gohlke, and Travis E. Oliphant. Array programming with NumPy. Nature, 585(7825):357–362, September 2020. doi:10.1038/s41586-020-2649-2.">7</a>]</span>,
-<span id="id4">[<a class="reference internal" href="../zliterature.html#id13" title="Numpy.linalg.lstsq. Accessed: 2023-03-20. URL: https://numpy.org/doc/stable/reference/generated/numpy.linalg.lstsq.html.">8</a>]</span>. The least squares will give us the slope and the y-axis offset, both of which are required in the
+simulation. To do that, we can use a simple least squares method from the numpy package <span id="id3">[<a class="reference internal" href="../zliterature.html#id14" title="Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, Sebastian Berg, Nathaniel J. Smith, Robert Kern, Matti Picus, Stephan Hoyer, Marten H. van Kerkwijk, Matthew Brett, Allan Haldane, Jaime Fernández del Río, Mark Wiebe, Pearu Peterson, Pierre Gérard-Marchant, Kevin Sheppard, Tyler Reddy, Warren Weckesser, Hameer Abbasi, Christoph Gohlke, and Travis E. Oliphant. Array programming with NumPy. Nature, 585(7825):357–362, September 2020. doi:10.1038/s41586-020-2649-2.">9</a>]</span>,
+<span id="id4">[<a class="reference internal" href="../zliterature.html#id13" title="Numpy.linalg.lstsq. Accessed: 2023-03-20. URL: https://numpy.org/doc/stable/reference/generated/numpy.linalg.lstsq.html.">10</a>]</span>. The least squares will give us the slope and the y-axis offset, both of which are required in the
 mixed integer model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1271,7 +1233,7 @@ the actual simulation. For example, we can have a look at the design conditions 
 that the deviation between the linearized model and the actual simulation is below 1.5 % for all heat load values. The
 assumption of a constant efficiency factor leads to a high deviation especially with lower heat production up to 18 %.</p>
 <figure class="align-default" id="fig-heat-pump-result-comparison">
-<img alt="../_images/8b72bbe5d365b5891079cf464810883e91c572528b120e005bfddcd3f0b70aa2.png" src="../_images/8b72bbe5d365b5891079cf464810883e91c572528b120e005bfddcd3f0b70aa2.png" />
+<img alt="../_images/9817af2af7ac8e484e8838347d776231369e492067a15322d47e5263946f50fb.png" src="../_images/9817af2af7ac8e484e8838347d776231369e492067a15322d47e5263946f50fb.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 12 </span><span class="caption-text">Comparison of the compressor power depending on the heat pump’s heat load for the simplified approach and in the part
 load simulation.</span><a class="headerlink" href="#fig-heat-pump-result-comparison" title="Permalink to this image">#</a></p>
@@ -1281,7 +1243,7 @@ load simulation.</span><a class="headerlink" href="#fig-heat-pump-result-compari
 <a class="reference internal" href="#fig-heat-pump-result-linearization"><span class="std std-numref">Fig. 13</span></a>. We can see, that both, offset and slope, change for every ambient
 temperature value.</p>
 <figure class="align-default" id="fig-heat-pump-result-linearization">
-<img alt="../_images/19cd3b2f0f57a9bf03214f37d7598e9234dbb95e70d5885f7d0148f8b649f93a.png" src="../_images/19cd3b2f0f57a9bf03214f37d7598e9234dbb95e70d5885f7d0148f8b649f93a.png" />
+<img alt="../_images/7a6154424fc37c2cb0ef90c100eae8fb866c4aea05a59eac2bf6ddb1bdc03d3f.png" src="../_images/7a6154424fc37c2cb0ef90c100eae8fb866c4aea05a59eac2bf6ddb1bdc03d3f.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 13 </span><span class="caption-text">Linearized compressor power to heat load.</span><a class="headerlink" href="#fig-heat-pump-result-linearization" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -1326,14 +1288,7 @@ temperature value.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glue</span><span class="p">(</span><span class="s2">&quot;fig-heat-pump-result-comparison&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">temp</span> <span class="ow">in</span> <span class="n">temperature_range</span><span class="p">[::</span><span class="mi">10</span><span class="p">]:</span>
         
@@ -1351,13 +1306,6 @@ temperature value.</p>
 <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Consumer heat demand in W&quot;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glue</span><span class="p">(</span><span class="s2">&quot;fig-heat-pump-result-linearization&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

@@ -488,7 +488,7 @@ modeling assumptions and test the implementation.</p>
 <p>Finally, we plot the results. We can see, that the pressure ratio does not depend on the compressor’s efficiency. Still,
 the COP drops with decreased heat load. The reason for that is the lower part load efficiency of the compressor.</p>
 <figure class="align-default" id="heat-pump-influence-efficiency">
-<img alt="../_images/240bed54ff42dbe20d2d3cddf64ce98f49e9b2dc0c440c8891182f70e617fbce.png" src="../_images/240bed54ff42dbe20d2d3cddf64ce98f49e9b2dc0c440c8891182f70e617fbce.png" />
+<img alt="../_images/18bf075fd76ad4ad95b74ce128557f563286b9f8d104cc7470d8e4f6ed9ab3c9.png" src="../_images/18bf075fd76ad4ad95b74ce128557f563286b9f8d104cc7470d8e4f6ed9ab3c9.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 19 </span><span class="caption-text">Influence of the compressor efficiency part load model with varying heat load.</span><a class="headerlink" href="#heat-pump-influence-efficiency" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -516,14 +516,6 @@ the COP drops with decreased heat load. The reason for that is the lower part lo
 <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Consumer heat demand in W&quot;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
-<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;heat-pump-influence-efficiency&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -576,7 +568,7 @@ while the heat transfer coefficient remains more or less unchanged, the availabl
 lower temperature difference. Since the ambient temperature level is fixed, the evaporation temperature rises a little
 bit compared to the design case reducing the pressure ratio inside the main cycle of the heat pump.</p>
 <figure class="align-default" id="heat-pump-influence-evaporator">
-<img alt="../_images/ec77a8224df86eb9d0bc2fbd5997092e11b07c24da541d141127d781a660ab14.png" src="../_images/ec77a8224df86eb9d0bc2fbd5997092e11b07c24da541d141127d781a660ab14.png" />
+<img alt="../_images/9080c051d23b4ada8f835aa7455c807c3cdcbe16c8c7e8683ff04c655598fba0.png" src="../_images/9080c051d23b4ada8f835aa7455c807c3cdcbe16c8c7e8683ff04c655598fba0.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 20 </span><span class="caption-text">Influence of the evaporator heat transfer coefficient part load model with varying heat load.</span><a class="headerlink" href="#heat-pump-influence-evaporator" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -605,13 +597,6 @@ bit compared to the design case reducing the pressure ratio inside the main cycl
 <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Consumer heat demand in W&quot;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glue</span><span class="p">(</span><span class="s2">&quot;heat-pump-influence-evaporator&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -659,7 +644,7 @@ evaporator.</p>
 <p>In the plot we can see an even stronger relationship between the decrease of heat load and the decrease of pressure
 ratio, therefore the increase in COP. The effect is the same as we have observed in the evaporator.</p>
 <figure class="align-default" id="heat-pump-influence-condenser">
-<img alt="../_images/d108fad86e07db3a877818fc4bb334e0c143866f27ae0ddcb432083478c9d17a.png" src="../_images/d108fad86e07db3a877818fc4bb334e0c143866f27ae0ddcb432083478c9d17a.png" />
+<img alt="../_images/410c6abf1439419343af66964285b3352be35344f8c8bb7dc8207437449206f5.png" src="../_images/410c6abf1439419343af66964285b3352be35344f8c8bb7dc8207437449206f5.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 21 </span><span class="caption-text">Influence of the condenser heat transfer coefficient part load model with varying heat load.</span><a class="headerlink" href="#heat-pump-influence-condenser" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -687,13 +672,6 @@ ratio, therefore the increase in COP. The effect is the same as we have observed
 <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Consumer heat demand in W&quot;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glue</span><span class="p">(</span><span class="s2">&quot;heat-pump-influence-condenser&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

@@ -398,7 +398,7 @@ conversion processes. With the software you can used predefined components such 
 turbine or valve (and many more) to build thermodynamic systems. The system is set up by connecting the components in a
 generic way and then specifying respective process and component parameters.</p>
 <p>The software then performs a steady state simulation of your system by creating and solving a system of equations in the
-so called <em>equation oriented (EO)</em> approach (see <span id="id1">[<a class="reference internal" href="../zliterature.html#id5" title="Francesco Witte, Mathias Hofmann, Julius Meier, Ilja Tuschy, and George Tsatsaronis. Generic and Open-Source Exergy Analysis—Extending the Simulation Framework TESPy. Energies, 15:4087, 2022. doi:10.3390/en15114087.">4</a>]</span> for more information). The system represents the
+so called <em>equation oriented (EO)</em> approach (see <span id="id1">[<a class="reference internal" href="../zliterature.html#id5" title="Francesco Witte, Mathias Hofmann, Julius Meier, Ilja Tuschy, and George Tsatsaronis. Generic and Open-Source Exergy Analysis—Extending the Simulation Framework TESPy. Energies, 15:4087, 2022. doi:10.3390/en15114087.">6</a>]</span> for more information). The system represents the
 individual topology and compoent and process specifications provided by you. TESPy accomplishes this by solving for</p>
 <ul class="simple">
 <li><p>mass flow,</p></li>
@@ -511,14 +511,14 @@ as provided in <a class="reference internal" href="#table-mini-example-compresso
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iter	| residual | massflow | pressure | enthalpy | fluid
 --------+----------+----------+----------+----------+---------
-1	| 3.82e+05 | 1.88e+00 | 1.03e+06 | 7.37e+04 | 0.00e+00
+1	| 3.82e+05 | 1.26e+00 | 1.03e+06 | 7.37e+04 | 0.00e+00
 2	| 3.26e+05 | 8.33e-17 | 7.44e+05 | 4.20e+05 | 0.00e+00
 3	| 4.50e+03 | 0.00e+00 | 1.18e+05 | 4.14e+03 | 0.00e+00
 4	| 6.32e+01 | 0.00e+00 | 1.09e+03 | 8.01e+01 | 0.00e+00
 5	| 5.29e-03 | 0.00e+00 | 9.42e-02 | 1.20e-02 | 0.00e+00
 6	| 1.85e-06 | 0.00e+00 | 9.55e-02 | 2.41e-03 | 0.00e+00
 --------+----------+----------+----------+----------+---------
-Total iterations: 6, Calculation time: 0.0 s, Iterations per second: 175.25
+Total iterations: 6, Calculation time: 0.0 s, Iterations per second: 269.82
 </pre></div>
 </div>
 </div>
@@ -667,9 +667,7 @@ listed in the table.</p>
 |------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
 | evaporator | -3.02e+03 | 5.63e+02 | 5.36e+00 | 7.00e+00 | 4.00e+00 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
 +------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (Connection) #####
+##### RESULTS (Connection) #####
 +----+-----------+-----------+-----------+-----------+
 |    |         m |         p |         h |         T |
 |----+-----------+-----------+-----------+-----------|
@@ -724,7 +722,7 @@ the air temperature changes, adjusts the evaporation pressure/temperature of the
 </section>
 <section id="learn-more">
 <h2>Learn more<a class="headerlink" href="#learn-more" title="Permalink to this heading">#</a></h2>
-<p>TESPy relies on CoolProp to provide fluid property data for a large range of different fluids <span id="id3">[<a class="reference internal" href="../zliterature.html#id6" title="Ian H. Bell, Jorrit Wronski, Sylvain Quoilin, and Vincent Lemort. Pure and pseudo-pure fluid thermophysical property evaluation and the open-source thermophysical property library coolprop. Industrial &amp; Engineering Chemistry Research, 53(6):2498–2508, 2014. doi:10.1021/ie4033999.">5</a>]</span>. The
+<p>TESPy relies on CoolProp to provide fluid property data for a large range of different fluids <span id="id3">[<a class="reference internal" href="../zliterature.html#id6" title="Ian H. Bell, Jorrit Wronski, Sylvain Quoilin, and Vincent Lemort. Pure and pseudo-pure fluid thermophysical property evaluation and the open-source thermophysical property library coolprop. Industrial &amp; Engineering Chemistry Research, 53(6):2498–2508, 2014. doi:10.1021/ie4033999.">7</a>]</span>. The
 online documentation of TESPy provides a large variety of examples and tutorials to learn using the software as well as
 extensive background information and code documentation:</p>
 <ul class="simple">

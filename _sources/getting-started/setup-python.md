@@ -28,7 +28,7 @@ instructions at the installation section of the
 ## Working with jupyter-notebooks
 
 In the in person-workshop we will be working with Jupyter Notebooks. It is possible to edit the notebooks in code
-editors (e.g. in VS Code) or in the browser.To learn more about how to use them, you can check out the respective
+editors (e.g. in VS Code) or in the browser. To learn more about how to use them, you can check out the respective
 section in the [online documentation](https://jupyter.org/).
 
 ```{note}

@@ -388,20 +388,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
-<span class="kn">from</span> <span class="nn">utilities</span> <span class="kn">import</span> <span class="n">TTD_HEAT_EXCHANGERS</span><span class="p">,</span> <span class="n">HEATING_SYSTEM_FEED_TEMP</span><span class="p">,</span> <span class="n">AMBIENT_TEMP_NOMINAL</span><span class="p">,</span> <span class="n">HEAT_NOMINAL</span><span class="p">,</span> <span class="n">ETA_COMPRESSOR_INIT</span>
-<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;heat-exchanger-ttd&quot;</span><span class="p">,</span> <span class="n">TTD_HEAT_EXCHANGERS</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;evaporation-temperature&quot;</span><span class="p">,</span> <span class="n">AMBIENT_TEMP_NOMINAL</span> <span class="o">-</span> <span class="n">TTD_HEAT_EXCHANGERS</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;condensation-temperature&quot;</span><span class="p">,</span> <span class="n">HEATING_SYSTEM_FEED_TEMP</span> <span class="o">+</span> <span class="n">TTD_HEAT_EXCHANGERS</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;heat-nominal&quot;</span><span class="p">,</span> <span class="o">-</span><span class="n">HEAT_NOMINAL</span> <span class="o">/</span> <span class="mf">1e3</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;compressor-efficiency-initial&quot;</span><span class="p">,</span> <span class="n">ETA_COMPRESSOR_INIT</span> <span class="o">*</span> <span class="mf">1e2</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<section class="tex2jax_ignore mathjax_ignore" id="simple-tespy-heat-pump-model">
+  <section class="tex2jax_ignore mathjax_ignore" id="simple-tespy-heat-pump-model">
 <span id="tespy-simple"></span><h1>Simple TESPy heat pump model<a class="headerlink" href="#simple-tespy-heat-pump-model" title="Permalink to this heading">#</a></h1>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
@@ -602,7 +589,13 @@ future as well.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (Valve) #####
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (CycleCloser) #####
++--------------+------------------+-------------------+
+|              |   mass_deviation |   fluid_deviation |
+|--------------+------------------+-------------------|
+| cycle closer |         0.00e+00 |          0.00e+00 |
++--------------+------------------+-------------------+
+##### RESULTS (Valve) #####
 +-----------------+----------+----------+
 |                 |       pr |     zeta |
 |-----------------+----------+----------|
@@ -612,15 +605,9 @@ future as well.</p>
 +------------+-----------+----------+----------+-----+-----+------+------+--------+
 |            |         Q |       pr |     zeta |   D |   L |   ks |   kA |   Tamb |
 |------------+-----------+----------+----------+-----+-----+------+------+--------|
-| condenser  | -9.10e+03 | 1.00e+00 | 1.99e-05 | nan | nan |  nan |  nan |    nan |
-| evaporator |  7.48e+03 | 1.00e+00 | 0.00e+00 | nan | nan |  nan |  nan |    nan |
+| evaporator |  7.48e+03 | 1.00e+00 | 1.59e-06 | nan | nan |  nan |  nan |    nan |
+| condenser  | -9.10e+03 | 1.00e+00 | 0.00e+00 | nan | nan |  nan |  nan |    nan |
 +------------+-----------+----------+----------+-----+-----+------+------+--------+
-##### RESULTS (CycleCloser) #####
-+--------------+------------------+-------------------+
-|              |   mass_deviation |   fluid_deviation |
-|--------------+------------------+-------------------|
-| cycle closer |         0.00e+00 |          0.00e+00 |
-+--------------+------------------+-------------------+
 ##### RESULTS (Compressor) #####
 +------------+----------+----------+----------+--------+
 |            |        P |    eta_s |       pr |   igva |
@@ -651,7 +638,7 @@ objects or from the network’s result dataframes. Note, that the compressor’s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1618.457972142304
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1618.4579721423036
 </pre></div>
 </div>
 </div>
@@ -663,7 +650,7 @@ objects or from the network’s result dataframes. Note, that the compressor’s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1618.457972142304
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1618.4579721423036
 </pre></div>
 </div>
 </div>
@@ -676,12 +663,12 @@ objects or from the network’s result dataframes. Note, that the compressor’s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.622635963759137
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.622635963759136
 </pre></div>
 </div>
 </div>
 </div>
-<p>We can see, that the overall COP does not match the data from our datasheet <span id="id1">[<a class="reference internal" href="../zliterature.html#id12" title="Vitocal 150-a, air source heat pump. Accessed: 2023-03-17. URL: https://www.viessmann.co.uk/en/products/heat-pump/vitocal-150a.html.">6</a>]</span>. To adjust our model
+<p>We can see, that the overall COP does not match the data from our datasheet <span id="id1">[<a class="reference internal" href="../zliterature.html#id12" title="Vitocal 150-a, air source heat pump. Accessed: 2023-03-17. URL: https://www.viessmann.co.uk/en/products/heat-pump/vitocal-150a.html.">8</a>]</span>. To adjust our model
 to match those data, i.e. a COP of 4.9, there are a coulpe of degrees of freedom that we can adjust:</p>
 <ul class="simple">
 <li><p>The assumptions on temperature differences at the heat exchangers (condenser and evaporator)</p></li>
@@ -722,13 +709,6 @@ code below performs a simple binary search.</p>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glue</span><span class="p">(</span><span class="s2">&quot;result-compressor-efficiency&quot;</span><span class="p">,</span> <span class="n">efficiency</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>We can check, that the actual COP now matches the specification from the datasheet.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -737,7 +717,7 @@ code below performs a simple binary search.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.900349094422488
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.900349094422475
 </pre></div>
 </div>
 </div>
@@ -756,7 +736,7 @@ assessed.</p>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 
-<span class="n">temperature_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
+<span class="n">temperature_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">temperature_range</span> <span class="o">+</span> <span class="mi">5</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;COP&quot;</span><span class="p">,</span> <span class="s2">&quot;COP_carnot&quot;</span><span class="p">])</span>
 
 <span class="n">cp</span><span class="o">.</span><span class="n">eta_s</span><span class="o">.</span><span class="n">val</span>
@@ -804,7 +784,7 @@ assessed.</p>
 </div>
 </div>
 <figure class="align-default" id="fig-heat-pump-efficiency-factor">
-<img alt="../_images/9992b7afa408c0b311ea3140de9bee1f2942d0c386676e07cd7790e9366a2c66.png" src="../_images/9992b7afa408c0b311ea3140de9bee1f2942d0c386676e07cd7790e9366a2c66.png" />
+<img alt="../_images/3e6efccd7e7ad349969442cdecfbf182ea52d8ef5cbc31b6b2f4f6a99e8cfa5b.png" src="../_images/3e6efccd7e7ad349969442cdecfbf182ea52d8ef5cbc31b6b2f4f6a99e8cfa5b.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 5 </span><span class="caption-text">Comparison of the COP of the heat pump calculated with a constant and a variable efficiency factor.</span><a class="headerlink" href="#fig-heat-pump-efficiency-factor" title="Permalink to this image">#</a></p>
 </figcaption>

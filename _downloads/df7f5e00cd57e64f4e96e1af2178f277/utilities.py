@@ -45,7 +45,7 @@ def load_input_data():
 
 
 def load_tespy_cop():
-    df = pd.read_csv("COP-T-tespy.csv", index_col=[0])
+    df = pd.read_csv(_file_path + "/COP-T-tespy.csv", index_col=[0])
 
     # hack to work with floats as index
     df2 = df.reindex(np.arange(-100, 311, 1)/10)
@@ -58,7 +58,7 @@ def load_tespy_cop():
 
 
 def load_tespy_coefficients():
-    df = pd.read_csv("coefficients-offset-transformer.csv", index_col=[0])
+    df = pd.read_csv(_file_path + "/coefficients-offset-transformer.csv", index_col=[0])
 
     # hack to work with floats as index
     df2 = df.reindex(np.arange(-100, 210, 1)/10)

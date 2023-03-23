@@ -504,8 +504,8 @@ explain that phenomenom, we have to disect the calculat of the COP of the heat p
 <section id="irreversibility-production">
 <h2>Irreversibility Production<a class="headerlink" href="#irreversibility-production" title="Permalink to this heading">#</a></h2>
 <p>To do that, we can first reorder the definition of the COP in the following equation:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{align}
+<div class="math notranslate nohighlight" id="equation-cop-heat-pump-reorderd">
+<span class="eqno">(9)<a class="headerlink" href="#equation-cop-heat-pump-reorderd" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
     \text{COP} = &amp; \frac{|\dot Q_\text{prod}|}{\dot W}\\
      = &amp; \frac{|\dot Q_\text{prod}|}{|\dot Q_\text{prod}| - \dot Q_\text{cons}}\\
      = &amp; \frac{1}{\frac{|\dot Q_\text{prod}| - \dot Q_\text{cons}}{|\dot Q_\text{prod}|}}\\
@@ -513,16 +513,16 @@ explain that phenomenom, we have to disect the calculat of the COP of the heat p
 \end{align}\end{split}\]</div>
 <p>Then with the definition of the thermodynamic mean temperature, we can replace the heat transfers.</p>
 <div class="math notranslate nohighlight" id="equation-cop-heat-pump-temperature-entropy">
-<span class="eqno">(9)<a class="headerlink" href="#equation-cop-heat-pump-temperature-entropy" title="Permalink to this equation">#</a></span>\[    \text{COP} = \frac{1}{1 - \frac{T_\text{m,cons} \cdot \dot S_\text{q,cons}}{T_\text{m,prod} \cdot |\dot S_\text{q,prod}|}}\]</div>
+<span class="eqno">(10)<a class="headerlink" href="#equation-cop-heat-pump-temperature-entropy" title="Permalink to this equation">#</a></span>\[    \text{COP} = \frac{1}{1 - \frac{T_\text{m,cons} \cdot \dot S_\text{q,cons}}{T_\text{m,prod} \cdot |\dot S_\text{q,prod}|}}\]</div>
 <p>Finally, the second law of thermodynamics allows us to replace the entropy transferred to the system from the evaporator
 <span class="math notranslate nohighlight">\(\dot S_\text{q,cons}\)</span> with difference between the entropy transferred to the heat consumer
 <span class="math notranslate nohighlight">\(\dot S_\text{q,prod}\)</span> and all entropy production inside the thermodynamic cycle
 <span class="math notranslate nohighlight">\(\sum \dot S_{\text{irr,}i}\)</span>.</p>
 <div class="math notranslate nohighlight" id="equation-excursion-entropy-analysis-0">
-<span class="eqno">(10)<a class="headerlink" href="#equation-excursion-entropy-analysis-0" title="Permalink to this equation">#</a></span>\[    \dot S_\text{q,cons} = |\dot S_\text{q,prod}| - \sum \dot S_{\text{irr,}i}\]</div>
-<p>We make further simplifications of the expression below the line in eq. <a class="reference internal" href="#equation-cop-heat-pump-temperature-entropy">(9)</a>.</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{align}
+<span class="eqno">(11)<a class="headerlink" href="#equation-excursion-entropy-analysis-0" title="Permalink to this equation">#</a></span>\[    \dot S_\text{q,cons} = |\dot S_\text{q,prod}| - \sum \dot S_{\text{irr,}i}\]</div>
+<p>We make further simplifications of the expression below the line in eq. <a class="reference internal" href="#equation-cop-heat-pump-temperature-entropy">(10)</a>.</p>
+<div class="math notranslate nohighlight" id="equation-subexpression-entropy-production">
+<span class="eqno">(12)<a class="headerlink" href="#equation-subexpression-entropy-production" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
     \frac{T_\text{m,cons} \cdot \dot S_\text{q,cons}}{T_\text{m,prod} \cdot |\dot S_\text{q,prod}|} = &amp; \frac{T_\text{m,cons}}{T_\text{m,prod}} \cdot \frac{|\dot S_\text{q,prod}| - \sum \dot S_{\text{irr,}i}}{|\dot S_\text{q,prod}|} \\
     = &amp; \frac{T_\text{m,cons}}{T_\text{m,prod}} \cdot \left(1 - \frac{\sum \dot S_{\text{irr,}i}}{|\dot S_\text{q,prod}|}\right) \\
     = &amp; \frac{T_\text{m,cons}}{T_\text{m,prod}} - \frac{T_\text{m,cons} \cdot \sum \dot S_{\text{irr,}i}}{T_\text{m,prod} \cdot |\dot S_\text{q,prod}|} \\
@@ -533,7 +533,7 @@ the second part are the thermodynamic losses induced by the individual component
 evaporation temperature level is, the higher the thermodynamic inefficiencies of the individual components are the lower
 the COP or - at a given carnot COP -  the lower the efficiency factor is.</p>
 <div class="math notranslate nohighlight" id="equation-excursion-entropy-analysis-1">
-<span class="eqno">(11)<a class="headerlink" href="#equation-excursion-entropy-analysis-1" title="Permalink to this equation">#</a></span>\[    \text{COP} = \frac{1}{1 - \frac{T_\text{m,cons}}{T_\text{m,prod}} + \sum \dot S_{\text{irr,}i} \cdot \frac{T_\text{m,cons}}{\dot Q_\text{prod}}}\]</div>
+<span class="eqno">(13)<a class="headerlink" href="#equation-excursion-entropy-analysis-1" title="Permalink to this equation">#</a></span>\[    \text{COP} = \frac{1}{1 - \frac{T_\text{m,cons}}{T_\text{m,prod}} + \sum \dot S_{\text{irr,}i} \cdot \frac{T_\text{m,cons}}{\dot Q_\text{prod}}}\]</div>
 <p>With these information we can extend our method to calculate the COP of the heat pump accordingly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

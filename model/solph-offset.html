@@ -499,7 +499,7 @@ we had done this for the linear model.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">heat_supply</span> <span class="o">=</span> <span class="n">results</span><span class="p">[(</span><span class="n">heat_pump</span><span class="p">,</span> <span class="n">b_heat_35C</span><span class="p">)][</span><span class="s2">&quot;sequences&quot;</span><span class="p">][</span><span class="s2">&quot;flow&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">heat_supply</span> <span class="o">=</span> <span class="n">results</span><span class="p">[(</span><span class="n">heat_pump</span><span class="p">,</span> <span class="n">bus_heat_35C</span><span class="p">)][</span><span class="s2">&quot;sequences&quot;</span><span class="p">][</span><span class="s2">&quot;flow&quot;</span><span class="p">]</span>
 <span class="n">storage_content</span> <span class="o">=</span> <span class="n">results</span><span class="p">[(</span><span class="n">thermal_storage</span><span class="p">,</span> <span class="kc">None</span><span class="p">)][</span><span class="s2">&quot;sequences&quot;</span><span class="p">][</span><span class="s2">&quot;storage_content&quot;</span><span class="p">]</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">heat_supply</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;r-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;heat supply&quot;</span><span class="p">)</span>
@@ -516,22 +516,17 @@ we had done this for the linear model.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
-<span class="n">electricity_consumption</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">results</span><span class="p">[(</span><span class="n">electricity_grid</span><span class="p">,</span> <span class="n">b_electricity</span><span class="p">)][</span><span class="s2">&quot;sequences&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="n">electricity_consumption</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">results</span><span class="p">[(</span><span class="n">electricity_grid</span><span class="p">,</span> <span class="n">bus_electricity</span><span class="p">)][</span><span class="s2">&quot;sequences&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Electricity demand: </span><span class="si">{</span><span class="n">electricity_consumption</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> kWh&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">heat_supply</span> <span class="o">=</span> <span class="n">results</span><span class="p">[(</span><span class="n">heat_pump</span><span class="p">,</span> <span class="n">b_heat_35C</span><span class="p">)][</span><span class="s2">&quot;sequences&quot;</span><span class="p">][</span><span class="s2">&quot;flow&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">storage_content</span> <span class="o">=</span> <span class="n">results</span><span class="p">[(</span><span class="n">thermal_storage</span><span class="p">,</span> <span class="kc">None</span><span class="p">)][</span><span class="s2">&quot;sequences&quot;</span><span class="p">][</span><span class="s2">&quot;storage_content&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">heat_supply</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;r-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;heat supply&quot;</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;b_heat_35C&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Electricity demand: 10.1 kWh
 </pre></div>
 </div>
+<img alt="../_images/c8627e72efc092db313a619b8099e6f089a76075790bc50b8f0d3e15dfd1a13f.png" src="../_images/c8627e72efc092db313a619b8099e6f089a76075790bc50b8f0d3e15dfd1a13f.png" />
+<img alt="../_images/30d986a2c6aa606cf87a2ab9fdafd2618145ce6716e912ccda55138aa3ca3d98.png" src="../_images/30d986a2c6aa606cf87a2ab9fdafd2618145ce6716e912ccda55138aa3ca3d98.png" />
 </div>
 </div>
 </section>

@@ -395,6 +395,7 @@ pump which, if operated, must at least provide a heat load of 50 % of its nomina
 <span class="kn">from</span> <span class="nn">utilities</span> <span class="kn">import</span> <span class="n">load_tespy_cop</span>
 
 <span class="n">tespy_cop</span> <span class="o">=</span> <span class="n">load_tespy_cop</span><span class="p">()</span>
+<span class="n">input_data</span><span class="p">[</span><span class="s2">&quot;simple TESPy COP&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">input_data</span><span class="p">[</span><span class="s2">&quot;Ambient temperature (d°C)&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">tespy_cop</span><span class="p">[</span><span class="s2">&quot;COP&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -426,60 +427,6 @@ and using a <code class="docutils literal notranslate"><span class="pre">NonConv
 <span class="p">)</span>
 
 <span class="n">es</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">heat_pump</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/pandas/core/indexes/base.py:3802,</span> in <span class="ni">Index.get_loc</span><span class="nt">(self, key, method, tolerance)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3801</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">3802</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3803</span> <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/pandas/_libs/index.pyx:138,</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/pandas/_libs/index.pyx:165,</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
-
-<span class="nn">File pandas/_libs/hashtable_class_helper.pxi:5745,</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
-
-<span class="nn">File pandas/_libs/hashtable_class_helper.pxi:5753,</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
-
-<span class="ne">KeyError</span>: &#39;simple TESPy COP&#39;
-
-<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
-
-<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">oemof.solph</span> <span class="k">as</span> <span class="nn">solph</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">hp_thermal_power</span> <span class="o">=</span> <span class="mf">9.1</span>  <span class="c1"># kW</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">cop</span> <span class="o">=</span> <span class="n">input_data</span><span class="p">[</span><span class="s2">&quot;simple TESPy COP&quot;</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">heat_pump</span> <span class="o">=</span> <span class="n">solph</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">Transformer</span><span class="p">(</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="n">label</span><span class="o">=</span><span class="s2">&quot;heat pump&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="n">bus_electricity</span><span class="p">:</span> <span class="n">solph</span><span class="o">.</span><span class="n">Flow</span><span class="p">()},</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span>     <span class="p">},</span>
-<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span> <span class="n">es</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">heat_pump</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/pandas/core/frame.py:3807,</span> in <span class="ni">DataFrame.__getitem__</span><span class="nt">(self, key)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3805</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">nlevels</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">3806</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_multilevel</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">3807</span> <span class="n">indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3808</span> <span class="k">if</span> <span class="n">is_integer</span><span class="p">(</span><span class="n">indexer</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">3809</span>     <span class="n">indexer</span> <span class="o">=</span> <span class="p">[</span><span class="n">indexer</span><span class="p">]</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/pandas/core/indexes/base.py:3804,</span> in <span class="ni">Index.get_loc</span><span class="nt">(self, key, method, tolerance)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3802</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3803</span> <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">3804</span>     <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
-<span class="g g-Whitespace">   </span><span class="mi">3805</span> <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">3806</span>     <span class="c1"># If we have a listlike key, _check_indexing_error will raise</span>
-<span class="g g-Whitespace">   </span><span class="mi">3807</span>     <span class="c1">#  InvalidIndexError. Otherwise we fall through and re-raise</span>
-<span class="g g-Whitespace">   </span><span class="mi">3808</span>     <span class="c1">#  the TypeError.</span>
-<span class="g g-Whitespace">   </span><span class="mi">3809</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_check_indexing_error</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-
-<span class="ne">KeyError</span>: &#39;simple TESPy COP&#39;
 </pre></div>
 </div>
 </div>
@@ -527,8 +474,8 @@ and using a <code class="docutils literal notranslate"><span class="pre">NonConv
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Electricity demand: 33.2 kWh
 </pre></div>
 </div>
-<img alt="../_images/aa4122bef3d34aa21090daa424de716810e266d624a557434e004ea0790292f1.png" src="../_images/aa4122bef3d34aa21090daa424de716810e266d624a557434e004ea0790292f1.png" />
-<img alt="../_images/2ef6be29d778089772ef8228aa0dd3a575cf393fbed1c7e6ee5aefa7fc9bd7f4.png" src="../_images/2ef6be29d778089772ef8228aa0dd3a575cf393fbed1c7e6ee5aefa7fc9bd7f4.png" />
+<img alt="../_images/5d08b1c246258c75ce30c96f3de61fa1151ca2d1a805592886cb1415c259a360.png" src="../_images/5d08b1c246258c75ce30c96f3de61fa1151ca2d1a805592886cb1415c259a360.png" />
+<img alt="../_images/5443562986ed2609ff367687d419baf5e6d556467e35852528724a51a4b77d2f.png" src="../_images/5443562986ed2609ff367687d419baf5e6d556467e35852528724a51a4b77d2f.png" />
 </div>
 </div>
 </section>

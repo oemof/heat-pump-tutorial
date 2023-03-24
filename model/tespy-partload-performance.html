@@ -564,24 +564,24 @@ Therefore we provide a tutorial on how to build models with stable starting valu
 |--------------+------------------+-------------------|
 | cycle closer |         0.00e+00 |          0.00e+00 |
 +--------------+------------------+-------------------+
-##### RESULTS (Condenser) #####
-+-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
-|           |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
-|-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
-| condenser | -9.10e+03 | 1.26e+03 | 7.21e+00 | 5.00e+00 | 1.00e+01 | 1.00e+00 | 1.00e+00 | 4.12e-05 | 0.00e+00 |
-+-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
-##### RESULTS (HeatExchanger) #####
-+------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
-|            |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
-|------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
-| evaporator | -7.24e+03 | 1.85e+03 | 3.92e+00 | 5.00e+00 | 3.00e+00 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 3.39e-06 |
-+------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
 ##### RESULTS (Compressor) #####
 +------------+----------+----------+----------+--------+
 |            |        P |    eta_s |       pr |   igva |
 |------------+----------+----------+----------+--------|
 | compressor | 1.86e+03 | 6.75e-01 | 2.72e+00 |    nan |
 +------------+----------+----------+----------+--------+
+##### RESULTS (Condenser) #####
++-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+|           |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
+|-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
+| condenser | -9.10e+03 | 1.26e+03 | 7.21e+00 | 5.00e+00 | 1.00e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
++-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+##### RESULTS (HeatExchanger) #####
++------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+|            |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
+|------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
+| evaporator | -7.24e+03 | 1.85e+03 | 3.92e+00 | 5.00e+00 | 3.00e+00 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
++------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
 ##### RESULTS (Connection) #####
 +----+-----------+-----------+-----------+-----------+
 |    |         m |         p |         h |         T |
@@ -700,7 +700,7 @@ Therefore we provide a tutorial on how to build models with stable starting valu
       <td>0.000057</td>
       <td>0.002139</td>
       <td>1359.354602</td>
-      <td>8.060345e-16</td>
+      <td>1.209052e-15</td>
       <td>NaN</td>
       <td>1.0</td>
       <td>0.0</td>
@@ -878,7 +878,7 @@ COP are affected by the changing heat load. Only the compressor power requiremen
 this is, that the compressor’s efficiency and the temperature differences (and therefore the evaporation and
 condensation temperatures) do not change with changing load due to our model specifications.</p>
 <figure class="align-default" id="fig-heat-pump-heat-load-design-mode">
-<img alt="../_images/af6e9d8014ecfba0001d74a45e91eb73c543e3ab8f43d33f0227887b248470f6.png" src="../_images/af6e9d8014ecfba0001d74a45e91eb73c543e3ab8f43d33f0227887b248470f6.png" />
+<img alt="../_images/10473433b3c3bc117ee5c837acc67892b508a4ad61a38ddb4590750db09b4ef3.png" src="../_images/10473433b3c3bc117ee5c837acc67892b508a4ad61a38ddb4590750db09b4ef3.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 11 </span><span class="caption-text">Influence of the heat load on the compressor power, its pressure ratio and the COP without modeling part load behavior.</span><a class="headerlink" href="#fig-heat-pump-heat-load-design-mode" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -1076,7 +1076,7 @@ ratio.</p>
 <a class="reference internal" href="../excursion/partload-analysis.html#tespy-partload-disection"><span class="std std-ref">this excursion</span></a>.</p>
 </div>
 <figure class="align-default" id="fig-heat-pump-heat-load-offdesign-mode">
-<img alt="../_images/daeddd741d1203c1759d99e5baf9fdca5c13ff8d45b47dfbc447c374a9fffcf9.png" src="../_images/daeddd741d1203c1759d99e5baf9fdca5c13ff8d45b47dfbc447c374a9fffcf9.png" />
+<img alt="../_images/1ab63e1edb2327bcd0951266b2031bcea74436b45b9b65cdd355ddc470e05251.png" src="../_images/1ab63e1edb2327bcd0951266b2031bcea74436b45b9b65cdd355ddc470e05251.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 13 </span><span class="caption-text">Influence of the heat load on the compressor power, its pressure ratio and the COP when considering part load behavior.</span><a class="headerlink" href="#fig-heat-pump-heat-load-offdesign-mode" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -1236,7 +1236,7 @@ the actual simulation. For example, we can have a look at the design conditions 
 that the deviation between the linearized model and the actual simulation is below 1.5 % for all heat load values. The
 assumption of a constant efficiency factor leads to a high deviation especially with lower heat production up to 18 %.</p>
 <figure class="align-default" id="fig-heat-pump-result-comparison">
-<img alt="../_images/9817af2af7ac8e484e8838347d776231369e492067a15322d47e5263946f50fb.png" src="../_images/9817af2af7ac8e484e8838347d776231369e492067a15322d47e5263946f50fb.png" />
+<img alt="../_images/d4670d05c703e16249494fc611b3d6be64b1a04c5724eb799e0a428133b29b9b.png" src="../_images/d4670d05c703e16249494fc611b3d6be64b1a04c5724eb799e0a428133b29b9b.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 15 </span><span class="caption-text">Comparison of the compressor power depending on the heat pump’s heat load for the simplified approach and in the part
 load simulation.</span><a class="headerlink" href="#fig-heat-pump-result-comparison" title="Permalink to this image">#</a></p>

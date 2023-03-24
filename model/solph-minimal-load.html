@@ -378,155 +378,117 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="oemof-solph-model-with-minimal-load">
 <span id="solph-minimal-load"></span><h1>oemof-solph model with minimal load<a class="headerlink" href="#oemof-solph-model-with-minimal-load" title="Permalink to this heading">#</a></h1>
-<p>This is a transition section to get people from the other chapter and bring them to part load modeling</p>
-<ul class="simple">
-<li><p>partload in general:</p>
-<ul>
-<li><p>difficulties in finding part load efficiency data</p></li>
-<li><p>BUT: we can model it in solph, and here is how</p></li>
-</ul>
-</li>
-</ul>
-<p>Therefore</p>
-<ul class="simple">
-<li><p>use simplified version of the TESPy model as input data</p></li>
-<li><p>show how to model part load in solph</p>
-<ul>
-<li><p>constant efficiency, no offset</p></li>
-<li><p>prepare transfer to offset transformer</p></li>
-</ul>
-</li>
-<li><p>we can compare the results between the partload model and the full linear model</p></li>
-</ul>
-<p>However</p>
-<ul class="simple">
-<li><p>We know how to have minimal load in solph, but what about partload COP?</p>
-<ul>
-<li><p>tespy section with partload performance</p></li>
-</ul>
-</li>
-</ul>
+<p>In this section we are looking into the introduction of minimal load in the <code class="docutils literal notranslate"><span class="pre">oemof-solph</span></code> model. Until now, we assumed
+the heat pump can deliver any amount of heat up to its nominal capacity. This assumption holds especially in large scale
+energy systems, where single plant instances do not affect the overall outcomes and part load operation blurs in the
+system, in small scale systems this might not be the case. Therefore, we have a look how a minimal load affects our
+model.</p>
+<p>We recreate the latest setup, where we combine the TESPy simulation outcome with the energy system. Then we add a heat
+pump which, if operated, must at least provide a heat load of 50 % of its nominal capacity.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utilities</span> <span class="kn">import</span> <span class="n">load_input_data</span><span class="p">,</span> <span class="n">create_energy_system_stub</span>
+<span class="n">input_data</span> <span class="o">=</span> <span class="n">load_input_data</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">24</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
 
-<span class="kn">from</span> <span class="nn">utilities</span> <span class="kn">import</span> <span class="n">load_temperature_data</span>
+<span class="n">es</span><span class="p">,</span> <span class="n">bus_electricity</span><span class="p">,</span> <span class="n">bus_heat_35C</span><span class="p">,</span> <span class="n">thermal_storage</span><span class="p">,</span> <span class="n">electricity_grid</span> <span class="o">=</span> <span class="n">create_energy_system_stub</span><span class="p">(</span><span class="n">input_data</span><span class="p">)</span>
 
-<span class="n">input_data</span> <span class="o">=</span> <span class="n">load_temperature_data</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">24</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
-
-
-<span class="c1"># A crude demand model should be enough for us. Let the demand be 500 W per K below 15 °C.</span>
-<span class="n">input_data</span><span class="p">[</span><span class="s2">&quot;Heat load (kW)&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="mi">15</span> <span class="o">-</span> <span class="mf">0.1</span><span class="o">*</span><span class="n">input_data</span><span class="p">[</span><span class="s2">&quot;Ambient temperature (d°C)&quot;</span><span class="p">]))</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">lower</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">load_tespy_cop</span><span class="p">():</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;COP-T-tespy.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-
-    <span class="c1"># hack to work with floats as index</span>
-    <span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">311</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span>
-
-    <span class="n">df2</span><span class="p">[</span><span class="s2">&quot;COP&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">df2</span><span class="p">[</span><span class="s2">&quot;COP&quot;</span><span class="p">])</span>
-
-    <span class="n">df2</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">df2</span><span class="o">.</span><span class="n">index</span>
-
-    <span class="k">return</span> <span class="n">df2</span>
+<span class="kn">from</span> <span class="nn">utilities</span> <span class="kn">import</span> <span class="n">load_tespy_cop</span>
 
 <span class="n">tespy_cop</span> <span class="o">=</span> <span class="n">load_tespy_cop</span><span class="p">()</span>
-
-<span class="n">input_data</span><span class="p">[</span><span class="s2">&quot;simple TESPy COP&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">input_data</span><span class="p">[</span><span class="s2">&quot;Ambient temperature (d°C)&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">tespy_cop</span><span class="p">[</span><span class="s2">&quot;COP&quot;</span><span class="p">])</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">input_data</span><span class="p">[</span><span class="s2">&quot;Ambient temperature (d°C)&quot;</span><span class="p">]</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;b-&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Ambient temperature (°C)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">input_data</span><span class="p">[</span><span class="s2">&quot;simple TESPy COP&quot;</span><span class="p">],</span> <span class="s2">&quot;r-&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;COP&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/07079cd776d7b250f052a2c4c1a9abf06c49d4fcb0dff9a272e2c9842219571a.png" src="../_images/07079cd776d7b250f052a2c4c1a9abf06c49d4fcb0dff9a272e2c9842219571a.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hp_thermal_power</span> <span class="o">=</span> <span class="mf">9.1</span>  <span class="c1"># kW</span>
-<span class="n">cop</span> <span class="o">=</span> <span class="n">input_data</span><span class="p">[</span><span class="s2">&quot;simple TESPy COP&quot;</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">demand</span> <span class="o">=</span> <span class="n">input_data</span><span class="p">[</span><span class="s2">&quot;Heat load (kW)&quot;</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>With respect to the previous version (solph-with-tespy), a minimal load of 50 % is added.</p>
+<p>The important modification we have to apply to our heat pump is constraining the heat production with a minimum value
+and using a <code class="docutils literal notranslate"><span class="pre">NonConvex</span></code> flow instead of a <code class="docutils literal notranslate"><span class="pre">Flow</span></code>, which introduces a binary variable. All other parts remain untouched.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">oemof.solph</span> <span class="k">as</span> <span class="nn">solph</span>
 
-<span class="n">es</span> <span class="o">=</span> <span class="n">solph</span><span class="o">.</span><span class="n">EnergySystem</span><span class="p">(</span><span class="n">timeindex</span><span class="o">=</span><span class="n">input_data</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">infer_last_interval</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-<span class="n">b_electricity</span> <span class="o">=</span> <span class="n">solph</span><span class="o">.</span><span class="n">Bus</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;electricity&quot;</span><span class="p">)</span>
-<span class="n">b_heat_35C</span> <span class="o">=</span> <span class="n">solph</span><span class="o">.</span><span class="n">Bus</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;heat 35C&quot;</span><span class="p">)</span>
-<span class="n">es</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">b_electricity</span><span class="p">,</span> <span class="n">b_heat_35C</span><span class="p">)</span>
-
-<span class="n">electricity_grid</span> <span class="o">=</span> <span class="n">solph</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">Source</span><span class="p">(</span>
-    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;electricity grid&quot;</span><span class="p">,</span>
-    <span class="n">outputs</span><span class="o">=</span><span class="p">{</span><span class="n">b_electricity</span><span class="p">:</span> <span class="n">solph</span><span class="o">.</span><span class="n">Flow</span><span class="p">(</span><span class="n">variable_costs</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)},</span>  <span class="c1"># €/kWh</span>
-<span class="p">)</span>
-
-<span class="n">heat_demand</span> <span class="o">=</span> <span class="n">solph</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">Sink</span><span class="p">(</span>
-    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;heat demand&quot;</span><span class="p">,</span>
-    <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="n">b_heat_35C</span><span class="p">:</span> <span class="n">solph</span><span class="o">.</span><span class="n">Flow</span><span class="p">(</span><span class="n">nominal_value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fix</span><span class="o">=</span><span class="n">demand</span><span class="p">)},</span>  <span class="c1"># kW</span>
-<span class="p">)</span>
-<span class="n">es</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">electricity_grid</span><span class="p">,</span> <span class="n">heat_demand</span><span class="p">)</span>
-
+<span class="n">hp_thermal_power</span> <span class="o">=</span> <span class="mf">9.1</span>  <span class="c1"># kW</span>
+<span class="n">cop</span> <span class="o">=</span> <span class="n">input_data</span><span class="p">[</span><span class="s2">&quot;simple TESPy COP&quot;</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
 <span class="n">heat_pump</span> <span class="o">=</span> <span class="n">solph</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">Transformer</span><span class="p">(</span>
     <span class="n">label</span><span class="o">=</span><span class="s2">&quot;heat pump&quot;</span><span class="p">,</span>
-    <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="n">b_electricity</span><span class="p">:</span> <span class="n">solph</span><span class="o">.</span><span class="n">Flow</span><span class="p">()},</span>
+    <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="n">bus_electricity</span><span class="p">:</span> <span class="n">solph</span><span class="o">.</span><span class="n">Flow</span><span class="p">()},</span>
     <span class="n">outputs</span><span class="o">=</span><span class="p">{</span>
-        <span class="n">b_heat_35C</span><span class="p">:</span> <span class="n">solph</span><span class="o">.</span><span class="n">Flow</span><span class="p">(</span>
+        <span class="n">bus_heat_35C</span><span class="p">:</span> <span class="n">solph</span><span class="o">.</span><span class="n">Flow</span><span class="p">(</span>
             <span class="n">nominal_value</span><span class="o">=</span><span class="n">hp_thermal_power</span><span class="p">,</span>
             <span class="n">nonconvex</span><span class="o">=</span><span class="n">solph</span><span class="o">.</span><span class="n">NonConvex</span><span class="p">(),</span>
             <span class="nb">min</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
         <span class="p">)</span>
     <span class="p">},</span>
     <span class="n">conversion_factors</span><span class="o">=</span><span class="p">{</span>
-        <span class="n">b_electricity</span><span class="p">:</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">cop</span><span class="p">,</span>
-        <span class="n">b_heat_35C</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">bus_electricity</span><span class="p">:</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">cop</span><span class="p">,</span>
+        <span class="n">bus_heat_35C</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
     <span class="p">},</span>
 <span class="p">)</span>
 
 <span class="n">es</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">heat_pump</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/pandas/core/indexes/base.py:3802,</span> in <span class="ni">Index.get_loc</span><span class="nt">(self, key, method, tolerance)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3801</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">3802</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3803</span> <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
 
-<span class="n">es</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">solph</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">Transformer</span><span class="p">(</span>
-    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;heating rod&quot;</span><span class="p">,</span>
-    <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="n">b_electricity</span><span class="p">:</span> <span class="n">solph</span><span class="o">.</span><span class="n">Flow</span><span class="p">()},</span>
-    <span class="n">outputs</span><span class="o">=</span><span class="p">{</span><span class="n">b_heat_35C</span><span class="p">:</span> <span class="n">solph</span><span class="o">.</span><span class="n">Flow</span><span class="p">()},</span>
-<span class="p">))</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/pandas/_libs/index.pyx:138,</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
 
-<span class="n">thermal_storage</span> <span class="o">=</span> <span class="n">solph</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">GenericStorage</span><span class="p">(</span>
-    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;thermal_storage&#39;</span><span class="p">,</span>
-    <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="n">b_heat_35C</span><span class="p">:</span> <span class="n">solph</span><span class="o">.</span><span class="n">Flow</span><span class="p">()},</span>
-    <span class="n">outputs</span><span class="o">=</span><span class="p">{</span><span class="n">b_heat_35C</span><span class="p">:</span> <span class="n">solph</span><span class="o">.</span><span class="n">Flow</span><span class="p">()},</span>
-    <span class="n">loss_rate</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span>
-    <span class="n">nominal_storage_capacity</span><span class="o">=</span><span class="mf">8.7</span><span class="p">,</span>  <span class="c1"># Assume 5 k of spread and 1.5 m³ volume </span>
-<span class="p">)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/pandas/_libs/index.pyx:165,</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
 
-<span class="n">es</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">thermal_storage</span><span class="p">)</span>
+<span class="nn">File pandas/_libs/hashtable_class_helper.pxi:5745,</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
 
-<span class="n">model</span> <span class="o">=</span> <span class="n">solph</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">energysystem</span><span class="o">=</span><span class="n">es</span><span class="p">)</span>
+<span class="nn">File pandas/_libs/hashtable_class_helper.pxi:5753,</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
 
+<span class="ne">KeyError</span>: &#39;simple TESPy COP&#39;
+
+<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
+
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">oemof.solph</span> <span class="k">as</span> <span class="nn">solph</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">hp_thermal_power</span> <span class="o">=</span> <span class="mf">9.1</span>  <span class="c1"># kW</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">cop</span> <span class="o">=</span> <span class="n">input_data</span><span class="p">[</span><span class="s2">&quot;simple TESPy COP&quot;</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">heat_pump</span> <span class="o">=</span> <span class="n">solph</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">Transformer</span><span class="p">(</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="n">label</span><span class="o">=</span><span class="s2">&quot;heat pump&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="n">bus_electricity</span><span class="p">:</span> <span class="n">solph</span><span class="o">.</span><span class="n">Flow</span><span class="p">()},</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">20</span>     <span class="p">},</span>
+<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">23</span> <span class="n">es</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">heat_pump</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/pandas/core/frame.py:3807,</span> in <span class="ni">DataFrame.__getitem__</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3805</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">nlevels</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">3806</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_multilevel</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">3807</span> <span class="n">indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3808</span> <span class="k">if</span> <span class="n">is_integer</span><span class="p">(</span><span class="n">indexer</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">3809</span>     <span class="n">indexer</span> <span class="o">=</span> <span class="p">[</span><span class="n">indexer</span><span class="p">]</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.10.10/x64/lib/python3.10/site-packages/pandas/core/indexes/base.py:3804,</span> in <span class="ni">Index.get_loc</span><span class="nt">(self, key, method, tolerance)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3802</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3803</span> <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">3804</span>     <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
+<span class="g g-Whitespace">   </span><span class="mi">3805</span> <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">3806</span>     <span class="c1"># If we have a listlike key, _check_indexing_error will raise</span>
+<span class="g g-Whitespace">   </span><span class="mi">3807</span>     <span class="c1">#  InvalidIndexError. Otherwise we fall through and re-raise</span>
+<span class="g g-Whitespace">   </span><span class="mi">3808</span>     <span class="c1">#  the TypeError.</span>
+<span class="g g-Whitespace">   </span><span class="mi">3809</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_check_indexing_error</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+<span class="ne">KeyError</span>: &#39;simple TESPy COP&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can again run our model and have a look at the results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">solph</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">energysystem</span><span class="o">=</span><span class="n">es</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
-
 <span class="n">results</span> <span class="o">=</span> <span class="n">solph</span><span class="o">.</span><span class="n">processing</span><span class="o">.</span><span class="n">results</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -534,7 +496,12 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">heat_supply</span> <span class="o">=</span> <span class="n">results</span><span class="p">[(</span><span class="n">heat_pump</span><span class="p">,</span> <span class="n">b_heat_35C</span><span class="p">)][</span><span class="s2">&quot;sequences&quot;</span><span class="p">][</span><span class="s2">&quot;flow&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+
+<span class="n">demand</span> <span class="o">=</span> <span class="n">input_data</span><span class="p">[</span><span class="s2">&quot;Heat load (kW)&quot;</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">heat_supply</span> <span class="o">=</span> <span class="n">results</span><span class="p">[(</span><span class="n">heat_pump</span><span class="p">,</span> <span class="n">bus_heat_35C</span><span class="p">)][</span><span class="s2">&quot;sequences&quot;</span><span class="p">][</span><span class="s2">&quot;flow&quot;</span><span class="p">]</span>
 <span class="n">storage_content</span> <span class="o">=</span> <span class="n">results</span><span class="p">[(</span><span class="n">thermal_storage</span><span class="p">,</span> <span class="kc">None</span><span class="p">)][</span><span class="s2">&quot;sequences&quot;</span><span class="p">][</span><span class="s2">&quot;storage_content&quot;</span><span class="p">]</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">heat_supply</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;r-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;heat supply&quot;</span><span class="p">)</span>
@@ -551,7 +518,7 @@ document.write(`
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
-<span class="n">electricity_consumption</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">results</span><span class="p">[(</span><span class="n">electricity_grid</span><span class="p">,</span> <span class="n">b_electricity</span><span class="p">)][</span><span class="s2">&quot;sequences&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="n">electricity_consumption</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">results</span><span class="p">[(</span><span class="n">electricity_grid</span><span class="p">,</span> <span class="n">bus_electricity</span><span class="p">)][</span><span class="s2">&quot;sequences&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Electricity demand: </span><span class="si">{</span><span class="n">electricity_consumption</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> kWh&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -561,7 +528,7 @@ document.write(`
 </pre></div>
 </div>
 <img alt="../_images/aa4122bef3d34aa21090daa424de716810e266d624a557434e004ea0790292f1.png" src="../_images/aa4122bef3d34aa21090daa424de716810e266d624a557434e004ea0790292f1.png" />
-<img alt="../_images/5443562986ed2609ff367687d419baf5e6d556467e35852528724a51a4b77d2f.png" src="../_images/5443562986ed2609ff367687d419baf5e6d556467e35852528724a51a4b77d2f.png" />
+<img alt="../_images/2ef6be29d778089772ef8228aa0dd3a575cf393fbed1c7e6ee5aefa7fc9bd7f4.png" src="../_images/2ef6be29d778089772ef8228aa0dd3a575cf393fbed1c7e6ee5aefa7fc9bd7f4.png" />
 </div>
 </div>
 </section>

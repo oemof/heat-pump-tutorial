@@ -437,7 +437,7 @@ below. The overall specifications on heat exchanger temperatude differences, com
 unchanged.</p>
 <figure class="align-default" id="tespy-heat-pump-part-load-flowsheet">
 <img alt="Component based thermodynamic model of the heat pump for part load modeling" src="../_images/heat_pump_full.svg" /><figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Component based thermodynamic model of the heat pump for part load modeling</span><a class="headerlink" href="#tespy-heat-pump-part-load-flowsheet" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Component based thermodynamic model of the heat pump for part load modeling</span><a class="headerlink" href="#tespy-heat-pump-part-load-flowsheet" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>First, we import the <code class="docutils literal notranslate"><span class="pre">HeatExchanger</span></code> class to model the evaporator, the <code class="docutils literal notranslate"><span class="pre">Condenser</span></code> class to model the condenser
@@ -552,7 +552,19 @@ Therefore we provide a tutorial on how to build models with stable starting valu
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (Condenser) #####
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (Valve) #####
++-----------------+----------+----------+
+|                 |       pr |     zeta |
+|-----------------+----------+----------|
+| expansion valve | 3.68e-01 | 1.04e+11 |
++-----------------+----------+----------+
+##### RESULTS (CycleCloser) #####
++--------------+------------------+-------------------+
+|              |   mass_deviation |   fluid_deviation |
+|--------------+------------------+-------------------|
+| cycle closer |         0.00e+00 |          0.00e+00 |
++--------------+------------------+-------------------+
+##### RESULTS (Condenser) #####
 +-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
 |           |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
 |-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
@@ -570,18 +582,6 @@ Therefore we provide a tutorial on how to build models with stable starting valu
 |------------+----------+----------+----------+--------|
 | compressor | 1.86e+03 | 6.75e-01 | 2.72e+00 |    nan |
 +------------+----------+----------+----------+--------+
-##### RESULTS (CycleCloser) #####
-+--------------+------------------+-------------------+
-|              |   mass_deviation |   fluid_deviation |
-|--------------+------------------+-------------------|
-| cycle closer |         0.00e+00 |          0.00e+00 |
-+--------------+------------------+-------------------+
-##### RESULTS (Valve) #####
-+-----------------+----------+----------+
-|                 |       pr |     zeta |
-|-----------------+----------+----------|
-| expansion valve | 3.68e-01 | 1.04e+11 |
-+-----------------+----------+----------+
 ##### RESULTS (Connection) #####
 +----+-----------+-----------+-----------+-----------+
 |    |         m |         p |         h |         T |
@@ -813,12 +813,12 @@ see <a class="reference internal" href="tespy-simple.html#tespy-simple"><span cl
 </div>
 <p>We create three subplots for the results: Compressor power <span class="math notranslate nohighlight">\(\dot W_\text{cp}\)</span>, the compressor pressure ratio and
 COP over the ambient temperature level. We can see the same trend in
-<a class="reference internal" href="#fig-heat-pump-ambient-temperature-design-mode"><span class="std std-numref">Fig. 9</span></a> as we saw in the previous section in
+<a class="reference internal" href="#fig-heat-pump-ambient-temperature-design-mode"><span class="std std-numref">Fig. 10</span></a> as we saw in the previous section in
 <a class="reference internal" href="tespy-simple.html#fig-heat-pump-efficiency-factor"><span class="std std-numref">Fig. 7</span></a>.</p>
 <figure class="align-default" id="fig-heat-pump-ambient-temperature-design-mode">
 <img alt="../_images/f99e936cb32b4241d614b55e4aaad96998ee7a58033632d95b3c603f5b55fd53.png" src="../_images/f99e936cb32b4241d614b55e4aaad96998ee7a58033632d95b3c603f5b55fd53.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Influence of the ambient temperature on the compressor power, its pressure ratio and the COP without modeling part load
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Influence of the ambient temperature on the compressor power, its pressure ratio and the COP without modeling part load
 behavior.</span><a class="headerlink" href="#fig-heat-pump-ambient-temperature-design-mode" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -873,14 +873,14 @@ In the best case, you can retrieve exact data from a manufacturer.</p>
 </div>
 </div>
 <p>Again we create a plot with the influence of the heat production on the compressor’s parameters and on the COP in
-<a class="reference internal" href="#fig-heat-pump-heat-load-design-mode"><span class="std std-numref">Fig. 10</span></a>. It becomes obvious that neither the compressor’s pressure ratio nor the
+<a class="reference internal" href="#fig-heat-pump-heat-load-design-mode"><span class="std std-numref">Fig. 11</span></a>. It becomes obvious that neither the compressor’s pressure ratio nor the
 COP are affected by the changing heat load. Only the compressor power requirement scales with the load. The reason for
 this is, that the compressor’s efficiency and the temperature differences (and therefore the evaporation and
 condensation temperatures) do not change with changing load due to our model specifications.</p>
 <figure class="align-default" id="fig-heat-pump-heat-load-design-mode">
 <img alt="../_images/af6e9d8014ecfba0001d74a45e91eb73c543e3ab8f43d33f0227887b248470f6.png" src="../_images/af6e9d8014ecfba0001d74a45e91eb73c543e3ab8f43d33f0227887b248470f6.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Influence of the heat load on the compressor power, its pressure ratio and the COP without modeling part load behavior.</span><a class="headerlink" href="#fig-heat-pump-heat-load-design-mode" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Influence of the heat load on the compressor power, its pressure ratio and the COP without modeling part load behavior.</span><a class="headerlink" href="#fig-heat-pump-heat-load-design-mode" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -963,14 +963,14 @@ as we had in the first analysis.</p>
 </div>
 </div>
 <p>We make the same plots as before, comparing the results of the design point calculations with those that take partload
-into account. The <a class="reference internal" href="#fig-heat-pump-ambient-temperature-offdesign-mode"><span class="std std-numref">Fig. 11</span></a> shows the comparison of both approaches.
+into account. The <a class="reference internal" href="#fig-heat-pump-ambient-temperature-offdesign-mode"><span class="std std-numref">Fig. 12</span></a> shows the comparison of both approaches.
 The last subplot is the deviation in COP, which is at an overall low level. Only for very high ambient temperature
 levels, which are nearly at the heat supply temperature level the deviation increases to about 5 % with respect to the
 model accounting for part load behavior.</p>
 <figure class="align-default" id="fig-heat-pump-ambient-temperature-offdesign-mode">
 <img alt="../_images/186e7b7debb3d046d241ab3b13c2c658452b9a453cd1c2f51b2576f806e5e953.png" src="../_images/186e7b7debb3d046d241ab3b13c2c658452b9a453cd1c2f51b2576f806e5e953.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Influence of the ambient temperature on the compressor power, its pressure ratio and the COP when considering part load
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Influence of the ambient temperature on the compressor power, its pressure ratio and the COP when considering part load
 behavior.</span><a class="headerlink" href="#fig-heat-pump-ambient-temperature-offdesign-mode" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -1064,7 +1064,7 @@ the ambient design temperature value and rerun the offdesign simulations with th
 </div>
 </div>
 <p>Again we plot our results against the results of the simulation in design mode
-(<a class="reference internal" href="#fig-heat-pump-heat-load-offdesign-mode"><span class="std std-numref">Fig. 12</span></a>). The COP of both simluaitons matches quite well for all heat loads
+(<a class="reference internal" href="#fig-heat-pump-heat-load-offdesign-mode"><span class="std std-numref">Fig. 13</span></a>). The COP of both simluaitons matches quite well for all heat loads
 above 75 % of design heat production. For lower heat production values the part load considering simulations show lower
 COP than the design simulation. When looking at the compressor’s pressure ratio its value decreases with decreasing heat
 load. This seems odd at first, because a lower pressure ratio would indicate lower compresser power. The reason for the
@@ -1078,7 +1078,7 @@ ratio.</p>
 <figure class="align-default" id="fig-heat-pump-heat-load-offdesign-mode">
 <img alt="../_images/daeddd741d1203c1759d99e5baf9fdca5c13ff8d45b47dfbc447c374a9fffcf9.png" src="../_images/daeddd741d1203c1759d99e5baf9fdca5c13ff8d45b47dfbc447c374a9fffcf9.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Influence of the heat load on the compressor power, its pressure ratio and the COP when considering part load behavior.</span><a class="headerlink" href="#fig-heat-pump-heat-load-offdesign-mode" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Influence of the heat load on the compressor power, its pressure ratio and the COP when considering part load behavior.</span><a class="headerlink" href="#fig-heat-pump-heat-load-offdesign-mode" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -1177,12 +1177,12 @@ investigate the influence of the heat load per temperature value.</p>
 </div>
 </div>
 </div>
-<p>We can plot some of the results, e.g. for every 10th temperature value in <a class="reference internal" href="#fig-heat-pump-result-offdesign-mode"><span class="std std-numref">Fig. 13</span></a>.
+<p>We can plot some of the results, e.g. for every 10th temperature value in <a class="reference internal" href="#fig-heat-pump-result-offdesign-mode"><span class="std std-numref">Fig. 14</span></a>.
 These results can then be transferred to the <code class="docutils literal notranslate"><span class="pre">oemof-solph</span></code> simulation.</p>
 <figure class="align-default" id="fig-heat-pump-result-offdesign-mode">
 <img alt="../_images/6bea6a60ea26857644a035a53301827a294e451389a47ab300d21d8056972a01.png" src="../_images/6bea6a60ea26857644a035a53301827a294e451389a47ab300d21d8056972a01.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Influence of the ambienht temperature and heat load on the compressor power and the COP when considering part load
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Influence of the ambienht temperature and heat load on the compressor power and the COP when considering part load
 behavior.</span><a class="headerlink" href="#fig-heat-pump-result-offdesign-mode" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -1230,25 +1230,25 @@ mixed integer model.</p>
 </div>
 </div>
 </div>
-<p>In <a class="reference internal" href="#fig-heat-pump-result-comparison"><span class="std std-numref">Fig. 14</span></a> we can make a plot to look at the deviation between the assumption of a
+<p>In <a class="reference internal" href="#fig-heat-pump-result-comparison"><span class="std std-numref">Fig. 15</span></a> we can make a plot to look at the deviation between the assumption of a
 constant efficiency value (as in the first attempt in <a class="reference internal" href="solph-simple.html#solph-linear"><span class="std std-ref">this section</span></a>), the linearized variant and
 the actual simulation. For example, we can have a look at the design conditions for the ambient temperature. We can see
 that the deviation between the linearized model and the actual simulation is below 1.5 % for all heat load values. The
 assumption of a constant efficiency factor leads to a high deviation especially with lower heat production up to 18 %.</p>
 <figure class="align-default" id="fig-heat-pump-result-comparison">
-<img alt="../_images/d4670d05c703e16249494fc611b3d6be64b1a04c5724eb799e0a428133b29b9b.png" src="../_images/d4670d05c703e16249494fc611b3d6be64b1a04c5724eb799e0a428133b29b9b.png" />
+<img alt="../_images/9817af2af7ac8e484e8838347d776231369e492067a15322d47e5263946f50fb.png" src="../_images/9817af2af7ac8e484e8838347d776231369e492067a15322d47e5263946f50fb.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Comparison of the compressor power depending on the heat pump’s heat load for the simplified approach and in the part
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Comparison of the compressor power depending on the heat pump’s heat load for the simplified approach and in the part
 load simulation.</span><a class="headerlink" href="#fig-heat-pump-result-comparison" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Furthermore, we can plot the linearization of a selected amount of simulation points in
-<a class="reference internal" href="#fig-heat-pump-result-linearization"><span class="std std-numref">Fig. 15</span></a>. We can see, that both, offset and slope, change for every ambient
+<a class="reference internal" href="#fig-heat-pump-result-linearization"><span class="std std-numref">Fig. 16</span></a>. We can see, that both, offset and slope, change for every ambient
 temperature value.</p>
 <figure class="align-default" id="fig-heat-pump-result-linearization">
 <img alt="../_images/7a6154424fc37c2cb0ef90c100eae8fb866c4aea05a59eac2bf6ddb1bdc03d3f.png" src="../_images/7a6154424fc37c2cb0ef90c100eae8fb866c4aea05a59eac2bf6ddb1bdc03d3f.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Linearized compressor power to heat load.</span><a class="headerlink" href="#fig-heat-pump-result-linearization" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Linearized compressor power to heat load.</span><a class="headerlink" href="#fig-heat-pump-result-linearization" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">

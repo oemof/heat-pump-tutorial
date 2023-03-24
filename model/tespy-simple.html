@@ -592,12 +592,13 @@ future as well.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (CycleCloser) #####
-+--------------+------------------+-------------------+
-|              |   mass_deviation |   fluid_deviation |
-|--------------+------------------+-------------------|
-| cycle closer |         0.00e+00 |          0.00e+00 |
-+--------------+------------------+-------------------+
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (HeatExchangerSimple) #####
++------------+-----------+----------+----------+-----+-----+------+------+--------+
+|            |         Q |       pr |     zeta |   D |   L |   ks |   kA |   Tamb |
+|------------+-----------+----------+----------+-----+-----+------+------+--------|
+| condenser  | -9.10e+03 | 1.00e+00 | 1.99e-05 | nan | nan |  nan |  nan |    nan |
+| evaporator |  7.48e+03 | 1.00e+00 | 1.59e-06 | nan | nan |  nan |  nan |    nan |
++------------+-----------+----------+----------+-----+-----+------+------+--------+
 ##### RESULTS (Compressor) #####
 +------------+----------+----------+----------+--------+
 |            |        P |    eta_s |       pr |   igva |
@@ -610,13 +611,12 @@ future as well.</p>
 |-----------------+----------+----------|
 | expansion valve | 3.68e-01 | 9.74e+10 |
 +-----------------+----------+----------+
-##### RESULTS (HeatExchangerSimple) #####
-+------------+-----------+----------+----------+-----+-----+------+------+--------+
-|            |         Q |       pr |     zeta |   D |   L |   ks |   kA |   Tamb |
-|------------+-----------+----------+----------+-----+-----+------+------+--------|
-| condenser  | -9.10e+03 | 1.00e+00 | 0.00e+00 | nan | nan |  nan |  nan |    nan |
-| evaporator |  7.48e+03 | 1.00e+00 | 0.00e+00 | nan | nan |  nan |  nan |    nan |
-+------------+-----------+----------+----------+-----+-----+------+------+--------+
+##### RESULTS (CycleCloser) #####
++--------------+------------------+-------------------+
+|              |   mass_deviation |   fluid_deviation |
+|--------------+------------------+-------------------|
+| cycle closer |         0.00e+00 |          0.00e+00 |
++--------------+------------------+-------------------+
 ##### RESULTS (Connection) #####
 +----+-----------+-----------+-----------+-----------+
 |    |         m |         p |         h |         T |
@@ -641,7 +641,7 @@ objects or from the network’s result dataframes. Note, that the compressor’s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1618.4579721422992
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1618.4579721423017
 </pre></div>
 </div>
 </div>
@@ -653,7 +653,7 @@ objects or from the network’s result dataframes. Note, that the compressor’s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1618.4579721422992
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1618.4579721423017
 </pre></div>
 </div>
 </div>
@@ -666,7 +666,7 @@ objects or from the network’s result dataframes. Note, that the compressor’s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.622635963759152
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.622635963759143
 </pre></div>
 </div>
 </div>
@@ -720,7 +720,7 @@ code below performs a simple binary search.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.900349094422361
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.900349094422374
 </pre></div>
 </div>
 </div>
@@ -739,16 +739,16 @@ assessed.</p>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 
-<span class="n">temperature_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">temperature_range</span> <span class="o">+</span> <span class="mi">5</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;COP&quot;</span><span class="p">,</span> <span class="s2">&quot;COP_carnot&quot;</span><span class="p">])</span>
+<span class="n">temperature_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">temperature_range</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;COP&quot;</span><span class="p">,</span> <span class="s2">&quot;COP_carnot&quot;</span><span class="p">])</span>
 
 <span class="n">cp</span><span class="o">.</span><span class="n">eta_s</span><span class="o">.</span><span class="n">val</span>
 
 <span class="k">for</span> <span class="n">T</span> <span class="ow">in</span> <span class="n">temperature_range</span><span class="p">:</span>
-    <span class="n">c2</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">T</span><span class="p">)</span>
+    <span class="n">c2</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">T</span> <span class="o">-</span> <span class="mi">5</span><span class="p">)</span>
     <span class="n">nwk</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="s2">&quot;design&quot;</span><span class="p">)</span>
-    <span class="n">results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">T</span> <span class="o">+</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;COP&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">cd</span><span class="o">.</span><span class="n">Q</span><span class="o">.</span><span class="n">val</span><span class="p">)</span> <span class="o">/</span> <span class="n">cp</span><span class="o">.</span><span class="n">P</span><span class="o">.</span><span class="n">val</span>
-    <span class="n">results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">T</span> <span class="o">+</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;COP_carnot&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">c4</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">val_SI</span> <span class="o">/</span> <span class="p">(</span><span class="n">c4</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">val</span> <span class="o">-</span> <span class="n">c2</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">val</span><span class="p">)</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="s2">&quot;COP&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">cd</span><span class="o">.</span><span class="n">Q</span><span class="o">.</span><span class="n">val</span><span class="p">)</span> <span class="o">/</span> <span class="n">cp</span><span class="o">.</span><span class="n">P</span><span class="o">.</span><span class="n">val</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="s2">&quot;COP_carnot&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">c4</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">val_SI</span> <span class="o">/</span> <span class="p">(</span><span class="n">c4</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">val</span> <span class="o">-</span> <span class="n">c2</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">val</span><span class="p">)</span>
 
 <span class="n">results</span><span class="p">[</span><span class="s2">&quot;efficiency&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s2">&quot;COP&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">results</span><span class="p">[</span><span class="s2">&quot;COP_carnot&quot;</span><span class="p">]</span>
 </pre></div>
@@ -777,7 +777,7 @@ assessed.</p>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">temperature_range</span><span class="p">,</span> <span class="p">[</span><span class="n">eta_const</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">temperature_range</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:green&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Efficiency factor&quot;</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Evaporation temperature in °C&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Ambient temperature in °C&quot;</span><span class="p">)</span>
 
 <span class="p">[(</span><span class="n">a</span><span class="o">.</span><span class="n">grid</span><span class="p">(),</span> <span class="n">a</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">))</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">ax</span><span class="p">];</span>
 
@@ -787,7 +787,7 @@ assessed.</p>
 </div>
 </div>
 <figure class="align-default" id="fig-heat-pump-efficiency-factor">
-<img alt="../_images/3e6efccd7e7ad349969442cdecfbf182ea52d8ef5cbc31b6b2f4f6a99e8cfa5b.png" src="../_images/3e6efccd7e7ad349969442cdecfbf182ea52d8ef5cbc31b6b2f4f6a99e8cfa5b.png" />
+<img alt="../_images/56acafbd573c181c2dcc533edbd048cb5bcca5b799046ff7daf3e2de2efaa7a2.png" src="../_images/56acafbd573c181c2dcc533edbd048cb5bcca5b799046ff7daf3e2de2efaa7a2.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 7 </span><span class="caption-text">Comparison of the COP of the heat pump calculated with a constant and a variable efficiency factor.</span><a class="headerlink" href="#fig-heat-pump-efficiency-factor" title="Permalink to this image">#</a></p>
 </figcaption>

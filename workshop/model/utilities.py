@@ -38,7 +38,7 @@ def load_temperature_data():
 
 def load_input_data():
     input_data = load_temperature_data()
-    
+
     # A crude demand model should be enough for us. Let the demand be 500 W per K below 15 °C.
     input_data["Heat load (kW)"] = (0.5 * (15 - input_data["Ambient temperature (°C)"])).clip(lower=0)
 
@@ -100,10 +100,9 @@ def create_energy_system_stub(input_data):
         inputs={bus_heat_35C: solph.Flow(nominal_value=1, fix=demand)},  # kW
     )
 
-
     es.add(electricity_grid, thermal_storage, heat_demand)
 
-    return es, bus_electricity, bus_heat_35C
+    return es, bus_electricity, bus_heat_35C, thermal_storage, electricity_grid
 
 
 def simple_heat_pump(working_fluid):

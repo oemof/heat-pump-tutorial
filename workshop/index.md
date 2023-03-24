@@ -11,12 +11,6 @@ You will learn how to use and apply the two most know oemof libraries, i.e.
 modeling heat pumps in energy system analysis. If you would like to add more
 contents you are welcome to open a pull request on the repository.
 
-## Table of Contents
-
-- {ref}`Installation and mini introduction to used tools <installation-label>`
-- {ref}`Building the linear model with a simple thermodynamic model <simple-linear-model-label>`
-- {ref}`Mixed-Integer model with minimum partload and partload efficiency <mixed-integer-model-label>`
-
 ## Abstract
 
 Since the implementation and operation of heat pumps is considered one of the

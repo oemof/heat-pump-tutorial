@@ -6,15 +6,16 @@ parts:
   - file: getting-started/setup-python
   - file: getting-started/5-minutes-into-solph
   - file: getting-started/5-minutes-into-tespy
+- caption: Systemoverview
+  chapters:
+  - file: model/intro
 - caption: Linear Heat Pump Model
   chapters:
-  - file: model/linear
   - file: model/solph-simple
   - file: model/tespy-simple
   - file: model/solph-with-tespy
 - caption: Mixed-Integer Model
   chapters:
-  - file: model/mip
   - file: model/solph-minimal-load
   - file: model/tespy-partload-performance
   - file: model/solph-offset

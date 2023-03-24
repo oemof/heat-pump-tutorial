@@ -71,6 +71,11 @@ useful. While not required, it is possible to self-prepare specifically for the
 frameworks used in this tutorial with numerous examples available on the
 respective documentation websites.
 
+## Acknowledgements
+
+We would like to give a special Thank You to the awesome `oemof` community, which - independently of institutions - has
+been able to put out some amazing libraries for energy modelers word wide.
+
 ## LICENSE
 
 ```{eval-rst}

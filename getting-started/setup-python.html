@@ -395,27 +395,11 @@ document.write(`
 <p>Make sure you have installed your favorite python distribution as well as a code editor on your machine. A lightweight
 python installation is, for example, <a class="reference external" href="https://github.com/conda-forge/miniforge">miniforge</a>. Then you can follow these
 steps to create an environment and install the required dependencies:</p>
-<ol class="arabic">
-<li><p>Create a new folder on your machine.</p></li>
-<li><p>Download the <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file from the
-<a class="reference external" href="https://github.com/fwitte/oemof-workshop-osmses-2023">github repository</a> and save it to the new folder OR create an
-<code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> in your folder manually and copy the following contents into it:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">:</span> <span class="n">oemof</span><span class="o">-</span><span class="n">workshop</span><span class="o">-</span><span class="n">osmses</span>
-<span class="n">channels</span><span class="p">:</span>
-<span class="o">-</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-<span class="n">dependencies</span><span class="p">:</span>
-<span class="o">-</span> <span class="n">python</span><span class="o">==</span><span class="mf">3.10</span>
-<span class="o">-</span> <span class="n">pip</span>
-<span class="o">-</span> <span class="n">pip</span><span class="p">:</span>
-  <span class="o">-</span> <span class="n">oemof</span><span class="o">.</span><span class="n">solph</span>
-  <span class="o">-</span> <span class="n">tespy</span>
-  <span class="o">-</span> <span class="n">notebook</span>
-</pre></div>
-</div>
-</li>
-<li><p>Open the miniforge3 prompt and navigate into that folder with <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/path/to/the/folder</span></code></p></li>
-<li><p>Create and prepare the environment mit <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">create</span> <span class="pre">-f</span> <span class="pre">environment.yml</span></code></p></li>
-<li><p>Activate your environment using <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">oemof-workshop-osmses</span></code></p></li>
+<ol class="arabic simple">
+<li><p>Download or clone the github repository: <a href="#id1"><span class="problematic" id="id2">git clone https://github.com/fwitte/oemof-workshop-osmses-2023</span></a></p></li>
+<li><p>Open the miniforge3 prompt and navigate into that folder: <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/path/to/the/oemof-workshop-osmses-2023</span></code></p></li>
+<li><p>Create and prepare the environment: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">create</span> <span class="pre">-f</span> <span class="pre">environment.yml</span></code></p></li>
+<li><p>Activate your environment: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">oemof-workshop-osmses</span></code></p></li>
 </ol>
 <p>For the usage of <code class="docutils literal notranslate"><span class="pre">oemof-solph</span></code> you will also need a solver. To download and install a solver, please follow the
 instructions at the installation section of the
@@ -439,9 +423,8 @@ install jupyter notebook separately.</p>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>To save you some time in the workshop, we have prepared all relevant functions required for the models in a separate
-python script. You can download it here: <a class="reference download internal" download="" href="../_downloads/df7f5e00cd57e64f4e96e1af2178f277/utilities.py"><code class="xref download docutils literal notranslate"><span class="pre">utilities.py</span></code></a>. To make use of it, save it into
-the working directory you created in the installation step. It will be possible to import these in the notebooks.</p>
+<p>In some occasions we are using predefined functions, that are not shown in the notebooks. You can download the file with
+all those functions here: <a class="reference download internal" download="" href="../_downloads/df7f5e00cd57e64f4e96e1af2178f277/utilities.py"><code class="xref download docutils literal notranslate"><span class="pre">utilities.py</span></code></a>.</p>
 </div>
 </section>
 </section>

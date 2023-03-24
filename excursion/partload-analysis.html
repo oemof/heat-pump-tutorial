@@ -156,16 +156,19 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../getting-started/5-minutes-into-solph.html">5 minutes into oemof-solph</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting-started/5-minutes-into-tespy.html">5 minutes into TESPy</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Systemoverview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../model/intro.html">Scope of the Workshop</a></li>
+
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Linear Heat Pump Model</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../model/linear.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../model/solph-simple.html">Linear oemof-solph heat pump model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../model/tespy-simple.html">Simple TESPy heat pump model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../model/solph-with-tespy.html">Combining oemof-solph and TESPy</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Mixed-Integer Model</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../model/mip.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../model/solph-minimal-load.html">oemof-solph model with minimal load</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../model/tespy-partload-performance.html">Part load performance in TESPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../model/solph-offset.html">oemof-solph model with variable partload efficiency</a></li>
@@ -488,9 +491,9 @@ modeling assumptions and test the implementation.</p>
 <p>Finally, we plot the results. We can see, that the pressure ratio does not depend on the compressor’s efficiency. Still,
 the COP drops with decreased heat load. The reason for that is the lower part load efficiency of the compressor.</p>
 <figure class="align-default" id="heat-pump-influence-efficiency">
-<img alt="../_images/ad76b96e59a0431e0e4e8fd4f6c9c118815d3b28c934571ea843d063eb66e6bb.png" src="../_images/ad76b96e59a0431e0e4e8fd4f6c9c118815d3b28c934571ea843d063eb66e6bb.png" />
+<img alt="../_images/240bed54ff42dbe20d2d3cddf64ce98f49e9b2dc0c440c8891182f70e617fbce.png" src="../_images/240bed54ff42dbe20d2d3cddf64ce98f49e9b2dc0c440c8891182f70e617fbce.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Influence of the compressor efficiency part load model with varying heat load.</span><a class="headerlink" href="#heat-pump-influence-efficiency" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Influence of the compressor efficiency part load model with varying heat load.</span><a class="headerlink" href="#heat-pump-influence-efficiency" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -568,9 +571,9 @@ while the heat transfer coefficient remains more or less unchanged, the availabl
 lower temperature difference. Since the ambient temperature level is fixed, the evaporation temperature rises a little
 bit compared to the design case reducing the pressure ratio inside the main cycle of the heat pump.</p>
 <figure class="align-default" id="heat-pump-influence-evaporator">
-<img alt="../_images/1836cd505445b4a25b41fa0a11792dfec6d9877bb611670946bb298f8bc5676f.png" src="../_images/1836cd505445b4a25b41fa0a11792dfec6d9877bb611670946bb298f8bc5676f.png" />
+<img alt="../_images/ec77a8224df86eb9d0bc2fbd5997092e11b07c24da541d141127d781a660ab14.png" src="../_images/ec77a8224df86eb9d0bc2fbd5997092e11b07c24da541d141127d781a660ab14.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Influence of the evaporator heat transfer coefficient part load model with varying heat load.</span><a class="headerlink" href="#heat-pump-influence-evaporator" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">Influence of the evaporator heat transfer coefficient part load model with varying heat load.</span><a class="headerlink" href="#heat-pump-influence-evaporator" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -644,9 +647,9 @@ evaporator.</p>
 <p>In the plot we can see an even stronger relationship between the decrease of heat load and the decrease of pressure
 ratio, therefore the increase in COP. The effect is the same as we have observed in the evaporator.</p>
 <figure class="align-default" id="heat-pump-influence-condenser">
-<img alt="../_images/191e6486a938a6fb551624f89eead0e15345b2f1e670b78a0cab77bf6ac4dd42.png" src="../_images/191e6486a938a6fb551624f89eead0e15345b2f1e670b78a0cab77bf6ac4dd42.png" />
+<img alt="../_images/d108fad86e07db3a877818fc4bb334e0c143866f27ae0ddcb432083478c9d17a.png" src="../_images/d108fad86e07db3a877818fc4bb334e0c143866f27ae0ddcb432083478c9d17a.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Influence of the condenser heat transfer coefficient part load model with varying heat load.</span><a class="headerlink" href="#heat-pump-influence-condenser" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Influence of the condenser heat transfer coefficient part load model with varying heat load.</span><a class="headerlink" href="#heat-pump-influence-condenser" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">

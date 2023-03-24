@@ -158,16 +158,19 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../getting-started/5-minutes-into-solph.html">5 minutes into oemof-solph</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting-started/5-minutes-into-tespy.html">5 minutes into TESPy</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Systemoverview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../model/intro.html">Scope of the Workshop</a></li>
+
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Linear Heat Pump Model</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../model/linear.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../model/solph-simple.html">Linear oemof-solph heat pump model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../model/tespy-simple.html">Simple TESPy heat pump model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../model/solph-with-tespy.html">Combining oemof-solph and TESPy</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Mixed-Integer Model</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../model/mip.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../model/solph-minimal-load.html">oemof-solph model with minimal load</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../model/tespy-partload-performance.html">Part load performance in TESPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../model/solph-offset.html">oemof-solph model with variable partload efficiency</a></li>
@@ -392,7 +395,7 @@ document.write(`
 <span id="tespy-carnot-cop"></span><h1>Entropy Analysis of the COP<a class="headerlink" href="#entropy-analysis-of-the-cop" title="Permalink to this heading">#</a></h1>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
-<p>Strictly speaking the definition of the Carnot COP of a heat pump following eq. <a class="reference internal" href="../model/solph-simple.html#equation-carnot-cop-heat-pump">(3)</a> is only valid
+<p>Strictly speaking the definition of the Carnot COP of a heat pump following eq. <a class="reference internal" href="../model/intro.html#equation-carnot-cop-heat-pump">(4)</a> is only valid
 for a process, that consists of two isentropic subprocesses (compression and expansion) and two isothermal subprocesses
 (evaporation and condensation). For this to be possible, the heat pump would need to use a turbine instead of an
 expansion valve and the fluid must be in the two-phase region again after the compression. While compression of
@@ -403,15 +406,15 @@ contribution of the individual components in the cycle to its thermodynamic “n
 </section>
 <section id="carnot-cop">
 <h2>Carnot COP<a class="headerlink" href="#carnot-cop" title="Permalink to this heading">#</a></h2>
-<p>However, we can slightly adapt the COP definition from eq. <a class="reference internal" href="../model/solph-simple.html#equation-carnot-cop-heat-pump">(3)</a> by replacing the temperature
+<p>However, we can slightly adapt the COP definition from eq. <a class="reference internal" href="../model/intro.html#equation-carnot-cop-heat-pump">(4)</a> by replacing the temperature
 levels <span class="math notranslate nohighlight">\(T_\text{max}\)</span> and <span class="math notranslate nohighlight">\(T_\text{min}\)</span>, with the <em>thermodynamic mean temperature</em> of the heat production
 <span class="math notranslate nohighlight">\(T_\text{m,prod}\)</span> and the heat consumption <span class="math notranslate nohighlight">\(T_\text{m,cons}\)</span> in eq.
-<a class="reference internal" href="#equation-carnot-cop-heat-pump-thermodynamic">(7)</a>. The thermodynamic mean temperature is defined by eq.
-<a class="reference internal" href="#equation-thermodynamic-mean-temperature">(8)</a>.</p>
+<a class="reference internal" href="#equation-carnot-cop-heat-pump-thermodynamic">(8)</a>. The thermodynamic mean temperature is defined by eq.
+<a class="reference internal" href="#equation-thermodynamic-mean-temperature">(9)</a>.</p>
 <div class="math notranslate nohighlight" id="equation-carnot-cop-heat-pump-thermodynamic">
-<span class="eqno">(7)<a class="headerlink" href="#equation-carnot-cop-heat-pump-thermodynamic" title="Permalink to this equation">#</a></span>\[    \text{COP}_\text{c} = \frac{T_\mathrm{m,prod}}{T_\mathrm{m,prod} - T_\mathrm{m,cons}}\]</div>
+<span class="eqno">(8)<a class="headerlink" href="#equation-carnot-cop-heat-pump-thermodynamic" title="Permalink to this equation">#</a></span>\[    \text{COP}_\text{c} = \frac{T_\mathrm{m,prod}}{T_\mathrm{m,prod} - T_\mathrm{m,cons}}\]</div>
 <div class="math notranslate nohighlight" id="equation-thermodynamic-mean-temperature">
-<span class="eqno">(8)<a class="headerlink" href="#equation-thermodynamic-mean-temperature" title="Permalink to this equation">#</a></span>\[    T_\text{m,Q} = \frac{\dot Q}{\dot S_\text{Q}}\]</div>
+<span class="eqno">(9)<a class="headerlink" href="#equation-thermodynamic-mean-temperature" title="Permalink to this equation">#</a></span>\[    T_\text{m,Q} = \frac{\dot Q}{\dot S_\text{Q}}\]</div>
 <p>With this, it is possible to calculate the carnot COP with the TESPy model by calling the entropy balance equations on
 the components to obtain the thermodynamic mean temperature of the condensation and evaporation.</p>
 <div class="admonition note">
@@ -491,13 +494,13 @@ reach out to the developers via the TESPy github repository. Your contribution i
 </div>
 </div>
 </div>
-<p>We can observe, that there is a difference between the two approaches in <a class="reference internal" href="#fig-heat-pump-cop"><span class="std std-numref">Fig. 14</span></a>, however it does
-not explain, the sharp increase in the efficiency factor as seen in <a class="reference internal" href="../model/tespy-simple.html#fig-heat-pump-efficiency-factor"><span class="std std-numref">Fig. 5</span></a>. To
+<p>We can observe, that there is a difference between the two approaches in <a class="reference internal" href="#fig-heat-pump-cop"><span class="std std-numref">Fig. 16</span></a>, however it does
+not explain, the sharp increase in the efficiency factor as seen in <a class="reference internal" href="../model/tespy-simple.html#fig-heat-pump-efficiency-factor"><span class="std std-numref">Fig. 7</span></a>. To
 explain that phenomenom, we have to disect the calculat of the COP of the heat pump a little bit further.</p>
 <figure class="align-default" id="fig-heat-pump-cop">
 <img alt="../_images/eef669b85a0fd7865d7acc2b2044368a8778ad1418ef781a031ec05226a1b921.png" src="../_images/eef669b85a0fd7865d7acc2b2044368a8778ad1418ef781a031ec05226a1b921.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Comparison of the carnot COP calcualted with the simplified method and the exact method.</span><a class="headerlink" href="#fig-heat-pump-cop" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Comparison of the carnot COP calcualted with the simplified method and the exact method.</span><a class="headerlink" href="#fig-heat-pump-cop" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -505,7 +508,7 @@ explain that phenomenom, we have to disect the calculat of the COP of the heat p
 <h2>Irreversibility Production<a class="headerlink" href="#irreversibility-production" title="Permalink to this heading">#</a></h2>
 <p>To do that, we can first reorder the definition of the COP in the following equation:</p>
 <div class="math notranslate nohighlight" id="equation-cop-heat-pump-reorderd">
-<span class="eqno">(9)<a class="headerlink" href="#equation-cop-heat-pump-reorderd" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
+<span class="eqno">(10)<a class="headerlink" href="#equation-cop-heat-pump-reorderd" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
     \text{COP} = &amp; \frac{|\dot Q_\text{prod}|}{\dot W}\\
      = &amp; \frac{|\dot Q_\text{prod}|}{|\dot Q_\text{prod}| - \dot Q_\text{cons}}\\
      = &amp; \frac{1}{\frac{|\dot Q_\text{prod}| - \dot Q_\text{cons}}{|\dot Q_\text{prod}|}}\\
@@ -513,16 +516,16 @@ explain that phenomenom, we have to disect the calculat of the COP of the heat p
 \end{align}\end{split}\]</div>
 <p>Then with the definition of the thermodynamic mean temperature, we can replace the heat transfers.</p>
 <div class="math notranslate nohighlight" id="equation-cop-heat-pump-temperature-entropy">
-<span class="eqno">(10)<a class="headerlink" href="#equation-cop-heat-pump-temperature-entropy" title="Permalink to this equation">#</a></span>\[    \text{COP} = \frac{1}{1 - \frac{T_\text{m,cons} \cdot \dot S_\text{q,cons}}{T_\text{m,prod} \cdot |\dot S_\text{q,prod}|}}\]</div>
+<span class="eqno">(11)<a class="headerlink" href="#equation-cop-heat-pump-temperature-entropy" title="Permalink to this equation">#</a></span>\[    \text{COP} = \frac{1}{1 - \frac{T_\text{m,cons} \cdot \dot S_\text{q,cons}}{T_\text{m,prod} \cdot |\dot S_\text{q,prod}|}}\]</div>
 <p>Finally, the second law of thermodynamics allows us to replace the entropy transferred to the system from the evaporator
 <span class="math notranslate nohighlight">\(\dot S_\text{q,cons}\)</span> with difference between the entropy transferred to the heat consumer
 <span class="math notranslate nohighlight">\(\dot S_\text{q,prod}\)</span> and all entropy production inside the thermodynamic cycle
 <span class="math notranslate nohighlight">\(\sum \dot S_{\text{irr,}i}\)</span>.</p>
 <div class="math notranslate nohighlight" id="equation-excursion-entropy-analysis-0">
-<span class="eqno">(11)<a class="headerlink" href="#equation-excursion-entropy-analysis-0" title="Permalink to this equation">#</a></span>\[    \dot S_\text{q,cons} = |\dot S_\text{q,prod}| - \sum \dot S_{\text{irr,}i}\]</div>
-<p>We make further simplifications of the expression below the line in eq. <a class="reference internal" href="#equation-cop-heat-pump-temperature-entropy">(10)</a>.</p>
+<span class="eqno">(12)<a class="headerlink" href="#equation-excursion-entropy-analysis-0" title="Permalink to this equation">#</a></span>\[    \dot S_\text{q,cons} = |\dot S_\text{q,prod}| - \sum \dot S_{\text{irr,}i}\]</div>
+<p>We make further simplifications of the expression below the line in eq. <a class="reference internal" href="#equation-cop-heat-pump-temperature-entropy">(11)</a>.</p>
 <div class="math notranslate nohighlight" id="equation-subexpression-entropy-production">
-<span class="eqno">(12)<a class="headerlink" href="#equation-subexpression-entropy-production" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
+<span class="eqno">(13)<a class="headerlink" href="#equation-subexpression-entropy-production" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
     \frac{T_\text{m,cons} \cdot \dot S_\text{q,cons}}{T_\text{m,prod} \cdot |\dot S_\text{q,prod}|} = &amp; \frac{T_\text{m,cons}}{T_\text{m,prod}} \cdot \frac{|\dot S_\text{q,prod}| - \sum \dot S_{\text{irr,}i}}{|\dot S_\text{q,prod}|} \\
     = &amp; \frac{T_\text{m,cons}}{T_\text{m,prod}} \cdot \left(1 - \frac{\sum \dot S_{\text{irr,}i}}{|\dot S_\text{q,prod}|}\right) \\
     = &amp; \frac{T_\text{m,cons}}{T_\text{m,prod}} - \frac{T_\text{m,cons} \cdot \sum \dot S_{\text{irr,}i}}{T_\text{m,prod} \cdot |\dot S_\text{q,prod}|} \\
@@ -533,7 +536,7 @@ the second part are the thermodynamic losses induced by the individual component
 evaporation temperature level is, the higher the thermodynamic inefficiencies of the individual components are the lower
 the COP or - at a given carnot COP -  the lower the efficiency factor is.</p>
 <div class="math notranslate nohighlight" id="equation-excursion-entropy-analysis-1">
-<span class="eqno">(13)<a class="headerlink" href="#equation-excursion-entropy-analysis-1" title="Permalink to this equation">#</a></span>\[    \text{COP} = \frac{1}{1 - \frac{T_\text{m,cons}}{T_\text{m,prod}} + \sum \dot S_{\text{irr,}i} \cdot \frac{T_\text{m,cons}}{\dot Q_\text{prod}}}\]</div>
+<span class="eqno">(14)<a class="headerlink" href="#equation-excursion-entropy-analysis-1" title="Permalink to this equation">#</a></span>\[    \text{COP} = \frac{1}{1 - \frac{T_\text{m,cons}}{T_\text{m,prod}} + \sum \dot S_{\text{irr,}i} \cdot \frac{T_\text{m,cons}}{\dot Q_\text{prod}}}\]</div>
 <p>With these information we can extend our method to calculate the COP of the heat pump accordingly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -634,20 +637,20 @@ the COP or - at a given carnot COP -  the lower the efficiency factor is.</p>
 </div>
 </div>
 <p>First, we can show, that the COP calculated with the entropy method retrieves the same result as the COP retrieved from
-the standard calculation in <a class="reference internal" href="#fig-cop-entropy-method-validation"><span class="std std-numref">Fig. 15</span></a>. Then we can inspect the dependency of the
-irreverisbility elements in <a class="reference internal" href="#fig-irreverisbility-elements"><span class="std std-numref">Fig. 16</span></a>. Here we can see, that the decline of irreversibility
+the standard calculation in <a class="reference internal" href="#fig-cop-entropy-method-validation"><span class="std std-numref">Fig. 17</span></a>. Then we can inspect the dependency of the
+irreverisbility elements in <a class="reference internal" href="#fig-irreverisbility-elements"><span class="std std-numref">Fig. 18</span></a>. Here we can see, that the decline of irreversibility
 production with increasing evaporation temperature is steeper that the increase of the evaporation temperature. That is
 the reason, we have an increasing efficiency factor when the evaporation temperature level rises.</p>
 <figure class="align-default" id="fig-cop-entropy-method-validation">
 <img alt="../_images/9dac0dc6978c501606a42fe24d3264fb4129a21a1d07c9b58b1105c276baf25a.png" src="../_images/9dac0dc6978c501606a42fe24d3264fb4129a21a1d07c9b58b1105c276baf25a.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Validation of the entropy method for the calculation of the heat pump’s COP.</span><a class="headerlink" href="#fig-cop-entropy-method-validation" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Validation of the entropy method for the calculation of the heat pump’s COP.</span><a class="headerlink" href="#fig-cop-entropy-method-validation" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="fig-irreverisbility-elements">
 <img alt="../_images/75596ae56169779e5da19de5238bcabc90c23b62cc3b1f314a4f8b7462ff6237.png" src="../_images/75596ae56169779e5da19de5238bcabc90c23b62cc3b1f314a4f8b7462ff6237.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Comparison of the effects of the different irreversibility elements.</span><a class="headerlink" href="#fig-irreverisbility-elements" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Comparison of the effects of the different irreversibility elements.</span><a class="headerlink" href="#fig-irreverisbility-elements" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -708,12 +711,12 @@ roughly defined by the slope of the dew line in the Ts-diagram, i.e.</p>
 </div>
 </div>
 </div>
-<p>The figure <a class="reference internal" href="#fig-working-fluid-classification"><span class="std std-numref">Fig. 17</span></a> illustrates the different classifications of working fluids at the
+<p>The figure <a class="reference internal" href="#fig-working-fluid-classification"><span class="std std-numref">Fig. 19</span></a> illustrates the different classifications of working fluids at the
 example of Ammonia (wet), R290 (isentropic) and Neopentane (dry).</p>
 <figure class="align-default" id="fig-working-fluid-classification">
 <img alt="../_images/fc014d59fd8480ee30518a67304d49f387322b3ee56a3afd8ca6c4699a1b6e35.png" src="../_images/fc014d59fd8480ee30518a67304d49f387322b3ee56a3afd8ca6c4699a1b6e35.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Illustration of the classification of different heat pump working fluids.</span><a class="headerlink" href="#fig-working-fluid-classification" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Illustration of the classification of different heat pump working fluids.</span><a class="headerlink" href="#fig-working-fluid-classification" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>We can make the entropy analysis for each of the three fluids:</p>
@@ -747,12 +750,12 @@ example of Ammonia (wet), R290 (isentropic) and Neopentane (dry).</p>
 </div>
 </div>
 <p>The efficiency factors for the individual working fluids are displayed in
-<a class="reference internal" href="#fig-working-fluids-efficiency-factors"><span class="std std-numref">Fig. 18</span></a>. The dry and the isentropic working fluids have increasing efficiency
+<a class="reference internal" href="#fig-working-fluids-efficiency-factors"><span class="std std-numref">Fig. 20</span></a>. The dry and the isentropic working fluids have increasing efficiency
 factors, the wet working fluid has a slightly decreasing efficiency factor.</p>
 <figure class="align-default" id="fig-working-fluids-efficiency-factors">
 <img alt="../_images/a1d92dfd76ed586b260a7c457741098b4704812b985670dc3a95200c268b0083.png" src="../_images/a1d92dfd76ed586b260a7c457741098b4704812b985670dc3a95200c268b0083.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Efficiency factors of heat pumps using different working fluids.</span><a class="headerlink" href="#fig-working-fluids-efficiency-factors" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Efficiency factors of heat pumps using different working fluids.</span><a class="headerlink" href="#fig-working-fluids-efficiency-factors" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <hr class="footnotes docutils" />

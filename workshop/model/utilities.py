@@ -1,5 +1,6 @@
 import os
 import numpy as np
+import oemof.solph as solph
 import pandas as pd
 from tespy.components import HeatExchangerSimple, CycleCloser, Compressor, Valve, HeatExchanger, Source, Sink, Condenser
 from tespy.connections import Connection, Ref
@@ -69,6 +70,40 @@ def load_tespy_coefficients():
     df2.index = 10 * df2.index
 
     return df2
+
+
+def create_energy_system_stub(input_data):
+    es = solph.EnergySystem(timeindex=input_data.index, infer_last_interval=False)
+
+    bus_electricity = solph.Bus(label="electricity")
+    bus_heat_35C = solph.Bus(label="heat 35C")
+
+    es.add(bus_electricity, bus_heat_35C)
+
+    electricity_grid = solph.components.Source(
+        label="electricity grid",
+        outputs={bus_electricity: solph.Flow(variable_costs=0.4)},  # €/kWh
+    )
+
+    thermal_storage = solph.components.GenericStorage(
+        label='thermal_storage',
+        inputs={bus_heat_35C: solph.Flow()},
+        outputs={bus_heat_35C: solph.Flow()},
+        loss_rate=0.02,
+        nominal_storage_capacity=8.7,  # Assume 5 k of spread and 1.5 m³ volume
+    )
+
+    demand = input_data["Heat load (kW)"][:-1]
+
+    heat_demand = solph.components.Sink(
+        label="heat demand",
+        inputs={bus_heat_35C: solph.Flow(nominal_value=1, fix=demand)},  # kW
+    )
+
+
+    es.add(electricity_grid, thermal_storage, heat_demand)
+
+    return es, bus_electricity, bus_heat_35C
 
 
 def simple_heat_pump(working_fluid):

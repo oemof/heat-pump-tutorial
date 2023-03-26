@@ -2,9 +2,11 @@ import os
 import numpy as np
 import oemof.solph as solph
 import pandas as pd
+from matplotlib import pyplot as plt
 from tespy.components import HeatExchangerSimple, CycleCloser, Compressor, Valve, HeatExchanger, Source, Sink, Condenser
 from tespy.connections import Connection, Ref
 from tespy.networks import Network
+
 
 ETA_COMPRESSOR = 0.675
 TTD_HEAT_EXCHANGERS = 5
@@ -102,7 +104,35 @@ def create_energy_system_stub(input_data):
 
     es.add(electricity_grid, thermal_storage, heat_demand)
 
-    return es, bus_electricity, bus_heat_35C, thermal_storage, electricity_grid
+    return es, bus_electricity, bus_heat_35C
+
+
+def sumarise_solph_results(results):
+    results = solph.views.convert_keys_to_strings(results)
+
+    heat_supply = results[("heat pump", "heat 35C")]["sequences"]["flow"]
+    storage_content = results[("thermal storage", "None")]["sequences"]["storage_content"]
+    demand = results[("heat 35C", "heat demand")]["sequences"]["flow"]
+
+    fig, (ax1, ax2) = plt.subplots(1, 2, sharey=True, figsize=(9, 4.5))
+
+    ax1.plot(heat_supply, "r-", label="heat supply", drawstyle="steps-post")
+    ax1.plot(demand, "b--", label="heat demand", drawstyle="steps-post")
+    ax1.plot(storage_content, "k-", label="storage content")
+    ax1.set_ylabel("Power (kW) or Energy (kWh)")
+    ax1.tick_params(axis="x", rotation=50)
+    ax1.grid()
+    ax1.legend()
+
+    ax2.plot(np.sort(heat_supply)[::-1], "r-", label="heat supply")
+    ax2.plot(np.sort(demand)[::-1], "b--", label="heat demand")
+    ax2.plot(np.sort(storage_content)[::-1], "k-", label="storage content")
+    ax2.grid()
+    ax2.legend()
+
+    electricity_consumption = float(results[("electricity grid", "electricity")]["sequences"].sum())
+    print(f"Electricity demand: {electricity_consumption:.1f} kWh")
+    return fig, electricity_consumption
 
 
 def simple_heat_pump(working_fluid):

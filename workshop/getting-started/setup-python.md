@@ -10,7 +10,7 @@ Make sure you have installed your favorite python distribution as well as a code
 python installation is, for example, [miniforge](https://github.com/conda-forge/miniforge). Then you can follow these
 steps to create an environment and install the required dependencies:
 
-1. Download or clone the github repository: {bash}`git clone https://github.com/fwitte/oemof-workshop-osmses-2023`
+1. Download or clone the github repository: `git clone https://github.com/fwitte/oemof-workshop-osmses-2023`
 2. Open the miniforge3 prompt and navigate into that folder: `cd /path/to/the/oemof-workshop-osmses-2023`
 3. Create and prepare the environment: `conda env create -f environment.yml`
 4. Activate your environment: `conda activate oemof-workshop-osmses`

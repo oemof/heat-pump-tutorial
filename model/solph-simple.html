@@ -511,17 +511,6 @@ can plot the data</p>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
-<span class="kn">from</span> <span class="nn">utilities</span> <span class="kn">import</span> <span class="n">TTD_HEAT_EXCHANGERS</span><span class="p">,</span> <span class="n">HEATING_SYSTEM_FEED_TEMP</span><span class="p">,</span> <span class="n">AMBIENT_TEMP_NOMINAL</span>
-<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;heat-exchanger-ttd&quot;</span><span class="p">,</span> <span class="n">TTD_HEAT_EXCHANGERS</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;evaporation-temperature&quot;</span><span class="p">,</span> <span class="n">AMBIENT_TEMP_NOMINAL</span> <span class="o">-</span> <span class="n">TTD_HEAT_EXCHANGERS</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;condensation-temperature&quot;</span><span class="p">,</span> <span class="n">HEATING_SYSTEM_FEED_TEMP</span> <span class="o">+</span> <span class="n">TTD_HEAT_EXCHANGERS</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>Howver, note that we have to use the maximum and minimum temperature of the process when working with the Carnot COP.
 The figure <a class="reference internal" href="#heat-pump-black-box-vs-process"><span class="std std-numref">Fig. 4</span></a> shows two different representations of the heat pump: One as a black
 box and one as component based process. In the black box process, we only see the temperature levels of the air and the
@@ -594,13 +583,6 @@ the 7/35 variant will have higher COP most of the time.</p>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glue</span><span class="p">(</span><span class="s2">&quot;cop-reference-temperature-variants&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>With those information we can create the heat pump, we will use the 2/40 temperature reference.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -646,36 +628,72 @@ the 7/35 variant will have higher COP most of the time.</p>
 </div>
 </div>
 </div>
+<p>After running the optimization we extract the results and create a figure for the duration curve of the heat pump
+operation and the demand time series as well as the dispatch of the heat pump and the storage.
+<code class="xref std std-numref docutils literal notranslate"><span class="pre">results-solph-simple</span></code> shows the results of our first simple implementation. The heat pump is mostly operated in
+a way to provide the heat demand directly without using the storage as the storage losses make that option unattractive.
+Only in a single time step the heat pump feeds additional heat to the storage to make use of a advantageous COP for the
+production of the heat.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>We have included a function <code class="docutils literal notranslate"><span class="pre">sumarise_solph_results</span></code>, which extracts the dispatch of the heat pump, the demand and the
+storage filling level to create comparable plots in all sections.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sumarise_solph_results</span><span class="p">(</span><span class="n">results</span><span class="p">):</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">solph</span><span class="o">.</span><span class="n">views</span><span class="o">.</span><span class="n">convert_keys_to_strings</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+
+    <span class="n">heat_supply</span> <span class="o">=</span> <span class="n">results</span><span class="p">[(</span><span class="s2">&quot;heat pump&quot;</span><span class="p">,</span> <span class="s2">&quot;heat 35C&quot;</span><span class="p">)][</span><span class="s2">&quot;sequences&quot;</span><span class="p">][</span><span class="s2">&quot;flow&quot;</span><span class="p">]</span>
+    <span class="n">storage_content</span> <span class="o">=</span> <span class="n">results</span><span class="p">[(</span><span class="s2">&quot;thermal storage&quot;</span><span class="p">,</span> <span class="s2">&quot;None&quot;</span><span class="p">)][</span><span class="s2">&quot;sequences&quot;</span><span class="p">][</span><span class="s2">&quot;storage_content&quot;</span><span class="p">]</span>
+    <span class="n">demand</span> <span class="o">=</span> <span class="n">results</span><span class="p">[(</span><span class="s2">&quot;heat 35C&quot;</span><span class="p">,</span> <span class="s2">&quot;heat demand&quot;</span><span class="p">)][</span><span class="s2">&quot;sequences&quot;</span><span class="p">][</span><span class="s2">&quot;flow&quot;</span><span class="p">]</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">))</span>
+
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">heat_supply</span><span class="p">,</span> <span class="s2">&quot;r-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;heat supply&quot;</span><span class="p">,</span> <span class="n">drawstyle</span><span class="o">=</span><span class="s2">&quot;steps-post&quot;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">demand</span><span class="p">,</span> <span class="s2">&quot;b--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;heat demand&quot;</span><span class="p">,</span> <span class="n">drawstyle</span><span class="o">=</span><span class="s2">&quot;steps-post&quot;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">storage_content</span><span class="p">,</span> <span class="s2">&quot;k-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;storage content&quot;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Power (kW) or Energy (kWh)&quot;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">heat_supply</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;r-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;heat supply&quot;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">demand</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;b--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;heat demand&quot;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">storage_content</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;k-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;storage content&quot;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+    <span class="n">electricity_consumption</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">results</span><span class="p">[(</span><span class="s2">&quot;electricity grid&quot;</span><span class="p">,</span> <span class="s2">&quot;electricity&quot;</span><span class="p">)][</span><span class="s2">&quot;sequences&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Electricity demand: </span><span class="si">{</span><span class="n">electricity_consumption</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> kWh&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">electricity_consumption</span>
+</pre></div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">heat_supply</span> <span class="o">=</span> <span class="n">results</span><span class="p">[(</span><span class="n">heat_pump</span><span class="p">,</span> <span class="n">b_heat_35C</span><span class="p">)][</span><span class="s2">&quot;sequences&quot;</span><span class="p">][</span><span class="s2">&quot;flow&quot;</span><span class="p">]</span>
-<span class="n">storage_content</span> <span class="o">=</span> <span class="n">results</span><span class="p">[(</span><span class="n">thermal_storage</span><span class="p">,</span> <span class="kc">None</span><span class="p">)][</span><span class="s2">&quot;sequences&quot;</span><span class="p">][</span><span class="s2">&quot;storage_content&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utilities</span> <span class="kn">import</span> <span class="n">sumarise_solph_results</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">heat_supply</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;r-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;heat supply&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">demand</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;b--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;heat demand&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Power (kW)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">heat_supply</span><span class="p">,</span> <span class="s2">&quot;r-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;heat supply&quot;</span><span class="p">,</span> <span class="n">drawstyle</span><span class="o">=</span><span class="s2">&quot;steps-post&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">demand</span><span class="p">,</span> <span class="s2">&quot;b--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;heat demand&quot;</span><span class="p">,</span> <span class="n">drawstyle</span><span class="o">=</span><span class="s2">&quot;steps-post&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">storage_content</span><span class="p">,</span> <span class="s2">&quot;k-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;storage content&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Power (kW) or Energy (kWh)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-
-<span class="n">electricity_consumption</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">results</span><span class="p">[(</span><span class="n">electricity_grid</span><span class="p">,</span> <span class="n">b_electricity</span><span class="p">)][</span><span class="s2">&quot;sequences&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Electricity demand: </span><span class="si">{</span><span class="n">electricity_consumption</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> kWh&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">electricity_total</span> <span class="o">=</span> <span class="n">sumarise_solph_results</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Electricity demand: 32.9 kWh
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">utilities</span> <span class="kn">import</span> <span class="n">sumarise_solph_results</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">fig</span><span class="p">,</span> <span class="n">electricity_total</span> <span class="o">=</span> <span class="n">sumarise_solph_results</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="nn">File ~/work/oemof-workshop-osmses-2023/oemof-workshop-osmses-2023/workshop/model/utilities.py:114,</span> in <span class="ni">sumarise_solph_results</span><span class="nt">(results)</span>
+<span class="g g-Whitespace">    </span><span class="mi">111</span> <span class="n">results</span> <span class="o">=</span> <span class="n">solph</span><span class="o">.</span><span class="n">views</span><span class="o">.</span><span class="n">convert_keys_to_strings</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">113</span> <span class="n">heat_supply</span> <span class="o">=</span> <span class="n">results</span><span class="p">[(</span><span class="s2">&quot;heat pump&quot;</span><span class="p">,</span> <span class="s2">&quot;heat 35C&quot;</span><span class="p">)][</span><span class="s2">&quot;sequences&quot;</span><span class="p">][</span><span class="s2">&quot;flow&quot;</span><span class="p">]</span>
+<span class="ne">--&gt; </span><span class="mi">114</span> <span class="n">storage_content</span> <span class="o">=</span> <span class="n">results</span><span class="p">[(</span><span class="s2">&quot;thermal storage&quot;</span><span class="p">,</span> <span class="s2">&quot;None&quot;</span><span class="p">)][</span><span class="s2">&quot;sequences&quot;</span><span class="p">][</span><span class="s2">&quot;storage_content&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">115</span> <span class="n">demand</span> <span class="o">=</span> <span class="n">results</span><span class="p">[(</span><span class="s2">&quot;heat 35C&quot;</span><span class="p">,</span> <span class="s2">&quot;heat demand&quot;</span><span class="p">)][</span><span class="s2">&quot;sequences&quot;</span><span class="p">][</span><span class="s2">&quot;flow&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">117</span> <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">))</span>
+
+<span class="ne">KeyError</span>: (&#39;thermal storage&#39;, &#39;None&#39;)
 </pre></div>
 </div>
-<img alt="../_images/28a3062e2d4559c666417529c92d26b0098eaf8c7623962eb557de01250483cf.png" src="../_images/28a3062e2d4559c666417529c92d26b0098eaf8c7623962eb557de01250483cf.png" />
-<img alt="../_images/4efacdaa8147064e7cc266efa94bf0ff350aecae08d4b230ade25b5275e4e277.png" src="../_images/4efacdaa8147064e7cc266efa94bf0ff350aecae08d4b230ade25b5275e4e277.png" />
 </div>
 </div>
 </section>

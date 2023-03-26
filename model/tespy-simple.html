@@ -400,7 +400,7 @@ of the ambient air temperature. For that, we build a TESPy model following the i
 <a class="reference internal" href="#tespy-heat-pump-flowsheet"><span class="std std-ref">Component based thermodynamic model of the heat pump in TESPy</span></a>.</p>
 <figure class="align-default" id="tespy-heat-pump-flowsheet">
 <img alt="Component based thermodynamic model of the heat pump in TESPy" src="../_images/heat_pump.svg" /><figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Component based thermodynamic model of the heat pump in TESPy</span><a class="headerlink" href="#tespy-heat-pump-flowsheet" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Component based thermodynamic model of the heat pump in TESPy</span><a class="headerlink" href="#tespy-heat-pump-flowsheet" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The table summarizes the assumptions made for the heat pump model.</p>
@@ -476,7 +476,7 @@ instance:</p>
 </div>
 </div>
 <p>Next step is to build the components and the respective connections as indicated in the figure
-<a class="reference internal" href="#tespy-heat-pump-flowsheet"><span class="std std-numref">Fig. 6</span></a>.</p>
+<a class="reference internal" href="#tespy-heat-pump-flowsheet"><span class="std std-numref">Fig. 7</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="o">=</span> <span class="n">Compressor</span><span class="p">(</span><span class="s2">&quot;compressor&quot;</span><span class="p">)</span>
@@ -592,17 +592,11 @@ future as well.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (Compressor) #####
-+------------+----------+----------+----------+--------+
-|            |        P |    eta_s |       pr |   igva |
-|------------+----------+----------+----------+--------|
-| compressor | 1.62e+03 | 8.00e-01 | 2.72e+00 |    nan |
-+------------+----------+----------+----------+--------+
-##### RESULTS (HeatExchangerSimple) #####
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (HeatExchangerSimple) #####
 +------------+-----------+----------+----------+-----+-----+------+------+--------+
 |            |         Q |       pr |     zeta |   D |   L |   ks |   kA |   Tamb |
 |------------+-----------+----------+----------+-----+-----+------+------+--------|
-| condenser  | -9.10e+03 | 1.00e+00 | 0.00e+00 | nan | nan |  nan |  nan |    nan |
+| condenser  | -9.10e+03 | 1.00e+00 | 1.99e-05 | nan | nan |  nan |  nan |    nan |
 | evaporator |  7.48e+03 | 1.00e+00 | 0.00e+00 | nan | nan |  nan |  nan |    nan |
 +------------+-----------+----------+----------+-----+-----+------+------+--------+
 ##### RESULTS (Valve) #####
@@ -617,6 +611,12 @@ future as well.</p>
 |--------------+------------------+-------------------|
 | cycle closer |         0.00e+00 |          0.00e+00 |
 +--------------+------------------+-------------------+
+##### RESULTS (Compressor) #####
++------------+----------+----------+----------+--------+
+|            |        P |    eta_s |       pr |   igva |
+|------------+----------+----------+----------+--------|
+| compressor | 1.62e+03 | 8.00e-01 | 2.72e+00 |    nan |
++------------+----------+----------+----------+--------+
 ##### RESULTS (Connection) #####
 +----+-----------+-----------+-----------+-----------+
 |    |         m |         p |         h |         T |
@@ -641,7 +641,7 @@ objects or from the network’s result dataframes. Note, that the compressor’s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1618.4579721423067
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1618.4579721423017
 </pre></div>
 </div>
 </div>
@@ -653,7 +653,7 @@ objects or from the network’s result dataframes. Note, that the compressor’s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1618.4579721423067
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1618.4579721423017
 </pre></div>
 </div>
 </div>
@@ -666,7 +666,7 @@ objects or from the network’s result dataframes. Note, that the compressor’s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.622635963759127
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.622635963759143
 </pre></div>
 </div>
 </div>
@@ -720,7 +720,7 @@ code below performs a simple binary search.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.900349094422549
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.900349094422374
 </pre></div>
 </div>
 </div>
@@ -789,7 +789,7 @@ assessed.</p>
 <figure class="align-default" id="fig-heat-pump-efficiency-factor">
 <img alt="../_images/56acafbd573c181c2dcc533edbd048cb5bcca5b799046ff7daf3e2de2efaa7a2.png" src="../_images/56acafbd573c181c2dcc533edbd048cb5bcca5b799046ff7daf3e2de2efaa7a2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Comparison of the COP of the heat pump calculated with a constant and a variable efficiency factor.</span><a class="headerlink" href="#fig-heat-pump-efficiency-factor" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Comparison of the COP of the heat pump calculated with a constant and a variable efficiency factor.</span><a class="headerlink" href="#fig-heat-pump-efficiency-factor" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>From the graphs we can easily see, that the carnot COP <span class="math notranslate nohighlight">\(\text{COP}_\text{c}\)</span> is (expectedly) higher than the

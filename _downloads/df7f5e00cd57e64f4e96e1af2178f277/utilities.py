@@ -88,7 +88,7 @@ def create_energy_system_stub(input_data):
     )
 
     thermal_storage = solph.components.GenericStorage(
-        label='thermal_storage',
+        label='thermal storage',
         inputs={bus_heat_35C: solph.Flow()},
         outputs={bus_heat_35C: solph.Flow()},
         loss_rate=0.02,

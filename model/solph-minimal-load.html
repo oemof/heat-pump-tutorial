@@ -388,7 +388,7 @@ pump which, if operated, must at least provide a heat load of 50 % of its nomina
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utilities</span> <span class="kn">import</span> <span class="n">load_input_data</span><span class="p">,</span> <span class="n">create_energy_system_stub</span>
-<span class="n">input_data</span> <span class="o">=</span> <span class="n">load_input_data</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">24</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">input_data</span> <span class="o">=</span> <span class="n">load_input_data</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">24</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="n">es</span><span class="p">,</span> <span class="n">bus_electricity</span><span class="p">,</span> <span class="n">bus_heat_35C</span> <span class="o">=</span> <span class="n">create_energy_system_stub</span><span class="p">(</span><span class="n">input_data</span><span class="p">)</span>
 
@@ -441,16 +441,16 @@ and using a <code class="docutils literal notranslate"><span class="pre">NonConv
 </div>
 </div>
 </div>
-<p>From <a class="reference internal" href="#results-solph-minload"><span class="std std-numref">Fig. 9</span></a> you can see how the minimum load restrictions impacts the operation of the heat
+<p>From <a class="reference internal" href="#results-solph-minload"><span class="std std-numref">Fig. 11</span></a> you can see how the minimum load restrictions impacts the operation of the heat
 pump. While the storage was barely used in the first two examples, now heat demand below the minimum heat pump load
 cannot be met directly from the heat pump, but has to be buffered by the storage. Still, the storage operation is held
 at a minimum, to reduce the time dependent storage losses. The change in electricity consumption is larger compared to
 our previous model additions, i.e. it changes from  kWh to
-<span class="pasted-text">33.1653269</span> kWh.</p>
+<span class="pasted-text">14.2285725</span> kWh.</p>
 <figure class="align-default" id="results-solph-minload">
-<img alt="../_images/156feba85ad5eaeca56f88ecc7cb06d16c6a38b67fdae083d296c0bc8687fe23.png" src="../_images/156feba85ad5eaeca56f88ecc7cb06d16c6a38b67fdae083d296c0bc8687fe23.png" />
+<img alt="../_images/8b350a93f783b3db9cc3b4063a127d441734e36aaf7ea09c30b928d2f53bb8ce.png" src="../_images/8b350a93f783b3db9cc3b4063a127d441734e36aaf7ea09c30b928d2f53bb8ce.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Operation of the heat pump modeled with a minimal load of 50 % of the nominal load.</span><a class="headerlink" href="#results-solph-minload" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Operation of the heat pump modeled with a minimal load of 50 % of the nominal load.</span><a class="headerlink" href="#results-solph-minload" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -464,7 +464,7 @@ our previous model additions, i.e. it changes from  kWh to
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Electricity demand: 33.2 kWh
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Electricity demand: 14.2 kWh
 </pre></div>
 </div>
 </div>

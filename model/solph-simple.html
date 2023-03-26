@@ -447,7 +447,7 @@ this tutorial.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utilities</span> <span class="kn">import</span> <span class="n">load_input_data</span>
 
 
-<span class="n">input_data</span> <span class="o">=</span> <span class="n">load_input_data</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">24</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">input_data</span> <span class="o">=</span> <span class="n">load_input_data</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">24</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">demand</span> <span class="o">=</span> <span class="n">input_data</span><span class="p">[</span><span class="s2">&quot;Heat load (kW)&quot;</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
 <span class="n">demand</span>
@@ -460,13 +460,49 @@ this tutorial.</p>
 2023-01-01 02:00:00    0.15
 2023-01-01 03:00:00    0.20
 2023-01-01 04:00:00    0.30
-                       ... 
-2023-01-03 18:00:00    3.85
-2023-01-03 19:00:00    3.80
-2023-01-03 20:00:00    3.75
-2023-01-03 21:00:00    3.75
-2023-01-03 22:00:00    3.65
-Name: Heat load (kW), Length: 71, dtype: float64
+2023-01-01 05:00:00    0.45
+2023-01-01 06:00:00    0.50
+2023-01-01 07:00:00    0.70
+2023-01-01 08:00:00    1.00
+2023-01-01 09:00:00    1.15
+2023-01-01 10:00:00    1.10
+2023-01-01 11:00:00    1.00
+2023-01-01 12:00:00    1.00
+2023-01-01 13:00:00    0.95
+2023-01-01 14:00:00    0.90
+2023-01-01 15:00:00    1.10
+2023-01-01 16:00:00    1.85
+2023-01-01 17:00:00    2.10
+2023-01-01 18:00:00    2.15
+2023-01-01 19:00:00    2.05
+2023-01-01 20:00:00    1.95
+2023-01-01 21:00:00    1.25
+2023-01-01 22:00:00    0.80
+2023-01-01 23:00:00    0.45
+2023-01-02 00:00:00    0.25
+2023-01-02 01:00:00    0.45
+2023-01-02 02:00:00    0.70
+2023-01-02 03:00:00    1.00
+2023-01-02 04:00:00    1.20
+2023-01-02 05:00:00    1.35
+2023-01-02 06:00:00    1.65
+2023-01-02 07:00:00    1.85
+2023-01-02 08:00:00    2.00
+2023-01-02 09:00:00    2.25
+2023-01-02 10:00:00    2.50
+2023-01-02 11:00:00    2.60
+2023-01-02 12:00:00    2.75
+2023-01-02 13:00:00    2.90
+2023-01-02 14:00:00    3.00
+2023-01-02 15:00:00    3.05
+2023-01-02 16:00:00    3.05
+2023-01-02 17:00:00    3.05
+2023-01-02 18:00:00    3.15
+2023-01-02 19:00:00    3.30
+2023-01-02 20:00:00    3.40
+2023-01-02 21:00:00    3.60
+2023-01-02 22:00:00    3.60
+Name: Heat load (kW), dtype: float64
 </pre></div>
 </div>
 </div>
@@ -553,7 +589,7 @@ the lower temperatures the variant with 2/40 as reference temperatures has a hig
 time series for our application example. Since the ambient temperature is mostly higher than 7 °C, the implementation of
 the 7/35 variant will have higher COP most of the time.</p>
 <figure class="align-default" id="cop-reference-temperature-variants">
-<img alt="../_images/2c0657114b3d00c63316fffee33c5bbc62a677b8b3e760f90c1513c166b26ec5.png" src="../_images/2c0657114b3d00c63316fffee33c5bbc62a677b8b3e760f90c1513c166b26ec5.png" />
+<img alt="../_images/e40e7a59afae9e1be4707625ee86fff0b4891b3e71f911aa0e69f93fc6f98ee0.png" src="../_images/e40e7a59afae9e1be4707625ee86fff0b4891b3e71f911aa0e69f93fc6f98ee0.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 5 </span><span class="caption-text">Comparison of the COP of the heat pump calculated with 7/35 and 2/40 as reference temperature values.</span><a class="headerlink" href="#cop-reference-temperature-variants" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -635,7 +671,7 @@ a way to provide the heat demand directly without using the storage as the stora
 Only in a single time step the heat pump feeds additional heat to the storage to make use of a advantageous COP for the
 production of the heat.</p>
 <figure class="align-default" id="results-solph-simple">
-<img alt="../_images/54edf13fb6cad92193cf25de1f020433e27653ce5376d2974ee4656c9e272662.png" src="../_images/54edf13fb6cad92193cf25de1f020433e27653ce5376d2974ee4656c9e272662.png" />
+<img alt="../_images/cb00773d20fe979e2148b1334f7dbe84dcf68e1d0198c42ff2367772314021d0.png" src="../_images/cb00773d20fe979e2148b1334f7dbe84dcf68e1d0198c42ff2367772314021d0.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 6 </span><span class="caption-text">Results of the simple heat pump setup.</span><a class="headerlink" href="#results-solph-simple" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -683,7 +719,7 @@ storage filling level to create comparable plots in all sections.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Electricity demand: 32.9 kWh
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Electricity demand: 14.1 kWh
 </pre></div>
 </div>
 </div>

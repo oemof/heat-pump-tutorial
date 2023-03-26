@@ -405,21 +405,9 @@ utilities script to save some space here and only add the heat pump.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utilities</span> <span class="kn">import</span> <span class="n">load_input_data</span><span class="p">,</span> <span class="n">create_energy_system_stub</span>
-<span class="n">input_data</span> <span class="o">=</span> <span class="n">load_input_data</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">24</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">input_data</span> <span class="o">=</span> <span class="n">load_input_data</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">24</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="n">es</span><span class="p">,</span> <span class="n">bus_electricity</span><span class="p">,</span> <span class="n">bus_heat_35C</span><span class="p">,</span> <span class="n">thermal_storage</span><span class="p">,</span> <span class="n">electricity_grid</span> <span class="o">=</span> <span class="n">create_energy_system_stub</span><span class="p">(</span><span class="n">input_data</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">utilities</span> <span class="kn">import</span> <span class="n">load_input_data</span><span class="p">,</span> <span class="n">create_energy_system_stub</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">input_data</span> <span class="o">=</span> <span class="n">load_input_data</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">24</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">es</span><span class="p">,</span> <span class="n">bus_electricity</span><span class="p">,</span> <span class="n">bus_heat_35C</span><span class="p">,</span> <span class="n">thermal_storage</span><span class="p">,</span> <span class="n">electricity_grid</span> <span class="o">=</span> <span class="n">create_energy_system_stub</span><span class="p">(</span><span class="n">input_data</span><span class="p">)</span>
-
-<span class="ne">ValueError</span>: not enough values to unpack (expected 5, got 3)
+<span class="n">es</span><span class="p">,</span> <span class="n">bus_electricity</span><span class="p">,</span> <span class="n">bus_heat_35C</span> <span class="o">=</span> <span class="n">create_energy_system_stub</span><span class="p">(</span><span class="n">input_data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -437,9 +425,90 @@ from our ambient temperature time series to the TESPy lookup data.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>COP</th>
+    </tr>
+    <tr>
+      <th>temperature</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>-100.0</th>
+      <td>3.327825</td>
+    </tr>
+    <tr>
+      <th>-99.0</th>
+      <td>3.334274</td>
+    </tr>
+    <tr>
+      <th>-98.0</th>
+      <td>3.340723</td>
+    </tr>
+    <tr>
+      <th>-97.0</th>
+      <td>3.347171</td>
+    </tr>
+    <tr>
+      <th>-96.0</th>
+      <td>3.353620</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>306.0</th>
+      <td>7.577904</td>
+    </tr>
+    <tr>
+      <th>307.0</th>
+      <td>7.577904</td>
+    </tr>
+    <tr>
+      <th>308.0</th>
+      <td>7.577904</td>
+    </tr>
+    <tr>
+      <th>309.0</th>
+      <td>7.577904</td>
+    </tr>
+    <tr>
+      <th>310.0</th>
+      <td>7.577904</td>
+    </tr>
+  </tbody>
+</table>
+<p>411 rows × 1 columns</p>
+</div></div></div>
 </div>
 <p>We can compare the TESPy COP with the datasheet and constant efficiency factor approach in
-<code class="xref std std-numref docutils literal notranslate"><span class="pre">cop-timeseries-tespy-vs-efficiency-factor</span></code>. They are, as expected, very similar.</p>
+<a class="reference internal" href="#cop-timeseries-tespy-vs-efficiency-factor"><span class="std std-numref">Fig. 9</span></a>. They are, as expected, very similar.</p>
+<figure class="align-default" id="cop-timeseries-tespy-vs-efficiency-factor">
+<img alt="../_images/58288ff7fce1e8e1272eb1e08c1432240b375ed33562a2c7318fe66e5437ebd0.png" src="../_images/58288ff7fce1e8e1272eb1e08c1432240b375ed33562a2c7318fe66e5437ebd0.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Comparison of the COP time series from the constant efficiency method with the TESPy model.</span><a class="headerlink" href="#cop-timeseries-tespy-vs-efficiency-factor" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">input_data</span><span class="p">[</span><span class="s2">&quot;simple TESPy COP&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">input_data</span><span class="p">[</span><span class="s2">&quot;Ambient temperature (d°C)&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">tespy_cop</span><span class="p">[</span><span class="s2">&quot;COP&quot;</span><span class="p">])</span>
@@ -508,15 +577,26 @@ from our ambient temperature time series to the TESPy lookup data.</p>
 </div>
 </div>
 </div>
-<p><code class="xref std std-numref docutils literal notranslate"><span class="pre">results-solph-simple-tespy</span></code> shows nearly identical behavior as in the simple setup. Only the electricity
+<p><a class="reference internal" href="#results-solph-simple-tespy"><span class="std std-numref">Fig. 10</span></a> shows nearly identical behavior as in the simple setup. Only the electricity
 consumption changed very slightly from  kWh to
- kWh.</p>
+<span class="pasted-text">14.025420884</span> kWh.</p>
+<figure class="align-default" id="results-solph-simple-tespy">
+<img alt="../_images/cb00773d20fe979e2148b1334f7dbe84dcf68e1d0198c42ff2367772314021d0.png" src="../_images/cb00773d20fe979e2148b1334f7dbe84dcf68e1d0198c42ff2367772314021d0.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Results of the simple heat pump setup using the COP data from TESPy.</span><a class="headerlink" href="#results-solph-simple-tespy" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utilities</span> <span class="kn">import</span> <span class="n">sumarise_solph_results</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">electricity_total</span> <span class="o">=</span> <span class="n">sumarise_solph_results</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Electricity demand: 14.0 kWh
 </pre></div>
 </div>
 </div>

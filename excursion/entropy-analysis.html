@@ -154,7 +154,7 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../getting-started/setup-python.html">Setup your Python environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started/setup-python.html">Set up your Python environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting-started/5-minutes-into-solph.html">5 minutes into oemof-solph</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting-started/5-minutes-into-tespy.html">5 minutes into TESPy</a></li>
 </ul>
@@ -415,7 +415,7 @@ levels <span class="math notranslate nohighlight">\(T_\text{max}\)</span> and <s
 <span class="eqno">(11)<a class="headerlink" href="#equation-carnot-cop-heat-pump-thermodynamic" title="Permalink to this equation">#</a></span>\[    \text{COP}_\text{c} = \frac{T_\mathrm{m,prod}}{T_\mathrm{m,prod} - T_\mathrm{m,cons}}\]</div>
 <div class="math notranslate nohighlight" id="equation-thermodynamic-mean-temperature">
 <span class="eqno">(12)<a class="headerlink" href="#equation-thermodynamic-mean-temperature" title="Permalink to this equation">#</a></span>\[    T_\text{m,Q} = \frac{\dot Q}{\dot S_\text{Q}}\]</div>
-<p>With this, it is possible to calculate the carnot COP with the TESPy model by calling the entropy balance equations on
+<p>With this, it is possible to calculate the Carnot COP with the TESPy model by calling the entropy balance equations on
 the components to obtain the thermodynamic mean temperature of the condensation and evaporation.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -496,7 +496,7 @@ reach out to the developers via the TESPy github repository. Your contribution i
 </div>
 <p>We can observe, that there is a difference between the two approaches in <a class="reference internal" href="#fig-heat-pump-cop"><span class="std std-numref">Fig. 22</span></a>, however it does
 not explain, the sharp increase in the efficiency factor as seen in <a class="reference internal" href="../model/tespy-simple.html#fig-heat-pump-efficiency-factor"><span class="std std-numref">Fig. 8</span></a>. To
-explain that phenomenom, we have to disect the calculat of the COP of the heat pump a little bit further.</p>
+explain that phenomenon, we have to disect the calculation of the COP of the heat pump a further.</p>
 <figure class="align-default" id="fig-heat-pump-cop">
 <img alt="../_images/eef669b85a0fd7865d7acc2b2044368a8778ad1418ef781a031ec05226a1b921.png" src="../_images/eef669b85a0fd7865d7acc2b2044368a8778ad1418ef781a031ec05226a1b921.png" />
 <figcaption>
@@ -531,13 +531,13 @@ explain that phenomenom, we have to disect the calculat of the COP of the heat p
     = &amp; \frac{T_\text{m,cons}}{T_\text{m,prod}} - \frac{T_\text{m,cons} \cdot \sum \dot S_{\text{irr,}i}}{T_\text{m,prod} \cdot |\dot S_\text{q,prod}|} \\
     = &amp; \frac{T_\text{m,cons}}{T_\text{m,prod}} - \frac{T_\text{m,cons} \cdot \sum \dot S_{\text{irr,}i}}{|\dot Q_\text{m,prod}|}
 \end{align}\end{split}\]</div>
-<p>Finally, we obtain a formular for the COP, where the first term is identical to the inverse value of the carnot COP and
+<p>Finally, we obtain a formula for the COP, where the first term is identical to the inverse value of the Carnot COP and
 the second part are the thermodynamic losses induced by the individual components. We can see that the higher the
 evaporation temperature level is, the higher the thermodynamic inefficiencies of the individual components are the lower
-the COP or - at a given carnot COP -  the lower the efficiency factor is.</p>
+the COP or - at a given Carnot COP - the lower the efficiency factor is.</p>
 <div class="math notranslate nohighlight" id="equation-excursion-entropy-analysis-1">
 <span class="eqno">(17)<a class="headerlink" href="#equation-excursion-entropy-analysis-1" title="Permalink to this equation">#</a></span>\[    \text{COP} = \frac{1}{1 - \frac{T_\text{m,cons}}{T_\text{m,prod}} + \sum \dot S_{\text{irr,}i} \cdot \frac{T_\text{m,cons}}{\dot Q_\text{prod}}}\]</div>
-<p>With these information we can extend our method to calculate the COP of the heat pump accordingly.</p>
+<p>With this information we can extend our method to calculate the COP of the heat pump accordingly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">entropy_analysis_temperature_variation</span><span class="p">(</span><span class="n">nwk</span><span class="p">,</span> <span class="n">temperature_range</span><span class="p">):</span>
@@ -638,7 +638,7 @@ the COP or - at a given carnot COP -  the lower the efficiency factor is.</p>
 </div>
 <p>First, we can show, that the COP calculated with the entropy method retrieves the same result as the COP retrieved from
 the standard calculation in <a class="reference internal" href="#fig-cop-entropy-method-validation"><span class="std std-numref">Fig. 23</span></a>. Then we can inspect the dependency of the
-irreverisbility elements in <a class="reference internal" href="#fig-irreverisbility-elements"><span class="std std-numref">Fig. 24</span></a>. Here we can see, that the decline of irreversibility
+irreversibility elements in <a class="reference internal" href="#fig-irreverisbility-elements"><span class="std std-numref">Fig. 24</span></a>. Here we can see, that the decline of irreversibility
 production with increasing evaporation temperature is steeper that the increase of the evaporation temperature. That is
 the reason, we have an increasing efficiency factor when the evaporation temperature level rises.</p>
 <figure class="align-default" id="fig-cop-entropy-method-validation">

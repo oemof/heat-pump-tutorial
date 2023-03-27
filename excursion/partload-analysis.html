@@ -152,7 +152,7 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../getting-started/setup-python.html">Setup your Python environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started/setup-python.html">Set up your Python environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting-started/5-minutes-into-solph.html">5 minutes into oemof-solph</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting-started/5-minutes-into-tespy.html">5 minutes into TESPy</a></li>
 </ul>
@@ -375,8 +375,8 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-of-compressor-efficiency">Effect of compressor efficiency</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-of-evaporator-heat-transfer-coefficent">Effect of evaporator heat transfer coefficent</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-of-condenser-heat-transfer-coefficent">Effect of condenser heat transfer coefficent</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-of-evaporator-heat-transfer-coefficient">Effect of evaporator heat transfer coefficient</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-of-condenser-heat-transfer-coefficient">Effect of condenser heat transfer coefficient</a></li>
 </ul>
             </nav>
         </div>
@@ -423,7 +423,7 @@ effect than the temperature dependency as show in the section on the
 </div>
 </div>
 </div>
-<p>Next we create a design simulaiton as reference for all part load simulations.</p>
+<p>Next we create a design simulation as reference for all part load simulations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">heat_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span> <span class="o">*</span> <span class="n">HEAT_NOMINAL</span>
@@ -491,7 +491,7 @@ modeling assumptions and test the implementation.</p>
 <p>Finally, we plot the results. We can see, that the pressure ratio does not depend on the compressor’s efficiency. Still,
 the COP drops with decreased heat load. The reason for that is the lower part load efficiency of the compressor.</p>
 <figure class="align-default" id="heat-pump-influence-efficiency">
-<img alt="../_images/240bed54ff42dbe20d2d3cddf64ce98f49e9b2dc0c440c8891182f70e617fbce.png" src="../_images/240bed54ff42dbe20d2d3cddf64ce98f49e9b2dc0c440c8891182f70e617fbce.png" />
+<img alt="../_images/18bf075fd76ad4ad95b74ce128557f563286b9f8d104cc7470d8e4f6ed9ab3c9.png" src="../_images/18bf075fd76ad4ad95b74ce128557f563286b9f8d104cc7470d8e4f6ed9ab3c9.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 27 </span><span class="caption-text">Influence of the compressor efficiency part load model with varying heat load.</span><a class="headerlink" href="#heat-pump-influence-efficiency" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -524,10 +524,10 @@ the COP drops with decreased heat load. The reason for that is the lower part lo
 </div>
 </div>
 </section>
-<section id="effect-of-evaporator-heat-transfer-coefficent">
-<h2>Effect of evaporator heat transfer coefficent<a class="headerlink" href="#effect-of-evaporator-heat-transfer-coefficent" title="Permalink to this heading">#</a></h2>
+<section id="effect-of-evaporator-heat-transfer-coefficient">
+<h2>Effect of evaporator heat transfer coefficient<a class="headerlink" href="#effect-of-evaporator-heat-transfer-coefficient" title="Permalink to this heading">#</a></h2>
 <p>Next, we have a look at the evaporator. We reset the heat demand to the nominal demand, unset the compressor efficiency
-characteristic to make it use the constant design efficiency and apply the charactersitic for the heat transfer
+characteristic to make it use the constant design efficiency and apply the characteristic for the heat transfer
 coefficient of the evaporator. Then we loop over the heat range again and plot the results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -568,10 +568,10 @@ coefficient of the evaporator. Then we loop over the heat range again and plot t
 ratio, which means that the compressor has to provide less power for compressing the same mass flow. The reduced
 pressure ratio is finally a result of the heat transfer at the evaporator: If less heat is transferred on the evaporator
 while the heat transfer coefficient remains more or less unchanged, the available surface for heat transfer allows for
-lower temperature difference. Since the ambient temperature level is fixed, the evaporation temperature rises a little
-bit compared to the design case reducing the pressure ratio inside the main cycle of the heat pump.</p>
+lower temperature difference. Since the ambient temperature level is fixed, the evaporation temperature rises compared
+to the design case reducing the pressure ratio inside the main cycle of the heat pump.</p>
 <figure class="align-default" id="heat-pump-influence-evaporator">
-<img alt="../_images/ec77a8224df86eb9d0bc2fbd5997092e11b07c24da541d141127d781a660ab14.png" src="../_images/ec77a8224df86eb9d0bc2fbd5997092e11b07c24da541d141127d781a660ab14.png" />
+<img alt="../_images/9080c051d23b4ada8f835aa7455c807c3cdcbe16c8c7e8683ff04c655598fba0.png" src="../_images/9080c051d23b4ada8f835aa7455c807c3cdcbe16c8c7e8683ff04c655598fba0.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 28 </span><span class="caption-text">Influence of the evaporator heat transfer coefficient part load model with varying heat load.</span><a class="headerlink" href="#heat-pump-influence-evaporator" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -605,8 +605,8 @@ bit compared to the design case reducing the pressure ratio inside the main cycl
 </div>
 </div>
 </section>
-<section id="effect-of-condenser-heat-transfer-coefficent">
-<h2>Effect of condenser heat transfer coefficent<a class="headerlink" href="#effect-of-condenser-heat-transfer-coefficent" title="Permalink to this heading">#</a></h2>
+<section id="effect-of-condenser-heat-transfer-coefficient">
+<h2>Effect of condenser heat transfer coefficient<a class="headerlink" href="#effect-of-condenser-heat-transfer-coefficient" title="Permalink to this heading">#</a></h2>
 <p>Last we investigate the effect of the heat transfer coefficient of the condenser with the analogous setup as for the
 evaporator.</p>
 <div class="cell docutils container">
@@ -647,7 +647,7 @@ evaporator.</p>
 <p>In the plot we can see an even stronger relationship between the decrease of heat load and the decrease of pressure
 ratio, therefore the increase in COP. The effect is the same as we have observed in the evaporator.</p>
 <figure class="align-default" id="heat-pump-influence-condenser">
-<img alt="../_images/d108fad86e07db3a877818fc4bb334e0c143866f27ae0ddcb432083478c9d17a.png" src="../_images/d108fad86e07db3a877818fc4bb334e0c143866f27ae0ddcb432083478c9d17a.png" />
+<img alt="../_images/410c6abf1439419343af66964285b3352be35344f8c8bb7dc8207437449206f5.png" src="../_images/410c6abf1439419343af66964285b3352be35344f8c8bb7dc8207437449206f5.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 29 </span><span class="caption-text">Influence of the condenser heat transfer coefficient part load model with varying heat load.</span><a class="headerlink" href="#heat-pump-influence-condenser" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -744,8 +744,8 @@ ratio, therefore the increase in COP. The effect is the same as we have observed
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-of-compressor-efficiency">Effect of compressor efficiency</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-of-evaporator-heat-transfer-coefficent">Effect of evaporator heat transfer coefficent</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-of-condenser-heat-transfer-coefficent">Effect of condenser heat transfer coefficent</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-of-evaporator-heat-transfer-coefficient">Effect of evaporator heat transfer coefficient</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-of-condenser-heat-transfer-coefficient">Effect of condenser heat transfer coefficient</a></li>
 </ul>
   </nav></div>
 

@@ -3,7 +3,7 @@
 Welcome to the documentation of the oemof session at the 2nd International
 workshop on "Open Source Modelling and Simulation of Energy Systems".
 The workshop has been developed by [Francesco Witte](https://github.com/fwitte)
-and [Patrik Schönfeld](https://github.com/p-snft) at the German Areospace
+and [Patrik Schönfeld](https://github.com/p-snft) at the German Aerospace
 Center (DLR), Institute of Networked Energy Systems.
 
 You will learn how to use and apply the two most know oemof libraries, i.e.
@@ -33,7 +33,7 @@ fill this gap.
 
 ## Structure of the Tutorial and Teaching Method
 
-In this tutorial researchers and modellers will therefore learn to
+In this tutorial researchers and modelers will therefore learn to
 
 - model heat pumps in linear and mixed integer linear programs,
 - calculate the heat pump’s performance in a dedicated thermodynamic model, and
@@ -41,7 +41,7 @@ In this tutorial researchers and modellers will therefore learn to
   pump in the energy system model.
 
 The software applied in the tutorial session will be
-[oemof-solph](https://oemof-solph.readthedocs.io) as energy system optimisation
+[oemof-solph](https://oemof-solph.readthedocs.io) as energy system optimization
 tool and [TESPy](https://tespy.readthedocs.io) as thermodynamic modelling
 framework. Both are part of the popular open energy modelling framework
 [oemof](https://oemof.org).

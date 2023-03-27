@@ -152,7 +152,7 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../getting-started/setup-python.html">Setup your Python environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started/setup-python.html">Set up your Python environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting-started/5-minutes-into-solph.html">5 minutes into oemof-solph</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting-started/5-minutes-into-tespy.html">5 minutes into TESPy</a></li>
 </ul>
@@ -440,7 +440,7 @@ The nominal capacity of the storage will be 8.7 kWh.</p>
 </section>
 <section id="heat-demand">
 <h3>Heat demand<a class="headerlink" href="#heat-demand" title="Permalink to this heading">#</a></h3>
-<p>For our heat demand we need a timeseries. We have prepared the data and we can load them with a predefined function in
+<p>For our heat demand we need a timeseries. We have prepared the data and can load them with a predefined function in
 this tutorial.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -526,7 +526,7 @@ Name: Heat load (kW), dtype: float64
 <li><p>Rated heating output (kW) at operating point A7/W35: 9.1 kW</p></li>
 <li><p>Coefficient of performance COP A7/W35: 4.9</p></li>
 </ul>
-<p>From the datasheet we know, what the COP of the heat pump is for a specific set of temperatures at nominal load, i.e.</p>
+<p>From the datasheet we know what the COP of the heat pump is for a specific set of temperatures at nominal load, i.e.</p>
 <ul class="simple">
 <li><p>an ambient temperature of 7 °C and</p></li>
 <li><p>heat production temperature of 35 °C.</p></li>
@@ -547,11 +547,11 @@ can plot the data</p>
 </div>
 </div>
 </div>
-<p>Howver, note that we have to use the maximum and minimum temperature of the process when working with the Carnot COP.
+<p>However, note that we have to use the maximum and minimum temperature of the process when working with the Carnot COP.
 The figure <a class="reference internal" href="#heat-pump-black-box-vs-process"><span class="std std-numref">Fig. 4</span></a> shows two different representations of the heat pump: One as a black
 box and one as component based process. In the black box process, we only see the temperature levels of the air and the
 water system. In the actual heat pump heat is transferred from the air to the working fluid and from the working fluid
-to the water system. This cannot happen without thermodynamic losses, meaing that the temperature of the working fluid
+to the water system. This cannot happen without thermodynamic losses, meaning that the temperature of the working fluid
 must be lower than the air temperature when evaporating and the temperature must be higher when condensing and providing
 heat to the water system. This however changes our reference temperature levels for the Carnot COP, as the maximum and
 minimum temperatures of the process are not the air and water temperatures but refer to the working fluid.</p>
@@ -562,7 +562,7 @@ minimum temperatures of the process are not the air and water temperatures but r
 </figure>
 <p>Since we do not have any internal data of the heat pump, we have to make an assumption to determine the Carnot COP in
 this way. For both heat exchangers we assume a temperature difference of <span class="pasted-text">5</span> K, therefore
-an condensation temperature of <span class="pasted-text">40</span> °C and an evaporation temperature of
+a condensation temperature of <span class="pasted-text">40</span> °C and an evaporation temperature of
 <span class="pasted-text">2</span> °C. This changes our Carnot COP, and given, that we want to have the same COP as in
 our first assessment, the efficiency factor.</p>
 <div class="cell docutils container">
@@ -582,12 +582,12 @@ our first assessment, the efficiency factor.</p>
 </div>
 </div>
 </div>
-<p>We can have a look at the difference between both approaches in {numref}``. The left subplot shows the COP with both
-approaches over a range of the ambient temperature between -10 and 20 °C. There we can see, that both methods yield the
-same outcome for 7 °C, i.e. 4.9. For higher temperatures the variant with 7/35 as reference temperatures is higher, for
-the lower temperatures the variant with 2/40 as reference temperatures has a higher COP. The right subplot shows the COP
-time series for our application example. Since the ambient temperature is mostly higher than 7 °C, the implementation of
-the 7/35 variant will have higher COP most of the time.</p>
+<p>We can have a look at the difference between both approaches in <a class="reference internal" href="#cop-reference-temperature-variants"><span class="std std-numref">Fig. 5</span></a>. The left
+subplot shows the COP with both approaches over a range of the ambient temperature between -10 and 20 °C. There we can
+see, that both methods yield the same outcome for 7 °C, i.e. 4.9. For higher temperatures the variant with 7/35 as
+reference temperatures is higher, for the lower temperatures the variant with 2/40 as reference temperatures has a
+higher COP. The right subplot shows the COP time series for our application example. Since the ambient temperature is
+mostly higher than 7 °C, the implementation of the 7/35 variant will have higher COP most of the time.</p>
 <figure class="align-default" id="cop-reference-temperature-variants">
 <img alt="../_images/e40e7a59afae9e1be4707625ee86fff0b4891b3e71f911aa0e69f93fc6f98ee0.png" src="../_images/e40e7a59afae9e1be4707625ee86fff0b4891b3e71f911aa0e69f93fc6f98ee0.png" />
 <figcaption>
@@ -619,7 +619,7 @@ the 7/35 variant will have higher COP most of the time.</p>
 </div>
 </div>
 </div>
-<p>With those information we can create the heat pump, we will use the 2/40 temperature reference.</p>
+<p>With this information we can create the heat pump, we will use the 2/40 temperature reference.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hp_thermal_power</span> <span class="o">=</span> <span class="mf">9.1</span>  <span class="c1"># kW</span>
@@ -647,7 +647,7 @@ the 7/35 variant will have higher COP most of the time.</p>
 </section>
 <section id="optimize-the-energy-system">
 <h3>Optimize the energy system<a class="headerlink" href="#optimize-the-energy-system" title="Permalink to this heading">#</a></h3>
-<p>Finally with all components in place we can create the energy system, add the components and run the optimization.</p>
+<p>Finally, with all components in place we can create the energy system, add the components and run the optimization.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">es</span> <span class="o">=</span> <span class="n">solph</span><span class="o">.</span><span class="n">EnergySystem</span><span class="p">(</span><span class="n">timeindex</span><span class="o">=</span><span class="n">input_data</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">infer_last_interval</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>

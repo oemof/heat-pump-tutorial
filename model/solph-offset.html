@@ -154,7 +154,7 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../getting-started/setup-python.html">Setup your Python environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started/setup-python.html">Set up your Python environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting-started/5-minutes-into-solph.html">5 minutes into oemof-solph</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting-started/5-minutes-into-tespy.html">5 minutes into TESPy</a></li>
 </ul>
@@ -434,8 +434,8 @@ heat production.</p>
 </div>
 </div>
 </div>
-<p>We can transform the input data from the TESPy model by mapping them onto the ambient temperatures in a similar way as
-we had done this for the linear model.</p>
+<p>We can transform the input data from the TESPy model by mapping them onto the ambient temperatures similarly as we had
+done this for the linear model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">input_data</span><span class="p">[</span><span class="s2">&quot;slope&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">input_data</span><span class="p">[</span><span class="s2">&quot;Ambient temperature (d°C)&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">tespy_coefficients</span><span class="p">[</span><span class="s2">&quot;slope&quot;</span><span class="p">])</span>
@@ -454,7 +454,8 @@ we had done this for the linear model.</p>
 </div>
 </div>
 </div>
-<p>With respect to the previous version (solph-minimal-load), a the Transformer is replaced by an OffsetTransformer.</p>
+<p>With respect to the previous version <a class="reference internal" href="solph-minimal-load.html#solph-minimal-load"><span class="std std-ref">using minimal load</span></a>), the Transformer is replaced by an
+OffsetTransformer.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">oemof.solph</span> <span class="k">as</span> <span class="nn">solph</span>

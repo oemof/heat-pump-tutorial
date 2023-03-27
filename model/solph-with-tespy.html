@@ -152,7 +152,7 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../getting-started/setup-python.html">Setup your Python environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started/setup-python.html">Set up your Python environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting-started/5-minutes-into-solph.html">5 minutes into oemof-solph</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting-started/5-minutes-into-tespy.html">5 minutes into TESPy</a></li>
 </ul>
@@ -392,7 +392,7 @@ document.write(`
 <p>After running the TESPy model to determine the COP at different ambient temperature values, the next steps are as
 follows:</p>
 <ul class="simple">
-<li><p>read the results fromt he TESPy model,</p></li>
+<li><p>read the results from the TESPy model,</p></li>
 <li><p>make an interpolation to map the results to the actual ambient temperature time series and</p></li>
 <li><p>pass the COP time series to the heat pump in the <code class="docutils literal notranslate"><span class="pre">oemof-solph</span></code> model.</p></li>
 </ul>
@@ -567,7 +567,7 @@ from our ambient temperature time series to the TESPy lookup data.</p>
 </section>
 <section id="run-the-model">
 <h2>Run the model<a class="headerlink" href="#run-the-model" title="Permalink to this heading">#</a></h2>
-<p>Finally we can run our optimization model and read the results again.</p>
+<p>Finally, we can run our optimization model and read the results again.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">solph</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">energysystem</span><span class="o">=</span><span class="n">es</span><span class="p">)</span>

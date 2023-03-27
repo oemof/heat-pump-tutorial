@@ -154,7 +154,7 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../getting-started/setup-python.html">Setup your Python environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started/setup-python.html">Set up your Python environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting-started/5-minutes-into-solph.html">5 minutes into oemof-solph</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting-started/5-minutes-into-tespy.html">5 minutes into TESPy</a></li>
 </ul>
@@ -416,9 +416,9 @@ dedicated section in the documentation of the software’s modules: <a class="re
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>In TESPy it is possible to design a process and based on that design predict the part load operation of the overall
-system. To do that, component and process information are calculated from the design as a result and then remian
+system. To do that, component and process information are calculated from the design as a result and then remain
 unchanged in offdesign operation.</p>
-<p>For example, the a heat exchanger’s heat transfer coefficient can be calculated in the design based on the heat
+<p>For example, the heat exchanger’s heat transfer coefficient can be calculated in the design based on the heat
 transferred and on the temperature levels at the two inlets and the two outlets of the component. Then for part load
 prediction, we can make the assumption that this value does not change (or it may follow a specific curve from a lookup
 table). This also means, that we reduce the degrees of freedom by one, for example the terminal temperature difference
@@ -432,8 +432,8 @@ providing in this example. You can find it <a class="reference internal" href=".
 </section>
 <section id="preparing-the-model">
 <h2>Preparing the model<a class="headerlink" href="#preparing-the-model" title="Permalink to this heading">#</a></h2>
-<p>First we are goin to prepare our TESPy model. To do that, we will slightly modify our topology according to the figure
-below. The overall specifications on heat exchanger temperatude differences, compressor efficiency etc. will remian the
+<p>First we are going to prepare our TESPy model. To do that, we will slightly modify our topology according to the figure
+below. The overall specifications on heat exchanger temperature differences, compressor efficiency etc. will remain the
 unchanged.</p>
 <figure class="align-default" id="tespy-heat-pump-part-load-flowsheet">
 <img alt="Component based thermodynamic model of the heat pump for part load modeling" src="../_images/heat_pump_full.svg" /><figcaption>
@@ -442,7 +442,7 @@ unchanged.</p>
 </figure>
 <p>First, we import the <code class="docutils literal notranslate"><span class="pre">HeatExchanger</span></code> class to model the evaporator, the <code class="docutils literal notranslate"><span class="pre">Condenser</span></code> class to model the condenser
 (instead of the <code class="docutils literal notranslate"><span class="pre">HeatExchangerSimple</span></code>) we used in the first model, and finally the <code class="docutils literal notranslate"><span class="pre">Source</span></code> and <code class="docutils literal notranslate"><span class="pre">Sink</span></code> classes to
-represent the ambient air in- and outlet as well as the heating system’s feed and return flow. We creat instances of
+represent the ambient air in- and outlet as well as the heating system’s feed and return flow. We create instances of
 the components and connect them according to the flowsheet.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -552,17 +552,29 @@ Therefore we provide a tutorial on how to build models with stable starting valu
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (Condenser) #####
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (CycleCloser) #####
++--------------+------------------+-------------------+
+|              |   mass_deviation |   fluid_deviation |
+|--------------+------------------+-------------------|
+| cycle closer |         0.00e+00 |          0.00e+00 |
++--------------+------------------+-------------------+
+##### RESULTS (Compressor) #####
++------------+----------+----------+----------+--------+
+|            |        P |    eta_s |       pr |   igva |
+|------------+----------+----------+----------+--------|
+| compressor | 1.86e+03 | 6.75e-01 | 2.72e+00 |    nan |
++------------+----------+----------+----------+--------+
+##### RESULTS (Condenser) #####
 +-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
 |           |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
 |-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
-| condenser | -9.10e+03 | 1.26e+03 | 7.21e+00 | 5.00e+00 | 1.00e+01 | 1.00e+00 | 1.00e+00 | 4.12e-05 | 0.00e+00 |
+| condenser | -9.10e+03 | 1.26e+03 | 7.21e+00 | 5.00e+00 | 1.00e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
 +-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
 ##### RESULTS (HeatExchanger) #####
 +------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
 |            |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
 |------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
-| evaporator | -7.24e+03 | 1.85e+03 | 3.92e+00 | 5.00e+00 | 3.00e+00 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 3.39e-06 |
+| evaporator | -7.24e+03 | 1.85e+03 | 3.92e+00 | 5.00e+00 | 3.00e+00 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
 +------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
 ##### RESULTS (Valve) #####
 +-----------------+----------+----------+
@@ -570,18 +582,6 @@ Therefore we provide a tutorial on how to build models with stable starting valu
 |-----------------+----------+----------|
 | expansion valve | 3.68e-01 | 1.04e+11 |
 +-----------------+----------+----------+
-##### RESULTS (Compressor) #####
-+------------+----------+----------+----------+--------+
-|            |        P |    eta_s |       pr |   igva |
-|------------+----------+----------+----------+--------|
-| compressor | 1.86e+03 | 6.75e-01 | 2.72e+00 |    nan |
-+------------+----------+----------+----------+--------+
-##### RESULTS (CycleCloser) #####
-+--------------+------------------+-------------------+
-|              |   mass_deviation |   fluid_deviation |
-|--------------+------------------+-------------------|
-| cycle closer |         0.00e+00 |          0.00e+00 |
-+--------------+------------------+-------------------+
 ##### RESULTS (Connection) #####
 +----+-----------+-----------+-----------+-----------+
 |    |         m |         p |         h |         T |
@@ -700,7 +700,7 @@ Therefore we provide a tutorial on how to build models with stable starting valu
       <td>0.000057</td>
       <td>0.002139</td>
       <td>1359.354602</td>
-      <td>8.060345e-16</td>
+      <td>1.209052e-15</td>
       <td>NaN</td>
       <td>1.0</td>
       <td>0.0</td>
@@ -844,8 +844,8 @@ behavior.</span><a class="headerlink" href="#fig-heat-pump-ambient-temperature-d
 <section id="influence-of-the-heat-production">
 <h3>Influence of the heat production<a class="headerlink" href="#influence-of-the-heat-production" title="Permalink to this heading">#</a></h3>
 <p>Second, we investigate the influence of the heat production. We can define a heat range relative to the design heat
-production spanning from 50 % to 100 % load. The ambient temperature is reset back to the previous state and we can loop
-over the part load values.</p>
+production spanning from 50 % to 100 % load. The ambient temperature is reset back to the previous state, and we can
+loop over the part load values.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The compressor of a heat pump will be the component restricting lower and upper operational limits. Using 50 % heat
@@ -878,7 +878,7 @@ COP are affected by the changing heat load. Only the compressor power requiremen
 this is, that the compressor’s efficiency and the temperature differences (and therefore the evaporation and
 condensation temperatures) do not change with changing load due to our model specifications.</p>
 <figure class="align-default" id="fig-heat-pump-heat-load-design-mode">
-<img alt="../_images/af6e9d8014ecfba0001d74a45e91eb73c543e3ab8f43d33f0227887b248470f6.png" src="../_images/af6e9d8014ecfba0001d74a45e91eb73c543e3ab8f43d33f0227887b248470f6.png" />
+<img alt="../_images/ffb6625d06f4df4aec4e0ff08fb1aec1594cee80f321f946bf9253bce65ee624.png" src="../_images/ffb6625d06f4df4aec4e0ff08fb1aec1594cee80f321f946bf9253bce65ee624.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 14 </span><span class="caption-text">Influence of the heat load on the compressor power, its pressure ratio and the COP without modeling part load behavior.</span><a class="headerlink" href="#fig-heat-pump-heat-load-design-mode" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -911,21 +911,21 @@ condensation temperatures) do not change with changing load due to our model spe
 </section>
 <section id="part-load-simulation">
 <h2>Part load simulation<a class="headerlink" href="#part-load-simulation" title="Permalink to this heading">#</a></h2>
-<p>The assumptions jmade in the previous section are not really reasonable: A heat exchanger cannot always hold the
-temperature difference independet of the (changing) flow regimes, when it has been constructed for a specific
+<p>The assumptions made in the previous section are not really reasonable: A heat exchanger cannot always hold the
+temperature difference independent of the (changing) flow regimes, when it has been constructed for a specific
 operational point. The same applies for the compressor: We can expect that the efficiency changes when it is not
 operated in optimal conditions. Therefore, this sections shows how we can make assumptions on the part load behavior of
 these components.</p>
 <section id="id1">
 <h3>Influence of the ambient temperature<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <p>First, we are going to investigate the ambient temperature influence. To do this, instead of using the <code class="docutils literal notranslate"><span class="pre">&quot;design&quot;</span></code> mode
-for our simulation we are using the <code class="docutils literal notranslate"><span class="pre">&quot;offdesign&quot;</span></code> mode. The offdesign mode can access a design specification and bsaed
+for our simulation we are using the <code class="docutils literal notranslate"><span class="pre">&quot;offdesign&quot;</span></code> mode. The offdesign mode can access a design specification and based
 on that and the current operational point predict part load efficiencies.</p>
 <p>For the components that means, that the compressor’s efficiency will not be an input parameter anymore, but a
 characteristic curve will be applied instead. The characteristic holds a lookup table connecting the change of mass flow
 relative to the design point mass flow with the change in efficiency. For the evaporator and the condenser we make
 similar assumptions: Instead of having constant temperature difference values, the heat transfer coefficient <code class="docutils literal notranslate"><span class="pre">kA</span></code> is
-applied together with a characteristic curve, modifying its value depending ont he change of mass flows relative to the
+applied together with a characteristic curve, modifying its value depending on the change of mass flows relative to the
 design point mass flows.</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
@@ -934,7 +934,7 @@ design point mass flows.</p>
 characteristics from measurement data. To implement your custom characteristic lines see the respective sections in the
 <a class="reference external" href="https://tespy.readthedocs.io">TESPy online documentation</a>.</p>
 </div>
-<p>In our setup we allow extrapolation on the compressor characteristic line and we run the same loop over the temperature
+<p>In our setup we allow extrapolation on the compressor characteristic line, and we run the same loop over the temperature
 as we had in the first analysis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -962,7 +962,7 @@ as we had in the first analysis.</p>
 </div>
 </div>
 </div>
-<p>We make the same plots as before, comparing the results of the design point calculations with those that take partload
+<p>We make the same plots as before, comparing the results of the design point calculations with those that take part-load
 into account. The <a class="reference internal" href="#fig-heat-pump-ambient-temperature-offdesign-mode"><span class="std std-numref">Fig. 15</span></a> shows the comparison of both approaches.
 The last subplot is the deviation in COP, which is at an overall low level. Only for very high ambient temperature
 levels, which are nearly at the heat supply temperature level the deviation increases to about 5 % with respect to the
@@ -1064,10 +1064,10 @@ the ambient design temperature value and rerun the offdesign simulations with th
 </div>
 </div>
 <p>Again we plot our results against the results of the simulation in design mode
-(<a class="reference internal" href="#fig-heat-pump-heat-load-offdesign-mode"><span class="std std-numref">Fig. 16</span></a>). The COP of both simluaitons matches quite well for all heat loads
+(<a class="reference internal" href="#fig-heat-pump-heat-load-offdesign-mode"><span class="std std-numref">Fig. 16</span></a>). The COP of both simulations matches quite well for all heat loads
 above 75 % of design heat production. For lower heat production values the part load considering simulations show lower
 COP than the design simulation. When looking at the compressor’s pressure ratio its value decreases with decreasing heat
-load. This seems odd at first, because a lower pressure ratio would indicate lower compresser power. The reason for the
+load. This seems odd at first, because a lower pressure ratio would indicate lower compressor power. The reason for the
 increasing compressor power demand is to be sought in its part load efficiency, which decreases faster than the pressure
 ratio.</p>
 <div class="admonition tip">
@@ -1076,7 +1076,7 @@ ratio.</p>
 <a class="reference internal" href="../excursion/partload-analysis.html#tespy-partload-disection"><span class="std std-ref">this excursion</span></a>.</p>
 </div>
 <figure class="align-default" id="fig-heat-pump-heat-load-offdesign-mode">
-<img alt="../_images/daeddd741d1203c1759d99e5baf9fdca5c13ff8d45b47dfbc447c374a9fffcf9.png" src="../_images/daeddd741d1203c1759d99e5baf9fdca5c13ff8d45b47dfbc447c374a9fffcf9.png" />
+<img alt="../_images/8f9affbd7ed855b2d9261cfd45381f8de265f4f88081544059026afcabbd3527.png" src="../_images/8f9affbd7ed855b2d9261cfd45381f8de265f4f88081544059026afcabbd3527.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 16 </span><span class="caption-text">Influence of the heat load on the compressor power, its pressure ratio and the COP when considering part load behavior.</span><a class="headerlink" href="#fig-heat-pump-heat-load-offdesign-mode" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -1113,7 +1113,9 @@ ratio.</p>
 </div>
 </div>
 </div>
-<p>We can have the same look at the results from the dataframes. Since we inspected the part load behaviour for the heat output at the design temperature level of the ambient, we should see equal values in the results for the design heat production, i.e. <code class="docutils literal notranslate"><span class="pre">-10,000.0</span></code> W.</p>
+<p>We can have the same look at the results from the dataframes. Since we inspected the part load behavior for the heat
+output at the design temperature level of the ambient, we should see equal values in the results for the design heat
+production, i.e. <code class="docutils literal notranslate"><span class="pre">-10,000.0</span></code> W.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results_heat_partload</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">Q_design</span><span class="p">]</span>
@@ -1177,8 +1179,8 @@ investigate the influence of the heat load per temperature value.</p>
 </div>
 </div>
 </div>
-<p>We can plot some of the results, e.g. for every 10th temperature value in <a class="reference internal" href="#fig-heat-pump-result-offdesign-mode"><span class="std std-numref">Fig. 17</span></a>.
-These results can then be transferred to the <code class="docutils literal notranslate"><span class="pre">oemof-solph</span></code> simulation.</p>
+<p>We can plot some results, e.g. for every 10th temperature value in <a class="reference internal" href="#fig-heat-pump-result-offdesign-mode"><span class="std std-numref">Fig. 17</span></a>. These
+results can then be transferred to the <code class="docutils literal notranslate"><span class="pre">oemof-solph</span></code> simulation.</p>
 <figure class="align-default" id="fig-heat-pump-result-offdesign-mode">
 <img alt="../_images/6bea6a60ea26857644a035a53301827a294e451389a47ab300d21d8056972a01.png" src="../_images/6bea6a60ea26857644a035a53301827a294e451389a47ab300d21d8056972a01.png" />
 <figcaption>
@@ -1246,7 +1248,7 @@ load simulation.</span><a class="headerlink" href="#fig-heat-pump-result-compari
 <a class="reference internal" href="#fig-heat-pump-result-linearization"><span class="std std-numref">Fig. 19</span></a>. We can see, that both, offset and slope, change for every ambient
 temperature value.</p>
 <figure class="align-default" id="fig-heat-pump-result-linearization">
-<img alt="../_images/ff28aaa64fbdb3c2fdeb178e39362bb44d75f29865914499f664bb375fa04380.png" src="../_images/ff28aaa64fbdb3c2fdeb178e39362bb44d75f29865914499f664bb375fa04380.png" />
+<img alt="../_images/ec45a1a3659b1e2a47e5c252f370b8fc48b0f9aded7e76419d64c93eb83d0b39.png" src="../_images/ec45a1a3659b1e2a47e5c252f370b8fc48b0f9aded7e76419d64c93eb83d0b39.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 19 </span><span class="caption-text">Linearized compressor power to heat load.</span><a class="headerlink" href="#fig-heat-pump-result-linearization" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -1315,8 +1317,8 @@ temperature value.</p>
 </div>
 <p>The final step to provide the data for the <code class="docutils literal notranslate"><span class="pre">OffsetTransformer</span></code> of <code class="docutils literal notranslate"><span class="pre">oemof-solph</span></code> is to change the output structure.
 <code class="docutils literal notranslate"><span class="pre">oemof-solph</span></code> expects the coefficients (offset and slope) per ambient temperature level and inverted, i.e. the heat
-output as function of the electricity input. We can build a new dataframe, that holds these information and export them
-into csv format and export those information.</p>
+output as function of the electricity input. We can build a new dataframe, that holds the information and exports it
+into csv format and export that information.</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
 <p>The x and y axes are swapped. Before, the heat load was on the x-axis, the compressor power input on the y-axis.</p>

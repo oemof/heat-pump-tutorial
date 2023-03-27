@@ -154,7 +154,7 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../getting-started/setup-python.html">Setup your Python environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started/setup-python.html">Set up your Python environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting-started/5-minutes-into-solph.html">5 minutes into oemof-solph</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting-started/5-minutes-into-tespy.html">5 minutes into TESPy</a></li>
 </ul>
@@ -426,7 +426,7 @@ of the ambient air temperature. For that, we build a TESPy model following the i
 <td class="text-right"><p><span class="pasted-text">2</span></p></td>
 <td class="text-left"><p>°C</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p>condensation temperatre</p></td>
+<tr class="row-even"><td class="text-left"><p>condensation temperature</p></td>
 <td class="text-left"><p>4</p></td>
 <td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">T</span></code></p></td>
 <td class="text-right"><p><span class="pasted-text">40</span></p></td>
@@ -453,8 +453,8 @@ case for the condenser.</p>
 </section>
 <section id="building-the-model">
 <h2>Building the model<a class="headerlink" href="#building-the-model" title="Permalink to this heading">#</a></h2>
-<p>To build the model we wirst import all dependencies from the <code class="docutils literal notranslate"><span class="pre">TESPy</span></code> library. We need the components shown in the
-flowsheet as well as connections to connect them and a network, which does all the pre- and postprocessing as well as
+<p>To build the model we first import all dependencies from the <code class="docutils literal notranslate"><span class="pre">TESPy</span></code> library. We need the components shown in the
+flowsheet as well as connections to connect them and a network, which does all the pre- and post-processing as well as
 solving the model for us:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -592,31 +592,31 @@ future as well.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (CycleCloser) #####
-+--------------+------------------+-------------------+
-|              |   mass_deviation |   fluid_deviation |
-|--------------+------------------+-------------------|
-| cycle closer |         0.00e+00 |          0.00e+00 |
-+--------------+------------------+-------------------+
-##### RESULTS (HeatExchangerSimple) #####
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (HeatExchangerSimple) #####
 +------------+-----------+----------+----------+-----+-----+------+------+--------+
 |            |         Q |       pr |     zeta |   D |   L |   ks |   kA |   Tamb |
 |------------+-----------+----------+----------+-----+-----+------+------+--------|
 | evaporator |  7.48e+03 | 1.00e+00 | 1.59e-06 | nan | nan |  nan |  nan |    nan |
-| condenser  | -9.10e+03 | 1.00e+00 | 1.99e-05 | nan | nan |  nan |  nan |    nan |
+| condenser  | -9.10e+03 | 1.00e+00 | 0.00e+00 | nan | nan |  nan |  nan |    nan |
 +------------+-----------+----------+----------+-----+-----+------+------+--------+
-##### RESULTS (Valve) #####
-+-----------------+----------+----------+
-|                 |       pr |     zeta |
-|-----------------+----------+----------|
-| expansion valve | 3.68e-01 | 9.74e+10 |
-+-----------------+----------+----------+
 ##### RESULTS (Compressor) #####
 +------------+----------+----------+----------+--------+
 |            |        P |    eta_s |       pr |   igva |
 |------------+----------+----------+----------+--------|
 | compressor | 1.62e+03 | 8.00e-01 | 2.72e+00 |    nan |
 +------------+----------+----------+----------+--------+
+##### RESULTS (Valve) #####
++-----------------+----------+----------+
+|                 |       pr |     zeta |
+|-----------------+----------+----------|
+| expansion valve | 3.68e-01 | 9.74e+10 |
++-----------------+----------+----------+
+##### RESULTS (CycleCloser) #####
++--------------+------------------+-------------------+
+|              |   mass_deviation |   fluid_deviation |
+|--------------+------------------+-------------------|
+| cycle closer |         0.00e+00 |          0.00e+00 |
++--------------+------------------+-------------------+
 ##### RESULTS (Connection) #####
 +----+-----------+-----------+-----------+-----------+
 |    |         m |         p |         h |         T |
@@ -641,7 +641,7 @@ objects or from the network’s result dataframes. Note, that the compressor’s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1618.4579721423036
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1618.4579721423038
 </pre></div>
 </div>
 </div>
@@ -653,7 +653,7 @@ objects or from the network’s result dataframes. Note, that the compressor’s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1618.4579721423036
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1618.4579721423038
 </pre></div>
 </div>
 </div>
@@ -672,15 +672,15 @@ objects or from the network’s result dataframes. Note, that the compressor’s
 </div>
 </div>
 <p>We can see, that the overall COP does not match the data from our datasheet <span id="id1">[<a class="reference internal" href="../zliterature.html#id12" title="Vitocal 150-a, air source heat pump. Accessed: 2023-03-17. URL: https://www.viessmann.co.uk/en/products/heat-pump/vitocal-150a.html.">8</a>]</span>. To adjust our model
-to match those data, i.e. a COP of 4.9, there are a coulpe of degrees of freedom that we can adjust:</p>
+to match those data, i.e. a COP of 4.9, there are a couple of degrees of freedom that we can adjust:</p>
 <ul class="simple">
-<li><p>The assumptions on temperature differences at the heat exchangers (condenser and evaporator)</p></li>
+<li><p>The assumptions on temperature difference at the heat exchangers (condenser and evaporator)</p></li>
 <li><p>The pressure losses in the heat exchangers</p></li>
 <li><p>The compressor efficiency</p></li>
 <li><p>Non-accounted heat losses</p></li>
 </ul>
 <p>To keep things simple, we will take the <strong>compressor efficiency</strong> as adjustment screw. We find the value of the
-efficiency to match the COP from the datasheet, it is at about <span class="pasted-text">67.5</span>  %. The
+efficiency to match the COP from the datasheet, it is at about <span class="pasted-text">67.5</span> %. The
 code below performs a simple binary search.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -720,7 +720,7 @@ code below performs a simple binary search.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.900349094422487
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.900349094422475
 </pre></div>
 </div>
 </div>
@@ -792,12 +792,12 @@ assessed.</p>
 <p><span class="caption-number">Fig. 8 </span><span class="caption-text">Comparison of the COP of the heat pump calculated with a constant and a variable efficiency factor.</span><a class="headerlink" href="#fig-heat-pump-efficiency-factor" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>From the graphs we can easily see, that the carnot COP <span class="math notranslate nohighlight">\(\text{COP}_\text{c}\)</span> is (expectedly) higher than the
+<p>From the graphs we can easily see, that the Carnot COP <span class="math notranslate nohighlight">\(\text{COP}_\text{c}\)</span> is (expectedly) higher than the
 actual COP. However, in the second subplot we see that the efficiency factor <span class="math notranslate nohighlight">\(\eta\)</span> is not constant.</p>
 <p>There are two reasons for this. First, the definition of the Carnot COP in equation (eq. <a class="reference internal" href="intro.html#equation-carnot-cop-heat-pump">(4)</a>) is
 not strictly correct. The effect of this is however only a minor one. The stronger effect is, that the thermodynamic
-losses (entropy production due to irreverisbility) in each component are simply higher at lower temperature. We have
-prepared a separate section with the details on this phenomenom as a thermodynamic excursion
+losses (entropy production due to irreversibility) in each component are simply higher at lower temperature. We have
+prepared a separate section with the details on this phenomenon as a thermodynamic excursion
 <a class="reference internal" href="../excursion/entropy-analysis.html#tespy-carnot-cop"><span class="std std-ref">here</span></a>. This section will however not be part of the in-person workshop.</p>
 </section>
 <section id="preparing-the-results-for-the-solph-model">

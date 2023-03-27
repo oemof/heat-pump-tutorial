@@ -552,24 +552,18 @@ Therefore we provide a tutorial on how to build models with stable starting valu
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (Compressor) #####
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (HeatExchanger) #####
++------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+|            |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
+|------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
+| evaporator | -7.24e+03 | 1.85e+03 | 3.92e+00 | 5.00e+00 | 3.00e+00 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 3.39e-06 |
++------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+##### RESULTS (Compressor) #####
 +------------+----------+----------+----------+--------+
 |            |        P |    eta_s |       pr |   igva |
 |------------+----------+----------+----------+--------|
 | compressor | 1.86e+03 | 6.75e-01 | 2.72e+00 |    nan |
 +------------+----------+----------+----------+--------+
-##### RESULTS (Valve) #####
-+-----------------+----------+----------+
-|                 |       pr |     zeta |
-|-----------------+----------+----------|
-| expansion valve | 3.68e-01 | 1.04e+11 |
-+-----------------+----------+----------+
-##### RESULTS (HeatExchanger) #####
-+------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
-|            |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
-|------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
-| evaporator | -7.24e+03 | 1.85e+03 | 3.92e+00 | 5.00e+00 | 3.00e+00 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
-+------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
 ##### RESULTS (CycleCloser) #####
 +--------------+------------------+-------------------+
 |              |   mass_deviation |   fluid_deviation |
@@ -582,6 +576,12 @@ Therefore we provide a tutorial on how to build models with stable starting valu
 |-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
 | condenser | -9.10e+03 | 1.26e+03 | 7.21e+00 | 5.00e+00 | 1.00e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
 +-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+##### RESULTS (Valve) #####
++-----------------+----------+----------+
+|                 |       pr |     zeta |
+|-----------------+----------+----------|
+| expansion valve | 3.68e-01 | 1.04e+11 |
++-----------------+----------+----------+
 ##### RESULTS (Connection) #####
 +----+-----------+-----------+-----------+-----------+
 |    |         m |         p |         h |         T |
@@ -878,7 +878,7 @@ COP are affected by the changing heat load. Only the compressor power requiremen
 this is, that the compressor’s efficiency and the temperature differences (and therefore the evaporation and
 condensation temperatures) do not change with changing load due to our model specifications.</p>
 <figure class="align-default" id="fig-heat-pump-heat-load-design-mode">
-<img alt="../_images/10473433b3c3bc117ee5c837acc67892b508a4ad61a38ddb4590750db09b4ef3.png" src="../_images/10473433b3c3bc117ee5c837acc67892b508a4ad61a38ddb4590750db09b4ef3.png" />
+<img alt="../_images/3f15ca6fae705441e5e88b8d7f45846d80ffc75ffb57a7fa0abf90d96ba430e4.png" src="../_images/3f15ca6fae705441e5e88b8d7f45846d80ffc75ffb57a7fa0abf90d96ba430e4.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 14 </span><span class="caption-text">Influence of the heat load on the compressor power, its pressure ratio and the COP without modeling part load behavior.</span><a class="headerlink" href="#fig-heat-pump-heat-load-design-mode" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -1076,7 +1076,7 @@ ratio.</p>
 <a class="reference internal" href="../excursion/partload-analysis.html#tespy-partload-disection"><span class="std std-ref">this excursion</span></a>.</p>
 </div>
 <figure class="align-default" id="fig-heat-pump-heat-load-offdesign-mode">
-<img alt="../_images/1ab63e1edb2327bcd0951266b2031bcea74436b45b9b65cdd355ddc470e05251.png" src="../_images/1ab63e1edb2327bcd0951266b2031bcea74436b45b9b65cdd355ddc470e05251.png" />
+<img alt="../_images/7f94b03950316447857ede4bb59a82606a84f37077d4e69dbad17d819eae5a56.png" src="../_images/7f94b03950316447857ede4bb59a82606a84f37077d4e69dbad17d819eae5a56.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 16 </span><span class="caption-text">Influence of the heat load on the compressor power, its pressure ratio and the COP when considering part load behavior.</span><a class="headerlink" href="#fig-heat-pump-heat-load-offdesign-mode" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -1236,7 +1236,7 @@ the actual simulation. For example, we can have a look at the design conditions 
 that the deviation between the linearized model and the actual simulation is below 1.5 % for all heat load values. The
 assumption of a constant efficiency factor leads to a high deviation especially with lower heat production up to 18 %.</p>
 <figure class="align-default" id="fig-heat-pump-result-comparison">
-<img alt="../_images/3ccf6f8aaa17db72913237fd71fa865dd8313432f38a8a476b750e8cf12c800e.png" src="../_images/3ccf6f8aaa17db72913237fd71fa865dd8313432f38a8a476b750e8cf12c800e.png" />
+<img alt="../_images/4bd8dec4a43b09996f5098916794e90ca055454381e671f2a6186e339db35f35.png" src="../_images/4bd8dec4a43b09996f5098916794e90ca055454381e671f2a6186e339db35f35.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 18 </span><span class="caption-text">Comparison of the compressor power depending on the heat pump’s heat load for the simplified approach and in the part
 load simulation.</span><a class="headerlink" href="#fig-heat-pump-result-comparison" title="Permalink to this image">#</a></p>
@@ -1246,7 +1246,7 @@ load simulation.</span><a class="headerlink" href="#fig-heat-pump-result-compari
 <a class="reference internal" href="#fig-heat-pump-result-linearization"><span class="std std-numref">Fig. 19</span></a>. We can see, that both, offset and slope, change for every ambient
 temperature value.</p>
 <figure class="align-default" id="fig-heat-pump-result-linearization">
-<img alt="../_images/3b158432c7ca2c5b17b68565ee6222355ed5372db3507f83eb751486a0392f0b.png" src="../_images/3b158432c7ca2c5b17b68565ee6222355ed5372db3507f83eb751486a0392f0b.png" />
+<img alt="../_images/7a6154424fc37c2cb0ef90c100eae8fb866c4aea05a59eac2bf6ddb1bdc03d3f.png" src="../_images/7a6154424fc37c2cb0ef90c100eae8fb866c4aea05a59eac2bf6ddb1bdc03d3f.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 19 </span><span class="caption-text">Linearized compressor power to heat load.</span><a class="headerlink" href="#fig-heat-pump-result-linearization" title="Permalink to this image">#</a></p>
 </figcaption>

@@ -592,12 +592,18 @@ future as well.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (HeatExchangerSimple) #####
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (CycleCloser) #####
++--------------+------------------+-------------------+
+|              |   mass_deviation |   fluid_deviation |
+|--------------+------------------+-------------------|
+| cycle closer |         0.00e+00 |          0.00e+00 |
++--------------+------------------+-------------------+
+##### RESULTS (HeatExchangerSimple) #####
 +------------+-----------+----------+----------+-----+-----+------+------+--------+
 |            |         Q |       pr |     zeta |   D |   L |   ks |   kA |   Tamb |
 |------------+-----------+----------+----------+-----+-----+------+------+--------|
-| condenser  | -9.10e+03 | 1.00e+00 | 1.99e-05 | nan | nan |  nan |  nan |    nan |
 | evaporator |  7.48e+03 | 1.00e+00 | 1.59e-06 | nan | nan |  nan |  nan |    nan |
+| condenser  | -9.10e+03 | 1.00e+00 | 1.99e-05 | nan | nan |  nan |  nan |    nan |
 +------------+-----------+----------+----------+-----+-----+------+------+--------+
 ##### RESULTS (Valve) #####
 +-----------------+----------+----------+
@@ -605,12 +611,6 @@ future as well.</p>
 |-----------------+----------+----------|
 | expansion valve | 3.68e-01 | 9.74e+10 |
 +-----------------+----------+----------+
-##### RESULTS (CycleCloser) #####
-+--------------+------------------+-------------------+
-|              |   mass_deviation |   fluid_deviation |
-|--------------+------------------+-------------------|
-| cycle closer |         0.00e+00 |          0.00e+00 |
-+--------------+------------------+-------------------+
 ##### RESULTS (Compressor) #####
 +------------+----------+----------+----------+--------+
 |            |        P |    eta_s |       pr |   igva |
@@ -641,7 +641,7 @@ objects or from the network’s result dataframes. Note, that the compressor’s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1618.457972142307
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1618.4579721423036
 </pre></div>
 </div>
 </div>
@@ -653,7 +653,7 @@ objects or from the network’s result dataframes. Note, that the compressor’s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1618.457972142307
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1618.4579721423036
 </pre></div>
 </div>
 </div>
@@ -666,7 +666,7 @@ objects or from the network’s result dataframes. Note, that the compressor’s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.6226359637591266
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.622635963759136
 </pre></div>
 </div>
 </div>
@@ -720,7 +720,7 @@ code below performs a simple binary search.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.9003490944225225
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.900349094422487
 </pre></div>
 </div>
 </div>

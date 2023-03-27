@@ -1,6 +1,6 @@
 (installation-label)=
 
-# Setup your Python environment
+# Set up your Python environment
 
 In this section you learn how to prepare your python installation.
 

@@ -48,7 +48,7 @@ heat pump mostly depends on
 ## Carnot COP Method
 
 One way of calculating the COP is to calculate the Carnot COP {math}`\text{COP}_\text{c}` and link it to the actual COP
-with an efficiency factor {math}`\eta_\text{hp}`. The Carnot COP is the thermodynamically best possible COP and it only
+with an efficiency factor {math}`\eta_\text{hp}`. The Carnot COP is the thermodynamically best possible COP, and it only
 depends on the temperature levels of the heat source and the heat sink. For a simplified approach, the Carnot COP can be
 obtained with eq. {eq}`carnot-cop-heat-pump`.
 
@@ -66,7 +66,7 @@ on an ambient temperature profile and the target heating temperature:
 ```
 
 With a predefined time series for the ambient temperature, you can calculate the Carnot COP and integrate it as a time
-dependant input parameter for the optimization problem.
+dependent input parameter for the optimization problem.
 
 ## Thermodynamic Simulation Model
 
@@ -80,7 +80,7 @@ where an additional dependency, i.e. part load operation, is taken into consider
 # Table of contents
 
 In the first chapter we are building a linear model of the heat pump using oemof-solph first. The model will implement a
-temperature dependent COP, which is done using the Carnot COP and assuming a constant efficiency factor. The efficency
+temperature dependent COP, which is done using the Carnot COP and assuming a constant efficiency factor. The efficiency
 factor is retrieved from a specification sheet of a real world system. In the second step a simple four-component TESPy
 model of the heat pump is built. The model is set up in a way to match the specifications from the data sheet of the
 heat pump using component specific assumptions for the compressor and the heat exchangers. Then, a simulation for the
@@ -94,7 +94,7 @@ efficiency factor and the thermodynamic model.
 In the second chapter we are introducing part load modeling. First, the previous oemof-solph model is extended by
 simply adding a minimal load requirement. Then, a second TESPy model is created to investigate how the design of the
 heat pump for a specific operation point affects the part load efficiency, i.e. if the ambient temperature changes and
-if the heat load changes. These information will be transferred to the oemof-solph model again, which will implement a
+if the heat load changes. This information will be transferred to the oemof-solph model again, which will implement a
 new component to account for the part load efficiency.
 
 - {ref}`Introducing minimal load in solph <solph-minimal-load>`

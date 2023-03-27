@@ -80,7 +80,6 @@ libraries for energy modelers word wide.
 This work was funded by the German Federal Ministry of Education and Research (BMBF)
 in the project `Wärmewende Nordwest` (grant number 03SF0624L).
 
-
 ## LICENSE
 
 ```{eval-rst}

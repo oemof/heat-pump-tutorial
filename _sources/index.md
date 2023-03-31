@@ -1,4 +1,4 @@
-# oemof Workshop at the OSMSES 2023
+# oemof Workshop on Modeling Heat Pumps
 
 Welcome to the documentation of the oemof session at the 2nd International
 workshop on "Open Source Modelling and Simulation of Energy Systems".

@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -39,8 +39,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -552,36 +552,36 @@ Therefore we provide a tutorial on how to build models with stable starting valu
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (Compressor) #####
-+------------+----------+----------+----------+--------+
-|            |        P |    eta_s |       pr |   igva |
-|------------+----------+----------+----------+--------|
-| compressor | 1.86e+03 | 6.75e-01 | 2.72e+00 |    nan |
-+------------+----------+----------+----------+--------+
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (Condenser) #####
++-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+|           |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
+|-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
+| condenser | -9.10e+03 | 1.26e+03 | 7.21e+00 | 5.00e+00 | 1.00e+01 | 1.00e+00 | 1.00e+00 | 4.12e-05 | 0.00e+00 |
++-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
 ##### RESULTS (CycleCloser) #####
 +--------------+------------------+-------------------+
 |              |   mass_deviation |   fluid_deviation |
 |--------------+------------------+-------------------|
 | cycle closer |         0.00e+00 |          0.00e+00 |
 +--------------+------------------+-------------------+
-##### RESULTS (Valve) #####
-+-----------------+----------+----------+
-|                 |       pr |     zeta |
-|-----------------+----------+----------|
-| expansion valve | 3.68e-01 | 1.04e+11 |
-+-----------------+----------+----------+
-##### RESULTS (Condenser) #####
-+-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
-|           |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
-|-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
-| condenser | -9.10e+03 | 1.26e+03 | 7.21e+00 | 5.00e+00 | 1.00e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
-+-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+##### RESULTS (Compressor) #####
++------------+----------+----------+----------+--------+
+|            |        P |    eta_s |       pr |   igva |
+|------------+----------+----------+----------+--------|
+| compressor | 1.86e+03 | 6.75e-01 | 2.72e+00 |    nan |
++------------+----------+----------+----------+--------+
 ##### RESULTS (HeatExchanger) #####
 +------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
 |            |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
 |------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
 | evaporator | -7.24e+03 | 1.85e+03 | 3.92e+00 | 5.00e+00 | 3.00e+00 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
 +------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+##### RESULTS (Valve) #####
++-----------------+----------+----------+
+|                 |       pr |     zeta |
+|-----------------+----------+----------|
+| expansion valve | 3.68e-01 | 1.04e+11 |
++-----------------+----------+----------+
 ##### RESULTS (Connection) #####
 +----+-----------+-----------+-----------+-----------+
 |    |         m |         p |         h |         T |
@@ -700,7 +700,7 @@ Therefore we provide a tutorial on how to build models with stable starting valu
       <td>0.000057</td>
       <td>0.002139</td>
       <td>1359.354602</td>
-      <td>1.209052e-15</td>
+      <td>8.060345e-16</td>
       <td>NaN</td>
       <td>1.0</td>
       <td>0.0</td>
@@ -878,7 +878,7 @@ COP are affected by the changing heat load. Only the compressor power requiremen
 this is, that the compressor’s efficiency and the temperature differences (and therefore the evaporation and
 condensation temperatures) do not change with changing load due to our model specifications.</p>
 <figure class="align-default" id="fig-heat-pump-heat-load-design-mode">
-<img alt="../_images/1c096317dfc2f278c263830ac2fba69bad4fdce55dc099afcab799a9fde68ede.png" src="../_images/1c096317dfc2f278c263830ac2fba69bad4fdce55dc099afcab799a9fde68ede.png" />
+<img alt="../_images/d4c67069e741b0332a0d4e32fd3b256c3e392570aeae0b227066cc3e9f9f58f9.png" src="../_images/d4c67069e741b0332a0d4e32fd3b256c3e392570aeae0b227066cc3e9f9f58f9.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 14 </span><span class="caption-text">Influence of the heat load on the compressor power, its pressure ratio and the COP without modeling part load behavior.</span><a class="headerlink" href="#fig-heat-pump-heat-load-design-mode" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -1076,7 +1076,7 @@ ratio.</p>
 <a class="reference internal" href="../excursion/partload-analysis.html#tespy-partload-disection"><span class="std std-ref">this excursion</span></a>.</p>
 </div>
 <figure class="align-default" id="fig-heat-pump-heat-load-offdesign-mode">
-<img alt="../_images/7a76af07353148405dc185190116e6cce8c54d4cc4ca32be0c019bbadaa2e907.png" src="../_images/7a76af07353148405dc185190116e6cce8c54d4cc4ca32be0c019bbadaa2e907.png" />
+<img alt="../_images/5775e155c4be45bdc89db72324b4fe9d7bdad6945204e4141f0f262eb1ba1749.png" src="../_images/5775e155c4be45bdc89db72324b4fe9d7bdad6945204e4141f0f262eb1ba1749.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 16 </span><span class="caption-text">Influence of the heat load on the compressor power, its pressure ratio and the COP when considering part load behavior.</span><a class="headerlink" href="#fig-heat-pump-heat-load-offdesign-mode" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -1248,7 +1248,7 @@ load simulation.</span><a class="headerlink" href="#fig-heat-pump-result-compari
 <a class="reference internal" href="#fig-heat-pump-result-linearization"><span class="std std-numref">Fig. 19</span></a>. We can see, that both, offset and slope, change for every ambient
 temperature value.</p>
 <figure class="align-default" id="fig-heat-pump-result-linearization">
-<img alt="../_images/c8067a54bb16a59d1dd8b423f2c2fe7c775c26c5559b0aa4100b2533c484b3a0.png" src="../_images/c8067a54bb16a59d1dd8b423f2c2fe7c775c26c5559b0aa4100b2533c484b3a0.png" />
+<img alt="../_images/7a6154424fc37c2cb0ef90c100eae8fb866c4aea05a59eac2bf6ddb1bdc03d3f.png" src="../_images/7a6154424fc37c2cb0ef90c100eae8fb866c4aea05a59eac2bf6ddb1bdc03d3f.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 19 </span><span class="caption-text">Linearized compressor power to heat load.</span><a class="headerlink" href="#fig-heat-pump-result-linearization" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -1366,7 +1366,10 @@ into csv format and export that information.</p>
               
               
                 <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="solph-minimal-load.html"
@@ -1386,7 +1389,10 @@ into csv format and export that information.</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -1423,7 +1429,7 @@ into csv format and export that information.</p>
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -1453,7 +1459,7 @@ By Francesco Witte and Patrik Schönfeld
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -1462,8 +1468,8 @@ By Francesco Witte and Patrik Schönfeld
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>

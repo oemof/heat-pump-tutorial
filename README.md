@@ -1,4 +1,4 @@
-# oemof workshop on modeling heat pumps
+# oemof tutorial on modeling heat pumps
 
 Welcome to the documentation of the oemof session at the 2nd International workshop on "Open Source Modelling and
 Simulation of Energy Systems". The workshop has been developed by [Francesco Witte](https://github.com/fwitte) and

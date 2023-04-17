@@ -10,7 +10,7 @@ You will learn how to use and apply the two most know oemof libraries, i.e.
 heat pumps in energy system analysis. If you would like to add more contents you are welcome to open a pull request on
 the repository.
 
-The workshop is available as online tutorial on [this website](https://fwitte.github.io/oemof-workshop-osmses-2023). You
+The workshop is available as online tutorial on [this website](https://oemof.github.io/heat-pump-tutorial/). You
 will find all relevant information on installing required software packages etc. on that page.
 
 ## Contribute

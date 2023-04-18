@@ -1,4 +1,4 @@
-name: oemof-workshop-osmses
+name: oemof-heat-pump-tutorial-env
 channels:
 - conda-forge
 dependencies:

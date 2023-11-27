@@ -475,7 +475,7 @@ the components and connect them according to the flowsheet.</p>
 <span class="kn">from</span> <span class="nn">tespy.networks</span> <span class="kn">import</span> <span class="n">Network</span>
 
 <span class="n">wf</span> <span class="o">=</span> <span class="s2">&quot;R290&quot;</span>
-<span class="n">nwk</span> <span class="o">=</span> <span class="n">Network</span><span class="p">(</span><span class="n">fluids</span><span class="o">=</span><span class="p">[</span><span class="n">wf</span><span class="p">,</span> <span class="s2">&quot;air&quot;</span><span class="p">,</span> <span class="s2">&quot;Water&quot;</span><span class="p">],</span> <span class="n">p_unit</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="n">T_unit</span><span class="o">=</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="n">iterinfo</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">nwk</span> <span class="o">=</span> <span class="n">Network</span><span class="p">(</span><span class="n">p_unit</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="n">T_unit</span><span class="o">=</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="n">iterinfo</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="n">cp</span> <span class="o">=</span> <span class="n">Compressor</span><span class="p">(</span><span class="s2">&quot;compressor&quot;</span><span class="p">)</span>
 <span class="n">ev</span> <span class="o">=</span> <span class="n">HeatExchanger</span><span class="p">(</span><span class="s2">&quot;evaporator&quot;</span><span class="p">)</span>
@@ -531,10 +531,10 @@ Therefore we provide a tutorial on how to build models with stable starting valu
 
 <span class="c1"># connections</span>
 <span class="n">T_ambient_design</span> <span class="o">=</span> <span class="mi">7</span>
-<span class="n">c2</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">fluid</span><span class="o">=</span><span class="p">{</span><span class="n">wf</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Water&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;air&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span> <span class="n">x</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
-<span class="n">c11</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">fluid</span><span class="o">=</span><span class="p">{</span><span class="n">wf</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Water&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;air&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="n">T_ambient_design</span><span class="p">)</span>
+<span class="n">c2</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">fluid</span><span class="o">=</span><span class="p">{</span><span class="n">wf</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="n">x</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="n">c11</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">fluid</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;air&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="n">T_ambient_design</span><span class="p">)</span>
 <span class="n">c12</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">Ref</span><span class="p">(</span><span class="n">c11</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">))</span>
-<span class="n">c21</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">fluid</span><span class="o">=</span><span class="p">{</span><span class="n">wf</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Water&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;air&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span> <span class="n">p</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">c21</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">fluid</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Water&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="n">p</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 <span class="n">c22</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">35</span><span class="p">)</span>
 
 <span class="c1"># components</span>
@@ -566,36 +566,36 @@ Therefore we provide a tutorial on how to build models with stable starting valu
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (CycleCloser) #####
-+--------------+------------------+-------------------+
-|              |   mass_deviation |   fluid_deviation |
-|--------------+------------------+-------------------|
-| cycle closer |         0.00e+00 |          0.00e+00 |
-+--------------+------------------+-------------------+
-##### RESULTS (Compressor) #####
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (Compressor) #####
 +------------+----------+----------+----------+--------+
 |            |        P |    eta_s |       pr |   igva |
 |------------+----------+----------+----------+--------|
 | compressor | 1.86e+03 | 6.75e-01 | 2.72e+00 |    nan |
 +------------+----------+----------+----------+--------+
-##### RESULTS (HeatExchanger) #####
-+------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
-|            |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
-|------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
-| evaporator | -7.24e+03 | 1.22e+03 | 5.94e+00 | 5.00e+00 | 7.00e+00 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
-+------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
 ##### RESULTS (Condenser) #####
 +-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
 |           |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
 |-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
 | condenser | -9.10e+03 | 1.26e+03 | 7.21e+00 | 5.00e+00 | 1.00e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
 +-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+##### RESULTS (CycleCloser) #####
++--------------+------------------+-------------------+
+|              |   mass_deviation |   fluid_deviation |
+|--------------+------------------+-------------------|
+| cycle closer |         0.00e+00 |          0.00e+00 |
++--------------+------------------+-------------------+
 ##### RESULTS (Valve) #####
 +-----------------+----------+----------+
 |                 |       pr |     zeta |
 |-----------------+----------+----------|
 | expansion valve | 3.68e-01 | 1.04e+11 |
 +-----------------+----------+----------+
+##### RESULTS (HeatExchanger) #####
++------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+|            |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
+|------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
+| evaporator | -7.24e+03 | 1.22e+03 | 5.94e+00 | 5.00e+00 | 7.00e+00 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
++------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
 ##### RESULTS (Connection) #####
 +----+------------+-----------+-----------+-----------+
 |    |          m |         p |         h |         T |
@@ -649,8 +649,8 @@ Therefore we provide a tutorial on how to build models with stable starting valu
       <th>s</th>
       <th>s_unit</th>
       <th>Water</th>
-      <th>R290</th>
       <th>air</th>
+      <th>R290</th>
     </tr>
   </thead>
   <tbody>
@@ -674,9 +674,9 @@ Therefore we provide a tutorial on how to build models with stable starting valu
       <td>-</td>
       <td>1389.278120</td>
       <td>J / kgK</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.0</td>
     </tr>
     <tr>
       <th>1</th>
@@ -698,9 +698,9 @@ Therefore we provide a tutorial on how to build models with stable starting valu
       <td>-</td>
       <td>1389.278120</td>
       <td>J / kgK</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.0</td>
     </tr>
     <tr>
       <th>2</th>
@@ -722,9 +722,9 @@ Therefore we provide a tutorial on how to build models with stable starting valu
       <td>-</td>
       <td>2370.253689</td>
       <td>J / kgK</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.0</td>
     </tr>
     <tr>
       <th>3</th>
@@ -746,9 +746,9 @@ Therefore we provide a tutorial on how to build models with stable starting valu
       <td>-</td>
       <td>2439.993233</td>
       <td>J / kgK</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.0</td>
     </tr>
     <tr>
       <th>4</th>
@@ -766,13 +766,13 @@ Therefore we provide a tutorial on how to build models with stable starting valu
       <td>C</td>
       <td>0.002139</td>
       <td>m3 / kg</td>
-      <td>-2.686782e-16</td>
+      <td>2.686782e-16</td>
       <td>-</td>
       <td>1359.354602</td>
       <td>J / kgK</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.0</td>
     </tr>
     <tr>
       <th>11</th>
@@ -794,9 +794,9 @@ Therefore we provide a tutorial on how to build models with stable starting valu
       <td>-</td>
       <td>3821.630622</td>
       <td>J / kgK</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>12</th>
@@ -818,9 +818,9 @@ Therefore we provide a tutorial on how to build models with stable starting valu
       <td>-</td>
       <td>3828.785597</td>
       <td>J / kgK</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>21</th>
@@ -842,9 +842,9 @@ Therefore we provide a tutorial on how to build models with stable starting valu
       <td>-</td>
       <td>436.664733</td>
       <td>J / kgK</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>22</th>
@@ -866,9 +866,9 @@ Therefore we provide a tutorial on how to build models with stable starting valu
       <td>-</td>
       <td>505.027895</td>
       <td>J / kgK</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
   </tbody>
 </table>
@@ -983,7 +983,7 @@ COP are affected by the changing heat load. Only the compressor power requiremen
 this is, that the compressor’s efficiency and the temperature differences (and therefore the evaporation and
 condensation temperatures) do not change with changing load due to our model specifications.</p>
 <figure class="align-default" id="fig-heat-pump-heat-load-design-mode">
-<img alt="../_images/850e08978ce185febe13e3b862739a9747b2416740b170262a272d9ae10b8ae7.png" src="../_images/850e08978ce185febe13e3b862739a9747b2416740b170262a272d9ae10b8ae7.png" />
+<img alt="../_images/34d9f630f35a4244150a88cb6f46ebd653cc025dcd03bd143ede5b6826d773e0.png" src="../_images/34d9f630f35a4244150a88cb6f46ebd653cc025dcd03bd143ede5b6826d773e0.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 14 </span><span class="caption-text">Influence of the heat load on the compressor power, its pressure ratio and the COP without modeling part load behavior.</span><a class="headerlink" href="#fig-heat-pump-heat-load-design-mode" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -1181,7 +1181,7 @@ ratio.</p>
 <a class="reference internal" href="../excursion/partload-analysis.html#tespy-partload-disection"><span class="std std-ref">this excursion</span></a>.</p>
 </div>
 <figure class="align-default" id="fig-heat-pump-heat-load-offdesign-mode">
-<img alt="../_images/9376a7e46899cc5fc109e342cdcee49b12ece10cd199d5778aa8d24a824c7da7.png" src="../_images/9376a7e46899cc5fc109e342cdcee49b12ece10cd199d5778aa8d24a824c7da7.png" />
+<img alt="../_images/ebb241dab16ae0ca5faddbeae3234aa15955da151b3e26530a468be810c76686.png" src="../_images/ebb241dab16ae0ca5faddbeae3234aa15955da151b3e26530a468be810c76686.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 16 </span><span class="caption-text">Influence of the heat load on the compressor power, its pressure ratio and the COP when considering part load behavior.</span><a class="headerlink" href="#fig-heat-pump-heat-load-offdesign-mode" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -1274,7 +1274,7 @@ investigate the influence of the heat load per temperature value.</p>
             <span class="n">nwk</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="s2">&quot;offdesign&quot;</span><span class="p">,</span> <span class="n">design_path</span><span class="o">=</span><span class="s2">&quot;design-state&quot;</span><span class="p">,</span> <span class="n">init_path</span><span class="o">=</span><span class="s2">&quot;tmp&quot;</span><span class="p">)</span>
             <span class="n">nwk</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;tmp&quot;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">nwk</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="s2">&quot;offdesign&quot;</span><span class="p">,</span> <span class="n">design_path</span><span class="o">=</span><span class="s2">&quot;design-state&quot;</span><span class="p">)</span>  
+            <span class="n">nwk</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="s2">&quot;offdesign&quot;</span><span class="p">,</span> <span class="n">design_path</span><span class="o">=</span><span class="s2">&quot;design-state&quot;</span><span class="p">)</span>
 
         <span class="n">results</span><span class="p">[</span><span class="n">temperature</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">heat</span><span class="p">,</span> <span class="s2">&quot;COP&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">cd</span><span class="o">.</span><span class="n">Q</span><span class="o">.</span><span class="n">val</span><span class="p">)</span> <span class="o">/</span> <span class="n">cp</span><span class="o">.</span><span class="n">P</span><span class="o">.</span><span class="n">val</span>
         <span class="n">results</span><span class="p">[</span><span class="n">temperature</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">heat</span><span class="p">,</span> <span class="s2">&quot;compressor-power&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">P</span><span class="o">.</span><span class="n">val</span>
@@ -1343,7 +1343,7 @@ the actual simulation. For example, we can have a look at the design conditions 
 that the deviation between the linearized model and the actual simulation is below 1.5 % for all heat load values. The
 assumption of a constant efficiency factor leads to a high deviation especially with lower heat production up to 18 %.</p>
 <figure class="align-default" id="fig-heat-pump-result-comparison">
-<img alt="../_images/240864e3c778bb62bb20164c18e5a2cf5b865f05427ec9ce081cca1bdaa3e253.png" src="../_images/240864e3c778bb62bb20164c18e5a2cf5b865f05427ec9ce081cca1bdaa3e253.png" />
+<img alt="../_images/cf621e58373e39c1e5bb33c2dcb6cde601fb976f5fa8a5d5280d09428a60255e.png" src="../_images/cf621e58373e39c1e5bb33c2dcb6cde601fb976f5fa8a5d5280d09428a60255e.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 18 </span><span class="caption-text">Comparison of the compressor power depending on the heat pump’s heat load for the simplified approach and in the part
 load simulation.</span><a class="headerlink" href="#fig-heat-pump-result-comparison" title="Permalink to this image">#</a></p>
@@ -1353,7 +1353,7 @@ load simulation.</span><a class="headerlink" href="#fig-heat-pump-result-compari
 <a class="reference internal" href="#fig-heat-pump-result-linearization"><span class="std std-numref">Fig. 19</span></a>. We can see, that both, offset and slope, change for every ambient
 temperature value.</p>
 <figure class="align-default" id="fig-heat-pump-result-linearization">
-<img alt="../_images/2be09a03657f855a2f9f9c200648d89010b2bed89ed74540d14e14b479d2b525.png" src="../_images/2be09a03657f855a2f9f9c200648d89010b2bed89ed74540d14e14b479d2b525.png" />
+<img alt="../_images/38af122a5e058647164e645735b061fa68aa6a55688f53968b100f534033ba9d.png" src="../_images/38af122a5e058647164e645735b061fa68aa6a55688f53968b100f534033ba9d.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 19 </span><span class="caption-text">Linearized compressor power to heat load.</span><a class="headerlink" href="#fig-heat-pump-result-linearization" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -1401,7 +1401,7 @@ temperature value.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">temp</span> <span class="ow">in</span> <span class="n">temperature_range</span><span class="p">[::</span><span class="mi">10</span><span class="p">]:</span>
-        
+
     <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">results</span><span class="p">[</span><span class="n">temp</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="n">temp</span><span class="p">][</span><span class="s2">&quot;compressor-power&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
     <span class="n">slope</span><span class="p">,</span> <span class="n">offset</span> <span class="o">=</span> <span class="n">least_squares</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>

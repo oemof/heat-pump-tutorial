@@ -1,2 +1,2 @@
-tespy>=0.6.2
+tespy>=0.7.0
 oemof.solph>=0.5

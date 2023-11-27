@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -39,8 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -78,6 +79,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -131,9 +141,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../index.html">
+  
   
   
   
@@ -143,8 +155,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/logo_oemof_mid.svg" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/logo_oemof_mid.svg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/logo_oemof_mid.svg" class="logo__image only-light" alt="oemof Workshop on Modeling of Heat Pumps - Home"/>
+    <script>document.write(`<img src="../_static/logo_oemof_mid.svg" class="logo__image only-dark" alt="oemof Workshop on Modeling of Heat Pumps - Home"/>`);</script>
   
   
 </a></div>
@@ -334,20 +346,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -408,6 +422,14 @@ utilities script to save some space here and only add the heat pump.</p>
 <span class="n">input_data</span> <span class="o">=</span> <span class="n">load_input_data</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">24</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="n">es</span><span class="p">,</span> <span class="n">bus_electricity</span><span class="p">,</span> <span class="n">bus_heat_35C</span> <span class="o">=</span> <span class="n">create_energy_system_stub</span><span class="p">(</span><span class="n">input_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FutureWarning: Usage of oemof.network.Bus is deprecated. Use oemof.network.Node instead.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FutureWarning: Usage of oemof.network.Component is deprecated. Use oemof.network.Node instead.
 </pre></div>
 </div>
 </div>
@@ -504,7 +526,7 @@ from our ambient temperature time series to the TESPy lookup data.</p>
 <p>We can compare the TESPy COP with the datasheet and constant efficiency factor approach in
 <a class="reference internal" href="#cop-timeseries-tespy-vs-efficiency-factor"><span class="std std-numref">Fig. 9</span></a>. They are, as expected, very similar.</p>
 <figure class="align-default" id="cop-timeseries-tespy-vs-efficiency-factor">
-<img alt="../_images/58288ff7fce1e8e1272eb1e08c1432240b375ed33562a2c7318fe66e5437ebd0.png" src="../_images/58288ff7fce1e8e1272eb1e08c1432240b375ed33562a2c7318fe66e5437ebd0.png" />
+<img alt="../_images/dac12a7f7e73d975d6ade25e494c96ce9f247f5ddc02e2a2ae9bf6ec2e2b8599.png" src="../_images/dac12a7f7e73d975d6ade25e494c96ce9f247f5ddc02e2a2ae9bf6ec2e2b8599.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 9 </span><span class="caption-text">Comparison of the COP time series from the constant efficiency method with the TESPy model.</span><a class="headerlink" href="#cop-timeseries-tespy-vs-efficiency-factor" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -563,6 +585,14 @@ from our ambient temperature time series to the TESPy lookup data.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FutureWarning: Usage of oemof.network.Component is deprecated. Use oemof.network.Node instead.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FutureWarning: solph.components.Transformer has been renamed to solph.components.Converter. The transitional wrapper will be deleted in the future.
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="run-the-model">
@@ -576,12 +606,23 @@ from our ambient temperature time series to the TESPy lookup data.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+</pre></div>
+</div>
+</div>
 </div>
 <p><a class="reference internal" href="#results-solph-simple-tespy"><span class="std std-numref">Fig. 10</span></a> shows nearly identical behavior as in the simple setup. Only the electricity
 consumption changed very slightly from <code class="docutils literal notranslate"><span class="pre">14.09</span></code> kWh to
 <span class="output text_plain">14.03</span> kWh.</p>
 <figure class="align-default" id="results-solph-simple-tespy">
-<img alt="../_images/cb00773d20fe979e2148b1334f7dbe84dcf68e1d0198c42ff2367772314021d0.png" src="../_images/cb00773d20fe979e2148b1334f7dbe84dcf68e1d0198c42ff2367772314021d0.png" />
+<img alt="../_images/f9115375e356e8199ee6e63121a454312c7c4072ab0ee19cb13d832139552be2.png" src="../_images/f9115375e356e8199ee6e63121a454312c7c4072ab0ee19cb13d832139552be2.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 10 </span><span class="caption-text">Results of the simple heat pump setup using the COP data from TESPy.</span><a class="headerlink" href="#results-solph-simple-tespy" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -596,6 +637,9 @@ consumption changed very slightly from <code class="docutils literal notranslate
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:TESPyLogger:FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Electricity demand: 14.0 kWh
 </pre></div>
 </div>
@@ -629,11 +673,10 @@ consumption changed very slightly from <code class="docutils literal notranslate
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="tespy-simple.html"
@@ -653,10 +696,7 @@ consumption changed very slightly from <code class="docutils literal notranslate
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -694,6 +734,7 @@ By Francesco Witte and Patrik Schönfeld
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2022.
@@ -720,8 +761,8 @@ By Francesco Witte and Patrik Schönfeld
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>

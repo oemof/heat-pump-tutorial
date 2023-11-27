@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -39,8 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -80,6 +81,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -133,9 +143,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../index.html">
+  
   
   
   
@@ -145,8 +157,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/logo_oemof_mid.svg" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/logo_oemof_mid.svg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/logo_oemof_mid.svg" class="logo__image only-light" alt="oemof Workshop on Modeling of Heat Pumps - Home"/>
+    <script>document.write(`<img src="../_static/logo_oemof_mid.svg" class="logo__image only-dark" alt="oemof Workshop on Modeling of Heat Pumps - Home"/>`);</script>
   
   
 </a></div>
@@ -336,20 +348,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -494,6 +508,11 @@ instance:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FutureWarning: The API for the component HeatExchangerSimple will change with the next major release, please import SimpleHeatExchanger instead.
+</pre></div>
+</div>
+</div>
 </div>
 <p>Then, we can add the connections to our <code class="docutils literal notranslate"><span class="pre">Network</span></code> instance.</p>
 <div class="cell docutils container">
@@ -592,25 +611,25 @@ future as well.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (Valve) #####
-+-----------------+----------+----------+
-|                 |       pr |     zeta |
-|-----------------+----------+----------|
-| expansion valve | 3.68e-01 | 9.74e+10 |
-+-----------------+----------+----------+
-##### RESULTS (HeatExchangerSimple) #####
-+------------+-----------+----------+----------+-----+-----+------+------+--------+
-|            |         Q |       pr |     zeta |   D |   L |   ks |   kA |   Tamb |
-|------------+-----------+----------+----------+-----+-----+------+------+--------|
-| evaporator |  7.48e+03 | 1.00e+00 | 1.59e-06 | nan | nan |  nan |  nan |    nan |
-| condenser  | -9.10e+03 | 1.00e+00 | 1.99e-05 | nan | nan |  nan |  nan |    nan |
-+------------+-----------+----------+----------+-----+-----+------+------+--------+
-##### RESULTS (CycleCloser) #####
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (CycleCloser) #####
 +--------------+------------------+-------------------+
 |              |   mass_deviation |   fluid_deviation |
 |--------------+------------------+-------------------|
 | cycle closer |         0.00e+00 |          0.00e+00 |
 +--------------+------------------+-------------------+
+##### RESULTS (HeatExchangerSimple) #####
++------------+-----------+----------+----------+-----+-----+------+---------+------+--------+
+|            |         Q |       pr |     zeta |   D |   L |   ks |   ks_HW |   kA |   Tamb |
+|------------+-----------+----------+----------+-----+-----+------+---------+------+--------|
+| condenser  | -9.10e+03 | 1.00e+00 | 0.00e+00 | nan | nan |  nan |     nan |  nan |    nan |
+| evaporator |  7.48e+03 | 1.00e+00 | 0.00e+00 | nan | nan |  nan |     nan |  nan |    nan |
++------------+-----------+----------+----------+-----+-----+------+---------+------+--------+
+##### RESULTS (Valve) #####
++-----------------+----------+----------+
+|                 |       pr |     zeta |
+|-----------------+----------+----------|
+| expansion valve | 3.68e-01 | 9.74e+10 |
++-----------------+----------+----------+
 ##### RESULTS (Compressor) #####
 +------------+----------+----------+----------+--------+
 |            |        P |    eta_s |       pr |   igva |
@@ -641,7 +660,7 @@ objects or from the network’s result dataframes. Note, that the compressor’s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1618.457972142307
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1618.4579721181676
 </pre></div>
 </div>
 </div>
@@ -653,7 +672,7 @@ objects or from the network’s result dataframes. Note, that the compressor’s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1618.457972142307
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1618.4579721181676
 </pre></div>
 </div>
 </div>
@@ -666,7 +685,7 @@ objects or from the network’s result dataframes. Note, that the compressor’s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.6226359637591266
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.6226359638429875
 </pre></div>
 </div>
 </div>
@@ -720,7 +739,7 @@ code below performs a simple binary search.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.9003490944225225
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.900349094678169
 </pre></div>
 </div>
 </div>
@@ -787,7 +806,7 @@ assessed.</p>
 </div>
 </div>
 <figure class="align-default" id="fig-heat-pump-efficiency-factor">
-<img alt="../_images/56acafbd573c181c2dcc533edbd048cb5bcca5b799046ff7daf3e2de2efaa7a2.png" src="../_images/56acafbd573c181c2dcc533edbd048cb5bcca5b799046ff7daf3e2de2efaa7a2.png" />
+<img alt="../_images/d1c4ceb33a2e8d6381edcbb8abe5680d240c0c63661cc61ebdc18df761d0e304.png" src="../_images/d1c4ceb33a2e8d6381edcbb8abe5680d240c0c63661cc61ebdc18df761d0e304.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 8 </span><span class="caption-text">Comparison of the COP of the heat pump calculated with a constant and a variable efficiency factor.</span><a class="headerlink" href="#fig-heat-pump-efficiency-factor" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -840,11 +859,10 @@ prepared a separate section with the details on this phenomenon as a thermodynam
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="solph-simple.html"
@@ -864,10 +882,7 @@ prepared a separate section with the details on this phenomenon as a thermodynam
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -907,6 +922,7 @@ By Francesco Witte and Patrik Schönfeld
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2022.
@@ -933,8 +949,8 @@ By Francesco Witte and Patrik Schönfeld
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -39,8 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -78,6 +79,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -131,9 +141,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../index.html">
+  
   
   
   
@@ -143,8 +155,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/logo_oemof_mid.svg" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/logo_oemof_mid.svg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/logo_oemof_mid.svg" class="logo__image only-light" alt="oemof Workshop on Modeling of Heat Pumps - Home"/>
+    <script>document.write(`<img src="../_static/logo_oemof_mid.svg" class="logo__image only-dark" alt="oemof Workshop on Modeling of Heat Pumps - Home"/>`);</script>
   
   
 </a></div>
@@ -334,20 +346,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -482,18 +496,13 @@ modeling assumptions and test the implementation.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Operating point below characteristic line range: X=0.471 with minimum of 0.49 at component compressor.
-</pre></div>
-</div>
-</div>
 </div>
 <p>Finally, we plot the results. We can see, that the pressure ratio does not depend on the compressor’s efficiency. Still,
 the COP drops with decreased heat load. The reason for that is the lower part load efficiency of the compressor.</p>
 <figure class="align-default" id="heat-pump-influence-efficiency">
-<img alt="../_images/18bf075fd76ad4ad95b74ce128557f563286b9f8d104cc7470d8e4f6ed9ab3c9.png" src="../_images/18bf075fd76ad4ad95b74ce128557f563286b9f8d104cc7470d8e4f6ed9ab3c9.png" />
+<img alt="../_images/de572cc757d4af5516127efe13d175cd441fb4c5f20fecbcb28e102a1b495cfb.png" src="../_images/de572cc757d4af5516127efe13d175cd441fb4c5f20fecbcb28e102a1b495cfb.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Influence of the compressor efficiency part load model with varying heat load.</span><a class="headerlink" href="#heat-pump-influence-efficiency" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Influence of the compressor efficiency part load model with varying heat load.</span><a class="headerlink" href="#heat-pump-influence-efficiency" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -541,7 +550,7 @@ coefficient of the evaporator. Then we loop over the heat range again and plot t
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ERROR:root:Data container of type ComponentCharacteristics has no attribute is_var.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Datacontainer of type ComponentCharacteristics has no attribute &quot;is_var&quot;.
 </pre></div>
 </div>
 </div>
@@ -571,9 +580,9 @@ while the heat transfer coefficient remains more or less unchanged, the availabl
 lower temperature difference. Since the ambient temperature level is fixed, the evaporation temperature rises compared
 to the design case reducing the pressure ratio inside the main cycle of the heat pump.</p>
 <figure class="align-default" id="heat-pump-influence-evaporator">
-<img alt="../_images/9080c051d23b4ada8f835aa7455c807c3cdcbe16c8c7e8683ff04c655598fba0.png" src="../_images/9080c051d23b4ada8f835aa7455c807c3cdcbe16c8c7e8683ff04c655598fba0.png" />
+<img alt="../_images/f120229ba322159c46ebe96aba3c72a851fbc29de67f258bdaabdb4af56fb000.png" src="../_images/f120229ba322159c46ebe96aba3c72a851fbc29de67f258bdaabdb4af56fb000.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Influence of the evaporator heat transfer coefficient part load model with varying heat load.</span><a class="headerlink" href="#heat-pump-influence-evaporator" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Influence of the evaporator heat transfer coefficient part load model with varying heat load.</span><a class="headerlink" href="#heat-pump-influence-evaporator" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -621,7 +630,7 @@ evaporator.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ERROR:root:Data container of type GroupedComponentCharacteristics has no attribute is_var.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Datacontainer of type GroupedComponentCharacteristics has no attribute &quot;is_var&quot;.
 </pre></div>
 </div>
 </div>
@@ -647,9 +656,9 @@ evaporator.</p>
 <p>In the plot we can see an even stronger relationship between the decrease of heat load and the decrease of pressure
 ratio, therefore the increase in COP. The effect is the same as we have observed in the evaporator.</p>
 <figure class="align-default" id="heat-pump-influence-condenser">
-<img alt="../_images/410c6abf1439419343af66964285b3352be35344f8c8bb7dc8207437449206f5.png" src="../_images/410c6abf1439419343af66964285b3352be35344f8c8bb7dc8207437449206f5.png" />
+<img alt="../_images/f70d385060dc5c4df76a804dd8aa326432a974afa1b8f14b66d68a0342c57e40.png" src="../_images/f70d385060dc5c4df76a804dd8aa326432a974afa1b8f14b66d68a0342c57e40.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Influence of the condenser heat transfer coefficient part load model with varying heat load.</span><a class="headerlink" href="#heat-pump-influence-condenser" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Influence of the condenser heat transfer coefficient part load model with varying heat load.</span><a class="headerlink" href="#heat-pump-influence-condenser" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -707,11 +716,10 @@ ratio, therefore the increase in COP. The effect is the same as we have observed
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="entropy-analysis.html"
@@ -731,10 +739,7 @@ ratio, therefore the increase in COP. The effect is the same as we have observed
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -773,6 +778,7 @@ By Francesco Witte and Patrik Schönfeld
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2022.
@@ -799,8 +805,8 @@ By Francesco Witte and Patrik Schönfeld
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>

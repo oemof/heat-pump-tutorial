@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -39,8 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -80,6 +81,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -133,9 +143,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../index.html">
+  
   
   
   
@@ -145,8 +157,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/logo_oemof_mid.svg" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/logo_oemof_mid.svg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/logo_oemof_mid.svg" class="logo__image only-light" alt="oemof Workshop on Modeling of Heat Pumps - Home"/>
+    <script>document.write(`<img src="../_static/logo_oemof_mid.svg" class="logo__image only-dark" alt="oemof Workshop on Modeling of Heat Pumps - Home"/>`);</script>
   
   
 </a></div>
@@ -336,20 +348,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -552,11 +566,17 @@ Therefore we provide a tutorial on how to build models with stable starting valu
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (HeatExchanger) #####
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (Valve) #####
++-----------------+----------+----------+
+|                 |       pr |     zeta |
+|-----------------+----------+----------|
+| expansion valve | 3.68e-01 | 1.04e+11 |
++-----------------+----------+----------+
+##### RESULTS (HeatExchanger) #####
 +------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
 |            |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
 |------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
-| evaporator | -7.24e+03 | 1.85e+03 | 3.92e+00 | 5.00e+00 | 3.00e+00 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 3.39e-06 |
+| evaporator | -7.24e+03 | 1.22e+03 | 5.94e+00 | 5.00e+00 | 7.00e+00 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 1.70e-06 |
 +------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
 ##### RESULTS (Condenser) #####
 +-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
@@ -576,26 +596,20 @@ Therefore we provide a tutorial on how to build models with stable starting valu
 |--------------+------------------+-------------------|
 | cycle closer |         0.00e+00 |          0.00e+00 |
 +--------------+------------------+-------------------+
-##### RESULTS (Valve) #####
-+-----------------+----------+----------+
-|                 |       pr |     zeta |
-|-----------------+----------+----------|
-| expansion valve | 3.68e-01 | 1.04e+11 |
-+-----------------+----------+----------+
 ##### RESULTS (Connection) #####
-+----+-----------+-----------+-----------+-----------+
-|    |         m |         p |         h |         T |
-|----+-----------+-----------+-----------+-----------|
-|  0 | 2.683e-02 | 5.041e+00 | 3.071e+05 | 2.000e+00 |
-|  1 | 2.683e-02 | 5.041e+00 | 3.071e+05 | 2.000e+00 |
-|  2 | 2.683e-02 | 5.041e+00 | 5.771e+05 | 2.000e+00 |
-|  3 | 2.683e-02 | 1.369e+01 | 6.463e+05 | 5.453e+01 |
-|  4 | 2.683e-02 | 1.369e+01 | 3.071e+05 | 4.000e+01 |
-| 11 | 3.601e+00 | 1.000e+00 | 4.063e+05 | 7.000e+00 |
-| 12 | 3.601e+00 | 1.000e+00 | 4.043e+05 | 5.000e+00 |
-| 21 | 4.355e-01 | 3.000e+00 | 1.260e+05 | 3.000e+01 |
-| 22 | 4.355e-01 | 3.000e+00 | 1.469e+05 | 3.500e+01 |
-+----+-----------+-----------+-----------+-----------+
++----+------------+-----------+-----------+-----------+
+|    |          m |         p |         h |         T |
+|----+------------+-----------+-----------+-----------|
+|  0 |  2.683e-02 | 5.041e+00 | 3.071e+05 | 2.000e+00 |
+|  1 |  2.683e-02 | 5.041e+00 | 3.071e+05 | 2.000e+00 |
+|  2 |  2.683e-02 | 5.041e+00 | 5.771e+05 | 2.000e+00 |
+|  3 |  2.683e-02 | 1.369e+01 | 6.463e+05 | 5.453e+01 |
+|  4 |  2.683e-02 | 1.369e+01 | 3.071e+05 | 4.000e+01 |
+| 11 | -3.601e+00 | 1.000e+00 | 4.063e+05 | 7.000e+00 |
+| 12 | -3.601e+00 | 1.000e+00 | 4.083e+05 | 9.000e+00 |
+| 21 |  4.355e-01 | 3.000e+00 | 1.260e+05 | 3.000e+01 |
+| 22 |  4.355e-01 | 3.000e+00 | 1.469e+05 | 3.500e+01 |
++----+------------+-----------+-----------+-----------+
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -617,16 +631,25 @@ Therefore we provide a tutorial on how to build models with stable starting valu
     <tr style="text-align: right;">
       <th></th>
       <th>m</th>
-      <th>p</th>
-      <th>h</th>
-      <th>T</th>
+      <th>m_unit</th>
       <th>v</th>
+      <th>v_unit</th>
+      <th>p</th>
+      <th>p_unit</th>
+      <th>h</th>
+      <th>h_unit</th>
+      <th>T</th>
+      <th>T_unit</th>
+      <th>...</th>
+      <th>Td_bp_unit</th>
       <th>vol</th>
-      <th>s</th>
+      <th>vol_unit</th>
       <th>x</th>
-      <th>Td_bp</th>
-      <th>R290</th>
+      <th>x_unit</th>
+      <th>s</th>
+      <th>s_unit</th>
       <th>Water</th>
+      <th>R290</th>
       <th>air</th>
     </tr>
   </thead>
@@ -634,140 +657,222 @@ Therefore we provide a tutorial on how to build models with stable starting valu
     <tr>
       <th>0</th>
       <td>0.026834</td>
-      <td>5.040999</td>
-      <td>307147.999599</td>
-      <td>2.000000</td>
+      <td>kg / s</td>
       <td>0.000708</td>
+      <td>m3 / s</td>
+      <td>5.040999</td>
+      <td>bar</td>
+      <td>307147.999598</td>
+      <td>J / kg</td>
+      <td>2.000000</td>
+      <td>C</td>
+      <td>...</td>
+      <td>C</td>
       <td>0.026391</td>
-      <td>1389.278120</td>
+      <td>m3 / kg</td>
       <td>2.745114e-01</td>
-      <td>NaN</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
+      <td>-</td>
+      <td>1389.278120</td>
+      <td>J / kgK</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>1</th>
       <td>0.026834</td>
-      <td>5.040999</td>
-      <td>307147.999599</td>
-      <td>2.000000</td>
+      <td>kg / s</td>
       <td>0.000708</td>
+      <td>m3 / s</td>
+      <td>5.040999</td>
+      <td>bar</td>
+      <td>307147.999598</td>
+      <td>J / kg</td>
+      <td>2.000000</td>
+      <td>C</td>
+      <td>...</td>
+      <td>C</td>
       <td>0.026391</td>
-      <td>1389.278120</td>
+      <td>m3 / kg</td>
       <td>2.745114e-01</td>
-      <td>NaN</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
+      <td>-</td>
+      <td>1389.278120</td>
+      <td>J / kgK</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>2</th>
       <td>0.026834</td>
-      <td>5.040999</td>
-      <td>577063.427393</td>
-      <td>2.000000</td>
+      <td>kg / s</td>
       <td>0.002445</td>
+      <td>m3 / s</td>
+      <td>5.040999</td>
+      <td>bar</td>
+      <td>577063.427393</td>
+      <td>J / kg</td>
+      <td>2.000000</td>
+      <td>C</td>
+      <td>...</td>
+      <td>C</td>
       <td>0.091112</td>
-      <td>2370.253689</td>
+      <td>m3 / kg</td>
       <td>1.000000e+00</td>
-      <td>NaN</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
+      <td>-</td>
+      <td>2370.253689</td>
+      <td>J / kgK</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>3</th>
       <td>0.026834</td>
-      <td>13.694204</td>
-      <td>646266.316995</td>
-      <td>54.530607</td>
+      <td>kg / s</td>
       <td>0.000981</td>
+      <td>m3 / s</td>
+      <td>13.694204</td>
+      <td>bar</td>
+      <td>646266.316995</td>
+      <td>J / kg</td>
+      <td>54.530607</td>
+      <td>C</td>
+      <td>...</td>
+      <td>C</td>
       <td>0.036554</td>
-      <td>2439.993233</td>
+      <td>m3 / kg</td>
       <td>-1.000000e+00</td>
-      <td>NaN</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
+      <td>-</td>
+      <td>2439.993233</td>
+      <td>J / kgK</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>4</th>
       <td>0.026834</td>
-      <td>13.694204</td>
-      <td>307147.999599</td>
-      <td>40.000000</td>
+      <td>kg / s</td>
       <td>0.000057</td>
+      <td>m3 / s</td>
+      <td>13.694204</td>
+      <td>bar</td>
+      <td>307147.999598</td>
+      <td>J / kg</td>
+      <td>40.000000</td>
+      <td>C</td>
+      <td>...</td>
+      <td>C</td>
       <td>0.002139</td>
+      <td>m3 / kg</td>
+      <td>-1.746408e-15</td>
+      <td>-</td>
       <td>1359.354602</td>
-      <td>8.060345e-16</td>
-      <td>NaN</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
+      <td>J / kgK</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>11</th>
-      <td>3.600738</td>
+      <td>-3.600588</td>
+      <td>kg / s</td>
+      <td>-2.894005</td>
+      <td>m3 / s</td>
       <td>1.000000</td>
+      <td>bar</td>
       <td>406330.818533</td>
+      <td>J / kg</td>
       <td>7.000000</td>
-      <td>2.894125</td>
+      <td>C</td>
+      <td>...</td>
+      <td>C</td>
       <td>0.803759</td>
-      <td>3821.630622</td>
+      <td>m3 / kg</td>
       <td>-1.000000e+00</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
+      <td>-</td>
+      <td>3821.630622</td>
+      <td>J / kgK</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>12</th>
-      <td>3.600738</td>
+      <td>-3.600588</td>
+      <td>kg / s</td>
+      <td>-2.914732</td>
+      <td>m3 / s</td>
       <td>1.000000</td>
-      <td>404319.289111</td>
-      <td>5.000000</td>
-      <td>2.873397</td>
-      <td>0.798002</td>
-      <td>3814.424683</td>
+      <td>bar</td>
+      <td>408342.431309</td>
+      <td>J / kg</td>
+      <td>9.000000</td>
+      <td>C</td>
+      <td>...</td>
+      <td>C</td>
+      <td>0.809516</td>
+      <td>m3 / kg</td>
       <td>-1.000000e+00</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
+      <td>-</td>
+      <td>3828.785597</td>
+      <td>J / kgK</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>21</th>
       <td>0.435516</td>
-      <td>3.000000</td>
-      <td>126003.690095</td>
-      <td>30.000000</td>
+      <td>kg / s</td>
       <td>0.000437</td>
+      <td>m3 / s</td>
+      <td>3.000000</td>
+      <td>bar</td>
+      <td>126003.690096</td>
+      <td>J / kg</td>
+      <td>30.000000</td>
+      <td>C</td>
+      <td>...</td>
+      <td>C</td>
       <td>0.001004</td>
-      <td>436.664733</td>
+      <td>m3 / kg</td>
       <td>-1.000000e+00</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
+      <td>-</td>
+      <td>436.664733</td>
+      <td>J / kgK</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>22</th>
       <td>0.435516</td>
-      <td>3.000000</td>
-      <td>146898.420888</td>
-      <td>35.000000</td>
+      <td>kg / s</td>
       <td>0.000438</td>
+      <td>m3 / s</td>
+      <td>3.000000</td>
+      <td>bar</td>
+      <td>146898.420887</td>
+      <td>J / kg</td>
+      <td>35.000000</td>
+      <td>C</td>
+      <td>...</td>
+      <td>C</td>
       <td>0.001006</td>
-      <td>505.027895</td>
+      <td>m3 / kg</td>
       <td>-1.000000e+00</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
+      <td>-</td>
+      <td>505.027895</td>
+      <td>J / kgK</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
     </tr>
   </tbody>
 </table>
+<p>9 rows × 21 columns</p>
 </div></div></div>
 </div>
 </section>
@@ -816,7 +921,7 @@ COP over the ambient temperature level. We can see the same trend in
 <a class="reference internal" href="#fig-heat-pump-ambient-temperature-design-mode"><span class="std std-numref">Fig. 13</span></a> as we saw in the previous section in
 <a class="reference internal" href="tespy-simple.html#fig-heat-pump-efficiency-factor"><span class="std std-numref">Fig. 8</span></a>.</p>
 <figure class="align-default" id="fig-heat-pump-ambient-temperature-design-mode">
-<img alt="../_images/f99e936cb32b4241d614b55e4aaad96998ee7a58033632d95b3c603f5b55fd53.png" src="../_images/f99e936cb32b4241d614b55e4aaad96998ee7a58033632d95b3c603f5b55fd53.png" />
+<img alt="../_images/b78159bf52083506ac0e7f2e36a563cdf8680cd016fbfb9db6b55a858250198f.png" src="../_images/b78159bf52083506ac0e7f2e36a563cdf8680cd016fbfb9db6b55a858250198f.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 13 </span><span class="caption-text">Influence of the ambient temperature on the compressor power, its pressure ratio and the COP without modeling part load
 behavior.</span><a class="headerlink" href="#fig-heat-pump-ambient-temperature-design-mode" title="Permalink to this image">#</a></p>
@@ -878,7 +983,7 @@ COP are affected by the changing heat load. Only the compressor power requiremen
 this is, that the compressor’s efficiency and the temperature differences (and therefore the evaporation and
 condensation temperatures) do not change with changing load due to our model specifications.</p>
 <figure class="align-default" id="fig-heat-pump-heat-load-design-mode">
-<img alt="../_images/af6e9d8014ecfba0001d74a45e91eb73c543e3ab8f43d33f0227887b248470f6.png" src="../_images/af6e9d8014ecfba0001d74a45e91eb73c543e3ab8f43d33f0227887b248470f6.png" />
+<img alt="../_images/c20636534c73a67cb64fde8241389f79d8d194265809382654355b34eae04b32.png" src="../_images/c20636534c73a67cb64fde8241389f79d8d194265809382654355b34eae04b32.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 14 </span><span class="caption-text">Influence of the heat load on the compressor power, its pressure ratio and the COP without modeling part load behavior.</span><a class="headerlink" href="#fig-heat-pump-heat-load-design-mode" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -968,7 +1073,7 @@ The last subplot is the deviation in COP, which is at an overall low level. Only
 levels, which are nearly at the heat supply temperature level the deviation increases to about 5 % with respect to the
 model accounting for part load behavior.</p>
 <figure class="align-default" id="fig-heat-pump-ambient-temperature-offdesign-mode">
-<img alt="../_images/186e7b7debb3d046d241ab3b13c2c658452b9a453cd1c2f51b2576f806e5e953.png" src="../_images/186e7b7debb3d046d241ab3b13c2c658452b9a453cd1c2f51b2576f806e5e953.png" />
+<img alt="../_images/cb5c3983254082302694668d33152889dc9f86db7b50a85395e9999bb250d721.png" src="../_images/cb5c3983254082302694668d33152889dc9f86db7b50a85395e9999bb250d721.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 15 </span><span class="caption-text">Influence of the ambient temperature on the compressor power, its pressure ratio and the COP when considering part load
 behavior.</span><a class="headerlink" href="#fig-heat-pump-ambient-temperature-offdesign-mode" title="Permalink to this image">#</a></p>
@@ -1076,7 +1181,7 @@ ratio.</p>
 <a class="reference internal" href="../excursion/partload-analysis.html#tespy-partload-disection"><span class="std std-ref">this excursion</span></a>.</p>
 </div>
 <figure class="align-default" id="fig-heat-pump-heat-load-offdesign-mode">
-<img alt="../_images/9f674257f1ee29685eeba64f8cda8a4e021926ae603948e911d724e933869936.png" src="../_images/9f674257f1ee29685eeba64f8cda8a4e021926ae603948e911d724e933869936.png" />
+<img alt="../_images/973b512072e53fe3ce0a4ab5ae0722198dfba1f42d62cb0738afd2f0a63dc754.png" src="../_images/973b512072e53fe3ce0a4ab5ae0722198dfba1f42d62cb0738afd2f0a63dc754.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 16 </span><span class="caption-text">Influence of the heat load on the compressor power, its pressure ratio and the COP when considering part load behavior.</span><a class="headerlink" href="#fig-heat-pump-heat-load-offdesign-mode" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -1182,7 +1287,7 @@ investigate the influence of the heat load per temperature value.</p>
 <p>We can plot some results, e.g. for every 10th temperature value in <a class="reference internal" href="#fig-heat-pump-result-offdesign-mode"><span class="std std-numref">Fig. 17</span></a>. These
 results can then be transferred to the <code class="docutils literal notranslate"><span class="pre">oemof-solph</span></code> simulation.</p>
 <figure class="align-default" id="fig-heat-pump-result-offdesign-mode">
-<img alt="../_images/6bea6a60ea26857644a035a53301827a294e451389a47ab300d21d8056972a01.png" src="../_images/6bea6a60ea26857644a035a53301827a294e451389a47ab300d21d8056972a01.png" />
+<img alt="../_images/c18e72c40d6f7942f18fe41e9392c8917d4adb6a209a895562687429b39c5048.png" src="../_images/c18e72c40d6f7942f18fe41e9392c8917d4adb6a209a895562687429b39c5048.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 17 </span><span class="caption-text">Influence of the ambienht temperature and heat load on the compressor power and the COP when considering part load
 behavior.</span><a class="headerlink" href="#fig-heat-pump-result-offdesign-mode" title="Permalink to this image">#</a></p>
@@ -1238,7 +1343,7 @@ the actual simulation. For example, we can have a look at the design conditions 
 that the deviation between the linearized model and the actual simulation is below 1.5 % for all heat load values. The
 assumption of a constant efficiency factor leads to a high deviation especially with lower heat production up to 18 %.</p>
 <figure class="align-default" id="fig-heat-pump-result-comparison">
-<img alt="../_images/d4670d05c703e16249494fc611b3d6be64b1a04c5724eb799e0a428133b29b9b.png" src="../_images/d4670d05c703e16249494fc611b3d6be64b1a04c5724eb799e0a428133b29b9b.png" />
+<img alt="../_images/0917007b0ac8fab8449623ed97b3b188e1bd95291281486b14ac90ba45e960b7.png" src="../_images/0917007b0ac8fab8449623ed97b3b188e1bd95291281486b14ac90ba45e960b7.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 18 </span><span class="caption-text">Comparison of the compressor power depending on the heat pump’s heat load for the simplified approach and in the part
 load simulation.</span><a class="headerlink" href="#fig-heat-pump-result-comparison" title="Permalink to this image">#</a></p>
@@ -1248,7 +1353,7 @@ load simulation.</span><a class="headerlink" href="#fig-heat-pump-result-compari
 <a class="reference internal" href="#fig-heat-pump-result-linearization"><span class="std std-numref">Fig. 19</span></a>. We can see, that both, offset and slope, change for every ambient
 temperature value.</p>
 <figure class="align-default" id="fig-heat-pump-result-linearization">
-<img alt="../_images/7a6154424fc37c2cb0ef90c100eae8fb866c4aea05a59eac2bf6ddb1bdc03d3f.png" src="../_images/7a6154424fc37c2cb0ef90c100eae8fb866c4aea05a59eac2bf6ddb1bdc03d3f.png" />
+<img alt="../_images/127dad2b4b709bce5305b49113542d2e5a19c9e2086ee2b49e95167edbc9670e.png" src="../_images/127dad2b4b709bce5305b49113542d2e5a19c9e2086ee2b49e95167edbc9670e.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 19 </span><span class="caption-text">Linearized compressor power to heat load.</span><a class="headerlink" href="#fig-heat-pump-result-linearization" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -1365,11 +1470,10 @@ into csv format and export that information.</p>
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="solph-minimal-load.html"
@@ -1389,10 +1493,7 @@ into csv format and export that information.</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -1442,6 +1543,7 @@ By Francesco Witte and Patrik Schönfeld
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2022.
@@ -1468,8 +1570,8 @@ By Francesco Witte and Patrik Schönfeld
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>

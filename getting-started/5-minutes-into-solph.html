@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -39,8 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -78,6 +79,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -131,9 +141,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../index.html">
+  
   
   
   
@@ -143,8 +155,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/logo_oemof_mid.svg" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/logo_oemof_mid.svg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/logo_oemof_mid.svg" class="logo__image only-light" alt="oemof Workshop on Modeling of Heat Pumps - Home"/>
+    <script>document.write(`<img src="../_static/logo_oemof_mid.svg" class="logo__image only-dark" alt="oemof Workshop on Modeling of Heat Pumps - Home"/>`);</script>
   
   
 </a></div>
@@ -334,20 +346,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -442,7 +456,15 @@ optimiser of choice.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Problem&#39;: [{&#39;Name&#39;: &#39;unknown&#39;, &#39;Lower bound&#39;: 8.8, &#39;Upper bound&#39;: 8.8, &#39;Number of objectives&#39;: 1, &#39;Number of constraints&#39;: 13, &#39;Number of variables&#39;: 13, &#39;Number of nonzeros&#39;: 0, &#39;Sense&#39;: &#39;minimize&#39;}], &#39;Solver&#39;: [{&#39;Status&#39;: &#39;ok&#39;, &#39;User time&#39;: -1.0, &#39;System time&#39;: 0.0, &#39;Wallclock time&#39;: 0.0, &#39;Termination condition&#39;: &#39;optimal&#39;, &#39;Termination message&#39;: &#39;Model was solved to optimality (subject to tolerances), and an optimal solution is available.&#39;, &#39;Statistics&#39;: {&#39;Branch and bound&#39;: {&#39;Number of bounded subproblems&#39;: None, &#39;Number of created subproblems&#39;: None}, &#39;Black box&#39;: {&#39;Number of iterations&#39;: 0}}, &#39;Error rc&#39;: 0, &#39;Time&#39;: 0.01507878303527832}], &#39;Solution&#39;: [OrderedDict([(&#39;number of solutions&#39;, 0), (&#39;number of solutions displayed&#39;, 0)])]}
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/oemof/network/network/nodes.py:80: FutureWarning: Usage of oemof.network.Bus is deprecated. Use oemof.network.Node instead.
+  warnings.warn(
+/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/oemof/network/network/nodes.py:89: FutureWarning: Usage of oemof.network.Component is deprecated. Use oemof.network.Node instead.
+  warnings.warn(
+/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/oemof/solph/components/_converter.py:158: FutureWarning: solph.components.Transformer has been renamed to solph.components.Converter. The transitional wrapper will be deleted in the future.
+  warn(
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Problem&#39;: [{&#39;Name&#39;: &#39;unknown&#39;, &#39;Lower bound&#39;: 8.8, &#39;Upper bound&#39;: 8.8, &#39;Number of objectives&#39;: 1, &#39;Number of constraints&#39;: 12, &#39;Number of variables&#39;: 12, &#39;Number of nonzeros&#39;: 0, &#39;Sense&#39;: &#39;minimize&#39;}], &#39;Solver&#39;: [{&#39;Status&#39;: &#39;ok&#39;, &#39;User time&#39;: -1.0, &#39;System time&#39;: 0.0, &#39;Wallclock time&#39;: 0.0, &#39;Termination condition&#39;: &#39;optimal&#39;, &#39;Termination message&#39;: &#39;Model was solved to optimality (subject to tolerances), and an optimal solution is available.&#39;, &#39;Statistics&#39;: {&#39;Branch and bound&#39;: {&#39;Number of bounded subproblems&#39;: None, &#39;Number of created subproblems&#39;: None}, &#39;Black box&#39;: {&#39;Number of iterations&#39;: 0}}, &#39;Error rc&#39;: 0, &#39;Time&#39;: 0.008463382720947266}], &#39;Solution&#39;: [OrderedDict([(&#39;number of solutions&#39;, 0), (&#39;number of solutions displayed&#39;, 0)])]}
 </pre></div>
 </div>
 </div>
@@ -463,7 +485,7 @@ optimiser of choice.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/dc504e82a9f6871df48425a003333475861bc15ab770289ac48bc6fe90396a9c.png" src="../_images/dc504e82a9f6871df48425a003333475861bc15ab770289ac48bc6fe90396a9c.png" />
+<img alt="../_images/be80f8e1cb90f2d69d5ea4320aba6dcbd1a667a4d04b4d39dffa9cc07cca6c1a.png" src="../_images/be80f8e1cb90f2d69d5ea4320aba6dcbd1a667a4d04b4d39dffa9cc07cca6c1a.png" />
 </div>
 </div>
 </section>
@@ -494,11 +516,10 @@ optimiser of choice.</p>
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="setup-python.html"
@@ -518,10 +539,7 @@ optimiser of choice.</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -558,6 +576,7 @@ By Francesco Witte and Patrik Schönfeld
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2022.
@@ -584,8 +603,8 @@ By Francesco Witte and Patrik Schönfeld
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -611,18 +611,12 @@ future as well.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (CycleCloser) #####
-+--------------+------------------+-------------------+
-|              |   mass_deviation |   fluid_deviation |
-|--------------+------------------+-------------------|
-| cycle closer |         0.00e+00 |          0.00e+00 |
-+--------------+------------------+-------------------+
-##### RESULTS (HeatExchangerSimple) #####
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (HeatExchangerSimple) #####
 +------------+-----------+----------+----------+-----+-----+------+---------+------+--------+
 |            |         Q |       pr |     zeta |   D |   L |   ks |   ks_HW |   kA |   Tamb |
 |------------+-----------+----------+----------+-----+-----+------+---------+------+--------|
-| condenser  | -9.10e+03 | 1.00e+00 | 0.00e+00 | nan | nan |  nan |     nan |  nan |    nan |
 | evaporator |  7.48e+03 | 1.00e+00 | 0.00e+00 | nan | nan |  nan |     nan |  nan |    nan |
+| condenser  | -9.10e+03 | 1.00e+00 | 0.00e+00 | nan | nan |  nan |     nan |  nan |    nan |
 +------------+-----------+----------+----------+-----+-----+------+---------+------+--------+
 ##### RESULTS (Valve) #####
 +-----------------+----------+----------+
@@ -636,6 +630,12 @@ future as well.</p>
 |------------+----------+----------+----------+--------|
 | compressor | 1.62e+03 | 8.00e-01 | 2.72e+00 |    nan |
 +------------+----------+----------+----------+--------+
+##### RESULTS (CycleCloser) #####
++--------------+------------------+-------------------+
+|              |   mass_deviation |   fluid_deviation |
+|--------------+------------------+-------------------|
+| cycle closer |         0.00e+00 |          0.00e+00 |
++--------------+------------------+-------------------+
 ##### RESULTS (Connection) #####
 +----+-----------+-----------+-----------+-----------+
 |    |         m |         p |         h |         T |

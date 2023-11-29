@@ -494,7 +494,6 @@ OffsetTransformer.</p>
         <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="n">bus_electricity</span><span class="p">:</span> <span class="n">solph</span><span class="o">.</span><span class="n">Flow</span><span class="p">(</span>
             <span class="n">nominal_value</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
             <span class="nb">min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
-            <span class="n">nonconvex</span><span class="o">=</span><span class="n">solph</span><span class="o">.</span><span class="n">NonConvex</span><span class="p">(),</span>
         <span class="p">)},</span>
         <span class="n">outputs</span><span class="o">=</span><span class="p">{</span><span class="n">bus_heat_35C</span><span class="p">:</span> <span class="n">solph</span><span class="o">.</span><span class="n">Flow</span><span class="p">(</span>
             <span class="n">nominal_value</span><span class="o">=</span><span class="n">hp_thermal_power</span><span class="p">,</span>
@@ -509,65 +508,7 @@ OffsetTransformer.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">10</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">offset</span> <span class="o">=</span> <span class="n">input_data</span><span class="p">[</span><span class="s2">&quot;offset&quot;</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="mf">1e3</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">demand</span> <span class="o">=</span> <span class="n">input_data</span><span class="p">[</span><span class="s2">&quot;Heat load (kW)&quot;</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="ne">---&gt; </span><span class="mi">10</span> <span class="n">heat_pump</span> <span class="o">=</span> <span class="n">solph</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">OffsetTransformer</span><span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span>         <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;heat pump&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span>         <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="n">bus_electricity</span><span class="p">:</span> <span class="n">solph</span><span class="o">.</span><span class="n">Flow</span><span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span>             <span class="n">nominal_value</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span>             <span class="nb">min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span>             <span class="n">nonconvex</span><span class="o">=</span><span class="n">solph</span><span class="o">.</span><span class="n">NonConvex</span><span class="p">(),</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span>         <span class="p">)},</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span>         <span class="n">outputs</span><span class="o">=</span><span class="p">{</span><span class="n">bus_heat_35C</span><span class="p">:</span> <span class="n">solph</span><span class="o">.</span><span class="n">Flow</span><span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span>             <span class="n">nominal_value</span><span class="o">=</span><span class="n">hp_thermal_power</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span>             <span class="n">nonconvex</span><span class="o">=</span><span class="n">solph</span><span class="o">.</span><span class="n">NonConvex</span><span class="p">(),</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span>             <span class="nb">min</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">21</span>         <span class="p">)},</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span>         <span class="n">coefficients</span><span class="o">=</span><span class="p">[</span><span class="n">offset</span><span class="p">,</span> <span class="n">slope</span><span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span> <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">25</span> <span class="n">es</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">heat_pump</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/oemof/solph/components/_offset_converter.py:136,</span> in <span class="ni">OffsetTransformer.__init__</span><span class="nt">(self, inputs, outputs, label, coefficients, custom_attributes)</span>
-<span class="g g-Whitespace">    </span><span class="mi">128</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">129</span>     <span class="bp">self</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">130</span>     <span class="n">inputs</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">134</span>     <span class="n">custom_attributes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">135</span> <span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">136</span>     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">137</span>         <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">138</span>         <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">139</span>         <span class="n">outputs</span><span class="o">=</span><span class="n">outputs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">140</span>         <span class="n">coefficients</span><span class="o">=</span><span class="n">coefficients</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">141</span>         <span class="n">custom_attributes</span><span class="o">=</span><span class="n">custom_attributes</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">142</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">143</span>     <span class="n">warn</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">144</span>         <span class="s2">&quot;solph.components.OffsetTransformer has been renamed to&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">145</span>         <span class="s2">&quot; solph.components.OffsetConverter. The transitional wrapper&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">146</span>         <span class="s2">&quot; will be deleted in the future.&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">147</span>         <span class="ne">FutureWarning</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">148</span>     <span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/oemof/solph/components/_offset_converter.py:111,</span> in <span class="ni">OffsetConverter.__init__</span><span class="nt">(self, inputs, outputs, label, coefficients, custom_attributes)</span>
-<span class="g g-Whitespace">    </span><span class="mi">106</span>             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">107</span>                 <span class="s2">&quot;`Investment` attribute must be defined only for the &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">108</span>                 <span class="o">+</span> <span class="s2">&quot;output flow!&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">109</span>             <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">110</span>         <span class="k">if</span> <span class="n">v</span><span class="o">.</span><span class="n">nonconvex</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">111</span>             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">112</span>                 <span class="s2">&quot;`NonConvex` attribute must be defined only for the &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">113</span>                 <span class="o">+</span> <span class="s2">&quot;output flow!&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">114</span>             <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">116</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">117</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">118</span>         <span class="s2">&quot;Component `OffsetConverter` must not have &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">119</span>         <span class="o">+</span> <span class="s2">&quot;more than 1 input and 1 output!&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">120</span>     <span class="p">)</span>
-
-<span class="ne">TypeError</span>: `NonConvex` attribute must be defined only for the output flow!
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FutureWarning: solph.components.OffsetTransformer has been renamed to solph.components.OffsetConverter. The transitional wrapper will be deleted in the future.
 </pre></div>
 </div>
 </div>
@@ -581,19 +522,47 @@ OffsetTransformer.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+</pre></div>
 </div>
-<p>In our final example <code class="xref std std-numref docutils literal notranslate"><span class="pre">results-solph-offset</span></code> shows that the heat pump is mostly operated at full load. This is
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+</pre></div>
+</div>
+</div>
+</div>
+<p>In our final example <a class="reference internal" href="#results-solph-offset"><span class="std std-numref">Fig. 21</span></a> shows that the heat pump is mostly operated at full load. This is
 because the COP of the heat pump in largest in that point (see <a class="reference internal" href="#heatpump-offset-transformer"><span class="std std-numref">Fig. 20</span></a>). The storage
 losses are higher overall as the filling level is higher as well. However, the increased storage losses are lower than
 those induced by decrease of the heat pump’s COP in part load. The overall electricity consumption consequently
-increases from <code class="docutils literal notranslate"><span class="pre">14.23</span></code> kWh to 
+increases from <code class="docutils literal notranslate"><span class="pre">14.23</span></code> kWh to <span class="output text_plain">28.39</span>
 kWh.</p>
+<figure class="align-default" id="results-solph-offset">
+<img alt="../_images/7e271e5f712438ea6b177e4fd9d82fcc763736139990873f0ed98c9d1703eb8c.png" src="../_images/7e271e5f712438ea6b177e4fd9d82fcc763736139990873f0ed98c9d1703eb8c.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Operation of the heat pump modeled as OffsetTransformer.</span><a class="headerlink" href="#results-solph-offset" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utilities</span> <span class="kn">import</span> <span class="n">sumarise_solph_results</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">electricity_total</span> <span class="o">=</span> <span class="n">sumarise_solph_results</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:TESPyLogger:FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Electricity demand: 28.4 kWh
 </pre></div>
 </div>
 </div>

@@ -566,36 +566,36 @@ Therefore we provide a tutorial on how to build models with stable starting valu
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (Condenser) #####
-+-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
-|           |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
-|-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
-| condenser | -9.10e+03 | 1.26e+03 | 7.21e+00 | 5.00e+00 | 1.00e+01 | 1.00e+00 | 1.00e+00 | 4.12e-05 | 0.00e+00 |
-+-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
-##### RESULTS (Valve) #####
-+-----------------+----------+----------+
-|                 |       pr |     zeta |
-|-----------------+----------+----------|
-| expansion valve | 3.68e-01 | 1.04e+11 |
-+-----------------+----------+----------+
-##### RESULTS (HeatExchanger) #####
-+------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
-|            |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
-|------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
-| evaporator | -7.24e+03 | 1.22e+03 | 5.94e+00 | 5.00e+00 | 7.00e+00 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 1.70e-06 |
-+------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
-##### RESULTS (Compressor) #####
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (Compressor) #####
 +------------+----------+----------+----------+--------+
 |            |        P |    eta_s |       pr |   igva |
 |------------+----------+----------+----------+--------|
 | compressor | 1.86e+03 | 6.75e-01 | 2.72e+00 |    nan |
 +------------+----------+----------+----------+--------+
+##### RESULTS (Condenser) #####
++-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+|           |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
+|-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
+| condenser | -9.10e+03 | 1.26e+03 | 7.21e+00 | 5.00e+00 | 1.00e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
++-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
 ##### RESULTS (CycleCloser) #####
 +--------------+------------------+-------------------+
 |              |   mass_deviation |   fluid_deviation |
 |--------------+------------------+-------------------|
 | cycle closer |         0.00e+00 |          0.00e+00 |
 +--------------+------------------+-------------------+
+##### RESULTS (HeatExchanger) #####
++------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+|            |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
+|------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
+| evaporator | -7.24e+03 | 1.22e+03 | 5.94e+00 | 5.00e+00 | 7.00e+00 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
++------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+##### RESULTS (Valve) #####
++-----------------+----------+----------+
+|                 |       pr |     zeta |
+|-----------------+----------+----------|
+| expansion valve | 3.68e-01 | 1.04e+11 |
++-----------------+----------+----------+
 ##### RESULTS (Connection) #####
 +----+------------+-----------+-----------+-----------+
 |    |          m |         p |         h |         T |
@@ -648,9 +648,9 @@ Therefore we provide a tutorial on how to build models with stable starting valu
       <th>x_unit</th>
       <th>s</th>
       <th>s_unit</th>
-      <th>Water</th>
       <th>R290</th>
       <th>air</th>
+      <th>Water</th>
     </tr>
   </thead>
   <tbody>
@@ -670,12 +670,12 @@ Therefore we provide a tutorial on how to build models with stable starting valu
       <td>C</td>
       <td>0.026391</td>
       <td>m3 / kg</td>
-      <td>0.274511</td>
+      <td>2.745114e-01</td>
       <td>-</td>
       <td>1389.278120</td>
       <td>J / kgK</td>
-      <td>NaN</td>
       <td>1.0</td>
+      <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
@@ -694,12 +694,12 @@ Therefore we provide a tutorial on how to build models with stable starting valu
       <td>C</td>
       <td>0.026391</td>
       <td>m3 / kg</td>
-      <td>0.274511</td>
+      <td>2.745114e-01</td>
       <td>-</td>
       <td>1389.278120</td>
       <td>J / kgK</td>
-      <td>NaN</td>
       <td>1.0</td>
+      <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
@@ -718,12 +718,12 @@ Therefore we provide a tutorial on how to build models with stable starting valu
       <td>C</td>
       <td>0.091112</td>
       <td>m3 / kg</td>
-      <td>1.000000</td>
+      <td>1.000000e+00</td>
       <td>-</td>
       <td>2370.253689</td>
       <td>J / kgK</td>
-      <td>NaN</td>
       <td>1.0</td>
+      <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
@@ -742,12 +742,12 @@ Therefore we provide a tutorial on how to build models with stable starting valu
       <td>C</td>
       <td>0.036554</td>
       <td>m3 / kg</td>
-      <td>-1.000000</td>
+      <td>-1.000000e+00</td>
       <td>-</td>
       <td>2439.993233</td>
       <td>J / kgK</td>
-      <td>NaN</td>
       <td>1.0</td>
+      <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
@@ -766,12 +766,12 @@ Therefore we provide a tutorial on how to build models with stable starting valu
       <td>C</td>
       <td>0.002139</td>
       <td>m3 / kg</td>
-      <td>0.000000</td>
+      <td>2.686782e-16</td>
       <td>-</td>
       <td>1359.354602</td>
       <td>J / kgK</td>
-      <td>NaN</td>
       <td>1.0</td>
+      <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
@@ -790,13 +790,13 @@ Therefore we provide a tutorial on how to build models with stable starting valu
       <td>C</td>
       <td>0.803759</td>
       <td>m3 / kg</td>
-      <td>-1.000000</td>
+      <td>-1.000000e+00</td>
       <td>-</td>
       <td>3821.630622</td>
       <td>J / kgK</td>
       <td>NaN</td>
-      <td>NaN</td>
       <td>1.0</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>12</th>
@@ -814,13 +814,13 @@ Therefore we provide a tutorial on how to build models with stable starting valu
       <td>C</td>
       <td>0.809516</td>
       <td>m3 / kg</td>
-      <td>-1.000000</td>
+      <td>-1.000000e+00</td>
       <td>-</td>
       <td>3828.785597</td>
       <td>J / kgK</td>
       <td>NaN</td>
-      <td>NaN</td>
       <td>1.0</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>21</th>
@@ -838,13 +838,13 @@ Therefore we provide a tutorial on how to build models with stable starting valu
       <td>C</td>
       <td>0.001004</td>
       <td>m3 / kg</td>
-      <td>-1.000000</td>
+      <td>-1.000000e+00</td>
       <td>-</td>
       <td>436.664733</td>
       <td>J / kgK</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>1.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
     </tr>
     <tr>
       <th>22</th>
@@ -862,13 +862,13 @@ Therefore we provide a tutorial on how to build models with stable starting valu
       <td>C</td>
       <td>0.001006</td>
       <td>m3 / kg</td>
-      <td>-1.000000</td>
+      <td>-1.000000e+00</td>
       <td>-</td>
       <td>505.027895</td>
       <td>J / kgK</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>1.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
     </tr>
   </tbody>
 </table>
@@ -983,7 +983,7 @@ COP are affected by the changing heat load. Only the compressor power requiremen
 this is, that the compressor’s efficiency and the temperature differences (and therefore the evaporation and
 condensation temperatures) do not change with changing load due to our model specifications.</p>
 <figure class="align-default" id="fig-heat-pump-heat-load-design-mode">
-<img alt="../_images/7eae6b7450d89a0b13cf3b6598609b7f201a3d859c4c4b2f489230555f16dd76.png" src="../_images/7eae6b7450d89a0b13cf3b6598609b7f201a3d859c4c4b2f489230555f16dd76.png" />
+<img alt="../_images/197bccb003ff8b1aa364565769edd1f96b8b3065f588a66eb7645f4abad4d9b0.png" src="../_images/197bccb003ff8b1aa364565769edd1f96b8b3065f588a66eb7645f4abad4d9b0.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 14 </span><span class="caption-text">Influence of the heat load on the compressor power, its pressure ratio and the COP without modeling part load behavior.</span><a class="headerlink" href="#fig-heat-pump-heat-load-design-mode" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -1181,7 +1181,7 @@ ratio.</p>
 <a class="reference internal" href="../excursion/partload-analysis.html#tespy-partload-disection"><span class="std std-ref">this excursion</span></a>.</p>
 </div>
 <figure class="align-default" id="fig-heat-pump-heat-load-offdesign-mode">
-<img alt="../_images/946e496cb794f0d7df82bf5d209f32b48842743e937823ebd2bf58209b73100a.png" src="../_images/946e496cb794f0d7df82bf5d209f32b48842743e937823ebd2bf58209b73100a.png" />
+<img alt="../_images/525bf868f7c58bed355fdbff3691f04e25e660af35cad6d194cf632e678241ba.png" src="../_images/525bf868f7c58bed355fdbff3691f04e25e660af35cad6d194cf632e678241ba.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 16 </span><span class="caption-text">Influence of the heat load on the compressor power, its pressure ratio and the COP when considering part load behavior.</span><a class="headerlink" href="#fig-heat-pump-heat-load-offdesign-mode" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -1353,7 +1353,7 @@ load simulation.</span><a class="headerlink" href="#fig-heat-pump-result-compari
 <a class="reference internal" href="#fig-heat-pump-result-linearization"><span class="std std-numref">Fig. 19</span></a>. We can see, that both, offset and slope, change for every ambient
 temperature value.</p>
 <figure class="align-default" id="fig-heat-pump-result-linearization">
-<img alt="../_images/93381c3e5094d2b7ef847f5be90ce868ed3abbe613cfea627163d524b71161fb.png" src="../_images/93381c3e5094d2b7ef847f5be90ce868ed3abbe613cfea627163d524b71161fb.png" />
+<img alt="../_images/17487c00bf39054b67cff88af8f9a82df0d12af1d549a36b2732d24d5145f3fd.png" src="../_images/17487c00bf39054b67cff88af8f9a82df0d12af1d549a36b2732d24d5145f3fd.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 19 </span><span class="caption-text">Linearized compressor power to heat load.</span><a class="headerlink" href="#fig-heat-pump-result-linearization" title="Permalink to this image">#</a></p>
 </figcaption>

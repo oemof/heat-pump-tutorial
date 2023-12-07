@@ -453,7 +453,7 @@ The nominal capacity of the storage will be 8.7 kWh.</p>
     <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="n">b_heat_35C</span><span class="p">:</span> <span class="n">solph</span><span class="o">.</span><span class="n">Flow</span><span class="p">()},</span>
     <span class="n">outputs</span><span class="o">=</span><span class="p">{</span><span class="n">b_heat_35C</span><span class="p">:</span> <span class="n">solph</span><span class="o">.</span><span class="n">Flow</span><span class="p">()},</span>
     <span class="n">loss_rate</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span>
-    <span class="n">nominal_storage_capacity</span><span class="o">=</span><span class="mf">8.7</span><span class="p">,</span>  <span class="c1"># Assume 5 k of spread and 1.5 m³ volume </span>
+    <span class="n">nominal_storage_capacity</span><span class="o">=</span><span class="mf">8.7</span><span class="p">,</span>  <span class="c1"># Assume 5 k of spread and 1.5 m³ volume</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -608,6 +608,13 @@ our first assessment, the efficiency factor.</p>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Due to the reference supply temperature this specific calculation only makes sense in the context of ambient temperature
+values below 35 °C  or evaporation temperature value of 40 °C respectively, because it is only meant for a heat sink
+temperature of those values. If you want to look at the operation at higher source temperature levels, or at different
+heat sink temperature levels, you need to adjust the values in the formula respectively.</p>
 </div>
 <p>We can have a look at the difference between both approaches in <a class="reference internal" href="#cop-reference-temperature-variants"><span class="std std-numref">Fig. 5</span></a>. The left
 subplot shows the COP with both approaches over a range of the ambient temperature between -10 and 20 °C. There we can

@@ -26,36 +26,36 @@ Cell [0;32mIn[5], line 2[0m
 [1;32m      1[0m c2[38;5;241m.[39mset_attr(T[38;5;241m=[39m[38;5;28;01mNone[39;00m, m[38;5;241m=[39m[38;5;241m0.1[39m)
 [0;32m----> 2[0m [43mnwk[49m[38;5;241;43m.[39;49m[43msolve[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mdesign[39;49m[38;5;124;43m"[39;49m[43m)[49m
 
-File [0;32m/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/tespy/networks/network.py:1937[0m, in [0;36mNetwork.solve[0;34m(self, mode, init_path, design_path, max_iter, min_iter, init_only, init_previous, use_cuda, print_results, prepare_fast_lane)[0m
-[1;32m   1929[0m msg [38;5;241m=[39m (
-[1;32m   1930[0m     [38;5;124m"[39m[38;5;124mNetwork information:[39m[38;5;130;01m\n[39;00m[38;5;124m"[39m
-[1;32m   1931[0m     [38;5;124mf[39m[38;5;124m"[39m[38;5;124m - Number of components: [39m[38;5;132;01m{[39;00m[38;5;28mlen[39m([38;5;28mself[39m[38;5;241m.[39mcomps)[38;5;132;01m}[39;00m[38;5;130;01m\n[39;00m[38;5;124m"[39m
-[1;32m   1932[0m     [38;5;124mf[39m[38;5;124m"[39m[38;5;124m - Number of connections: [39m[38;5;132;01m{[39;00m[38;5;28mlen[39m([38;5;28mself[39m[38;5;241m.[39mconns)[38;5;132;01m}[39;00m[38;5;130;01m\n[39;00m[38;5;124m"[39m
-[1;32m   1933[0m     [38;5;124mf[39m[38;5;124m"[39m[38;5;124m - Number of busses: [39m[38;5;132;01m{[39;00m[38;5;28mlen[39m([38;5;28mself[39m[38;5;241m.[39mbusses)[38;5;132;01m}[39;00m[38;5;124m"[39m
-[1;32m   1934[0m )
-[1;32m   1935[0m logger[38;5;241m.[39mdebug(msg)
-[0;32m-> 1937[0m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43minitialise[49m[43m([49m[43m)[49m
-[1;32m   1939[0m [38;5;28;01mif[39;00m init_only:
-[1;32m   1940[0m     [38;5;28mself[39m[38;5;241m.[39m_reset_topology_reduction_specifications()
+File [0;32m/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/tespy/networks/network.py:1952[0m, in [0;36mNetwork.solve[0;34m(self, mode, init_path, design_path, max_iter, min_iter, init_only, init_previous, use_cuda, print_results, prepare_fast_lane)[0m
+[1;32m   1944[0m msg [38;5;241m=[39m (
+[1;32m   1945[0m     [38;5;124m"[39m[38;5;124mNetwork information:[39m[38;5;130;01m\n[39;00m[38;5;124m"[39m
+[1;32m   1946[0m     [38;5;124mf[39m[38;5;124m"[39m[38;5;124m - Number of components: [39m[38;5;132;01m{[39;00m[38;5;28mlen[39m([38;5;28mself[39m[38;5;241m.[39mcomps)[38;5;132;01m}[39;00m[38;5;130;01m\n[39;00m[38;5;124m"[39m
+[1;32m   1947[0m     [38;5;124mf[39m[38;5;124m"[39m[38;5;124m - Number of connections: [39m[38;5;132;01m{[39;00m[38;5;28mlen[39m([38;5;28mself[39m[38;5;241m.[39mconns)[38;5;132;01m}[39;00m[38;5;130;01m\n[39;00m[38;5;124m"[39m
+[1;32m   1948[0m     [38;5;124mf[39m[38;5;124m"[39m[38;5;124m - Number of busses: [39m[38;5;132;01m{[39;00m[38;5;28mlen[39m([38;5;28mself[39m[38;5;241m.[39mbusses)[38;5;132;01m}[39;00m[38;5;124m"[39m
+[1;32m   1949[0m )
+[1;32m   1950[0m logger[38;5;241m.[39mdebug(msg)
+[0;32m-> 1952[0m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43minitialise[49m[43m([49m[43m)[49m
+[1;32m   1954[0m [38;5;28;01mif[39;00m init_only:
+[1;32m   1955[0m     [38;5;28mself[39m[38;5;241m.[39m_reset_topology_reduction_specifications()
 
-File [0;32m/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/tespy/networks/network.py:851[0m, in [0;36mNetwork.initialise[0;34m(self)[0m
-[1;32m    848[0m [38;5;28mself[39m[38;5;241m.[39mvariables_dict [38;5;241m=[39m {}
-[1;32m    850[0m [38;5;28mself[39m[38;5;241m.[39mpropagate_fluid_wrappers()
-[0;32m--> 851[0m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mpresolve_massflow_topology[49m[43m([49m[43m)[49m
-[1;32m    852[0m [38;5;28mself[39m[38;5;241m.[39mpresolve_fluid_topology()
-[1;32m    854[0m [38;5;28mself[39m[38;5;241m.[39minit_set_properties()
+File [0;32m/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/tespy/networks/network.py:866[0m, in [0;36mNetwork.initialise[0;34m(self)[0m
+[1;32m    864[0m     [38;5;28mself[39m[38;5;241m.[39mcreate_fluid_wrapper_branches()
+[1;32m    865[0m [38;5;28mself[39m[38;5;241m.[39mpropagate_fluid_wrappers()
+[0;32m--> 866[0m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mpresolve_massflow_topology[49m[43m([49m[43m)[49m
+[1;32m    867[0m [38;5;28mself[39m[38;5;241m.[39mpresolve_fluid_topology()
+[1;32m    869[0m [38;5;28mself[39m[38;5;241m.[39minit_set_properties()
 
-File [0;32m/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/tespy/networks/network.py:989[0m, in [0;36mNetwork.presolve_massflow_topology[0;34m(self)[0m
-[1;32m    982[0m [38;5;28;01melif[39;00m num_massflow_specs [38;5;241m>[39m [38;5;241m1[39m:
-[1;32m    983[0m     msg [38;5;241m=[39m (
-[1;32m    984[0m         [38;5;124m"[39m[38;5;124mYou cannot specify two or more values for mass flow in [39m[38;5;124m"[39m
-[1;32m    985[0m         [38;5;124m"[39m[38;5;124mthe same linear branch (starting at [39m[38;5;124m"[39m
-[1;32m    986[0m         [38;5;124mf[39m[38;5;124m"[39m[38;5;132;01m{[39;00mbranch[[38;5;124m'[39m[38;5;124mcomponents[39m[38;5;124m'[39m][[38;5;241m0[39m][38;5;241m.[39mlabel[38;5;132;01m}[39;00m[38;5;124m and ending at [39m[38;5;124m"[39m
-[1;32m    987[0m         [38;5;124mf[39m[38;5;124m"[39m[38;5;132;01m{[39;00mbranch[[38;5;124m'[39m[38;5;124mcomponents[39m[38;5;124m'[39m][[38;5;241m-[39m[38;5;241m1[39m][38;5;241m.[39mlabel[38;5;132;01m}[39;00m[38;5;124m).[39m[38;5;124m"[39m
-[1;32m    988[0m     )
-[0;32m--> 989[0m     [38;5;28;01mraise[39;00m hlp[38;5;241m.[39mTESPyNetworkError(msg)
-[1;32m    991[0m [38;5;28;01melse[39;00m:
-[1;32m    992[0m     main_conn [38;5;241m=[39m branch[[38;5;124m"[39m[38;5;124mconnections[39m[38;5;124m"[39m][[38;5;241m0[39m]
+File [0;32m/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/tespy/networks/network.py:1004[0m, in [0;36mNetwork.presolve_massflow_topology[0;34m(self)[0m
+[1;32m    997[0m [38;5;28;01melif[39;00m num_massflow_specs [38;5;241m>[39m [38;5;241m1[39m:
+[1;32m    998[0m     msg [38;5;241m=[39m (
+[1;32m    999[0m         [38;5;124m"[39m[38;5;124mYou cannot specify two or more values for mass flow in [39m[38;5;124m"[39m
+[1;32m   1000[0m         [38;5;124m"[39m[38;5;124mthe same linear branch (starting at [39m[38;5;124m"[39m
+[1;32m   1001[0m         [38;5;124mf[39m[38;5;124m"[39m[38;5;132;01m{[39;00mbranch[[38;5;124m'[39m[38;5;124mcomponents[39m[38;5;124m'[39m][[38;5;241m0[39m][38;5;241m.[39mlabel[38;5;132;01m}[39;00m[38;5;124m and ending at [39m[38;5;124m"[39m
+[1;32m   1002[0m         [38;5;124mf[39m[38;5;124m"[39m[38;5;132;01m{[39;00mbranch[[38;5;124m'[39m[38;5;124mcomponents[39m[38;5;124m'[39m][[38;5;241m-[39m[38;5;241m1[39m][38;5;241m.[39mlabel[38;5;132;01m}[39;00m[38;5;124m).[39m[38;5;124m"[39m
+[1;32m   1003[0m     )
+[0;32m-> 1004[0m     [38;5;28;01mraise[39;00m hlp[38;5;241m.[39mTESPyNetworkError(msg)
+[1;32m   1006[0m [38;5;28;01melse[39;00m:
+[1;32m   1007[0m     main_conn [38;5;241m=[39m branch[[38;5;124m"[39m[38;5;124mconnections[39m[38;5;124m"[39m][[38;5;241m0[39m]
 
 [0;31mTESPyNetworkError[0m: You cannot specify two or more values for mass flow in the same linear branch (starting at source and ending at sink).
 

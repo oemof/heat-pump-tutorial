@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>5 minutes into TESPy &#8212; oemof Workshop on Modeling of Heat Pumps</title>
   
@@ -19,52 +18,48 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=3437f865" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting-started/5-minutes-into-tespy';</script>
-    <link rel="shortcut icon" href="../_static/logo_oemof_small.svg"/>
+    <link rel="icon" href="../_static/logo_oemof_small.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Scope of the Workshop" href="../model/intro.html" />
@@ -78,10 +73,9 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -122,11 +116,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -160,7 +157,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="current nav bd-sidenav">
@@ -404,12 +412,12 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="minutes-into-tespy">
-<h1>5 minutes into TESPy<a class="headerlink" href="#minutes-into-tespy" title="Permalink to this heading">#</a></h1>
+<h1>5 minutes into TESPy<a class="headerlink" href="#minutes-into-tespy" title="Link to this heading">#</a></h1>
 <section id="general-information">
-<h2>General information<a class="headerlink" href="#general-information" title="Permalink to this heading">#</a></h2>
+<h2>General information<a class="headerlink" href="#general-information" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://tespy.readthedocs.io">TESPy</a> is an open-source framework for the simulation of component based thermodynamic
 conversion processes. With the software you can use predefined components such as a pump, compressor, heat exchanger,
 turbine or valve (and many more) to build thermodynamic systems. The system is set up by connecting the components in a
@@ -429,7 +437,7 @@ compressor efficiency can be an input and the system variables are solved to mee
 of other inputs.</p>
 </section>
 <section id="mini-example">
-<h2>Mini example<a class="headerlink" href="#mini-example" title="Permalink to this heading">#</a></h2>
+<h2>Mini example<a class="headerlink" href="#mini-example" title="Link to this heading">#</a></h2>
 <p>TESPy consists of three main building blocks:</p>
 <ul class="simple">
 <li><p>class <code class="docutils literal notranslate"><span class="pre">Network</span></code> as container of the simulation</p></li>
@@ -441,13 +449,13 @@ by connecting the individual components</p></li>
 <p>In this example, we will create two simple networks to show the principle of TESPy. For further tutorials and examples
 we recommend looking into the online documentation.</p>
 <section id="modeling-a-compressor">
-<h3>Modeling a Compressor<a class="headerlink" href="#modeling-a-compressor" title="Permalink to this heading">#</a></h3>
+<h3>Modeling a Compressor<a class="headerlink" href="#modeling-a-compressor" title="Link to this heading">#</a></h3>
 <p>First, we are modeling a compressor, which compresses fully saturated steam to a higher pressure level. The
 <a class="reference internal" href="#compressor-flowsheet"><span class="std std-numref">Fig. 1</span></a> shows the abstract representation of the component. The table below summarizes the
 process parameters we are going to apply in our example.</p>
 <figure class="align-default" id="compressor-flowsheet">
 <img alt="../_images/Compressor.svg" src="../_images/Compressor.svg" /><figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Compressor model.</span><a class="headerlink" href="#compressor-flowsheet" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Compressor model.</span><a class="headerlink" href="#compressor-flowsheet" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <table class="table" id="table-mini-example-compressor">
@@ -532,7 +540,7 @@ as provided in <a class="reference internal" href="#table-mini-example-compresso
  2     | 5.91e+05   | 2 %        | 0.00e+00   | 2.33e-10   | 7.39e+05   | 0.00e+00   | 0.00e+00   
  3     | 2.33e-10   | 100 %      | 0.00e+00   | 2.33e-10   | 6.94e-12   | 0.00e+00   | 0.00e+00   
  4     | 2.33e-10   | 100 %      | 0.00e+00   | 2.33e-10   | 6.94e-12   | 0.00e+00   | 0.00e+00   
-Total iterations: 4, Calculation time: 0.00 s, Iterations per second: 872.13
+Total iterations: 4, Calculation time: 0.00 s, Iterations per second: 871.23
 </pre></div>
 </div>
 </div>
@@ -617,36 +625,36 @@ the compressor. This overdetermines the system of equations and will result in a
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">c2</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">nwk</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="s2">&quot;design&quot;</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/tespy/networks/network.py:1952,</span> in <span class="ni">Network.solve</span><span class="nt">(self, mode, init_path, design_path, max_iter, min_iter, init_only, init_previous, use_cuda, print_results, prepare_fast_lane)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1944</span> <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1945</span>     <span class="s2">&quot;Network information:</span><span class="se">\n</span><span class="s2">&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1946</span>     <span class="sa">f</span><span class="s2">&quot; - Number of components: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">comps</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1947</span>     <span class="sa">f</span><span class="s2">&quot; - Number of connections: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conns</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1948</span>     <span class="sa">f</span><span class="s2">&quot; - Number of busses: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">busses</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1949</span> <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1950</span> <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1952</span> <span class="bp">self</span><span class="o">.</span><span class="n">initialise</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1954</span> <span class="k">if</span> <span class="n">init_only</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1955</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_reset_topology_reduction_specifications</span><span class="p">()</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/tespy/networks/network.py:1958,</span> in <span class="ni">Network.solve</span><span class="nt">(self, mode, init_path, design_path, max_iter, min_iter, init_only, init_previous, use_cuda, print_results, prepare_fast_lane)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1950</span> <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1951</span>     <span class="s2">&quot;Network information:</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1952</span>     <span class="sa">f</span><span class="s2">&quot; - Number of components: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">comps</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1953</span>     <span class="sa">f</span><span class="s2">&quot; - Number of connections: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conns</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1954</span>     <span class="sa">f</span><span class="s2">&quot; - Number of busses: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">busses</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1955</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1956</span> <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1958</span> <span class="bp">self</span><span class="o">.</span><span class="n">initialise</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1960</span> <span class="k">if</span> <span class="n">init_only</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1961</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_reset_topology_reduction_specifications</span><span class="p">()</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/tespy/networks/network.py:866,</span> in <span class="ni">Network.initialise</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">864</span>     <span class="bp">self</span><span class="o">.</span><span class="n">create_fluid_wrapper_branches</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">865</span> <span class="bp">self</span><span class="o">.</span><span class="n">propagate_fluid_wrappers</span><span class="p">()</span>
-<span class="ne">--&gt; </span><span class="mi">866</span> <span class="bp">self</span><span class="o">.</span><span class="n">presolve_massflow_topology</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">867</span> <span class="bp">self</span><span class="o">.</span><span class="n">presolve_fluid_topology</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">869</span> <span class="bp">self</span><span class="o">.</span><span class="n">init_set_properties</span><span class="p">()</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/tespy/networks/network.py:872,</span> in <span class="ni">Network.initialise</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">870</span>     <span class="bp">self</span><span class="o">.</span><span class="n">create_fluid_wrapper_branches</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">871</span> <span class="bp">self</span><span class="o">.</span><span class="n">propagate_fluid_wrappers</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">872</span> <span class="bp">self</span><span class="o">.</span><span class="n">presolve_massflow_topology</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">873</span> <span class="bp">self</span><span class="o">.</span><span class="n">presolve_fluid_topology</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">875</span> <span class="bp">self</span><span class="o">.</span><span class="n">init_set_properties</span><span class="p">()</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/tespy/networks/network.py:1004,</span> in <span class="ni">Network.presolve_massflow_topology</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">997</span> <span class="k">elif</span> <span class="n">num_massflow_specs</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">998</span>     <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">999</span>         <span class="s2">&quot;You cannot specify two or more values for mass flow in &quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1000</span>         <span class="s2">&quot;the same linear branch (starting at &quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1001</span>         <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">branch</span><span class="p">[</span><span class="s1">&#39;components&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">label</span><span class="si">}</span><span class="s2"> and ending at &quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1002</span>         <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">branch</span><span class="p">[</span><span class="s1">&#39;components&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">label</span><span class="si">}</span><span class="s2">).&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1003</span>     <span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1004</span>     <span class="k">raise</span> <span class="n">hlp</span><span class="o">.</span><span class="n">TESPyNetworkError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1006</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1007</span>     <span class="n">main_conn</span> <span class="o">=</span> <span class="n">branch</span><span class="p">[</span><span class="s2">&quot;connections&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/tespy/networks/network.py:1010,</span> in <span class="ni">Network.presolve_massflow_topology</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1003</span> <span class="k">elif</span> <span class="n">num_massflow_specs</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1004</span>     <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1005</span>         <span class="s2">&quot;You cannot specify two or more values for mass flow in &quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1006</span>         <span class="s2">&quot;the same linear branch (starting at &quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1007</span>         <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">branch</span><span class="p">[</span><span class="s1">&#39;components&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">label</span><span class="si">}</span><span class="s2"> and ending at &quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1008</span>         <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">branch</span><span class="p">[</span><span class="s1">&#39;components&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">label</span><span class="si">}</span><span class="s2">).&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1009</span>     <span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1010</span>     <span class="k">raise</span> <span class="n">hlp</span><span class="o">.</span><span class="n">TESPyNetworkError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1012</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1013</span>     <span class="n">main_conn</span> <span class="o">=</span> <span class="n">branch</span><span class="p">[</span><span class="s2">&quot;connections&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="ne">TESPyNetworkError</span>: You cannot specify two or more values for mass flow in the same linear branch (starting at source and ending at sink).
 </pre></div>
@@ -655,13 +663,13 @@ the compressor. This overdetermines the system of equations and will result in a
 </div>
 </section>
 <section id="modeling-a-heat-exchanger">
-<h3>Modeling a Heat Exchanger<a class="headerlink" href="#modeling-a-heat-exchanger" title="Permalink to this heading">#</a></h3>
+<h3>Modeling a Heat Exchanger<a class="headerlink" href="#modeling-a-heat-exchanger" title="Link to this heading">#</a></h3>
 <p>In the second example we are going to model a heat exchanger as shown in <a class="reference internal" href="#heat-exchanger-flowsheet"><span class="std std-numref">Fig. 2</span></a>, specifically
 an evaporator using heat from ambient air to evaporate the working fluid R290 (Propane). The parameter we want to
 provide are listed in the table below.</p>
 <figure class="align-default" id="heat-exchanger-flowsheet">
 <img alt="../_images/HeatExchanger.svg" src="../_images/HeatExchanger.svg" /><figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Evaporator model.</span><a class="headerlink" href="#heat-exchanger-flowsheet" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Evaporator model.</span><a class="headerlink" href="#heat-exchanger-flowsheet" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Similar to the compressor example we work with a <code class="docutils literal notranslate"><span class="pre">Network</span></code> instance, this time two fluids are required, i.e. air and
@@ -735,7 +743,7 @@ the air temperature changes, adjusts the evaporation pressure/temperature of the
 </section>
 </section>
 <section id="learn-more">
-<h2>Learn more<a class="headerlink" href="#learn-more" title="Permalink to this heading">#</a></h2>
+<h2>Learn more<a class="headerlink" href="#learn-more" title="Link to this heading">#</a></h2>
 <p>TESPy relies on CoolProp to provide fluid property data for a large range of different fluids <span id="id3">[<a class="reference internal" href="../zliterature.html#id6" title="Ian H. Bell, Jorrit Wronski, Sylvain Quoilin, and Vincent Lemort. Pure and pseudo-pure fluid thermophysical property evaluation and the open-source thermophysical property library coolprop. Industrial &amp; Engineering Chemistry Research, 53(6):2498–2508, 2014. doi:10.1021/ie4033999.">7</a>]</span>. The
 online documentation of TESPy provides a large variety of examples and tutorials to learn to use the software as well as
 extensive background information and code documentation:</p>
@@ -745,10 +753,12 @@ extensive background information and code documentation:</p>
 <li><p>user forum <a class="github reference external" href="https://github.com/oemof/tespy/discussions">oemof/tespy#discussions</a></p></li>
 </ul>
 <hr class="footnotes docutils" />
-<aside class="footnote brackets" id="fluid-variable" role="note">
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="fluid-variable" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
 <p>The fluid mass fractions of mixture components are system
 variables as well, but this is not relevant for this tutorial.</p>
+</aside>
 </aside>
 </section>
 </section>
@@ -810,6 +820,7 @@ variables as well, but this is not relevant for this tutorial.</p>
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -847,7 +858,7 @@ By Francesco Witte and Patrik Schönfeld
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -871,8 +882,8 @@ By Francesco Witte and Patrik Schönfeld
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

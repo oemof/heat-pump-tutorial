@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Simple TESPy heat pump model &#8212; oemof Workshop on Modeling of Heat Pumps</title>
   
@@ -19,54 +18,50 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=3437f865" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'model/tespy-simple';</script>
-    <link rel="shortcut icon" href="../_static/logo_oemof_small.svg"/>
+    <link rel="icon" href="../_static/logo_oemof_small.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Combining oemof-solph and TESPy" href="solph-with-tespy.html" />
@@ -80,10 +75,9 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -124,11 +118,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -162,7 +159,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="nav bd-sidenav">
@@ -403,18 +411,18 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="simple-tespy-heat-pump-model">
-<span id="tespy-simple"></span><h1>Simple TESPy heat pump model<a class="headerlink" href="#simple-tespy-heat-pump-model" title="Permalink to this heading">#</a></h1>
+<span id="tespy-simple"></span><h1>Simple TESPy heat pump model<a class="headerlink" href="#simple-tespy-heat-pump-model" title="Link to this heading">#</a></h1>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>In this section we will build a thermodynamic simulation model of the heat pump to determine the efficiency as function
 of the ambient air temperature. For that, we build a TESPy model following the information from the flowsheet in figure
 <a class="reference internal" href="#tespy-heat-pump-flowsheet"><span class="std std-ref">Component based thermodynamic model of the heat pump in TESPy</span></a>.</p>
 <figure class="align-default" id="tespy-heat-pump-flowsheet">
 <img alt="Component based thermodynamic model of the heat pump in TESPy" src="../_images/heat_pump.svg" /><figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Component based thermodynamic model of the heat pump in TESPy</span><a class="headerlink" href="#tespy-heat-pump-flowsheet" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Component based thermodynamic model of the heat pump in TESPy</span><a class="headerlink" href="#tespy-heat-pump-flowsheet" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The table summarizes the assumptions made for the heat pump model.</p>
@@ -460,13 +468,13 @@ of the ambient air temperature. For that, we build a TESPy model following the i
 the open system energy balance, where heat and work transferred over the systems boundary change the enthalpy <span class="math notranslate nohighlight">\(h\)</span>
 of a mass flow <span class="math notranslate nohighlight">\(\dot m\)</span> between the inlet (1) and the outlet (2):</p>
 <div class="math notranslate nohighlight" id="equation-energy-balance-general">
-<span class="eqno">(6)<a class="headerlink" href="#equation-energy-balance-general" title="Permalink to this equation">#</a></span>\[    \dot W + \dot Q = \dot m \cdot \left( h_2 - h_1 \right)\]</div>
+<span class="eqno">(6)<a class="headerlink" href="#equation-energy-balance-general" title="Link to this equation">#</a></span>\[    \dot W + \dot Q = \dot m \cdot \left( h_2 - h_1 \right)\]</div>
 <p>With this definition, the sum of work and heat transferred is negative when enthalpy change is negative, which is the
 case for the condenser.</p>
 </div>
 </section>
 <section id="building-the-model">
-<h2>Building the model<a class="headerlink" href="#building-the-model" title="Permalink to this heading">#</a></h2>
+<h2>Building the model<a class="headerlink" href="#building-the-model" title="Link to this heading">#</a></h2>
 <p>To build the model we first import all dependencies from the <code class="docutils literal notranslate"><span class="pre">TESPy</span></code> library. We need the components shown in the
 flowsheet as well as connections to connect them and a network, which does all the pre- and post-processing as well as
 solving the model for us:</p>
@@ -600,7 +608,7 @@ future as well.</p>
 </div>
 </section>
 <section id="running-the-model">
-<h2>Running the model<a class="headerlink" href="#running-the-model" title="Permalink to this heading">#</a></h2>
+<h2>Running the model<a class="headerlink" href="#running-the-model" title="Link to this heading">#</a></h2>
 <p>Finally, we can solve the model and then have a look at the components’ and the connections’ results. The
 <code class="docutils literal notranslate"><span class="pre">print_results()</span></code> method prints an overview of all results to the terminal.</p>
 <div class="cell docutils container">
@@ -611,25 +619,25 @@ future as well.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (Valve) #####
-+-----------------+----------+----------+
-|                 |       pr |     zeta |
-|-----------------+----------+----------|
-| expansion valve | 3.68e-01 | 9.74e+10 |
-+-----------------+----------+----------+
-##### RESULTS (CycleCloser) #####
-+--------------+------------------+-------------------+
-|              |   mass_deviation |   fluid_deviation |
-|--------------+------------------+-------------------|
-| cycle closer |         0.00e+00 |          0.00e+00 |
-+--------------+------------------+-------------------+
-##### RESULTS (HeatExchangerSimple) #####
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (HeatExchangerSimple) #####
 +------------+-----------+----------+----------+-----+-----+------+---------+------+--------+
 |            |         Q |       pr |     zeta |   D |   L |   ks |   ks_HW |   kA |   Tamb |
 |------------+-----------+----------+----------+-----+-----+------+---------+------+--------|
 | evaporator |  7.48e+03 | 1.00e+00 | 0.00e+00 | nan | nan |  nan |     nan |  nan |    nan |
 | condenser  | -9.10e+03 | 1.00e+00 | 0.00e+00 | nan | nan |  nan |     nan |  nan |    nan |
 +------------+-----------+----------+----------+-----+-----+------+---------+------+--------+
+##### RESULTS (CycleCloser) #####
++--------------+------------------+-------------------+
+|              |   mass_deviation |   fluid_deviation |
+|--------------+------------------+-------------------|
+| cycle closer |         0.00e+00 |          0.00e+00 |
++--------------+------------------+-------------------+
+##### RESULTS (Valve) #####
++-----------------+----------+----------+
+|                 |       pr |     zeta |
+|-----------------+----------+----------|
+| expansion valve | 3.68e-01 | 9.74e+10 |
++-----------------+----------+----------+
 ##### RESULTS (Compressor) #####
 +------------+----------+----------+----------+--------+
 |            |        P |    eta_s |       pr |   igva |
@@ -739,7 +747,7 @@ code below performs a simple binary search.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.900349094678169
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.900349094678188
 </pre></div>
 </div>
 </div>
@@ -751,7 +759,7 @@ can check our assumption of a constant efficiency factor for the heat pump by re
 <a class="reference internal" href="intro.html#equation-cop-heat-pump-carnot-and-efficiency">(5)</a> to the efficiency factor. Then, we plot the results over the temperature range
 assessed.</p>
 <div class="math notranslate nohighlight" id="equation-efficiency-heat-pump">
-<span class="eqno">(7)<a class="headerlink" href="#equation-efficiency-heat-pump" title="Permalink to this equation">#</a></span>\[    \eta_\text{hp} = \frac{\text{COP}}{\text{COP}_\text{c}}\]</div>
+<span class="eqno">(7)<a class="headerlink" href="#equation-efficiency-heat-pump" title="Link to this equation">#</a></span>\[    \eta_\text{hp} = \frac{\text{COP}}{\text{COP}_\text{c}}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -806,9 +814,9 @@ assessed.</p>
 </div>
 </div>
 <figure class="align-default" id="fig-heat-pump-efficiency-factor">
-<img alt="../_images/d1c4ceb33a2e8d6381edcbb8abe5680d240c0c63661cc61ebdc18df761d0e304.png" src="../_images/d1c4ceb33a2e8d6381edcbb8abe5680d240c0c63661cc61ebdc18df761d0e304.png" />
+<img alt="../_images/def76ffd6b1dbca75dbf26167bfcff217524ae8ebc9a839a535d02c8dfb9aef8.png" src="../_images/def76ffd6b1dbca75dbf26167bfcff217524ae8ebc9a839a535d02c8dfb9aef8.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Comparison of the COP of the heat pump calculated with a constant and a variable efficiency factor.</span><a class="headerlink" href="#fig-heat-pump-efficiency-factor" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Comparison of the COP of the heat pump calculated with a constant and a variable efficiency factor.</span><a class="headerlink" href="#fig-heat-pump-efficiency-factor" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>From the graphs we can easily see, that the Carnot COP <span class="math notranslate nohighlight">\(\text{COP}_\text{c}\)</span> is (expectedly) higher than the
@@ -820,7 +828,7 @@ prepared a separate section with the details on this phenomenon as a thermodynam
 <a class="reference internal" href="../excursion/entropy-analysis.html#tespy-carnot-cop"><span class="std std-ref">here</span></a>. This section will however not be part of the in-person workshop.</p>
 </section>
 <section id="preparing-the-results-for-the-solph-model">
-<h2>Preparing the results for the solph model<a class="headerlink" href="#preparing-the-results-for-the-solph-model" title="Permalink to this heading">#</a></h2>
+<h2>Preparing the results for the solph model<a class="headerlink" href="#preparing-the-results-for-the-solph-model" title="Link to this heading">#</a></h2>
 <p>To make these results usable for our solph model, we can simply export them to a .csv file:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -891,6 +899,7 @@ prepared a separate section with the details on this phenomenon as a thermodynam
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -925,7 +934,7 @@ By Francesco Witte and Patrik Schönfeld
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -949,8 +958,8 @@ By Francesco Witte and Patrik Schönfeld
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

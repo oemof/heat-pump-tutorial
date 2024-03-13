@@ -61,7 +61,7 @@ def load_tespy_cop():
 
 
 def load_tespy_coefficients():
-    df = pd.read_csv(_file_path + "/coefficients-offset-transformer.csv", index_col=[0])
+    df = pd.read_csv(_file_path + "/coefficients-offset-converter.csv", index_col=[0])
 
     # hack to work with floats as index
     df2 = df.reindex(np.arange(-100, 210, 1)/10)

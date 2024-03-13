@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Entropy Analysis of the COP &#8212; oemof Workshop on Modeling of Heat Pumps</title>
   
@@ -19,54 +18,50 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=3437f865" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'excursion/entropy-analysis';</script>
-    <link rel="shortcut icon" href="../_static/logo_oemof_small.svg"/>
+    <link rel="icon" href="../_static/logo_oemof_small.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Disection of the partload efficiency" href="partload-analysis.html" />
@@ -80,10 +75,9 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -124,11 +118,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -162,7 +159,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="nav bd-sidenav">
@@ -403,12 +411,12 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="entropy-analysis-of-the-cop">
-<span id="tespy-carnot-cop"></span><h1>Entropy Analysis of the COP<a class="headerlink" href="#entropy-analysis-of-the-cop" title="Permalink to this heading">#</a></h1>
+<span id="tespy-carnot-cop"></span><h1>Entropy Analysis of the COP<a class="headerlink" href="#entropy-analysis-of-the-cop" title="Link to this heading">#</a></h1>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>Strictly speaking the definition of the Carnot COP of a heat pump following eq. <a class="reference internal" href="../model/intro.html#equation-carnot-cop-heat-pump">(4)</a> is only valid
 for a process, that consists of two isentropic subprocesses (compression and expansion) and two isothermal subprocesses
 (evaporation and condensation). For this to be possible, the heat pump would need to use a turbine instead of an
@@ -419,16 +427,16 @@ pump cycle from thermodynamically, but we have to make some changes. However, th
 contribution of the individual components in the cycle to its thermodynamic “non-optimality”.<a class="footnote-reference brackets" href="#exergy" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 </section>
 <section id="carnot-cop">
-<h2>Carnot COP<a class="headerlink" href="#carnot-cop" title="Permalink to this heading">#</a></h2>
+<h2>Carnot COP<a class="headerlink" href="#carnot-cop" title="Link to this heading">#</a></h2>
 <p>However, we can slightly adapt the COP definition from eq. <a class="reference internal" href="../model/intro.html#equation-carnot-cop-heat-pump">(4)</a> by replacing the temperature
 levels <span class="math notranslate nohighlight">\(T_\text{max}\)</span> and <span class="math notranslate nohighlight">\(T_\text{min}\)</span>, with the <em>thermodynamic mean temperature</em> of the heat production
 <span class="math notranslate nohighlight">\(T_\text{m,prod}\)</span> and the heat consumption <span class="math notranslate nohighlight">\(T_\text{m,cons}\)</span> in eq.
 <a class="reference internal" href="#equation-carnot-cop-heat-pump-thermodynamic">(11)</a>. The thermodynamic mean temperature is defined by eq.
 <a class="reference internal" href="#equation-thermodynamic-mean-temperature">(12)</a>.</p>
 <div class="math notranslate nohighlight" id="equation-carnot-cop-heat-pump-thermodynamic">
-<span class="eqno">(11)<a class="headerlink" href="#equation-carnot-cop-heat-pump-thermodynamic" title="Permalink to this equation">#</a></span>\[    \text{COP}_\text{c} = \frac{T_\mathrm{m,prod}}{T_\mathrm{m,prod} - T_\mathrm{m,cons}}\]</div>
+<span class="eqno">(11)<a class="headerlink" href="#equation-carnot-cop-heat-pump-thermodynamic" title="Link to this equation">#</a></span>\[    \text{COP}_\text{c} = \frac{T_\mathrm{m,prod}}{T_\mathrm{m,prod} - T_\mathrm{m,cons}}\]</div>
 <div class="math notranslate nohighlight" id="equation-thermodynamic-mean-temperature">
-<span class="eqno">(12)<a class="headerlink" href="#equation-thermodynamic-mean-temperature" title="Permalink to this equation">#</a></span>\[    T_\text{m,Q} = \frac{\dot Q}{\dot S_\text{Q}}\]</div>
+<span class="eqno">(12)<a class="headerlink" href="#equation-thermodynamic-mean-temperature" title="Link to this equation">#</a></span>\[    T_\text{m,Q} = \frac{\dot Q}{\dot S_\text{Q}}\]</div>
 <p>With this, it is possible to calculate the Carnot COP with the TESPy model by calling the entropy balance equations on
 the components to obtain the thermodynamic mean temperature of the condensation and evaporation.</p>
 <div class="admonition note">
@@ -513,21 +521,21 @@ reach out to the developers via the TESPy github repository. Your contribution i
 </div>
 </div>
 </div>
-<p>We can observe, that there is a difference between the two approaches in <a class="reference internal" href="#fig-heat-pump-cop"><span class="std std-numref">Fig. 22</span></a>, however it does
+<p>We can observe, that there is a difference between the two approaches in <a class="reference internal" href="#fig-heat-pump-cop"><span class="std std-numref">Fig. 20</span></a>, however it does
 not explain, the sharp increase in the efficiency factor as seen in <a class="reference internal" href="../model/tespy-simple.html#fig-heat-pump-efficiency-factor"><span class="std std-numref">Fig. 8</span></a>. To
 explain that phenomenon, we have to disect the calculation of the COP of the heat pump a further.</p>
 <figure class="align-default" id="fig-heat-pump-cop">
-<img alt="../_images/a844e175fc258cf080e69aa1d93ae9589085d898308e16f6ae6e4b866185c338.png" src="../_images/a844e175fc258cf080e69aa1d93ae9589085d898308e16f6ae6e4b866185c338.png" />
+<img alt="../_images/669ca60b0db4a58d9789aad4f64309170febe827d84af0661a24ff47e06bb9d9.png" src="../_images/669ca60b0db4a58d9789aad4f64309170febe827d84af0661a24ff47e06bb9d9.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 22 </span><span class="caption-text">Comparison of the carnot COP calcualted with the simplified method and the exact method.</span><a class="headerlink" href="#fig-heat-pump-cop" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Comparison of the carnot COP calcualted with the simplified method and the exact method.</span><a class="headerlink" href="#fig-heat-pump-cop" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="irreversibility-production">
-<h2>Irreversibility Production<a class="headerlink" href="#irreversibility-production" title="Permalink to this heading">#</a></h2>
+<h2>Irreversibility Production<a class="headerlink" href="#irreversibility-production" title="Link to this heading">#</a></h2>
 <p>To do that, we can first reorder the definition of the COP in the following equation:</p>
 <div class="math notranslate nohighlight" id="equation-cop-heat-pump-reorderd">
-<span class="eqno">(13)<a class="headerlink" href="#equation-cop-heat-pump-reorderd" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
+<span class="eqno">(13)<a class="headerlink" href="#equation-cop-heat-pump-reorderd" title="Link to this equation">#</a></span>\[\begin{split}\begin{align}
     \text{COP} = &amp; \frac{|\dot Q_\text{prod}|}{\dot W}\\
      = &amp; \frac{|\dot Q_\text{prod}|}{|\dot Q_\text{prod}| - \dot Q_\text{cons}}\\
      = &amp; \frac{1}{\frac{|\dot Q_\text{prod}| - \dot Q_\text{cons}}{|\dot Q_\text{prod}|}}\\
@@ -535,16 +543,16 @@ explain that phenomenon, we have to disect the calculation of the COP of the hea
 \end{align}\end{split}\]</div>
 <p>Then with the definition of the thermodynamic mean temperature, we can replace the heat transfers.</p>
 <div class="math notranslate nohighlight" id="equation-cop-heat-pump-temperature-entropy">
-<span class="eqno">(14)<a class="headerlink" href="#equation-cop-heat-pump-temperature-entropy" title="Permalink to this equation">#</a></span>\[    \text{COP} = \frac{1}{1 - \frac{T_\text{m,cons} \cdot \dot S_\text{q,cons}}{T_\text{m,prod} \cdot |\dot S_\text{q,prod}|}}\]</div>
+<span class="eqno">(14)<a class="headerlink" href="#equation-cop-heat-pump-temperature-entropy" title="Link to this equation">#</a></span>\[    \text{COP} = \frac{1}{1 - \frac{T_\text{m,cons} \cdot \dot S_\text{q,cons}}{T_\text{m,prod} \cdot |\dot S_\text{q,prod}|}}\]</div>
 <p>Finally, the second law of thermodynamics allows us to replace the entropy transferred to the system from the evaporator
 <span class="math notranslate nohighlight">\(\dot S_\text{q,cons}\)</span> with difference between the entropy transferred to the heat consumer
 <span class="math notranslate nohighlight">\(\dot S_\text{q,prod}\)</span> and all entropy production inside the thermodynamic cycle
 <span class="math notranslate nohighlight">\(\sum \dot S_{\text{irr,}i}\)</span>.</p>
 <div class="math notranslate nohighlight" id="equation-excursion-entropy-analysis-0">
-<span class="eqno">(15)<a class="headerlink" href="#equation-excursion-entropy-analysis-0" title="Permalink to this equation">#</a></span>\[    \dot S_\text{q,cons} = |\dot S_\text{q,prod}| - \sum \dot S_{\text{irr,}i}\]</div>
+<span class="eqno">(15)<a class="headerlink" href="#equation-excursion-entropy-analysis-0" title="Link to this equation">#</a></span>\[    \dot S_\text{q,cons} = |\dot S_\text{q,prod}| - \sum \dot S_{\text{irr,}i}\]</div>
 <p>We make further simplifications of the expression below the line in eq. <a class="reference internal" href="#equation-cop-heat-pump-temperature-entropy">(14)</a>.</p>
 <div class="math notranslate nohighlight" id="equation-subexpression-entropy-production">
-<span class="eqno">(16)<a class="headerlink" href="#equation-subexpression-entropy-production" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
+<span class="eqno">(16)<a class="headerlink" href="#equation-subexpression-entropy-production" title="Link to this equation">#</a></span>\[\begin{split}\begin{align}
     \frac{T_\text{m,cons} \cdot \dot S_\text{q,cons}}{T_\text{m,prod} \cdot |\dot S_\text{q,prod}|} = &amp; \frac{T_\text{m,cons}}{T_\text{m,prod}} \cdot \frac{|\dot S_\text{q,prod}| - \sum \dot S_{\text{irr,}i}}{|\dot S_\text{q,prod}|} \\
     = &amp; \frac{T_\text{m,cons}}{T_\text{m,prod}} \cdot \left(1 - \frac{\sum \dot S_{\text{irr,}i}}{|\dot S_\text{q,prod}|}\right) \\
     = &amp; \frac{T_\text{m,cons}}{T_\text{m,prod}} - \frac{T_\text{m,cons} \cdot \sum \dot S_{\text{irr,}i}}{T_\text{m,prod} \cdot |\dot S_\text{q,prod}|} \\
@@ -555,7 +563,7 @@ the second part are the thermodynamic losses induced by the individual component
 evaporation temperature level is, the higher the thermodynamic inefficiencies of the individual components are the lower
 the COP or - at a given Carnot COP - the lower the efficiency factor is.</p>
 <div class="math notranslate nohighlight" id="equation-excursion-entropy-analysis-1">
-<span class="eqno">(17)<a class="headerlink" href="#equation-excursion-entropy-analysis-1" title="Permalink to this equation">#</a></span>\[    \text{COP} = \frac{1}{1 - \frac{T_\text{m,cons}}{T_\text{m,prod}} + \sum \dot S_{\text{irr,}i} \cdot \frac{T_\text{m,cons}}{\dot Q_\text{prod}}}\]</div>
+<span class="eqno">(17)<a class="headerlink" href="#equation-excursion-entropy-analysis-1" title="Link to this equation">#</a></span>\[    \text{COP} = \frac{1}{1 - \frac{T_\text{m,cons}}{T_\text{m,prod}} + \sum \dot S_{\text{irr,}i} \cdot \frac{T_\text{m,cons}}{\dot Q_\text{prod}}}\]</div>
 <p>With this information we can extend our method to calculate the COP of the heat pump accordingly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -656,25 +664,25 @@ the COP or - at a given Carnot COP - the lower the efficiency factor is.</p>
 </div>
 </div>
 <p>First, we can show, that the COP calculated with the entropy method retrieves the same result as the COP retrieved from
-the standard calculation in <a class="reference internal" href="#fig-cop-entropy-method-validation"><span class="std std-numref">Fig. 23</span></a>. Then we can inspect the dependency of the
-irreversibility elements in <a class="reference internal" href="#fig-irreverisbility-elements"><span class="std std-numref">Fig. 24</span></a>. Here we can see, that the decline of irreversibility
+the standard calculation in <a class="reference internal" href="#fig-cop-entropy-method-validation"><span class="std std-numref">Fig. 21</span></a>. Then we can inspect the dependency of the
+irreversibility elements in <a class="reference internal" href="#fig-irreverisbility-elements"><span class="std std-numref">Fig. 22</span></a>. Here we can see, that the decline of irreversibility
 production with increasing evaporation temperature is steeper that the increase of the evaporation temperature. That is
 the reason, we have an increasing efficiency factor when the evaporation temperature level rises.</p>
 <figure class="align-default" id="fig-cop-entropy-method-validation">
-<img alt="../_images/85b51108bffda0aa3024de34c3a83d227c9ba974dfc7c237b888a9224363119e.png" src="../_images/85b51108bffda0aa3024de34c3a83d227c9ba974dfc7c237b888a9224363119e.png" />
+<img alt="../_images/80274a44d3b69f0336afd2fffd2c090c285fb14bed8f0be3a983076fc73a2185.png" src="../_images/80274a44d3b69f0336afd2fffd2c090c285fb14bed8f0be3a983076fc73a2185.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Validation of the entropy method for the calculation of the heat pump’s COP.</span><a class="headerlink" href="#fig-cop-entropy-method-validation" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Validation of the entropy method for the calculation of the heat pump’s COP.</span><a class="headerlink" href="#fig-cop-entropy-method-validation" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="fig-irreverisbility-elements">
-<img alt="../_images/47254986d1e2b824bdd8105630fc1924c10e826ffd0efe6a34de3f859c17e82d.png" src="../_images/47254986d1e2b824bdd8105630fc1924c10e826ffd0efe6a34de3f859c17e82d.png" />
+<img alt="../_images/2d3a358c89e2958c1614b02dd02c9f42a581e151561cffc693a4247c0c996e84.png" src="../_images/2d3a358c89e2958c1614b02dd02c9f42a581e151561cffc693a4247c0c996e84.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Comparison of the effects of the different irreversibility elements.</span><a class="headerlink" href="#fig-irreverisbility-elements" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">Comparison of the effects of the different irreversibility elements.</span><a class="headerlink" href="#fig-irreverisbility-elements" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="investigating-working-fluids">
-<h2>Investigating Working Fluids<a class="headerlink" href="#investigating-working-fluids" title="Permalink to this heading">#</a></h2>
+<h2>Investigating Working Fluids<a class="headerlink" href="#investigating-working-fluids" title="Link to this heading">#</a></h2>
 <p>Finally, we can make an investigation for different types of working fluids, as the efficiency factor not only depends
 on the temperature level of evaporation, but also on the fluid itself. As examples, we assess working fluids from the
 different classifications (for more information see e.g. <span id="id2">[<a class="reference internal" href="../zliterature.html#id11" title="H. Tabor and L Bronicki. Establishing criteria for fluids for small vapor turbines. In SAE Technical Paper Series. SAE International, January 1964. doi:10.4271/640823.">11</a>, <a class="reference internal" href="../zliterature.html#id7" title="Sylvain Quoilin and Vincent Lemort. Technological and economical survey of organic rankine cycle systems. In European Conference on Economics and Management of Energy in Industry. April 2009. URL: https://hdl.handle.net/2268/14609.">12</a>, <a class="reference internal" href="../zliterature.html#id8" title="Huijuan Chen, D. Yogi Goswami, and Elias K. Stefanakos. A review of thermodynamic cycles and working fluids for the conversion of low-grade heat. Renewable and Sustainable Energy Reviews, 14(9):3059–3067, December 2010. doi:10.1016/j.rser.2010.07.006.">13</a>, <a class="reference internal" href="../zliterature.html#id9" title="Bo-Tau Liu, Kuo-Hsiang Chien, and Chi-Chuan Wang. Effect of working fluids on organic rankine cycle for waste heat recovery. Energy, 29(8):1207–1217, June 2004. doi:10.1016/j.energy.2004.01.004.">14</a>]</span>), which are
@@ -730,12 +738,12 @@ roughly defined by the slope of the dew line in the Ts-diagram, i.e.</p>
 </div>
 </div>
 </div>
-<p>The figure <a class="reference internal" href="#fig-working-fluid-classification"><span class="std std-numref">Fig. 25</span></a> illustrates the different classifications of working fluids at the
+<p>The figure <a class="reference internal" href="#fig-working-fluid-classification"><span class="std std-numref">Fig. 23</span></a> illustrates the different classifications of working fluids at the
 example of Ammonia (wet), R290 (isentropic) and Neopentane (dry).</p>
 <figure class="align-default" id="fig-working-fluid-classification">
-<img alt="../_images/206c15cec96f9eb75cfc39ede2a30599b27be0051f0e18dedf8c742a5a2eab09.png" src="../_images/206c15cec96f9eb75cfc39ede2a30599b27be0051f0e18dedf8c742a5a2eab09.png" />
+<img alt="../_images/0c14213a221f31b4882c21e2092eb3037beb61965d905734ffb0bd79b8ed0872.png" src="../_images/0c14213a221f31b4882c21e2092eb3037beb61965d905734ffb0bd79b8ed0872.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Illustration of the classification of different heat pump working fluids.</span><a class="headerlink" href="#fig-working-fluid-classification" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Illustration of the classification of different heat pump working fluids.</span><a class="headerlink" href="#fig-working-fluid-classification" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>We can make the entropy analysis for each of the three fluids:</p>
@@ -780,20 +788,22 @@ example of Ammonia (wet), R290 (isentropic) and Neopentane (dry).</p>
 </div>
 </div>
 <p>The efficiency factors for the individual working fluids are displayed in
-<a class="reference internal" href="#fig-working-fluids-efficiency-factors"><span class="std std-numref">Fig. 26</span></a>. The dry and the isentropic working fluids have increasing efficiency
+<a class="reference internal" href="#fig-working-fluids-efficiency-factors"><span class="std std-numref">Fig. 24</span></a>. The dry and the isentropic working fluids have increasing efficiency
 factors, the wet working fluid has a slightly decreasing efficiency factor.</p>
 <figure class="align-default" id="fig-working-fluids-efficiency-factors">
-<img alt="../_images/9a9b794dbf5b64a862e9dfc2d8c22f8ebf8744f4794ad07d705a5eb07347fce4.png" src="../_images/9a9b794dbf5b64a862e9dfc2d8c22f8ebf8744f4794ad07d705a5eb07347fce4.png" />
+<img alt="../_images/a184b85ec34a9320a744bea4fd80200aa289d75bdb6e36ffa6dd21dd00cebe5b.png" src="../_images/a184b85ec34a9320a744bea4fd80200aa289d75bdb6e36ffa6dd21dd00cebe5b.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Efficiency factors of heat pumps using different working fluids.</span><a class="headerlink" href="#fig-working-fluids-efficiency-factors" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Efficiency factors of heat pumps using different working fluids.</span><a class="headerlink" href="#fig-working-fluids-efficiency-factors" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <hr class="footnotes docutils" />
-<aside class="footnote brackets" id="exergy" role="note">
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="exergy" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p>There is another, more well known, method for the thermodynamic analysis, i.e. the exergy analysis. The
 method has been implemented in TESPy <span id="id3">[<a class="reference internal" href="../zliterature.html#id5" title="Francesco Witte, Mathias Hofmann, Julius Meier, Ilja Tuschy, and George Tsatsaronis. Generic and Open-Source Exergy Analysis—Extending the Simulation Framework TESPy. Energies, 15:4087, 2022. doi:10.3390/en15114087.">6</a>]</span>, but since we want to show the connection to the Carnot COP in
 this excursion, the entropy method is applied.</p>
+</aside>
 </aside>
 </section>
 </section>
@@ -855,6 +865,7 @@ this excursion, the entropy method is applied.</p>
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -889,7 +900,7 @@ By Francesco Witte and Patrik Schönfeld
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -913,8 +924,8 @@ By Francesco Witte and Patrik Schönfeld
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

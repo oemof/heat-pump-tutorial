@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>5 minutes into oemof-solph &#8212; oemof Workshop on Modeling of Heat Pumps</title>
   
@@ -19,52 +18,48 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=3437f865" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'getting-started/5-minutes-into-solph';</script>
-    <link rel="shortcut icon" href="../_static/logo_oemof_small.svg"/>
+    <link rel="icon" href="../_static/logo_oemof_small.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="5 minutes into TESPy" href="5-minutes-into-tespy.html" />
@@ -78,10 +73,9 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -122,11 +116,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -160,7 +157,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="current nav bd-sidenav">
@@ -398,12 +406,12 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="minutes-into-oemof-solph">
-<h1>5 minutes into oemof-solph<a class="headerlink" href="#minutes-into-oemof-solph" title="Permalink to this heading">#</a></h1>
+<h1>5 minutes into oemof-solph<a class="headerlink" href="#minutes-into-oemof-solph" title="Link to this heading">#</a></h1>
 <section id="general-information">
-<h2>General information<a class="headerlink" href="#general-information" title="Permalink to this heading">#</a></h2>
+<h2>General information<a class="headerlink" href="#general-information" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://oemof-solph.readthedocs.io/en/stable/readme.html">oemof.solph</a> is a tool to facilitate the formulation of
 (mixed integer) linear problems for dispatch, unit commitment, and investmentment problems in sector-intregrated energy
 systems. It does so by compiling a comprehensive, graph-based description of the energy system into a linear program
@@ -416,7 +424,7 @@ optimiser of choice.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">Flow</span></code>s (directed edges with time-dependent power transport)</p></li>
 </ul>
 <ul class="simple">
-<li><p>Mini Code example: Buses, Components (Transformer, Source, Sink, but there are more), EnergySystem, Model</p></li>
+<li><p>Mini Code example: Buses, Components (Converter, Source, Sink, but there are more), EnergySystem, Model</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -441,7 +449,7 @@ optimiser of choice.</p>
 <span class="p">)</span>
 <span class="n">es</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">electricity_grid</span><span class="p">,</span> <span class="n">heat_demand</span><span class="p">)</span>
 
-<span class="n">heating_rod</span> <span class="o">=</span> <span class="n">solph</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">Transformer</span><span class="p">(</span>
+<span class="n">heating_rod</span> <span class="o">=</span> <span class="n">solph</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">Converter</span><span class="p">(</span>
     <span class="n">label</span><span class="o">=</span><span class="s2">&quot;heating rod&quot;</span><span class="p">,</span>
     <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="n">b_electricity</span><span class="p">:</span> <span class="n">solph</span><span class="o">.</span><span class="n">Flow</span><span class="p">()},</span>
     <span class="n">outputs</span><span class="o">=</span><span class="p">{</span><span class="n">b_heat_35C</span><span class="p">:</span> <span class="n">solph</span><span class="o">.</span><span class="n">Flow</span><span class="p">()},</span>
@@ -456,15 +464,11 @@ optimiser of choice.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/oemof/network/network/nodes.py:80: FutureWarning: Usage of oemof.network.Bus is deprecated. Use oemof.network.Node instead.
-  warnings.warn(
-/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/oemof/network/network/nodes.py:89: FutureWarning: Usage of oemof.network.Component is deprecated. Use oemof.network.Node instead.
-  warnings.warn(
-/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/oemof/solph/components/_converter.py:158: FutureWarning: solph.components.Transformer has been renamed to solph.components.Converter. The transitional wrapper will be deleted in the future.
-  warn(
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/oemof/solph/_energy_system.py:305: FutureWarning: &#39;H&#39; is deprecated and will be removed in a future version, please use &#39;h&#39; instead.
+  return pd.date_range(start, periods=number + 1, freq=f&quot;{interval}H&quot;)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Problem&#39;: [{&#39;Name&#39;: &#39;unknown&#39;, &#39;Lower bound&#39;: 8.8, &#39;Upper bound&#39;: 8.8, &#39;Number of objectives&#39;: 1, &#39;Number of constraints&#39;: 12, &#39;Number of variables&#39;: 12, &#39;Number of nonzeros&#39;: 0, &#39;Sense&#39;: &#39;minimize&#39;}], &#39;Solver&#39;: [{&#39;Status&#39;: &#39;ok&#39;, &#39;User time&#39;: -1.0, &#39;System time&#39;: 0.0, &#39;Wallclock time&#39;: 0.0, &#39;Termination condition&#39;: &#39;optimal&#39;, &#39;Termination message&#39;: &#39;Model was solved to optimality (subject to tolerances), and an optimal solution is available.&#39;, &#39;Statistics&#39;: {&#39;Branch and bound&#39;: {&#39;Number of bounded subproblems&#39;: None, &#39;Number of created subproblems&#39;: None}, &#39;Black box&#39;: {&#39;Number of iterations&#39;: 0}}, &#39;Error rc&#39;: 0, &#39;Time&#39;: 0.01205587387084961}], &#39;Solution&#39;: [OrderedDict([(&#39;number of solutions&#39;, 0), (&#39;number of solutions displayed&#39;, 0)])]}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Problem&#39;: [{&#39;Name&#39;: &#39;unknown&#39;, &#39;Lower bound&#39;: 8.8, &#39;Upper bound&#39;: 8.8, &#39;Number of objectives&#39;: 1, &#39;Number of constraints&#39;: 12, &#39;Number of variables&#39;: 12, &#39;Number of nonzeros&#39;: 0, &#39;Sense&#39;: &#39;minimize&#39;}], &#39;Solver&#39;: [{&#39;Status&#39;: &#39;ok&#39;, &#39;User time&#39;: -1.0, &#39;System time&#39;: 0.0, &#39;Wallclock time&#39;: 0.0, &#39;Termination condition&#39;: &#39;optimal&#39;, &#39;Termination message&#39;: &#39;Model was solved to optimality (subject to tolerances), and an optimal solution is available.&#39;, &#39;Statistics&#39;: {&#39;Branch and bound&#39;: {&#39;Number of bounded subproblems&#39;: None, &#39;Number of created subproblems&#39;: None}, &#39;Black box&#39;: {&#39;Number of iterations&#39;: 0}}, &#39;Error rc&#39;: 0, &#39;Time&#39;: 0.14160561561584473}], &#39;Solution&#39;: [OrderedDict([(&#39;number of solutions&#39;, 0), (&#39;number of solutions displayed&#39;, 0)])]}
 </pre></div>
 </div>
 </div>
@@ -485,7 +489,7 @@ optimiser of choice.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/be80f8e1cb90f2d69d5ea4320aba6dcbd1a667a4d04b4d39dffa9cc07cca6c1a.png" src="../_images/be80f8e1cb90f2d69d5ea4320aba6dcbd1a667a4d04b4d39dffa9cc07cca6c1a.png" />
+<img alt="../_images/98338d59e33b98a7979b3616951575aeed6c283d515035f84d4b61341cf7558f.png" src="../_images/98338d59e33b98a7979b3616951575aeed6c283d515035f84d4b61341cf7558f.png" />
 </div>
 </div>
 </section>
@@ -548,6 +552,7 @@ optimiser of choice.</p>
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -579,7 +584,7 @@ By Francesco Witte and Patrik Schönfeld
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -603,8 +608,8 @@ By Francesco Witte and Patrik Schönfeld
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

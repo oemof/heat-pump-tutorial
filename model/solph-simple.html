@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Linear oemof-solph heat pump model &#8212; oemof Workshop on Modeling of Heat Pumps</title>
   
@@ -19,52 +18,48 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=3437f865" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'model/solph-simple';</script>
-    <link rel="shortcut icon" href="../_static/logo_oemof_small.svg"/>
+    <link rel="icon" href="../_static/logo_oemof_small.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Simple TESPy heat pump model" href="tespy-simple.html" />
@@ -78,10 +73,9 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -122,11 +116,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -160,7 +157,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="nav bd-sidenav">
@@ -405,16 +413,16 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="linear-oemof-solph-heat-pump-model">
-<span id="solph-linear"></span><h1>Linear oemof-solph heat pump model<a class="headerlink" href="#linear-oemof-solph-heat-pump-model" title="Permalink to this heading">#</a></h1>
+<span id="solph-linear"></span><h1>Linear oemof-solph heat pump model<a class="headerlink" href="#linear-oemof-solph-heat-pump-model" title="Link to this heading">#</a></h1>
 <p>In the first section we will implement a heat pump with the Carnot COP method and a linear efficiency factor. For that
 we are going to build the system shown in <a class="reference internal" href="intro.html#systemoverview"><span class="std std-numref">Fig. 3</span></a> using <code class="docutils literal notranslate"><span class="pre">oemof-solph</span></code>.</p>
 <section id="build-the-model">
-<h2>Build the model<a class="headerlink" href="#build-the-model" title="Permalink to this heading">#</a></h2>
+<h2>Build the model<a class="headerlink" href="#build-the-model" title="Link to this heading">#</a></h2>
 <section id="general-setup">
-<h3>General setup<a class="headerlink" href="#general-setup" title="Permalink to this heading">#</a></h3>
+<h3>General setup<a class="headerlink" href="#general-setup" title="Link to this heading">#</a></h3>
 <p>First we are building the components of the system. We do that, by importing the library and create the <code class="docutils literal notranslate"><span class="pre">Bus</span></code> components
 and the electricity grid connection first.</p>
 <div class="cell docutils container">
@@ -432,18 +440,10 @@ and the electricity grid connection first.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/oemof/network/network/nodes.py:80: FutureWarning: Usage of oemof.network.Bus is deprecated. Use oemof.network.Node instead.
-  warnings.warn(
-/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/oemof/network/network/nodes.py:89: FutureWarning: Usage of oemof.network.Component is deprecated. Use oemof.network.Node instead.
-  warnings.warn(
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="storage">
-<h3>Storage<a class="headerlink" href="#storage" title="Permalink to this heading">#</a></h3>
+<h3>Storage<a class="headerlink" href="#storage" title="Link to this heading">#</a></h3>
 <p>Next we add our storage to the system. The storage is connected to the heat bus and has a specified loss rate of 2 %.
 The nominal capacity of the storage will be 8.7 kWh.</p>
 <div class="cell docutils container">
@@ -461,7 +461,7 @@ The nominal capacity of the storage will be 8.7 kWh.</p>
 </div>
 </section>
 <section id="heat-demand">
-<h3>Heat demand<a class="headerlink" href="#heat-demand" title="Permalink to this heading">#</a></h3>
+<h3>Heat demand<a class="headerlink" href="#heat-demand" title="Link to this heading">#</a></h3>
 <p>For our heat demand we need a timeseries. We have prepared the data and can load them with a predefined function in
 this tutorial.</p>
 <div class="cell docutils container">
@@ -477,6 +477,9 @@ this tutorial.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FutureWarning: The &#39;delim_whitespace&#39; keyword in pd.read_csv is deprecated and will be removed in a future version. Use ``sep=&#39;\s+&#39;`` instead
+</pre></div>
+</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-01-01 00:00:00    0.00
 2023-01-01 01:00:00    0.00
 2023-01-01 02:00:00    0.15
@@ -539,15 +542,10 @@ Name: Heat load (kW), dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FutureWarning: Usage of oemof.network.Component is deprecated. Use oemof.network.Node instead.
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="heat-pump">
-<h3>Heat Pump<a class="headerlink" href="#heat-pump" title="Permalink to this heading">#</a></h3>
+<h3>Heat Pump<a class="headerlink" href="#heat-pump" title="Link to this heading">#</a></h3>
 <p>Now, we want to add an air-source heat-pump. From a quick research we find the following example <span id="id1">[<a class="reference internal" href="../zliterature.html#id12" title="Vitocal 150-a, air source heat pump. Accessed: 2023-03-17. URL: https://www.viessmann.co.uk/en/products/heat-pump/vitocal-150a.html.">8</a>]</span>:</p>
 <ul class="simple">
 <li><p>Rated heating output (kW) at operating point A7/W35: 9.1 kW</p></li>
@@ -584,7 +582,7 @@ heat to the water system. This however changes our reference temperature levels 
 minimum temperatures of the process are not the air and water temperatures but refer to the working fluid.</p>
 <figure class="align-default" id="heat-pump-black-box-vs-process">
 <img alt="Heat pump black box compared to actual heat pump process" src="../_images/heat_pump_blackbox_comparison.svg" /><figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Heat pump black box compared to actual heat pump process</span><a class="headerlink" href="#heat-pump-black-box-vs-process" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Heat pump black box compared to actual heat pump process</span><a class="headerlink" href="#heat-pump-black-box-vs-process" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Since we do not have any internal data of the heat pump, we have to make an assumption to determine the Carnot COP in
@@ -623,9 +621,9 @@ reference temperatures is higher, for the lower temperatures the variant with 2/
 higher COP. The right subplot shows the COP time series for our application example. Since the ambient temperature is
 mostly higher than 7 °C, the implementation of the 7/35 variant will have higher COP most of the time.</p>
 <figure class="align-default" id="cop-reference-temperature-variants">
-<img alt="../_images/0b4133241cc16f1b53ece42da29b30581c52a1e8789677992aabd7d7495cd86a.png" src="../_images/0b4133241cc16f1b53ece42da29b30581c52a1e8789677992aabd7d7495cd86a.png" />
+<img alt="../_images/8de7662f75e36a19a26280b74dda12b24abb8a38f22c0be77a12c5537b3280df.png" src="../_images/8de7662f75e36a19a26280b74dda12b24abb8a38f22c0be77a12c5537b3280df.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Comparison of the COP of the heat pump calculated with 7/35 and 2/40 as reference temperature values.</span><a class="headerlink" href="#cop-reference-temperature-variants" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Comparison of the COP of the heat pump calculated with 7/35 and 2/40 as reference temperature values.</span><a class="headerlink" href="#cop-reference-temperature-variants" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -665,7 +663,7 @@ mostly higher than 7 °C, the implementation of the 7/35 variant will have highe
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">heat_pump</span> <span class="o">=</span> <span class="n">solph</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">Transformer</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">heat_pump</span> <span class="o">=</span> <span class="n">solph</span><span class="o">.</span><span class="n">components</span><span class="o">.</span><span class="n">Converter</span><span class="p">(</span>
     <span class="n">label</span><span class="o">=</span><span class="s2">&quot;heat pump&quot;</span><span class="p">,</span>
     <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="n">b_electricity</span><span class="p">:</span> <span class="n">solph</span><span class="o">.</span><span class="n">Flow</span><span class="p">()},</span>
     <span class="n">outputs</span><span class="o">=</span><span class="p">{</span><span class="n">b_heat_35C</span><span class="p">:</span> <span class="n">solph</span><span class="o">.</span><span class="n">Flow</span><span class="p">(</span><span class="n">nominal_value</span><span class="o">=</span><span class="n">hp_thermal_power</span><span class="p">)},</span>
@@ -677,18 +675,10 @@ mostly higher than 7 °C, the implementation of the 7/35 variant will have highe
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FutureWarning: Usage of oemof.network.Component is deprecated. Use oemof.network.Node instead.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FutureWarning: solph.components.Transformer has been renamed to solph.components.Converter. The transitional wrapper will be deleted in the future.
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="optimize-the-energy-system">
-<h3>Optimize the energy system<a class="headerlink" href="#optimize-the-energy-system" title="Permalink to this heading">#</a></h3>
+<h3>Optimize the energy system<a class="headerlink" href="#optimize-the-energy-system" title="Link to this heading">#</a></h3>
 <p>Finally, with all components in place we can create the energy system, add the components and run the optimization.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -715,6 +705,9 @@ mostly higher than 7 °C, the implementation of the 7/35 variant will have highe
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
 </pre></div>
 </div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
+</pre></div>
+</div>
 </div>
 </div>
 <p>After running the optimization we extract the results and create a figure for the duration curve of the heat pump
@@ -724,9 +717,9 @@ a way to provide the heat demand directly without using the storage as the stora
 Only in a single time step the heat pump feeds additional heat to the storage to make use of a advantageous COP for the
 production of the heat. A total of <span class="output text_plain">14.09</span> kWh of electricity is consumed.</p>
 <figure class="align-default" id="results-solph-simple">
-<img alt="../_images/f9115375e356e8199ee6e63121a454312c7c4072ab0ee19cb13d832139552be2.png" src="../_images/f9115375e356e8199ee6e63121a454312c7c4072ab0ee19cb13d832139552be2.png" />
+<img alt="../_images/d28a48579f1c057d8eefab5f08882d216a2416332bfe79a5898c24a34e14623a.png" src="../_images/d28a48579f1c057d8eefab5f08882d216a2416332bfe79a5898c24a34e14623a.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Results of the simple heat pump setup.</span><a class="headerlink" href="#results-solph-simple" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Results of the simple heat pump setup.</span><a class="headerlink" href="#results-solph-simple" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition tip">
@@ -841,6 +834,7 @@ storage filling level to create comparable plots in all sections.</p>
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -879,7 +873,7 @@ By Francesco Witte and Patrik Schönfeld
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -903,8 +897,8 @@ By Francesco Witte and Patrik Schönfeld
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

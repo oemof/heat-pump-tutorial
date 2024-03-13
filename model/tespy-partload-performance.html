@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Part load performance in TESPy &#8212; oemof Workshop on Modeling of Heat Pumps</title>
   
@@ -19,54 +18,50 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=3437f865" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'model/tespy-partload-performance';</script>
-    <link rel="shortcut icon" href="../_static/logo_oemof_small.svg"/>
+    <link rel="icon" href="../_static/logo_oemof_small.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="oemof-solph model with variable partload efficiency" href="solph-offset.html" />
@@ -80,10 +75,9 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -124,11 +118,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -162,7 +159,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="nav bd-sidenav">
@@ -413,10 +421,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="part-load-performance-in-tespy">
-<span id="tespy-part-load"></span><h1>Part load performance in TESPy<a class="headerlink" href="#part-load-performance-in-tespy" title="Permalink to this heading">#</a></h1>
+<span id="tespy-part-load"></span><h1>Part load performance in TESPy<a class="headerlink" href="#part-load-performance-in-tespy" title="Link to this heading">#</a></h1>
 <p>In this section we are investigating how operating the heat pump at part load affects the COP in the thermodynamic
 model. To do that, we will extend our model from the previous section to integrate the heat source and the heat sink
 air and water flow. Then we are investigating, how a specific design of the heat pump affects the operation at
@@ -428,7 +436,7 @@ and when both change simultaneously. The results are again fed back to the energ
 dedicated section in the documentation of the software’s modules: <a class="reference external" href="https://tespy.rtfd.io">https://tespy.rtfd.io</a>.</p>
 </div>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>In TESPy it is possible to design a process and based on that design predict the part load operation of the overall
 system. To do that, component and process information are calculated from the design as a result and then remain
 unchanged in offdesign operation.</p>
@@ -445,13 +453,13 @@ providing in this example. You can find it <a class="reference internal" href=".
 </div>
 </section>
 <section id="preparing-the-model">
-<h2>Preparing the model<a class="headerlink" href="#preparing-the-model" title="Permalink to this heading">#</a></h2>
+<h2>Preparing the model<a class="headerlink" href="#preparing-the-model" title="Link to this heading">#</a></h2>
 <p>First we are going to prepare our TESPy model. To do that, we will slightly modify our topology according to the figure
 below. The overall specifications on heat exchanger temperature differences, compressor efficiency etc. will remain the
 unchanged.</p>
 <figure class="align-default" id="tespy-heat-pump-part-load-flowsheet">
 <img alt="Component based thermodynamic model of the heat pump for part load modeling" src="../_images/heat_pump_full.svg" /><figcaption>
-<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Component based thermodynamic model of the heat pump for part load modeling</span><a class="headerlink" href="#tespy-heat-pump-part-load-flowsheet" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Component based thermodynamic model of the heat pump for part load modeling</span><a class="headerlink" href="#tespy-heat-pump-part-load-flowsheet" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>First, we import the <code class="docutils literal notranslate"><span class="pre">HeatExchanger</span></code> class to model the evaporator, the <code class="docutils literal notranslate"><span class="pre">Condenser</span></code> class to model the condenser
@@ -566,50 +574,50 @@ Therefore we provide a tutorial on how to build models with stable starting valu
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (Compressor) #####
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (HeatExchanger) #####
++------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+|            |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
+|------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
+| evaporator | -7.24e+03 | 1.85e+03 | 3.92e+00 | 5.00e+00 | 3.00e+00 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 1.70e-06 |
++------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+##### RESULTS (Condenser) #####
++-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+|           |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
+|-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
+| condenser | -9.10e+03 | 1.26e+03 | 7.21e+00 | 5.00e+00 | 1.00e+01 | 1.00e+00 | 1.00e+00 | 4.12e-05 | 0.00e+00 |
++-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+##### RESULTS (Compressor) #####
 +------------+----------+----------+----------+--------+
 |            |        P |    eta_s |       pr |   igva |
 |------------+----------+----------+----------+--------|
 | compressor | 1.86e+03 | 6.75e-01 | 2.72e+00 |    nan |
 +------------+----------+----------+----------+--------+
-##### RESULTS (Condenser) #####
-+-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
-|           |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
-|-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
-| condenser | -9.10e+03 | 1.26e+03 | 7.21e+00 | 5.00e+00 | 1.00e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
-+-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
-##### RESULTS (CycleCloser) #####
-+--------------+------------------+-------------------+
-|              |   mass_deviation |   fluid_deviation |
-|--------------+------------------+-------------------|
-| cycle closer |         0.00e+00 |          0.00e+00 |
-+--------------+------------------+-------------------+
-##### RESULTS (HeatExchanger) #####
-+------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
-|            |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
-|------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
-| evaporator | -7.24e+03 | 1.22e+03 | 5.94e+00 | 5.00e+00 | 7.00e+00 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
-+------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
 ##### RESULTS (Valve) #####
 +-----------------+----------+----------+
 |                 |       pr |     zeta |
 |-----------------+----------+----------|
 | expansion valve | 3.68e-01 | 1.04e+11 |
 +-----------------+----------+----------+
+##### RESULTS (CycleCloser) #####
++--------------+------------------+-------------------+
+|              |   mass_deviation |   fluid_deviation |
+|--------------+------------------+-------------------|
+| cycle closer |         0.00e+00 |          0.00e+00 |
++--------------+------------------+-------------------+
 ##### RESULTS (Connection) #####
-+----+------------+-----------+-----------+-----------+
-|    |          m |         p |         h |         T |
-|----+------------+-----------+-----------+-----------|
-|  0 |  2.683e-02 | 5.041e+00 | 3.071e+05 | 2.000e+00 |
-|  1 |  2.683e-02 | 5.041e+00 | 3.071e+05 | 2.000e+00 |
-|  2 |  2.683e-02 | 5.041e+00 | 5.771e+05 | 2.000e+00 |
-|  3 |  2.683e-02 | 1.369e+01 | 6.463e+05 | 5.453e+01 |
-|  4 |  2.683e-02 | 1.369e+01 | 3.071e+05 | 4.000e+01 |
-| 11 | -3.601e+00 | 1.000e+00 | 4.063e+05 | 7.000e+00 |
-| 12 | -3.601e+00 | 1.000e+00 | 4.083e+05 | 9.000e+00 |
-| 21 |  4.355e-01 | 3.000e+00 | 1.260e+05 | 3.000e+01 |
-| 22 |  4.355e-01 | 3.000e+00 | 1.469e+05 | 3.500e+01 |
-+----+------------+-----------+-----------+-----------+
++----+-----------+-----------+-----------+-----------+
+|    |         m |         p |         h |         T |
+|----+-----------+-----------+-----------+-----------|
+|  0 | 2.683e-02 | 5.041e+00 | 3.071e+05 | 2.000e+00 |
+|  1 | 2.683e-02 | 5.041e+00 | 3.071e+05 | 2.000e+00 |
+|  2 | 2.683e-02 | 5.041e+00 | 5.771e+05 | 2.000e+00 |
+|  3 | 2.683e-02 | 1.369e+01 | 6.463e+05 | 5.453e+01 |
+|  4 | 2.683e-02 | 1.369e+01 | 3.071e+05 | 4.000e+01 |
+| 11 | 3.601e+00 | 1.000e+00 | 4.063e+05 | 7.000e+00 |
+| 12 | 3.601e+00 | 1.000e+00 | 4.043e+05 | 5.000e+00 |
+| 21 | 4.355e-01 | 3.000e+00 | 1.260e+05 | 3.000e+01 |
+| 22 | 4.355e-01 | 3.000e+00 | 1.469e+05 | 3.500e+01 |
++----+-----------+-----------+-----------+-----------+
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -649,8 +657,8 @@ Therefore we provide a tutorial on how to build models with stable starting valu
       <th>s</th>
       <th>s_unit</th>
       <th>R290</th>
-      <th>air</th>
       <th>Water</th>
+      <th>air</th>
     </tr>
   </thead>
   <tbody>
@@ -766,7 +774,7 @@ Therefore we provide a tutorial on how to build models with stable starting valu
       <td>C</td>
       <td>0.002139</td>
       <td>m3 / kg</td>
-      <td>2.686782e-16</td>
+      <td>1.477730e-15</td>
       <td>-</td>
       <td>1359.354602</td>
       <td>J / kgK</td>
@@ -776,9 +784,9 @@ Therefore we provide a tutorial on how to build models with stable starting valu
     </tr>
     <tr>
       <th>11</th>
-      <td>-3.600588</td>
+      <td>3.600738</td>
       <td>kg / s</td>
-      <td>-2.894005</td>
+      <td>2.894125</td>
       <td>m3 / s</td>
       <td>1.000000</td>
       <td>bar</td>
@@ -795,32 +803,32 @@ Therefore we provide a tutorial on how to build models with stable starting valu
       <td>3821.630622</td>
       <td>J / kgK</td>
       <td>NaN</td>
-      <td>1.0</td>
       <td>NaN</td>
+      <td>1.0</td>
     </tr>
     <tr>
       <th>12</th>
-      <td>-3.600588</td>
+      <td>3.600738</td>
       <td>kg / s</td>
-      <td>-2.914732</td>
+      <td>2.873397</td>
       <td>m3 / s</td>
       <td>1.000000</td>
       <td>bar</td>
-      <td>408342.431309</td>
+      <td>404319.289111</td>
       <td>J / kg</td>
-      <td>9.000000</td>
+      <td>5.000000</td>
       <td>C</td>
       <td>...</td>
       <td>C</td>
-      <td>0.809516</td>
+      <td>0.798002</td>
       <td>m3 / kg</td>
       <td>-1.000000e+00</td>
       <td>-</td>
-      <td>3828.785597</td>
+      <td>3814.424683</td>
       <td>J / kgK</td>
       <td>NaN</td>
-      <td>1.0</td>
       <td>NaN</td>
+      <td>1.0</td>
     </tr>
     <tr>
       <th>21</th>
@@ -843,8 +851,8 @@ Therefore we provide a tutorial on how to build models with stable starting valu
       <td>436.664733</td>
       <td>J / kgK</td>
       <td>NaN</td>
-      <td>NaN</td>
       <td>1.0</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>22</th>
@@ -867,8 +875,8 @@ Therefore we provide a tutorial on how to build models with stable starting valu
       <td>505.027895</td>
       <td>J / kgK</td>
       <td>NaN</td>
-      <td>NaN</td>
       <td>1.0</td>
+      <td>NaN</td>
     </tr>
   </tbody>
 </table>
@@ -877,7 +885,7 @@ Therefore we provide a tutorial on how to build models with stable starting valu
 </div>
 </section>
 <section id="design-mode">
-<h2>Design Mode<a class="headerlink" href="#design-mode" title="Permalink to this heading">#</a></h2>
+<h2>Design Mode<a class="headerlink" href="#design-mode" title="Link to this heading">#</a></h2>
 <p>Now we are going to investigate, how the COP of the heat pump changes, when changing the ambient temperature and the
 heat demand. For this two steps will be taken:</p>
 <ol class="arabic simple">
@@ -888,7 +896,7 @@ These are implemented with lookup tables, where the change of mass flow through 
 efficiency or temperature difference.</p></li>
 </ol>
 <section id="influence-of-the-ambient-temperature">
-<h3>Influence of the ambient temperature<a class="headerlink" href="#influence-of-the-ambient-temperature" title="Permalink to this heading">#</a></h3>
+<h3>Influence of the ambient temperature<a class="headerlink" href="#influence-of-the-ambient-temperature" title="Link to this heading">#</a></h3>
 <p>First, we investigate the influence of the ambient temperature. We have done this in the first TESPy section already,
 see <a class="reference internal" href="tespy-simple.html#tespy-simple"><span class="std std-ref">Simple TESPy heat pump model</span></a>, but since we change the topology we repeat this step.</p>
 <div class="cell docutils container">
@@ -921,10 +929,10 @@ COP over the ambient temperature level. We can see the same trend in
 <a class="reference internal" href="#fig-heat-pump-ambient-temperature-design-mode"><span class="std std-numref">Fig. 13</span></a> as we saw in the previous section in
 <a class="reference internal" href="tespy-simple.html#fig-heat-pump-efficiency-factor"><span class="std std-numref">Fig. 8</span></a>.</p>
 <figure class="align-default" id="fig-heat-pump-ambient-temperature-design-mode">
-<img alt="../_images/b78159bf52083506ac0e7f2e36a563cdf8680cd016fbfb9db6b55a858250198f.png" src="../_images/b78159bf52083506ac0e7f2e36a563cdf8680cd016fbfb9db6b55a858250198f.png" />
+<img alt="../_images/ce51e164917c5bf158e96b42f42aac4040e385e2d2315c246f4e765835f22629.png" src="../_images/ce51e164917c5bf158e96b42f42aac4040e385e2d2315c246f4e765835f22629.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 13 </span><span class="caption-text">Influence of the ambient temperature on the compressor power, its pressure ratio and the COP without modeling part load
-behavior.</span><a class="headerlink" href="#fig-heat-pump-ambient-temperature-design-mode" title="Permalink to this image">#</a></p>
+behavior.</span><a class="headerlink" href="#fig-heat-pump-ambient-temperature-design-mode" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -947,7 +955,7 @@ behavior.</span><a class="headerlink" href="#fig-heat-pump-ambient-temperature-d
 </div>
 </section>
 <section id="influence-of-the-heat-production">
-<h3>Influence of the heat production<a class="headerlink" href="#influence-of-the-heat-production" title="Permalink to this heading">#</a></h3>
+<h3>Influence of the heat production<a class="headerlink" href="#influence-of-the-heat-production" title="Link to this heading">#</a></h3>
 <p>Second, we investigate the influence of the heat production. We can define a heat range relative to the design heat
 production spanning from 50 % to 100 % load. The ambient temperature is reset back to the previous state, and we can
 loop over the part load values.</p>
@@ -983,9 +991,9 @@ COP are affected by the changing heat load. Only the compressor power requiremen
 this is, that the compressor’s efficiency and the temperature differences (and therefore the evaporation and
 condensation temperatures) do not change with changing load due to our model specifications.</p>
 <figure class="align-default" id="fig-heat-pump-heat-load-design-mode">
-<img alt="../_images/197bccb003ff8b1aa364565769edd1f96b8b3065f588a66eb7645f4abad4d9b0.png" src="../_images/197bccb003ff8b1aa364565769edd1f96b8b3065f588a66eb7645f4abad4d9b0.png" />
+<img alt="../_images/69f62b8bcce418d12bba9dbc57314cd29f7cda2368a9e0df7e3cb74920f7bfbb.png" src="../_images/69f62b8bcce418d12bba9dbc57314cd29f7cda2368a9e0df7e3cb74920f7bfbb.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Influence of the heat load on the compressor power, its pressure ratio and the COP without modeling part load behavior.</span><a class="headerlink" href="#fig-heat-pump-heat-load-design-mode" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Influence of the heat load on the compressor power, its pressure ratio and the COP without modeling part load behavior.</span><a class="headerlink" href="#fig-heat-pump-heat-load-design-mode" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -1015,14 +1023,14 @@ condensation temperatures) do not change with changing load due to our model spe
 </section>
 </section>
 <section id="part-load-simulation">
-<h2>Part load simulation<a class="headerlink" href="#part-load-simulation" title="Permalink to this heading">#</a></h2>
+<h2>Part load simulation<a class="headerlink" href="#part-load-simulation" title="Link to this heading">#</a></h2>
 <p>The assumptions made in the previous section are not really reasonable: A heat exchanger cannot always hold the
 temperature difference independent of the (changing) flow regimes, when it has been constructed for a specific
 operational point. The same applies for the compressor: We can expect that the efficiency changes when it is not
 operated in optimal conditions. Therefore, this sections shows how we can make assumptions on the part load behavior of
 these components.</p>
 <section id="id1">
-<h3>Influence of the ambient temperature<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h3>Influence of the ambient temperature<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>First, we are going to investigate the ambient temperature influence. To do this, instead of using the <code class="docutils literal notranslate"><span class="pre">&quot;design&quot;</span></code> mode
 for our simulation we are using the <code class="docutils literal notranslate"><span class="pre">&quot;offdesign&quot;</span></code> mode. The offdesign mode can access a design specification and based
 on that and the current operational point predict part load efficiencies.</p>
@@ -1073,10 +1081,10 @@ The last subplot is the deviation in COP, which is at an overall low level. Only
 levels, which are nearly at the heat supply temperature level the deviation increases to about 5 % with respect to the
 model accounting for part load behavior.</p>
 <figure class="align-default" id="fig-heat-pump-ambient-temperature-offdesign-mode">
-<img alt="../_images/cb5c3983254082302694668d33152889dc9f86db7b50a85395e9999bb250d721.png" src="../_images/cb5c3983254082302694668d33152889dc9f86db7b50a85395e9999bb250d721.png" />
+<img alt="../_images/3f4314c745917b162d1740df404a4c7ce7196bd1c855148efef400fa30290230.png" src="../_images/3f4314c745917b162d1740df404a4c7ce7196bd1c855148efef400fa30290230.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 15 </span><span class="caption-text">Influence of the ambient temperature on the compressor power, its pressure ratio and the COP when considering part load
-behavior.</span><a class="headerlink" href="#fig-heat-pump-ambient-temperature-offdesign-mode" title="Permalink to this image">#</a></p>
+behavior.</span><a class="headerlink" href="#fig-heat-pump-ambient-temperature-offdesign-mode" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -1146,7 +1154,7 @@ Name: 7, dtype: object
 </div>
 </section>
 <section id="id2">
-<h3>Influence of the heat production<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<h3>Influence of the heat production<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <p>Next we are checking the influence of the heat production of the heat pump on our COP. We reset the temperature back to
 the ambient design temperature value and rerun the offdesign simulations with the heat range specified earlier.</p>
 <div class="cell docutils container">
@@ -1181,9 +1189,9 @@ ratio.</p>
 <a class="reference internal" href="../excursion/partload-analysis.html#tespy-partload-disection"><span class="std std-ref">this excursion</span></a>.</p>
 </div>
 <figure class="align-default" id="fig-heat-pump-heat-load-offdesign-mode">
-<img alt="../_images/525bf868f7c58bed355fdbff3691f04e25e660af35cad6d194cf632e678241ba.png" src="../_images/525bf868f7c58bed355fdbff3691f04e25e660af35cad6d194cf632e678241ba.png" />
+<img alt="../_images/d7fe19229aee4bdcb1385f7c0e9ef496f28a20f5d3107913f80f5dfe5fcb5fae.png" src="../_images/d7fe19229aee4bdcb1385f7c0e9ef496f28a20f5d3107913f80f5dfe5fcb5fae.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Influence of the heat load on the compressor power, its pressure ratio and the COP when considering part load behavior.</span><a class="headerlink" href="#fig-heat-pump-heat-load-offdesign-mode" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Influence of the heat load on the compressor power, its pressure ratio and the COP when considering part load behavior.</span><a class="headerlink" href="#fig-heat-pump-heat-load-offdesign-mode" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -1254,7 +1262,7 @@ Name: -9100.0, dtype: object
 </section>
 </section>
 <section id="variable-temperature-and-heat-production">
-<h2>Variable temperature and heat production<a class="headerlink" href="#variable-temperature-and-heat-production" title="Permalink to this heading">#</a></h2>
+<h2>Variable temperature and heat production<a class="headerlink" href="#variable-temperature-and-heat-production" title="Link to this heading">#</a></h2>
 <p>Now we want to combine both influence factors. We can do that by looping over the ambient temperature and the heat load
 simultaneously. Since our input data for the energy system optimization are based on the ambient temperature, we
 investigate the influence of the heat load per temperature value.</p>
@@ -1287,10 +1295,10 @@ investigate the influence of the heat load per temperature value.</p>
 <p>We can plot some results, e.g. for every 10th temperature value in <a class="reference internal" href="#fig-heat-pump-result-offdesign-mode"><span class="std std-numref">Fig. 17</span></a>. These
 results can then be transferred to the <code class="docutils literal notranslate"><span class="pre">oemof-solph</span></code> simulation.</p>
 <figure class="align-default" id="fig-heat-pump-result-offdesign-mode">
-<img alt="../_images/c18e72c40d6f7942f18fe41e9392c8917d4adb6a209a895562687429b39c5048.png" src="../_images/c18e72c40d6f7942f18fe41e9392c8917d4adb6a209a895562687429b39c5048.png" />
+<img alt="../_images/0baf2569e326d9ec4129cbea0233c48d45557f66a261645543de60b5e0dbbb76.png" src="../_images/0baf2569e326d9ec4129cbea0233c48d45557f66a261645543de60b5e0dbbb76.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 17 </span><span class="caption-text">Influence of the ambienht temperature and heat load on the compressor power and the COP when considering part load
-behavior.</span><a class="headerlink" href="#fig-heat-pump-result-offdesign-mode" title="Permalink to this image">#</a></p>
+behavior.</span><a class="headerlink" href="#fig-heat-pump-result-offdesign-mode" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -1322,7 +1330,7 @@ behavior.</span><a class="headerlink" href="#fig-heat-pump-result-offdesign-mode
 </div>
 </section>
 <section id="preparing-the-data-for-oemof-solph">
-<h2>Preparing the data for oemof-solph<a class="headerlink" href="#preparing-the-data-for-oemof-solph" title="Permalink to this heading">#</a></h2>
+<h2>Preparing the data for oemof-solph<a class="headerlink" href="#preparing-the-data-for-oemof-solph" title="Link to this heading">#</a></h2>
 <p>To prepare the data for the usage in the mixed integer linear model, we have to linearize the outcomes of our
 simulation. To do that, we can use a simple least squares method from the numpy package <span id="id3">[<a class="reference internal" href="../zliterature.html#id14" title="Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, Sebastian Berg, Nathaniel J. Smith, Robert Kern, Matti Picus, Stephan Hoyer, Marten H. van Kerkwijk, Matthew Brett, Allan Haldane, Jaime Fernández del Río, Mark Wiebe, Pearu Peterson, Pierre Gérard-Marchant, Kevin Sheppard, Tyler Reddy, Warren Weckesser, Hameer Abbasi, Christoph Gohlke, and Travis E. Oliphant. Array programming with NumPy. Nature, 585(7825):357–362, September 2020. doi:10.1038/s41586-020-2649-2.">9</a>]</span>,
 <span id="id4">[<a class="reference internal" href="../zliterature.html#id13" title="Numpy.linalg.lstsq. Accessed: 2023-03-20. URL: https://numpy.org/doc/stable/reference/generated/numpy.linalg.lstsq.html.">10</a>]</span>. The least squares will give us the slope and the y-axis offset, both of which are required in the
@@ -1343,19 +1351,19 @@ the actual simulation. For example, we can have a look at the design conditions 
 that the deviation between the linearized model and the actual simulation is below 1.5 % for all heat load values. The
 assumption of a constant efficiency factor leads to a high deviation especially with lower heat production up to 18 %.</p>
 <figure class="align-default" id="fig-heat-pump-result-comparison">
-<img alt="../_images/cf621e58373e39c1e5bb33c2dcb6cde601fb976f5fa8a5d5280d09428a60255e.png" src="../_images/cf621e58373e39c1e5bb33c2dcb6cde601fb976f5fa8a5d5280d09428a60255e.png" />
+<img alt="../_images/1e8d3fb4a98c9742002b7da73d5ddfdcdb7d1cdc8b5da044378a37aa2cace51e.png" src="../_images/1e8d3fb4a98c9742002b7da73d5ddfdcdb7d1cdc8b5da044378a37aa2cace51e.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 18 </span><span class="caption-text">Comparison of the compressor power depending on the heat pump’s heat load for the simplified approach and in the part
-load simulation.</span><a class="headerlink" href="#fig-heat-pump-result-comparison" title="Permalink to this image">#</a></p>
+load simulation.</span><a class="headerlink" href="#fig-heat-pump-result-comparison" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Furthermore, we can plot the linearization of a selected amount of simulation points in
 <a class="reference internal" href="#fig-heat-pump-result-linearization"><span class="std std-numref">Fig. 19</span></a>. We can see, that both, offset and slope, change for every ambient
 temperature value.</p>
 <figure class="align-default" id="fig-heat-pump-result-linearization">
-<img alt="../_images/17487c00bf39054b67cff88af8f9a82df0d12af1d549a36b2732d24d5145f3fd.png" src="../_images/17487c00bf39054b67cff88af8f9a82df0d12af1d549a36b2732d24d5145f3fd.png" />
+<img alt="../_images/bafd50b00c7257ae3264d8ec88b4498e5cd558b2eeef460c9f3afbe2512250c3.png" src="../_images/bafd50b00c7257ae3264d8ec88b4498e5cd558b2eeef460c9f3afbe2512250c3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Linearized compressor power to heat load.</span><a class="headerlink" href="#fig-heat-pump-result-linearization" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Linearized compressor power to heat load.</span><a class="headerlink" href="#fig-heat-pump-result-linearization" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -1420,7 +1428,7 @@ temperature value.</p>
 </div>
 </div>
 </div>
-<p>The final step to provide the data for the <code class="docutils literal notranslate"><span class="pre">OffsetTransformer</span></code> of <code class="docutils literal notranslate"><span class="pre">oemof-solph</span></code> is to change the output structure.
+<p>The final step to provide the data for the <code class="docutils literal notranslate"><span class="pre">OffsetConverter</span></code> of <code class="docutils literal notranslate"><span class="pre">oemof-solph</span></code> is to change the output structure.
 <code class="docutils literal notranslate"><span class="pre">oemof-solph</span></code> expects the coefficients (offset and slope) per ambient temperature level and inverted, i.e. the heat
 output as function of the electricity input. We can build a new dataframe, that holds the information and exports it
 into csv format and export that information.</p>
@@ -1437,7 +1445,7 @@ into csv format and export that information.</p>
     <span class="n">x</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;compressor-power&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
     <span class="n">export_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">least_squares</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
-<span class="n">export_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;coefficients-offset-transformer.csv&quot;</span><span class="p">)</span>
+<span class="n">export_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;coefficients-offset-converter.csv&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1502,6 +1510,7 @@ into csv format and export that information.</p>
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -1546,7 +1555,7 @@ By Francesco Witte and Patrik Schönfeld
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1570,8 +1579,8 @@ By Francesco Witte and Patrik Schönfeld
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

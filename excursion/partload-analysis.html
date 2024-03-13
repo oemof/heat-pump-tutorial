@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Disection of the partload efficiency &#8212; oemof Workshop on Modeling of Heat Pumps</title>
   
@@ -19,52 +18,48 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=3437f865" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'excursion/partload-analysis';</script>
-    <link rel="shortcut icon" href="../_static/logo_oemof_small.svg"/>
+    <link rel="icon" href="../_static/logo_oemof_small.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Literature References" href="../zliterature.html" />
@@ -78,10 +73,9 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -122,11 +116,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -160,7 +157,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="nav bd-sidenav">
@@ -400,10 +408,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="disection-of-the-partload-efficiency">
-<span id="tespy-partload-disection"></span><h1>Disection of the partload efficiency<a class="headerlink" href="#disection-of-the-partload-efficiency" title="Permalink to this heading">#</a></h1>
+<span id="tespy-partload-disection"></span><h1>Disection of the partload efficiency<a class="headerlink" href="#disection-of-the-partload-efficiency" title="Link to this heading">#</a></h1>
 <p>In this section we will provide some more insights on the part load modeling of the individual components of the heat
 pump. For this we are looking in the characteristics for</p>
 <ul class="simple">
@@ -463,7 +471,7 @@ effect than the temperature dependency as show in the section on the
 </div>
 </div>
 <section id="effect-of-compressor-efficiency">
-<h2>Effect of compressor efficiency<a class="headerlink" href="#effect-of-compressor-efficiency" title="Permalink to this heading">#</a></h2>
+<h2>Effect of compressor efficiency<a class="headerlink" href="#effect-of-compressor-efficiency" title="Link to this heading">#</a></h2>
 <p>Now we can investigate the compressor efficiency effect on the part load operation. For that, we set up the part load
 modeling assumptions and test the implementation.</p>
 <div class="cell docutils container">
@@ -500,9 +508,9 @@ modeling assumptions and test the implementation.</p>
 <p>Finally, we plot the results. We can see, that the pressure ratio does not depend on the compressor’s efficiency. Still,
 the COP drops with decreased heat load. The reason for that is the lower part load efficiency of the compressor.</p>
 <figure class="align-default" id="heat-pump-influence-efficiency">
-<img alt="../_images/cad0cab30e5269454d6b4832f5840c72d0b94b19af4326c9927102f6c75cece6.png" src="../_images/cad0cab30e5269454d6b4832f5840c72d0b94b19af4326c9927102f6c75cece6.png" />
+<img alt="../_images/0d2d1e58e40830d4cba3ff25530f24e7a4b85962d5297ca01ce50b1687451730.png" src="../_images/0d2d1e58e40830d4cba3ff25530f24e7a4b85962d5297ca01ce50b1687451730.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Influence of the compressor efficiency part load model with varying heat load.</span><a class="headerlink" href="#heat-pump-influence-efficiency" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Influence of the compressor efficiency part load model with varying heat load.</span><a class="headerlink" href="#heat-pump-influence-efficiency" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -534,7 +542,7 @@ the COP drops with decreased heat load. The reason for that is the lower part lo
 </div>
 </section>
 <section id="effect-of-evaporator-heat-transfer-coefficient">
-<h2>Effect of evaporator heat transfer coefficient<a class="headerlink" href="#effect-of-evaporator-heat-transfer-coefficient" title="Permalink to this heading">#</a></h2>
+<h2>Effect of evaporator heat transfer coefficient<a class="headerlink" href="#effect-of-evaporator-heat-transfer-coefficient" title="Link to this heading">#</a></h2>
 <p>Next, we have a look at the evaporator. We reset the heat demand to the nominal demand, unset the compressor efficiency
 characteristic to make it use the constant design efficiency and apply the characteristic for the heat transfer
 coefficient of the evaporator. Then we loop over the heat range again and plot the results.</p>
@@ -580,9 +588,9 @@ while the heat transfer coefficient remains more or less unchanged, the availabl
 lower temperature difference. Since the ambient temperature level is fixed, the evaporation temperature rises compared
 to the design case reducing the pressure ratio inside the main cycle of the heat pump.</p>
 <figure class="align-default" id="heat-pump-influence-evaporator">
-<img alt="../_images/97fe71b6d81456674430541f966769ebd1ffb2f35125e24e5df775516fedba77.png" src="../_images/97fe71b6d81456674430541f966769ebd1ffb2f35125e24e5df775516fedba77.png" />
+<img alt="../_images/0ef58fee724cd2226e29c772401ba07f5853cddd1dceec5d53312cd56be72eca.png" src="../_images/0ef58fee724cd2226e29c772401ba07f5853cddd1dceec5d53312cd56be72eca.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Influence of the evaporator heat transfer coefficient part load model with varying heat load.</span><a class="headerlink" href="#heat-pump-influence-evaporator" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Influence of the evaporator heat transfer coefficient part load model with varying heat load.</span><a class="headerlink" href="#heat-pump-influence-evaporator" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -615,7 +623,7 @@ to the design case reducing the pressure ratio inside the main cycle of the heat
 </div>
 </section>
 <section id="effect-of-condenser-heat-transfer-coefficient">
-<h2>Effect of condenser heat transfer coefficient<a class="headerlink" href="#effect-of-condenser-heat-transfer-coefficient" title="Permalink to this heading">#</a></h2>
+<h2>Effect of condenser heat transfer coefficient<a class="headerlink" href="#effect-of-condenser-heat-transfer-coefficient" title="Link to this heading">#</a></h2>
 <p>Last we investigate the effect of the heat transfer coefficient of the condenser with the analogous setup as for the
 evaporator.</p>
 <div class="cell docutils container">
@@ -656,9 +664,9 @@ evaporator.</p>
 <p>In the plot we can see an even stronger relationship between the decrease of heat load and the decrease of pressure
 ratio, therefore the increase in COP. The effect is the same as we have observed in the evaporator.</p>
 <figure class="align-default" id="heat-pump-influence-condenser">
-<img alt="../_images/d4f20c8a738a6dae9313bb938366ad92b8eca5ad023e41999d6f8abb96f53b30.png" src="../_images/d4f20c8a738a6dae9313bb938366ad92b8eca5ad023e41999d6f8abb96f53b30.png" />
+<img alt="../_images/8334855f9e15584c52bf9fc806f8d2bcb00baa8fac4428566d076aff935654eb.png" src="../_images/8334855f9e15584c52bf9fc806f8d2bcb00baa8fac4428566d076aff935654eb.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Influence of the condenser heat transfer coefficient part load model with varying heat load.</span><a class="headerlink" href="#heat-pump-influence-condenser" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Influence of the condenser heat transfer coefficient part load model with varying heat load.</span><a class="headerlink" href="#heat-pump-influence-condenser" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="cell docutils container">
@@ -748,6 +756,7 @@ ratio, therefore the increase in COP. The effect is the same as we have observed
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -781,7 +790,7 @@ By Francesco Witte and Patrik Schönfeld
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -805,8 +814,8 @@ By Francesco Witte and Patrik Schönfeld
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

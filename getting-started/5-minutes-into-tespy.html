@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=3437f865" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -43,7 +43,7 @@
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
@@ -53,7 +53,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -540,7 +540,7 @@ as provided in <a class="reference internal" href="#table-mini-example-compresso
  2     | 5.91e+05   | 2 %        | 0.00e+00   | 2.33e-10   | 7.39e+05   | 0.00e+00   | 0.00e+00   
  3     | 2.33e-10   | 100 %      | 0.00e+00   | 2.33e-10   | 6.94e-12   | 0.00e+00   | 0.00e+00   
  4     | 2.33e-10   | 100 %      | 0.00e+00   | 2.33e-10   | 6.94e-12   | 0.00e+00   | 0.00e+00   
-Total iterations: 4, Calculation time: 0.00 s, Iterations per second: 902.83
+Total iterations: 4, Calculation time: 0.00 s, Iterations per second: 877.38
 </pre></div>
 </div>
 </div>
@@ -625,36 +625,36 @@ the compressor. This overdetermines the system of equations and will result in a
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">c2</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">nwk</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="s2">&quot;design&quot;</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/tespy/networks/network.py:1958,</span> in <span class="ni">Network.solve</span><span class="nt">(self, mode, init_path, design_path, max_iter, min_iter, init_only, init_previous, use_cuda, print_results, prepare_fast_lane)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1950</span> <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1951</span>     <span class="s2">&quot;Network information:</span><span class="se">\n</span><span class="s2">&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1952</span>     <span class="sa">f</span><span class="s2">&quot; - Number of components: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">comps</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1953</span>     <span class="sa">f</span><span class="s2">&quot; - Number of connections: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conns</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1954</span>     <span class="sa">f</span><span class="s2">&quot; - Number of busses: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">busses</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1955</span> <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1956</span> <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1958</span> <span class="bp">self</span><span class="o">.</span><span class="n">initialise</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1960</span> <span class="k">if</span> <span class="n">init_only</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1961</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_reset_topology_reduction_specifications</span><span class="p">()</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/tespy/networks/network.py:1961,</span> in <span class="ni">Network.solve</span><span class="nt">(self, mode, init_path, design_path, max_iter, min_iter, init_only, init_previous, use_cuda, print_results, prepare_fast_lane)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1953</span> <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1954</span>     <span class="s2">&quot;Network information:</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1955</span>     <span class="sa">f</span><span class="s2">&quot; - Number of components: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">comps</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1956</span>     <span class="sa">f</span><span class="s2">&quot; - Number of connections: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conns</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1957</span>     <span class="sa">f</span><span class="s2">&quot; - Number of busses: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">busses</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1958</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1959</span> <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1961</span> <span class="bp">self</span><span class="o">.</span><span class="n">initialise</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1963</span> <span class="k">if</span> <span class="n">init_only</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1964</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_reset_topology_reduction_specifications</span><span class="p">()</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/tespy/networks/network.py:872,</span> in <span class="ni">Network.initialise</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">870</span>     <span class="bp">self</span><span class="o">.</span><span class="n">create_fluid_wrapper_branches</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">871</span> <span class="bp">self</span><span class="o">.</span><span class="n">propagate_fluid_wrappers</span><span class="p">()</span>
-<span class="ne">--&gt; </span><span class="mi">872</span> <span class="bp">self</span><span class="o">.</span><span class="n">presolve_massflow_topology</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">873</span> <span class="bp">self</span><span class="o">.</span><span class="n">presolve_fluid_topology</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">875</span> <span class="bp">self</span><span class="o">.</span><span class="n">init_set_properties</span><span class="p">()</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/tespy/networks/network.py:875,</span> in <span class="ni">Network.initialise</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">873</span>     <span class="bp">self</span><span class="o">.</span><span class="n">create_fluid_wrapper_branches</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">874</span> <span class="bp">self</span><span class="o">.</span><span class="n">propagate_fluid_wrappers</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">875</span> <span class="bp">self</span><span class="o">.</span><span class="n">presolve_massflow_topology</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">876</span> <span class="bp">self</span><span class="o">.</span><span class="n">presolve_fluid_topology</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">878</span> <span class="bp">self</span><span class="o">.</span><span class="n">init_set_properties</span><span class="p">()</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/tespy/networks/network.py:1010,</span> in <span class="ni">Network.presolve_massflow_topology</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1003</span> <span class="k">elif</span> <span class="n">num_massflow_specs</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1004</span>     <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1005</span>         <span class="s2">&quot;You cannot specify two or more values for mass flow in &quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1006</span>         <span class="s2">&quot;the same linear branch (starting at &quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1007</span>         <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">branch</span><span class="p">[</span><span class="s1">&#39;components&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">label</span><span class="si">}</span><span class="s2"> and ending at &quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1008</span>         <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">branch</span><span class="p">[</span><span class="s1">&#39;components&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">label</span><span class="si">}</span><span class="s2">).&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1009</span>     <span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1010</span>     <span class="k">raise</span> <span class="n">hlp</span><span class="o">.</span><span class="n">TESPyNetworkError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1012</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1013</span>     <span class="n">main_conn</span> <span class="o">=</span> <span class="n">branch</span><span class="p">[</span><span class="s2">&quot;connections&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/tespy/networks/network.py:1013,</span> in <span class="ni">Network.presolve_massflow_topology</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1006</span> <span class="k">elif</span> <span class="n">num_massflow_specs</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1007</span>     <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1008</span>         <span class="s2">&quot;You cannot specify two or more values for mass flow in &quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1009</span>         <span class="s2">&quot;the same linear branch (starting at &quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1010</span>         <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">branch</span><span class="p">[</span><span class="s1">&#39;components&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">label</span><span class="si">}</span><span class="s2"> and ending at &quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1011</span>         <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">branch</span><span class="p">[</span><span class="s1">&#39;components&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">label</span><span class="si">}</span><span class="s2">).&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1012</span>     <span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1013</span>     <span class="k">raise</span> <span class="n">hlp</span><span class="o">.</span><span class="n">TESPyNetworkError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1015</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1016</span>     <span class="n">main_conn</span> <span class="o">=</span> <span class="n">branch</span><span class="p">[</span><span class="s2">&quot;connections&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="ne">TESPyNetworkError</span>: You cannot specify two or more values for mass flow in the same linear branch (starting at source and ending at sink).
 </pre></div>

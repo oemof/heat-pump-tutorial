@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=3437f865" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -43,7 +43,7 @@
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
@@ -53,7 +53,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -525,7 +525,7 @@ reach out to the developers via the TESPy github repository. Your contribution i
 not explain, the sharp increase in the efficiency factor as seen in <a class="reference internal" href="../model/tespy-simple.html#fig-heat-pump-efficiency-factor"><span class="std std-numref">Fig. 8</span></a>. To
 explain that phenomenon, we have to disect the calculation of the COP of the heat pump a further.</p>
 <figure class="align-default" id="fig-heat-pump-cop">
-<img alt="../_images/669ca60b0db4a58d9789aad4f64309170febe827d84af0661a24ff47e06bb9d9.png" src="../_images/669ca60b0db4a58d9789aad4f64309170febe827d84af0661a24ff47e06bb9d9.png" />
+<img alt="../_images/346489312fb3d05e3a57a7f2647c14095fa9e23314b4e8ff0d5830e1dbc5926e.png" src="../_images/346489312fb3d05e3a57a7f2647c14095fa9e23314b4e8ff0d5830e1dbc5926e.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 22 </span><span class="caption-text">Comparison of the carnot COP calcualted with the simplified method and the exact method.</span><a class="headerlink" href="#fig-heat-pump-cop" title="Link to this image">#</a></p>
 </figcaption>
@@ -669,13 +669,13 @@ irreversibility elements in <a class="reference internal" href="#fig-irreverisbi
 production with increasing evaporation temperature is steeper that the increase of the evaporation temperature. That is
 the reason, we have an increasing efficiency factor when the evaporation temperature level rises.</p>
 <figure class="align-default" id="fig-cop-entropy-method-validation">
-<img alt="../_images/80274a44d3b69f0336afd2fffd2c090c285fb14bed8f0be3a983076fc73a2185.png" src="../_images/80274a44d3b69f0336afd2fffd2c090c285fb14bed8f0be3a983076fc73a2185.png" />
+<img alt="../_images/8eb17fe6297ce657e1a2837b97970cabf8303273ed6ce4c69d53687ade2037e4.png" src="../_images/8eb17fe6297ce657e1a2837b97970cabf8303273ed6ce4c69d53687ade2037e4.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 23 </span><span class="caption-text">Validation of the entropy method for the calculation of the heat pump’s COP.</span><a class="headerlink" href="#fig-cop-entropy-method-validation" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="fig-irreverisbility-elements">
-<img alt="../_images/2d3a358c89e2958c1614b02dd02c9f42a581e151561cffc693a4247c0c996e84.png" src="../_images/2d3a358c89e2958c1614b02dd02c9f42a581e151561cffc693a4247c0c996e84.png" />
+<img alt="../_images/622135e35474203331d8adadfd464c0ad9e856ce313dbcb0678c72b9ff91b6f2.png" src="../_images/622135e35474203331d8adadfd464c0ad9e856ce313dbcb0678c72b9ff91b6f2.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 24 </span><span class="caption-text">Comparison of the effects of the different irreversibility elements.</span><a class="headerlink" href="#fig-irreverisbility-elements" title="Link to this image">#</a></p>
 </figcaption>
@@ -741,7 +741,7 @@ roughly defined by the slope of the dew line in the Ts-diagram, i.e.</p>
 <p>The figure <a class="reference internal" href="#fig-working-fluid-classification"><span class="std std-numref">Fig. 25</span></a> illustrates the different classifications of working fluids at the
 example of Ammonia (wet), R290 (isentropic) and Neopentane (dry).</p>
 <figure class="align-default" id="fig-working-fluid-classification">
-<img alt="../_images/0c14213a221f31b4882c21e2092eb3037beb61965d905734ffb0bd79b8ed0872.png" src="../_images/0c14213a221f31b4882c21e2092eb3037beb61965d905734ffb0bd79b8ed0872.png" />
+<img alt="../_images/d426870058c69b36cd4dc55bab00a3dead51ca3d0ad23ed019884390bf02890a.png" src="../_images/d426870058c69b36cd4dc55bab00a3dead51ca3d0ad23ed019884390bf02890a.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 25 </span><span class="caption-text">Illustration of the classification of different heat pump working fluids.</span><a class="headerlink" href="#fig-working-fluid-classification" title="Link to this image">#</a></p>
 </figcaption>
@@ -791,7 +791,7 @@ example of Ammonia (wet), R290 (isentropic) and Neopentane (dry).</p>
 <a class="reference internal" href="#fig-working-fluids-efficiency-factors"><span class="std std-numref">Fig. 26</span></a>. The dry and the isentropic working fluids have increasing efficiency
 factors, the wet working fluid has a slightly decreasing efficiency factor.</p>
 <figure class="align-default" id="fig-working-fluids-efficiency-factors">
-<img alt="../_images/a184b85ec34a9320a744bea4fd80200aa289d75bdb6e36ffa6dd21dd00cebe5b.png" src="../_images/a184b85ec34a9320a744bea4fd80200aa289d75bdb6e36ffa6dd21dd00cebe5b.png" />
+<img alt="../_images/af46b0a58da59464ae07d596dda249108237740ed43d9b15ffb7a496e903c32e.png" src="../_images/af46b0a58da59464ae07d596dda249108237740ed43d9b15ffb7a496e903c32e.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 26 </span><span class="caption-text">Efficiency factors of heat pumps using different working fluids.</span><a class="headerlink" href="#fig-working-fluids-efficiency-factors" title="Link to this image">#</a></p>
 </figcaption>

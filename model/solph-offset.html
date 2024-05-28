@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=3437f865" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -43,7 +43,7 @@
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
@@ -53,7 +53,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -416,7 +416,7 @@ heat production.</p>
 <div class="math notranslate nohighlight" id="equation-offset-efficiency">
 <span class="eqno">(10)<a class="headerlink" href="#equation-offset-efficiency" title="Link to this equation">#</a></span>\[\eta = \frac{E_\text{out}}{E_0 + m \cdot \dot E_\text{in}}\]</div>
 <figure class="align-default" id="heatpump-offset-converter">
-<img alt="../_images/0565b8c2e85bb9edeaa2ceacbf1b6df3d764c2a120a1527b6e75c8b9c134907f.png" src="../_images/0565b8c2e85bb9edeaa2ceacbf1b6df3d764c2a120a1527b6e75c8b9c134907f.png" />
+<img alt="../_images/a36a0de43c0cc556a3338cb49d29e67faf1271000d56254552b13a0121d1fbd2.png" src="../_images/a36a0de43c0cc556a3338cb49d29e67faf1271000d56254552b13a0121d1fbd2.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 20 </span><span class="caption-text">Compressor power and COP as function of the heat pump heat production at 7 °C.</span><a class="headerlink" href="#heatpump-offset-converter" title="Link to this image">#</a></p>
 </figcaption>
@@ -535,9 +535,6 @@ done this for the linear model.</p>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
-</pre></div>
-</div>
 </div>
 </div>
 <p>In our final example <a class="reference internal" href="#results-solph-offset"><span class="std std-numref">Fig. 21</span></a> shows that the heat pump is mostly operated at full load. This is
@@ -547,7 +544,7 @@ those induced by decrease of the heat pump’s COP in part load. The overall ele
 increases from <code class="docutils literal notranslate"><span class="pre">14.23</span></code> kWh to <span class="output text_plain">28.39</span>
 kWh.</p>
 <figure class="align-default" id="results-solph-offset">
-<img alt="../_images/036ea1e28605b97bb5321096c083f67d03c179b6bd6f0fa35dbf4dd38f6323d8.png" src="../_images/036ea1e28605b97bb5321096c083f67d03c179b6bd6f0fa35dbf4dd38f6323d8.png" />
+<img alt="../_images/51530fc3ce6a354492929a0b10051c0f8d2635be5a404ef3ce73fc99a25ceb37.png" src="../_images/51530fc3ce6a354492929a0b10051c0f8d2635be5a404ef3ce73fc99a25ceb37.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 21 </span><span class="caption-text">Operation of the heat pump modeled as OffsetConverter.</span><a class="headerlink" href="#results-solph-offset" title="Link to this image">#</a></p>
 </figcaption>

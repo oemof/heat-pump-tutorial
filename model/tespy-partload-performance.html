@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=3437f865" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -43,7 +43,7 @@
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
@@ -53,7 +53,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -574,17 +574,11 @@ Therefore we provide a tutorial on how to build models with stable starting valu
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (Compressor) #####
-+------------+----------+----------+----------+--------+
-|            |        P |    eta_s |       pr |   igva |
-|------------+----------+----------+----------+--------|
-| compressor | 1.86e+03 | 6.75e-01 | 2.72e+00 |    nan |
-+------------+----------+----------+----------+--------+
-##### RESULTS (Condenser) #####
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (Condenser) #####
 +-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
 |           |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
 |-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
-| condenser | -9.10e+03 | 1.26e+03 | 7.21e+00 | 5.00e+00 | 1.00e+01 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
+| condenser | -9.10e+03 | 1.26e+03 | 7.21e+00 | 5.00e+00 | 1.00e+01 | 1.00e+00 | 1.00e+00 | 4.12e-05 | 0.00e+00 |
 +-----------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
 ##### RESULTS (CycleCloser) #####
 +--------------+------------------+-------------------+
@@ -602,8 +596,14 @@ Therefore we provide a tutorial on how to build models with stable starting valu
 +------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
 |            |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
 |------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
-| evaporator | -7.24e+03 | 1.85e+03 | 3.92e+00 | 5.00e+00 | 3.00e+00 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
+| evaporator | -7.24e+03 | 1.85e+03 | 3.92e+00 | 5.00e+00 | 3.00e+00 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 1.70e-06 |
 +------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+##### RESULTS (Compressor) #####
++------------+----------+----------+----------+--------+
+|            |        P |    eta_s |       pr |   igva |
+|------------+----------+----------+----------+--------|
+| compressor | 1.86e+03 | 6.75e-01 | 2.72e+00 |    nan |
++------------+----------+----------+----------+--------+
 ##### RESULTS (Connection) #####
 +----+-----------+-----------+-----------+-----------+
 |    |         m |         p |         h |         T |
@@ -656,8 +656,8 @@ Therefore we provide a tutorial on how to build models with stable starting valu
       <th>x_unit</th>
       <th>s</th>
       <th>s_unit</th>
-      <th>air</th>
       <th>R290</th>
+      <th>air</th>
       <th>Water</th>
     </tr>
   </thead>
@@ -682,8 +682,8 @@ Therefore we provide a tutorial on how to build models with stable starting valu
       <td>-</td>
       <td>1389.278120</td>
       <td>J / kgK</td>
-      <td>NaN</td>
       <td>1.0</td>
+      <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
@@ -706,8 +706,8 @@ Therefore we provide a tutorial on how to build models with stable starting valu
       <td>-</td>
       <td>1389.278120</td>
       <td>J / kgK</td>
-      <td>NaN</td>
       <td>1.0</td>
+      <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
@@ -730,8 +730,8 @@ Therefore we provide a tutorial on how to build models with stable starting valu
       <td>-</td>
       <td>2370.253689</td>
       <td>J / kgK</td>
-      <td>NaN</td>
       <td>1.0</td>
+      <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
@@ -754,8 +754,8 @@ Therefore we provide a tutorial on how to build models with stable starting valu
       <td>-</td>
       <td>2439.993233</td>
       <td>J / kgK</td>
-      <td>NaN</td>
       <td>1.0</td>
+      <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
@@ -774,12 +774,12 @@ Therefore we provide a tutorial on how to build models with stable starting valu
       <td>C</td>
       <td>0.002139</td>
       <td>m3 / kg</td>
-      <td>1.343391e-16</td>
+      <td>-1.746408e-15</td>
       <td>-</td>
       <td>1359.354602</td>
       <td>J / kgK</td>
-      <td>NaN</td>
       <td>1.0</td>
+      <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
@@ -802,8 +802,8 @@ Therefore we provide a tutorial on how to build models with stable starting valu
       <td>-</td>
       <td>3821.630622</td>
       <td>J / kgK</td>
-      <td>1.0</td>
       <td>NaN</td>
+      <td>1.0</td>
       <td>NaN</td>
     </tr>
     <tr>
@@ -826,8 +826,8 @@ Therefore we provide a tutorial on how to build models with stable starting valu
       <td>-</td>
       <td>3814.424683</td>
       <td>J / kgK</td>
-      <td>1.0</td>
       <td>NaN</td>
+      <td>1.0</td>
       <td>NaN</td>
     </tr>
     <tr>
@@ -929,7 +929,7 @@ COP over the ambient temperature level. We can see the same trend in
 <a class="reference internal" href="#fig-heat-pump-ambient-temperature-design-mode"><span class="std std-numref">Fig. 13</span></a> as we saw in the previous section in
 <a class="reference internal" href="tespy-simple.html#fig-heat-pump-efficiency-factor"><span class="std std-numref">Fig. 8</span></a>.</p>
 <figure class="align-default" id="fig-heat-pump-ambient-temperature-design-mode">
-<img alt="../_images/ce51e164917c5bf158e96b42f42aac4040e385e2d2315c246f4e765835f22629.png" src="../_images/ce51e164917c5bf158e96b42f42aac4040e385e2d2315c246f4e765835f22629.png" />
+<img alt="../_images/8c364e6145aaeb7e99234154e47a4d8359d7f2c1f8303245156b3376589247c7.png" src="../_images/8c364e6145aaeb7e99234154e47a4d8359d7f2c1f8303245156b3376589247c7.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 13 </span><span class="caption-text">Influence of the ambient temperature on the compressor power, its pressure ratio and the COP without modeling part load
 behavior.</span><a class="headerlink" href="#fig-heat-pump-ambient-temperature-design-mode" title="Link to this image">#</a></p>
@@ -991,7 +991,7 @@ COP are affected by the changing heat load. Only the compressor power requiremen
 this is, that the compressor’s efficiency and the temperature differences (and therefore the evaporation and
 condensation temperatures) do not change with changing load due to our model specifications.</p>
 <figure class="align-default" id="fig-heat-pump-heat-load-design-mode">
-<img alt="../_images/64a883a7c18013b2bd69c6d1b986cc606941f4602df59bb9a39872df5b3bf363.png" src="../_images/64a883a7c18013b2bd69c6d1b986cc606941f4602df59bb9a39872df5b3bf363.png" />
+<img alt="../_images/c9d32ec4defc72c9054d22c5d642d2b5ac9c2abb7cc8a0b03bb8152ba54460a9.png" src="../_images/c9d32ec4defc72c9054d22c5d642d2b5ac9c2abb7cc8a0b03bb8152ba54460a9.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 14 </span><span class="caption-text">Influence of the heat load on the compressor power, its pressure ratio and the COP without modeling part load behavior.</span><a class="headerlink" href="#fig-heat-pump-heat-load-design-mode" title="Link to this image">#</a></p>
 </figcaption>
@@ -1081,7 +1081,7 @@ The last subplot is the deviation in COP, which is at an overall low level. Only
 levels, which are nearly at the heat supply temperature level the deviation increases to about 5 % with respect to the
 model accounting for part load behavior.</p>
 <figure class="align-default" id="fig-heat-pump-ambient-temperature-offdesign-mode">
-<img alt="../_images/3f4314c745917b162d1740df404a4c7ce7196bd1c855148efef400fa30290230.png" src="../_images/3f4314c745917b162d1740df404a4c7ce7196bd1c855148efef400fa30290230.png" />
+<img alt="../_images/6965736161fc9be0ba035afd62ba051be87b32f6f223843231a2cc15e4c9af0e.png" src="../_images/6965736161fc9be0ba035afd62ba051be87b32f6f223843231a2cc15e4c9af0e.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 15 </span><span class="caption-text">Influence of the ambient temperature on the compressor power, its pressure ratio and the COP when considering part load
 behavior.</span><a class="headerlink" href="#fig-heat-pump-ambient-temperature-offdesign-mode" title="Link to this image">#</a></p>
@@ -1189,7 +1189,7 @@ ratio.</p>
 <a class="reference internal" href="../excursion/partload-analysis.html#tespy-partload-disection"><span class="std std-ref">this excursion</span></a>.</p>
 </div>
 <figure class="align-default" id="fig-heat-pump-heat-load-offdesign-mode">
-<img alt="../_images/62b5b61848c7de910b2d91300707da34996d659a0909715d2a81ee48b90b3171.png" src="../_images/62b5b61848c7de910b2d91300707da34996d659a0909715d2a81ee48b90b3171.png" />
+<img alt="../_images/f4f436dbc104bc065777baf108e24c9649b394d275d90c83d77a84efa6137139.png" src="../_images/f4f436dbc104bc065777baf108e24c9649b394d275d90c83d77a84efa6137139.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 16 </span><span class="caption-text">Influence of the heat load on the compressor power, its pressure ratio and the COP when considering part load behavior.</span><a class="headerlink" href="#fig-heat-pump-heat-load-offdesign-mode" title="Link to this image">#</a></p>
 </figcaption>
@@ -1295,7 +1295,7 @@ investigate the influence of the heat load per temperature value.</p>
 <p>We can plot some results, e.g. for every 10th temperature value in <a class="reference internal" href="#fig-heat-pump-result-offdesign-mode"><span class="std std-numref">Fig. 17</span></a>. These
 results can then be transferred to the <code class="docutils literal notranslate"><span class="pre">oemof-solph</span></code> simulation.</p>
 <figure class="align-default" id="fig-heat-pump-result-offdesign-mode">
-<img alt="../_images/0baf2569e326d9ec4129cbea0233c48d45557f66a261645543de60b5e0dbbb76.png" src="../_images/0baf2569e326d9ec4129cbea0233c48d45557f66a261645543de60b5e0dbbb76.png" />
+<img alt="../_images/f56e02d1d4423ce05c75264e9adb09b68be1e6748af12ab6f8a584b325826bed.png" src="../_images/f56e02d1d4423ce05c75264e9adb09b68be1e6748af12ab6f8a584b325826bed.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 17 </span><span class="caption-text">Influence of the ambienht temperature and heat load on the compressor power and the COP when considering part load
 behavior.</span><a class="headerlink" href="#fig-heat-pump-result-offdesign-mode" title="Link to this image">#</a></p>
@@ -1351,7 +1351,7 @@ the actual simulation. For example, we can have a look at the design conditions 
 that the deviation between the linearized model and the actual simulation is below 1.5 % for all heat load values. The
 assumption of a constant efficiency factor leads to a high deviation especially with lower heat production up to 18 %.</p>
 <figure class="align-default" id="fig-heat-pump-result-comparison">
-<img alt="../_images/1e8d3fb4a98c9742002b7da73d5ddfdcdb7d1cdc8b5da044378a37aa2cace51e.png" src="../_images/1e8d3fb4a98c9742002b7da73d5ddfdcdb7d1cdc8b5da044378a37aa2cace51e.png" />
+<img alt="../_images/70ef217c01d56fa0cbd32be0788dbcbcdd3abc09b4ae7d25e3972952a11897be.png" src="../_images/70ef217c01d56fa0cbd32be0788dbcbcdd3abc09b4ae7d25e3972952a11897be.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 18 </span><span class="caption-text">Comparison of the compressor power depending on the heat pump’s heat load for the simplified approach and in the part
 load simulation.</span><a class="headerlink" href="#fig-heat-pump-result-comparison" title="Link to this image">#</a></p>
@@ -1361,7 +1361,7 @@ load simulation.</span><a class="headerlink" href="#fig-heat-pump-result-compari
 <a class="reference internal" href="#fig-heat-pump-result-linearization"><span class="std std-numref">Fig. 19</span></a>. We can see, that both, offset and slope, change for every ambient
 temperature value.</p>
 <figure class="align-default" id="fig-heat-pump-result-linearization">
-<img alt="../_images/e950b27894c5ec1131961b7cd65ada44b1d6ef801ce5dc90120f39af097873a5.png" src="../_images/e950b27894c5ec1131961b7cd65ada44b1d6ef801ce5dc90120f39af097873a5.png" />
+<img alt="../_images/7299b9edfb53eb797485a56b2d47b3dff6e4e8e2778c555a15f1e7c47d804d99.png" src="../_images/7299b9edfb53eb797485a56b2d47b3dff6e4e8e2778c555a15f1e7c47d804d99.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 19 </span><span class="caption-text">Linearized compressor power to heat load.</span><a class="headerlink" href="#fig-heat-pump-result-linearization" title="Link to this image">#</a></p>
 </figcaption>

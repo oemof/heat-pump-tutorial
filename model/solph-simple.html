@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=3437f865" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -43,7 +43,7 @@
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
@@ -53,7 +53,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -621,7 +621,7 @@ reference temperatures is higher, for the lower temperatures the variant with 2/
 higher COP. The right subplot shows the COP time series for our application example. Since the ambient temperature is
 mostly higher than 7 °C, the implementation of the 7/35 variant will have higher COP most of the time.</p>
 <figure class="align-default" id="cop-reference-temperature-variants">
-<img alt="../_images/8de7662f75e36a19a26280b74dda12b24abb8a38f22c0be77a12c5537b3280df.png" src="../_images/8de7662f75e36a19a26280b74dda12b24abb8a38f22c0be77a12c5537b3280df.png" />
+<img alt="../_images/f3376060f4f8b6ff922a8c56348a2fb9b79ef6bb5e99506b6a11b9a88d5511f4.png" src="../_images/f3376060f4f8b6ff922a8c56348a2fb9b79ef6bb5e99506b6a11b9a88d5511f4.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 5 </span><span class="caption-text">Comparison of the COP of the heat pump calculated with 7/35 and 2/40 as reference temperature values.</span><a class="headerlink" href="#cop-reference-temperature-variants" title="Link to this image">#</a></p>
 </figcaption>
@@ -705,9 +705,6 @@ mostly higher than 7 °C, the implementation of the 7/35 variant will have highe
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
-</pre></div>
-</div>
 </div>
 </div>
 <p>After running the optimization we extract the results and create a figure for the duration curve of the heat pump
@@ -717,7 +714,7 @@ a way to provide the heat demand directly without using the storage as the stora
 Only in a single time step the heat pump feeds additional heat to the storage to make use of a advantageous COP for the
 production of the heat. A total of <span class="output text_plain">14.09</span> kWh of electricity is consumed.</p>
 <figure class="align-default" id="results-solph-simple">
-<img alt="../_images/d28a48579f1c057d8eefab5f08882d216a2416332bfe79a5898c24a34e14623a.png" src="../_images/d28a48579f1c057d8eefab5f08882d216a2416332bfe79a5898c24a34e14623a.png" />
+<img alt="../_images/16398c052a93ebbcb998775324927601ac9d2ae2b41d2e8ff2156e857ceeb1fb.png" src="../_images/16398c052a93ebbcb998775324927601ac9d2ae2b41d2e8ff2156e857ceeb1fb.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 6 </span><span class="caption-text">Results of the simple heat pump setup.</span><a class="headerlink" href="#results-solph-simple" title="Link to this image">#</a></p>
 </figcaption>

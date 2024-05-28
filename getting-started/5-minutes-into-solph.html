@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=3437f865" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -43,7 +43,7 @@
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
@@ -53,7 +53,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -464,11 +464,11 @@ optimiser of choice.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.10.13/x64/lib/python3.10/site-packages/oemof/solph/_energy_system.py:305: FutureWarning: &#39;H&#39; is deprecated and will be removed in a future version, please use &#39;h&#39; instead.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.10.14/x64/lib/python3.10/site-packages/oemof/solph/_energy_system.py:305: FutureWarning: &#39;H&#39; is deprecated and will be removed in a future version, please use &#39;h&#39; instead.
   return pd.date_range(start, periods=number + 1, freq=f&quot;{interval}H&quot;)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Problem&#39;: [{&#39;Name&#39;: &#39;unknown&#39;, &#39;Lower bound&#39;: 8.8, &#39;Upper bound&#39;: 8.8, &#39;Number of objectives&#39;: 1, &#39;Number of constraints&#39;: 12, &#39;Number of variables&#39;: 12, &#39;Number of nonzeros&#39;: 0, &#39;Sense&#39;: &#39;minimize&#39;}], &#39;Solver&#39;: [{&#39;Status&#39;: &#39;ok&#39;, &#39;User time&#39;: -1.0, &#39;System time&#39;: 0.0, &#39;Wallclock time&#39;: 0.0, &#39;Termination condition&#39;: &#39;optimal&#39;, &#39;Termination message&#39;: &#39;Model was solved to optimality (subject to tolerances), and an optimal solution is available.&#39;, &#39;Statistics&#39;: {&#39;Branch and bound&#39;: {&#39;Number of bounded subproblems&#39;: None, &#39;Number of created subproblems&#39;: None}, &#39;Black box&#39;: {&#39;Number of iterations&#39;: 0}}, &#39;Error rc&#39;: 0, &#39;Time&#39;: 0.21937918663024902}], &#39;Solution&#39;: [OrderedDict([(&#39;number of solutions&#39;, 0), (&#39;number of solutions displayed&#39;, 0)])]}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Problem&#39;: [{&#39;Name&#39;: &#39;unknown&#39;, &#39;Lower bound&#39;: 8.8, &#39;Upper bound&#39;: 8.8, &#39;Number of objectives&#39;: 1, &#39;Number of constraints&#39;: 12, &#39;Number of variables&#39;: 12, &#39;Number of nonzeros&#39;: 0, &#39;Sense&#39;: &#39;minimize&#39;}], &#39;Solver&#39;: [{&#39;Status&#39;: &#39;ok&#39;, &#39;User time&#39;: -1.0, &#39;System time&#39;: 0.0, &#39;Wallclock time&#39;: 0.01, &#39;Termination condition&#39;: &#39;optimal&#39;, &#39;Termination message&#39;: &#39;Model was solved to optimality (subject to tolerances), and an optimal solution is available.&#39;, &#39;Statistics&#39;: {&#39;Branch and bound&#39;: {&#39;Number of bounded subproblems&#39;: None, &#39;Number of created subproblems&#39;: None}, &#39;Black box&#39;: {&#39;Number of iterations&#39;: 0}}, &#39;Error rc&#39;: 0, &#39;Time&#39;: 0.07439994812011719}], &#39;Solution&#39;: [OrderedDict([(&#39;number of solutions&#39;, 0), (&#39;number of solutions displayed&#39;, 0)])]}
 </pre></div>
 </div>
 </div>
@@ -489,7 +489,7 @@ optimiser of choice.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/98338d59e33b98a7979b3616951575aeed6c283d515035f84d4b61341cf7558f.png" src="../_images/98338d59e33b98a7979b3616951575aeed6c283d515035f84d4b61341cf7558f.png" />
+<img alt="../_images/172af5bc31070efdbd7af40c6e3a8f2f2324c91d7fb906145c5ea4061fb1b859.png" src="../_images/172af5bc31070efdbd7af40c6e3a8f2f2324c91d7fb906145c5ea4061fb1b859.png" />
 </div>
 </div>
 </section>

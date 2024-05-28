@@ -35,7 +35,7 @@ power in eq. {eq}`heat-from-compressor-power-and-COP`.
 
 ```{math}
     :label: heat-from-compressor-power-and-COP
-    |\dot Q_\text{prod}| = \text{COP} \cdot \frac{}{\dot W}
+    |\dot Q_\text{prod}| = \text{COP} \cdot \dot W
 ```
 
 Therefore, the challenge lies in calculating the COP of the heat pump. In a real world system, the COP of an air source

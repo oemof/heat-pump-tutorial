@@ -25,7 +25,7 @@ def load_temperature_data():
     csv_path = _file_path + "/../2023_Stundenstatistik.txt"
 
     # weather data from https://wetterstation.physik.rwth-aachen.de/datenbank.php
-    df = pd.read_csv(csv_path, delim_whitespace=True)
+    df = pd.read_csv(csv_path, sep="\s+")
     df.index = (pd.to_datetime(
         [
             f"{year}-{month}-{day} {hour}:00:00"
@@ -130,7 +130,7 @@ def sumarise_solph_results(results):
     ax2.grid()
     ax2.legend()
 
-    electricity_consumption = float(results[("electricity grid", "electricity")]["sequences"].sum())
+    electricity_consumption = float(results[("electricity grid", "electricity")]["sequences"]["flow"].sum())
     print(f"Electricity demand: {electricity_consumption:.1f} kWh")
     return fig, electricity_consumption
 

@@ -480,9 +480,6 @@ this tutorial.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FutureWarning: The &#39;delim_whitespace&#39; keyword in pd.read_csv is deprecated and will be removed in a future version. Use ``sep=&#39;\s+&#39;`` instead
-</pre></div>
-</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-01-01 00:00:00    0.00
 2023-01-01 01:00:00    0.00
 2023-01-01 02:00:00    0.15
@@ -751,7 +748,7 @@ storage filling level to create comparable plots in all sections.</p>
     <span class="n">ax2</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
     <span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
-    <span class="n">electricity_consumption</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">results</span><span class="p">[(</span><span class="s2">&quot;electricity grid&quot;</span><span class="p">,</span> <span class="s2">&quot;electricity&quot;</span><span class="p">)][</span><span class="s2">&quot;sequences&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+    <span class="n">electricity_consumption</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">results</span><span class="p">[(</span><span class="s2">&quot;electricity grid&quot;</span><span class="p">,</span> <span class="s2">&quot;electricity&quot;</span><span class="p">)][</span><span class="s2">&quot;sequences&quot;</span><span class="p">][</span><span class="s2">&quot;flow&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Electricity demand: </span><span class="si">{</span><span class="n">electricity_consumption</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> kWh&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">electricity_consumption</span>
 </pre></div>
@@ -766,9 +763,6 @@ storage filling level to create comparable plots in all sections.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:TESPyLogger:FutureWarning: Calling float on a single element Series is deprecated and will raise a TypeError in the future. Use float(ser.iloc[0]) instead
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Electricity demand: 14.1 kWh
 </pre></div>
 </div>

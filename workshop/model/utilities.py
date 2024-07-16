@@ -3,7 +3,7 @@ import numpy as np
 import oemof.solph as solph
 import pandas as pd
 from matplotlib import pyplot as plt
-from tespy.components import HeatExchangerSimple, CycleCloser, Compressor, Valve, HeatExchanger, Source, Sink, Condenser
+from tespy.components import SimpleHeatExchanger, CycleCloser, Compressor, Valve, HeatExchanger, Source, Sink, Condenser
 from tespy.connections import Connection, Ref
 from tespy.networks import Network
 
@@ -140,8 +140,8 @@ def simple_heat_pump(working_fluid):
     nwk = Network(fluids=[working_fluid], p_unit="bar", T_unit="C", iterinfo=False)
 
     cp = Compressor("compressor")
-    ev = HeatExchangerSimple("evaporator")
-    cd = HeatExchangerSimple("condenser")
+    ev = SimpleHeatExchanger("evaporator")
+    cd = SimpleHeatExchanger("condenser")
     va = Valve("expansion valve")
     cc = CycleCloser("cycle closer")
 

@@ -545,7 +545,7 @@ as provided in <a class="reference internal" href="#table-mini-example-compresso
  2     | 5.91e+05   | 2 %        | 0.00e+00   | 2.33e-10   | 7.39e+05   | 0.00e+00   | 0.00e+00   
  3     | 2.33e-10   | 100 %      | 0.00e+00   | 2.33e-10   | 6.94e-12   | 0.00e+00   | 0.00e+00   
  4     | 2.33e-10   | 100 %      | 0.00e+00   | 2.33e-10   | 6.94e-12   | 0.00e+00   | 0.00e+00   
-Total iterations: 4, Calculation time: 0.00 s, Iterations per second: 825.00
+Total iterations: 4, Calculation time: 0.01 s, Iterations per second: 691.42
 </pre></div>
 </div>
 </div>
@@ -616,7 +616,7 @@ provided for this topic.</p>
 </div>
 <p>For example, we can make an invalid parameter specification by setting the mass flow at the inlet and at the outlet of
 the compressor. This overdetermines the system of equations and will result in an error when trying to solve.</p>
-<div class="cell docutils container">
+<div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c2</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 <span class="n">nwk</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="s2">&quot;design&quot;</span><span class="p">)</span>
@@ -717,6 +717,25 @@ listed in the table.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (HeatExchanger) #####
++------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+|            |         Q |       kA |   td_log |    ttd_u |    ttd_l |      pr1 |      pr2 |    zeta1 |    zeta2 |
+|------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------|
+| evaporator | -3.02e+03 | 5.63e+02 | 5.36e+00 | 7.00e+00 | 4.00e+00 | 1.00e+00 | 1.00e+00 | 0.00e+00 | 0.00e+00 |
++------------+-----------+----------+----------+----------+----------+----------+----------+----------+----------+
+##### RESULTS (Connection) #####
++----+-----------+-----------+-----------+-----------+
+|    |         m |         p |         h |         T |
+|----+-----------+-----------+-----------+-----------|
+|  1 | 1.000e+00 | 1.000e+00 | 4.063e+05 | 7.000e+00 |
+|  2 | 1.000e+00 | 1.000e+00 | 4.033e+05 | 4.000e+00 |
+|  3 | 1.073e-02 | 4.745e+00 | 2.937e+05 | 2.451e-10 |
+|  4 | 1.073e-02 | 4.745e+00 | 5.749e+05 | 2.451e-10 |
++----+-----------+-----------+-----------+-----------+
+</pre></div>
+</div>
+</div>
 </div>
 <p>After running the simulation we can see the heat transferred from the air to the working fluid, both mass flows, or the
 temperature differences between the hot side (air) and the cold side (R290). Instead of providing a fixed temperature
@@ -731,6 +750,11 @@ the air temperature changes, adjusts the evaporation pressure/temperature of the
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.9999999999998295
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -742,6 +766,11 @@ the air temperature changes, adjusts the evaporation pressure/temperature of the
     <span class="n">T_evaporation</span> <span class="o">+=</span> <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">c3</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">val</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
 
 <span class="n">T_evaporation</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-13.0, -8.0, -3.0, 2.0]
 </pre></div>
 </div>
 </div>

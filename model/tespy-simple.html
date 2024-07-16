@@ -485,7 +485,7 @@ flowsheet as well as connections to connect them and a network, which does all t
 solving the model for us:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tespy.components</span> <span class="kn">import</span> <span class="n">HeatExchangerSimple</span><span class="p">,</span> <span class="n">CycleCloser</span><span class="p">,</span> <span class="n">Compressor</span><span class="p">,</span> <span class="n">Valve</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tespy.components</span> <span class="kn">import</span> <span class="n">SimpleHeatExchanger</span><span class="p">,</span> <span class="n">CycleCloser</span><span class="p">,</span> <span class="n">Compressor</span><span class="p">,</span> <span class="n">Valve</span>
 <span class="kn">from</span> <span class="nn">tespy.connections</span> <span class="kn">import</span> <span class="n">Connection</span>
 <span class="kn">from</span> <span class="nn">tespy.networks</span> <span class="kn">import</span> <span class="n">Network</span>
 </pre></div>
@@ -507,8 +507,8 @@ instance:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="o">=</span> <span class="n">Compressor</span><span class="p">(</span><span class="s2">&quot;compressor&quot;</span><span class="p">)</span>
-<span class="n">ev</span> <span class="o">=</span> <span class="n">HeatExchangerSimple</span><span class="p">(</span><span class="s2">&quot;evaporator&quot;</span><span class="p">)</span>
-<span class="n">cd</span> <span class="o">=</span> <span class="n">HeatExchangerSimple</span><span class="p">(</span><span class="s2">&quot;condenser&quot;</span><span class="p">)</span>
+<span class="n">ev</span> <span class="o">=</span> <span class="n">SimpleHeatExchanger</span><span class="p">(</span><span class="s2">&quot;evaporator&quot;</span><span class="p">)</span>
+<span class="n">cd</span> <span class="o">=</span> <span class="n">SimpleHeatExchanger</span><span class="p">(</span><span class="s2">&quot;condenser&quot;</span><span class="p">)</span>
 <span class="n">va</span> <span class="o">=</span> <span class="n">Valve</span><span class="p">(</span><span class="s2">&quot;expansion valve&quot;</span><span class="p">)</span>
 <span class="n">cc</span> <span class="o">=</span> <span class="n">CycleCloser</span><span class="p">(</span><span class="s2">&quot;cycle closer&quot;</span><span class="p">)</span>
 
@@ -518,11 +518,6 @@ instance:</p>
 <span class="n">c2</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">ev</span><span class="p">,</span> <span class="s2">&quot;out1&quot;</span><span class="p">,</span> <span class="n">cp</span><span class="p">,</span> <span class="s2">&quot;in1&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;2&quot;</span><span class="p">)</span>
 <span class="n">c3</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="s2">&quot;out1&quot;</span><span class="p">,</span> <span class="n">cd</span><span class="p">,</span> <span class="s2">&quot;in1&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;3&quot;</span><span class="p">)</span>
 <span class="n">c4</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">cd</span><span class="p">,</span> <span class="s2">&quot;out1&quot;</span><span class="p">,</span> <span class="n">va</span><span class="p">,</span> <span class="s2">&quot;in1&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;4&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FutureWarning: The API for the component HeatExchangerSimple will change with the next major release, please import SimpleHeatExchanger instead.
 </pre></div>
 </div>
 </div>
@@ -625,14 +620,7 @@ future as well.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (HeatExchangerSimple) #####
-+------------+-----------+----------+----------+-----+-----+------+---------+------+--------+
-|            |         Q |       pr |     zeta |   D |   L |   ks |   ks_HW |   kA |   Tamb |
-|------------+-----------+----------+----------+-----+-----+------+---------+------+--------|
-| evaporator |  7.48e+03 | 1.00e+00 | 0.00e+00 | nan | nan |  nan |     nan |  nan |    nan |
-| condenser  | -9.10e+03 | 1.00e+00 | 0.00e+00 | nan | nan |  nan |     nan |  nan |    nan |
-+------------+-----------+----------+----------+-----+-----+------+---------+------+--------+
-##### RESULTS (CycleCloser) #####
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>##### RESULTS (CycleCloser) #####
 +--------------+------------------+-------------------+
 |              |   mass_deviation |   fluid_deviation |
 |--------------+------------------+-------------------|
@@ -644,6 +632,13 @@ future as well.</p>
 |-----------------+----------+----------|
 | expansion valve | 3.68e-01 | 9.74e+10 |
 +-----------------+----------+----------+
+##### RESULTS (SimpleHeatExchanger) #####
++------------+-----------+----------+----------+-----+-----+------+---------+------+--------+
+|            |         Q |       pr |     zeta |   D |   L |   ks |   ks_HW |   kA |   Tamb |
+|------------+-----------+----------+----------+-----+-----+------+---------+------+--------|
+| condenser  | -9.10e+03 | 1.00e+00 | 0.00e+00 | nan | nan |  nan |     nan |  nan |    nan |
+| evaporator |  7.48e+03 | 1.00e+00 | 0.00e+00 | nan | nan |  nan |     nan |  nan |    nan |
++------------+-----------+----------+----------+-----+-----+------+---------+------+--------+
 ##### RESULTS (Compressor) #####
 +------------+----------+----------+----------+--------+
 |            |        P |    eta_s |       pr |   igva |

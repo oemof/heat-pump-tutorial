@@ -14,22 +14,22 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
@@ -38,16 +38,16 @@
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=3437f865" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -75,27 +75,23 @@
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -117,8 +113,13 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
     </header>
   
 
@@ -142,6 +143,8 @@
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="../index.html">
   
@@ -163,7 +166,7 @@
 
  <script>
  document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
     <span class="search-button__default-text">Search</span>
     <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -218,7 +221,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -227,14 +230,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -359,10 +362,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -370,14 +373,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -525,7 +528,7 @@ reach out to the developers via the TESPy github repository. Your contribution i
 not explain, the sharp increase in the efficiency factor as seen in <a class="reference internal" href="../model/tespy-simple.html#fig-heat-pump-efficiency-factor"><span class="std std-numref">Fig. 8</span></a>. To
 explain that phenomenon, we have to disect the calculation of the COP of the heat pump a further.</p>
 <figure class="align-default" id="fig-heat-pump-cop">
-<img alt="../_images/346489312fb3d05e3a57a7f2647c14095fa9e23314b4e8ff0d5830e1dbc5926e.png" src="../_images/346489312fb3d05e3a57a7f2647c14095fa9e23314b4e8ff0d5830e1dbc5926e.png" />
+<img alt="../_images/8cdbe84ecf15fba3fe2107df8b9c35bcb7f9cd5acccfe02bc907637647df8fda.png" src="../_images/8cdbe84ecf15fba3fe2107df8b9c35bcb7f9cd5acccfe02bc907637647df8fda.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 22 </span><span class="caption-text">Comparison of the carnot COP calcualted with the simplified method and the exact method.</span><a class="headerlink" href="#fig-heat-pump-cop" title="Link to this image">#</a></p>
 </figcaption>
@@ -669,13 +672,13 @@ irreversibility elements in <a class="reference internal" href="#fig-irreverisbi
 production with increasing evaporation temperature is steeper that the increase of the evaporation temperature. That is
 the reason, we have an increasing efficiency factor when the evaporation temperature level rises.</p>
 <figure class="align-default" id="fig-cop-entropy-method-validation">
-<img alt="../_images/8eb17fe6297ce657e1a2837b97970cabf8303273ed6ce4c69d53687ade2037e4.png" src="../_images/8eb17fe6297ce657e1a2837b97970cabf8303273ed6ce4c69d53687ade2037e4.png" />
+<img alt="../_images/ae1f79d76e3d5f45d1b5d1b9a74d210d10095c07fd6d1d3b9fff6c3d68d1c434.png" src="../_images/ae1f79d76e3d5f45d1b5d1b9a74d210d10095c07fd6d1d3b9fff6c3d68d1c434.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 23 </span><span class="caption-text">Validation of the entropy method for the calculation of the heat pump’s COP.</span><a class="headerlink" href="#fig-cop-entropy-method-validation" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="fig-irreverisbility-elements">
-<img alt="../_images/622135e35474203331d8adadfd464c0ad9e856ce313dbcb0678c72b9ff91b6f2.png" src="../_images/622135e35474203331d8adadfd464c0ad9e856ce313dbcb0678c72b9ff91b6f2.png" />
+<img alt="../_images/46055523f1be09929ddf959f766eeba305d051cab971f1719059662ddcbfeba7.png" src="../_images/46055523f1be09929ddf959f766eeba305d051cab971f1719059662ddcbfeba7.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 24 </span><span class="caption-text">Comparison of the effects of the different irreversibility elements.</span><a class="headerlink" href="#fig-irreverisbility-elements" title="Link to this image">#</a></p>
 </figcaption>
@@ -741,7 +744,7 @@ roughly defined by the slope of the dew line in the Ts-diagram, i.e.</p>
 <p>The figure <a class="reference internal" href="#fig-working-fluid-classification"><span class="std std-numref">Fig. 25</span></a> illustrates the different classifications of working fluids at the
 example of Ammonia (wet), R290 (isentropic) and Neopentane (dry).</p>
 <figure class="align-default" id="fig-working-fluid-classification">
-<img alt="../_images/d426870058c69b36cd4dc55bab00a3dead51ca3d0ad23ed019884390bf02890a.png" src="../_images/d426870058c69b36cd4dc55bab00a3dead51ca3d0ad23ed019884390bf02890a.png" />
+<img alt="../_images/d7db04586a77ceaec1a6c9b70cee596a29734c9332d02e0ad47c170cce8487f1.png" src="../_images/d7db04586a77ceaec1a6c9b70cee596a29734c9332d02e0ad47c170cce8487f1.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 25 </span><span class="caption-text">Illustration of the classification of different heat pump working fluids.</span><a class="headerlink" href="#fig-working-fluid-classification" title="Link to this image">#</a></p>
 </figcaption>
@@ -791,7 +794,7 @@ example of Ammonia (wet), R290 (isentropic) and Neopentane (dry).</p>
 <a class="reference internal" href="#fig-working-fluids-efficiency-factors"><span class="std std-numref">Fig. 26</span></a>. The dry and the isentropic working fluids have increasing efficiency
 factors, the wet working fluid has a slightly decreasing efficiency factor.</p>
 <figure class="align-default" id="fig-working-fluids-efficiency-factors">
-<img alt="../_images/af46b0a58da59464ae07d596dda249108237740ed43d9b15ffb7a496e903c32e.png" src="../_images/af46b0a58da59464ae07d596dda249108237740ed43d9b15ffb7a496e903c32e.png" />
+<img alt="../_images/26efc535c271deaa733c16530966ab98d0465415765f66a603f507d80994f02d.png" src="../_images/26efc535c271deaa733c16530966ab98d0465415765f66a603f507d80994f02d.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 26 </span><span class="caption-text">Efficiency factors of heat pumps using different working fluids.</span><a class="headerlink" href="#fig-working-fluids-efficiency-factors" title="Link to this image">#</a></p>
 </figcaption>
@@ -835,7 +838,7 @@ this excursion, the entropy method is applied.</p>
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -924,8 +927,8 @@ By Francesco Witte and Patrik Schönfeld
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
